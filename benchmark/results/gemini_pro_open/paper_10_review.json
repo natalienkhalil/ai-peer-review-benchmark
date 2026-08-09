@@ -1,0 +1,172 @@
+{
+  "paper_id": 10,
+  "provider_name": "gemini_pro_open",
+  "issues": [
+    {
+      "category": "statistical",
+      "subcategory": "mixed-effects modeling",
+      "description": "The mixed-effects model for Experiment 1 only includes a random intercept for subjects, completely omitting random intercepts for items (stems or suffixes). This is a classic 'language-as-fixed-effect fallacy' (Clark, 1973). Without item-level random effects, the model assumes that the specific nonwords used are fixed and perfectly representative, drastically inflating Type I error rates and preventing generalization to other stimuli.",
+      "quote": "This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "location": "Experiment 1, Results",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "mixed-effects modeling",
+      "description": "In Experiment 3, the models include random intercepts for subjects and suffixes, but fail to include random intercepts for the specific nonword items (stems + suffixes) or random slopes for the within-subject/within-item effects (e.g., congruency). Failing to include maximal random effects structures (Barr et al., 2013) can lead to anti-conservative p-values.",
+      "quote": "All models included trial order as a main effect, and random intercepts for subjects and for suffixes.",
+      "location": "Experiment 3, Results",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "stimulus confound",
+      "description": "The number of pre-target words differs significantly between the congruent and incongruent conditions. In eye-tracking research, the amount of preceding text can influence reading rhythm, working memory load, predictability, and launch site distances. This is a major confound that could independently drive the observed differences in go-past times and regressions.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "Experiment 3, Method",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "multiple comparisons",
+      "description": "The authors test six different eye-tracking measures (skips, first fixation, first run dwell, go-past, regressions-in, regressions-out) without applying any correction for multiple comparisons (e.g., Bonferroni, False Discovery Rate). This increases the family-wise error rate, making the significant findings in go-past times and regressions-out more susceptible to being false positives.",
+      "quote": "We considered word-skipping, first fixation durations, first run dwell time (sums of all fixation durations during first pass), go-past times, regressions to the target from later parts of the sentence, regressions from the target to earlier regions of the sentence.",
+      "location": "Experiment 3, Results",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "selective reporting",
+      "description": "The authors explicitly state they are withholding the full model outputs to save space, reporting only the main variable of interest. This is poor scientific practice. Full model summaries (including estimates, standard errors, and variance components for random effects) must be provided, at least in supplementary materials, to allow for proper evaluation of the model fits.",
+      "quote": "However, in the interest of space we report only those effects pertaining to our main variable of interest, congruency (congruent or incongruent).",
+      "location": "Experiment 3, Results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "phonological transcription",
+      "description": "The calculation of specificity relies entirely on the single most frequent pronunciation of a suffix. This ignores phonological variation, dialectal differences, and allophonic variations that occur in natural speech. By collapsing all variation into a single transcription, the specificity metric may misrepresent the actual mapping between sound and spelling that readers experience.",
+      "quote": "Only the most frequent pronunciation was considered for each suffix.",
+      "location": "Computational Analysis, Method",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "data loss",
+      "description": "A data loss rate of 11.7% in a simple two-alternative forced-choice task is unusually high. This suggests that the 2-second timeout was too restrictive for processing nonwords, potentially skewing the data by only capturing the fastest, most impulsive responses and dropping trials where participants engaged in deeper morphological processing.",
+      "quote": "11.7% of data points were missing due to timeouts or button presses that did not correspond to a response",
+      "location": "Experiment 1, Results",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "corpus selection",
+      "description": "The authors use the CELEX database from 1993. While historically important, CELEX is relatively small and outdated compared to modern corpora like the English Lexicon Project (ELP) or SUBTLEX-UK. The frequencies and distributions of words in CELEX may not accurately reflect the language exposure of contemporary undergraduate participants.",
+      "quote": "We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)",
+      "location": "Computational Analysis, Method",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "construct validity",
+      "description": "The authors include pseudoaffixed words (e.g., 'corner' for -ER) in their calculations of diagnosticity and specificity. While readers may parse pseudoaffixes, including them conflates true morphological regularities with orthographic coincidences, potentially distorting the linguistic statistics of the writing system.",
+      "quote": "we also needed to capture words in which the suffix spellings do not function as genuine morphemes (e.g. the –ER in ‘corner’).",
+      "location": "Computational Analysis, Method",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "task demands",
+      "description": "In Experiment 3, 80 out of 120 trials (66%) contain experimental nonwords. This high proportion of target stimuli makes the experimental manipulation highly salient. Participants likely developed task-specific strategies for dealing with nonwords, reducing the ecological validity of the reading task.",
+      "quote": "Eighty experimental nonwords... Forty filler nonwords whose suffix spellings were diagnostic for verbs were added",
+      "location": "Experiment 3, Method",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inappropriate analysis",
+      "description": "To compare the predictive power of spelling vs. phonology, the authors regress Hspelling on Hphonology and test if the slope differs from 1. This is statistically flawed because Ordinary Least Squares (OLS) regression assumes the predictor (Hphonology) is measured without error, which is false here. A paired t-test or a linear mixed model directly comparing the entropy values would be the appropriate test.",
+      "quote": "We then examined the slope of the regression equation lm(Hspelling ~ Hphonology)... and that this slope is significantly different from 1",
+      "location": "General Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "missing statistics",
+      "description": "Table 5 reports estimates and z/t values but fails to report standard errors or confidence intervals. Without measures of uncertainty around the estimates, it is difficult to evaluate the precision and reliability of the reported effects.",
+      "quote": "Table 5: Results of Experiment 3... (estimates, z/t values, and significance levels).",
+      "location": "Table 5",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "ecological validity",
+      "description": "In Experiment 2, participants read a sentence frame, waited 4 seconds, and then heard a nonword played in isolation before spelling it. This removes natural coarticulation and prosodic cues that would normally integrate the word into the sentence, creating an artificial task that may not reflect natural spelling or language processing.",
+      "quote": "This sentence frame stayed on screen for 4 seconds, after which a nonword was played to participants through headphones.",
+      "location": "Experiment 2, Procedure",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "sample size",
+      "description": "Experiment 2 uses a relatively small sample size (N=29) for a psycholinguistic production task involving 11 different suffixes and multiple context conditions. This raises concerns about statistical power and the stability of the parameter estimates.",
+      "quote": "Participants were 29 undergraduate students from Royal Holloway University of London.",
+      "location": "Experiment 2, Method",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "data exclusion",
+      "description": "The authors exclude 64 suffixes (over 40% of their initial sample of 154) because they occur in fewer than 20 words. While they note the means remain similar, excluding such a massive portion of the data limits the claim that these properties describe 'English derivational suffixes in general'.",
+      "quote": "we excluded all suffixes that occur in fewer than 20 different words in the CELEX database, i.e. 64 suffixes",
+      "location": "Computational Analysis, Results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "variable transformation",
+      "description": "Multiplying the diagnosticity measure by -1 for noun-diagnostic suffixes to create a single bipolar predictor is an awkward statistical hack. It forces the model to assume that the effect of diagnosticity is perfectly symmetrical and linear across both noun and adjective suffixes. It would be more appropriate to use absolute diagnosticity and an interaction term with suffix category.",
+      "quote": "we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.",
+      "location": "Experiment 1, Results",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "model comparison",
+      "description": "The authors use Likelihood Ratio Tests (Chi-square) to evaluate the significance of fixed effects in mixed models. This approach is known to be anti-conservative for fixed effects, especially with smaller sample sizes or complex random effects structures. F-tests with Satterthwaite or Kenward-Roger degrees of freedom approximations are preferred.",
+      "quote": "The fit of go-past model improved significantly when the interaction and the main effect of diagnosticity were added: Chi (2) = 8.58, p < 0.05.",
+      "location": "Experiment 3, Results",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "stimulus generalization",
+      "description": "Experiment 1 uses only CVC stems generated by Wuggy. Real English stems vary widely in length, syllable structure, and orthographic complexity. Restricting the stems to CVC limits the generalizability of the findings to natural English reading.",
+      "quote": "Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator",
+      "location": "Experiment 1, Stimuli",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "descriptive statistics",
+      "description": "The manuscript relies heavily on figures to show the results of Experiments 1 and 2, but fails to provide basic descriptive statistics (means, standard deviations, or raw proportions) in the text or in a table. This hinders reproducibility and meta-analytic inclusion.",
+      "quote": "Figure 3 visualises these data, averaged across the whole item set, and as a function of suffix.",
+      "location": "Experiment 1, Results",
+      "severity": "minor"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "causal inference",
+      "description": "The authors conclude that readers use category information conveyed by suffix spelling during sentence integration. However, because the study uses nonwords, it proves that readers *can* use this information when forced to process novel items, but it does not definitively prove that they *rely* on it during natural reading of highly familiar, existing words.",
+      "quote": "These results therefore suggest that the category information conveyed by suffix spelling is used during sentence integration processes.",
+      "location": "Experiment 3, Discussion",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"mixed-effects modeling\",\n      \"description\": \"The mixed-effects model for Experiment 1 only includes a random intercept for subjects, completely omitting random intercepts for items (stems or suffixes). This is a classic 'language-as-fixed-effect fallacy' (Clark, 1973). Without item-level random effects, the model assumes that the specific nonwords used are fixed and perfectly representative, drastically inflating Type I error rates and preventing generalization to other stimuli.\",\n      \"quote\": \"This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \\\"binomial\\\").\",\n      \"location\": \"Experiment 1, Results\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"mixed-effects modeling\",\n      \"description\": \"In Experiment 3, the models include random intercepts for subjects and suffixes, but fail to include random intercepts for the specific nonword items (stems + suffixes) or random slopes for the within-subject/within-item effects (e.g., congruency). Failing to include maximal random effects structures (Barr et al., 2013) can lead to anti-conservative p-values.\",\n      \"quote\": \"All models included trial order as a main effect, and random intercepts for subjects and for suffixes.\",\n      \"location\": \"Experiment 3, Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"stimulus confound\",\n      \"description\": \"The number of pre-target words differs significantly between the congruent and incongruent conditions. In eye-tracking research, the amount of preceding text can influence reading rhythm, working memory load, predictability, and launch site distances. This is a major confound that could independently drive the observed differences in go-past times and regressions.\",\n      \"quote\": \"Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).\",\n      \"location\": \"Experiment 3, Method\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"multiple comparisons\",\n      \"description\": \"The authors test six different eye-tracking measures (skips, first fixation, first run dwell, go-past, regressions-in, regressions-out) without applying any correction for multiple comparisons (e.g., Bonferroni, False Discovery Rate). This increases the family-wise error rate, making the significant findings in go-past times and regressions-out more susceptible to being false positives.\",\n      \"quote\": \"We considered word-skipping, first fixation durations, first run dwell time (sums of all fixation durations during first pass), go-past times, regressions to the target from later parts of the sentence, regressions from the target to earlier regions of the sentence.\",\n      \"location\": \"Experiment 3, Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"selective reporting\",\n      \"description\": \"The authors explicitly state they are withholding the full model outputs to save space, reporting only the main variable of interest. This is poor scientific practice. Full model summaries (including estimates, standard errors, and variance components for random effects) must be provided, at least in supplementary materials, to allow for proper evaluation of the model fits.\",\n      \"quote\": \"However, in the interest of space we report only those effects pertaining to our main variable of interest, congruency (congruent or incongruent).\",\n      \"location\": \"Experiment 3, Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"phonological transcription\",\n      \"description\": \"The calculation of specificity relies entirely on the single most frequent pronunciation of a suffix. This ignores phonological variation, dialectal differences, and allophonic variations that occur in natural speech. By collapsing all variation into a single transcription, the specificity metric may misrepresent the actual mapping between sound and spelling that readers experience.\",\n      \"quote\": \"Only the most frequent pronunciation was considered for each suffix.\",\n      \"location\": \"Computational Analysis, Method\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"data loss\",\n      \"description\": \"A data loss rate of 11.7% in a simple two-alternative forced-choice task is unusually high. This suggests that the 2-second timeout was too restrictive for processing nonwords, potentially skewing the data by only capturing the fastest, most impulsive responses and dropping trials where participants engaged in deeper morphological processing.\",\n      \"quote\": \"11.7% of data points were missing due to timeouts or button presses that did not correspond to a response\",\n      \"location\": \"Experiment 1, Results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"corpus selection\",\n      \"description\": \"The authors use the CELEX database from 1993. While historically important, CELEX is relatively small and outdated compared to modern corpora like the English Lexicon Project (ELP) or SUBTLEX-UK. The frequencies and distributions of words in CELEX may not accurately reflect the language exposure of contemporary undergraduate participants.\",\n      \"quote\": \"We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)\",\n      \"location\": \"Computational Analysis, Method\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"construct validity\",\n      \"description\": \"The authors include pseudoaffixed words (e.g., 'corner' for -ER) in their calculations of diagnosticity and specificity. While readers may parse pseudoaffixes, including them conflates true morphological regularities with orthographic coincidences, potentially distorting the linguistic statistics of the writing system.\",\n      \"quote\": \"we also needed to capture words in which the suffix spellings do not function as genuine morphemes (e.g. the –ER in ‘corner’).\",\n      \"location\": \"Computational Analysis, Method\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"task demands\",\n      \"description\": \"In Experiment 3, 80 out of 120 trials (66%) contain experimental nonwords. This high proportion of target stimuli makes the experimental manipulation highly salient. Participants likely developed task-specific strategies for dealing with nonwords, reducing the ecological validity of the reading task.\",\n      \"quote\": \"Eighty experimental nonwords... Forty filler nonwords whose suffix spellings were diagnostic for verbs were added\",\n      \"location\": \"Experiment 3, Method\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"inappropriate analysis\",\n      \"description\": \"To compare the predictive power of spelling vs. phonology, the authors regress Hspelling on Hphonology and test if the slope differs from 1. This is statistically flawed because Ordinary Least Squares (OLS) regression assumes the predictor (Hphonology) is measured without error, which is false here. A paired t-test or a linear mixed model directly comparing the entropy values would be the appropriate test.\",\n      \"quote\": \"We then examined the slope of the regression equation lm(Hspelling ~ Hphonology)... and that this slope is significantly different from 1\",\n      \"location\": \"General Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"missing statistics\",\n      \"description\": \"Table 5 reports estimates and z/t values but fails to report standard errors or confidence intervals. Without measures of uncertainty around the estimates, it is difficult to evaluate the precision and reliability of the reported effects.\",\n      \"quote\": \"Table 5: Results of Experiment 3... (estimates, z/t values, and significance levels).\",\n      \"location\": \"Table 5\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"ecological validity\",\n      \"description\": \"In Experiment 2, participants read a sentence frame, waited 4 seconds, and then heard a nonword played in isolation before spelling it. This removes natural coarticulation and prosodic cues that would normally integrate the word into the sentence, creating an artificial task that may not reflect natural spelling or language processing.\",\n      \"quote\": \"This sentence frame stayed on screen for 4 seconds, after which a nonword was played to participants through headphones.\",\n      \"location\": \"Experiment 2, Procedure\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"sample size\",\n      \"description\": \"Experiment 2 uses a relatively small sample size (N=29) for a psycholinguistic production task involving 11 different suffixes and multiple context conditions. This raises concerns about statistical power and the stability of the parameter estimates.\",\n      \"quote\": \"Participants were 29 undergraduate students from Royal Holloway University of London.\",\n      \"location\": \"Experiment 2, Method\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"data exclusion\",\n      \"description\": \"The authors exclude 64 suffixes (over 40% of their initial sample of 154) because they occur in fewer than 20 words. While they note the means remain similar, excluding such a massive portion of the data limits the claim that these properties describe 'English derivational suffixes in general'.\",\n      \"quote\": \"we excluded all suffixes that occur in fewer than 20 different words in the CELEX database, i.e. 64 suffixes\",\n      \"location\": \"Computational Analysis, Results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"variable transformation\",\n      \"description\": \"Multiplying the diagnosticity measure by -1 for noun-diagnostic suffixes to create a single bipolar predictor is an awkward statistical hack. It forces the model to assume that the effect of diagnosticity is perfectly symmetrical and linear across both noun and adjective suffixes. It would be more appropriate to use absolute diagnosticity and an interaction term with suffix category.\",\n      \"quote\": \"we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.\",\n      \"location\": \"Experiment 1, Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"model comparison\",\n      \"description\": \"The authors use Likelihood Ratio Tests (Chi-square) to evaluate the significance of fixed effects in mixed models. This approach is known to be anti-conservative for fixed effects, especially with smaller sample sizes or complex random effects structures. F-tests with Satterthwaite or Kenward-Roger degrees of freedom approximations are preferred.\",\n      \"quote\": \"The fit of go-past model improved significantly when the interaction and the main effect of diagnosticity were added: Chi (2) = 8.58, p < 0.05.\",\n      \"location\": \"Experiment 3, Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"stimulus generalization\",\n      \"description\": \"Experiment 1 uses only CVC stems generated by Wuggy. Real English stems vary widely in length, syllable structure, and orthographic complexity. Restricting the stems to CVC limits the generalizability of the findings to natural English reading.\",\n      \"quote\": \"Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator\",\n      \"location\": \"Experiment 1, Stimuli\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"descriptive statistics\",\n      \"description\": \"The manuscript relies heavily on figures to show the results of Experiments 1 and 2, but fails to provide basic descriptive statistics (means, standard deviations, or raw proportions) in the text or in a table. This hinders reproducibility and meta-analytic inclusion.\",\n      \"quote\": \"Figure 3 visualises these data, averaged across the whole item set, and as a function of suffix.\",\n      \"location\": \"Experiment 1, Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"causal inference\",\n      \"description\": \"The authors conclude that readers use category information conveyed by suffix spelling during sentence integration. However, because the study uses nonwords, it proves that readers *can* use this information when forced to process novel items, but it does not definitively prove that they *rely* on it during natural reading of highly familiar, existing words.\",\n      \"quote\": \"These results therefore suggest that the category information conveyed by suffix spelling is used during sentence integration processes.\",\n      \"location\": \"Experiment 3, Discussion\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 36386,
+    "output_tokens": 2977
+  }
+}

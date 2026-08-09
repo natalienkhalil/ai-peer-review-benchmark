@@ -1,0 +1,225 @@
+[
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "statistical_errors",
+      "subcategory": "test_parameter_error",
+      "difficulty": 2,
+      "difficulty_rationale": "CI width vs SE check requires computation",
+      "original_snippet": "than RWA (B = -.02, SD = .01, p = .001, 95% CI [-.03, -.01])",
+      "modified_snippet": "than RWA (B = -.02, SD = .01, p = .001, 95% CI [-.05, -.01])",
+      "description": "Widened RWA confidence interval lower bound from -.03 to -.05, making RWA effect appear to overlap more with SDO \u2014 undermines core claim of differential prediction"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical",
+      "subcategory": "dependent correlations compared by CI non-overlap",
+      "description": "The manuscript infers that the SDO-environmentalism correlation is stronger than the RWA-environmentalism correlation because confidence intervals do not overlap. These are dependent correlations sharing a variable and should be compared with an appropriate test such as Williams/Steiger test or SEM constraints.",
+      "quote": "\u201cthe zero-order correlation between SDO and environmentalism was stronger than the correlation for RWA, as indicated by the non-overlapping confidence interval.\u201d",
+      "location": "results",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "methodological_design",
+      "subcategory": "measurement_invariance_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Must know measurement invariance is prerequisite for longitudinal SEM",
+      "original_snippet": "We started by constraining the factor loadings of our latent variables to equality so that, for each factor, the individual items that make up the factor were set to be equal across time points. For example, item 1 in the SDO scale was set to equality across all five time points, as was item 2, and ...",
+      "modified_snippet": "We started by constraining the cross-lagged associations between the constructs to be the same in each measurement point. We also constrained to equality the residual variance for the same item over time, so item 1 in the SDO scale had equal residual variance across all time points.",
+      "description": "Removed metric and scalar invariance testing (equal factor loadings and intercepts) \u2014 without these, latent constructs could mean different things at different time points, making cross-lagged comparisons meaningless"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "measurement",
+      "subcategory": "measurement invariance not tested",
+      "description": "Longitudinal comparisons and cross-lagged paths require evidence that constructs are measured equivalently over time. The manuscript reports constraints on residual variances but does not report tests of configural, metric, scalar, or residual invariance, despite using shortened scales and one missing RWA item.",
+      "quote": "\u201cWe also constrained to equality the residual variance for the same item over time, so item 1 in the SDO scale had equal residual variance across all time points.\u201d",
+      "location": "methods",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "construct_validity",
+      "subcategory": "measure_construct_mismatch",
+      "difficulty": 2,
+      "difficulty_rationale": "Discussion interprets 'willingness to sacrifice' but DV now measures concern \u2014 mismatch visible across sections",
+      "original_snippet": "Environmentalism was measured as individual's willingness to make sacrifices for the environment. These items were modelled from Liu and Sibley's [28] two items on sacrifice intentions, \"Are you willing to change your daily routine in order to protect the environment?\" and \"Are you willing to make s...",
+      "modified_snippet": "Environmentalism was measured using items assessing participants' concern about environmental problems. These items were modelled from Liu and Sibley's [28] environmental concern scale, \"How concerned are you about the current state of the natural environment?\" and \"To what extent do you think envir...",
+      "description": "Replaced behavioral intention DV (willingness to sacrifice) with attitude measure (environmental concern) \u2014 paper's theoretical contribution about ideology predicting behavioral willingness is now unsupported by the DV"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "validity",
+      "subcategory": "environmentalism construct mismatch",
+      "description": "The manuscript claims to analyze willingness to sacrifice/change behavior, but the methods describe two items assessing concern and perceived exaggeration of environmental problems. These are different constructs. Conclusions about willingness to make sacrifices or behavior change are not supported by the stated measure.",
+      "quote": "\u201cEnvironmentalism was measured as participants\u2019 concern about environmental problems. These items were modelled from Liu and Sibley\u2019s [28] environmental concern scale, \u2018How concerned are you about the current state of the natural environment?\u2019 and \u2018To what extent do you think environmental problems have been exaggerated?\u2019\u201d",
+      "location": "methods",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "causal_inference",
+      "subcategory": "autoregressive_paths_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Must know autoregressive paths are essential for CLPM causal inference",
+      "original_snippet": "As shown in Figure 1, across all time points, the autoregressive path for willingness to sacrifice was strong (B = .83, SD = .01, p < .001, 95% CI [.82, .84]), indicating that an individuals\u2019 level of willingness to make sacrifices for the environment is relatively stable over time. Consistent with ...",
+      "modified_snippet": "As shown in Figure 1, across all time points, SDO, RWA, and willingness to sacrifice were all relatively stable over time, consistent with our prediction that these variables remain largely unchanged over the study period.",
+      "description": "Removed autoregressive path coefficients \u2014 these control for prior levels in CLPM, essential for interpreting cross-lagged paths as predicting change"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "reporting",
+      "subcategory": "insufficient reporting of autoregressive paths",
+      "description": "The text states that variables were stable over time but does not provide the autoregressive coefficients in the results table or text. Reliance on an unspecified figure limits evaluation of the stability assumptions and magnitude of change.",
+      "quote": "\u201cAs shown in Figure 1, across all time points, SDO, RWA, and willingness to sacrifice were all relatively stable over time\u201d",
+      "location": "results",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "internal_consistency",
+      "subcategory": "model_results_contradiction",
+      "difficulty": 1,
+      "difficulty_rationale": "Non-significant chi-square test directly contradicts 'statistically stronger' conclusion in same sentence",
+      "original_snippet": "We found that our original model provides significantly better fit to the data 2(1) = 50.98, p < .001, and thus conclude that SDO is a statistically stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.",
+      "modified_snippet": "We found that our original model provides comparable fit to the data 2(1) = 2.34, p = .126, but based on the pattern of unstandardized coefficients we interpret SDO as a stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.",
+      "description": "Changed chi-square from significant (50.98, p<.001) to non-significant (2.34, p=.126) \u2014 formal test now says SDO and RWA effects are NOT different, but text still claims SDO is stronger"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical",
+      "subcategory": "unsupported stronger-predictor conclusion",
+      "description": "The formal comparison of SDO and RWA paths was non-significant, but the authors still interpret SDO as stronger based on coefficient pattern. This is statistically invalid; a non-significant equality test does not support a claim that one predictor is stronger.",
+      "quote": "\u201cWe found that our original model provides comparable fit to the data 2(1) = 2.34, p = .126, but based on the pattern of unstandardized coefficients we interpret SDO as a stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.\u201d",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "reporting_completeness",
+      "subcategory": "model_specification_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Missing latent variable spec, cross-lagged structure, and missing data method \u2014 experienced SEM user would notice",
+      "original_snippet": "We used cross-lagged path analysis to infer causal associations between SDO, RWA and willingness to sacrifice for the environment. The model thus included three latent variables across five measurement points, where each variable within a time point was set to predict each variable in the subsequent...",
+      "modified_snippet": "We used path analysis to examine associations between SDO, RWA and willingness to sacrifice for the environment. The model included three variables across five measurement points and was conducted in Mplus (version 7.3 [29]). A copy of the Mplus syntax used will be available on the NZAVS website upo...",
+      "description": "Removed: latent variable specification, cross-lagged structure, FIML for missing data \u2014 reader cannot evaluate measurement model, model type, or missing data handling"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical",
+      "subcategory": "model specification ambiguity",
+      "description": "The analysis is described as path analysis among three variables, but the discussion of item residual variances implies an item-level latent SEM. The manuscript does not clearly specify the measurement model, factor loadings, intercepts, residual covariances, or whether composites or latent variables were used.",
+      "quote": "\u201cWe used path analysis to examine associations between SDO, RWA and willingness to sacrifice for the environment.\u201d / \u201cWe also constrained to equality the residual variance for the same item over time\u201d",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "generalizability",
+      "subcategory": "sample_description_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Student sample contradicts paper's own discussion about sample-type moderation",
+      "original_snippet": "We used data from the New Zealand Attitudes and Values Study [26], a nationally representative, longitudinal study of personality, social attitudes, and health outcomes. This study uses data from individuals who participated in the first five years of the project (from 2009 to 2013). Of the 22,974 p...",
+      "modified_snippet": "We recruited participants through the introductory psychology participant pool at Victoria University of Wellington. This study uses data from individuals who participated across five semesters of the project (from 2009 to 2013). Of the 374 participants included in this study, the average age was 19...",
+      "description": "Changed nationally representative sample (N=22974) to convenience student sample (N=374) \u2014 paper's own discussion explains SDO-environment link is weaker in student samples"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "consistency",
+      "subcategory": "sample provenance contradiction",
+      "description": "The manuscript alternately describes the study as a national probability/general-population NZAVS study and as an introductory-psychology participant-pool study with 374 mostly young students. These are mutually incompatible sampling frames. This undermines the design description, generalizability claims, and interpretation of all analyses.",
+      "quote": "\u201cWe examine the longitudinal influence of SDO and RWA on people\u2019s willingness to change their behaviour to benefit the environment in a national probability sample over five years.\u201d / \u201cWe recruited participants through the introductory psychology participant pool at Victoria University of Wellington.\u201d",
+      "location": "abstract/methods",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "theoretical_conceptual",
+      "subcategory": "theoretical_framework_misattributed",
+      "difficulty": 2,
+      "difficulty_rationale": "SDT vs Duckitt's dual-process model \u2014 must know these are different frameworks",
+      "original_snippet": "Duckitt\u2019s [3] dual-process model proposes that SDO and RWA are separate but interrelated, and together predict attitudes towards different social groups.",
+      "modified_snippet": "Sidanius and Pratto\u2019s [1] social dominance theory proposes that SDO and RWA are separate but interrelated, and together predict attitudes towards different social groups.",
+      "description": "Replaced Duckitt's dual-process model (explains BOTH SDO and RWA via different worldviews) with SDT (focuses on SDO/hierarchy only) \u2014 SDT alone doesn't predict RWA effects"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "analytic_flexibility",
+      "subcategory": "analysis_specification_changed",
+      "difficulty": 1,
+      "difficulty_rationale": "Claims standardized parameters but reports single time-invariant values \u2014 contradicts how standardized estimates work",
+      "original_snippet": "We present unstandardized parameters, which are invariant over time due to the constraints placed on the model. The standardized estimates, which do vary across time points, are included in the Supplementary Materials (Table S1). Because of the large sample size of this dataset, we adopted a conserv...",
+      "modified_snippet": "We present standardized parameters, which vary across time points due to differences in observed variances. Because of the large sample size of this dataset, we adopted a significance threshold of p < .05 to indicate significance of findings.",
+      "description": "Switched from unstandardized (time-invariant) to standardized (time-varying) parameters \u2014 creates inconsistency with single reported coefficients; relaxed alpha from .01 to .05 removing large-N safeguard"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical",
+      "subcategory": "inappropriate rationale for p-value threshold",
+      "description": "The statement that p < .05 was adopted because the sample was large is illogical and problematic. Larger samples make trivial effects statistically significant; they usually require greater attention to effect sizes and practical significance, not reliance on conventional p-values.",
+      "quote": "\u201cBecause of the large sample size of this dataset, we adopted a significance threshold of p < .05 to indicate significance of findings.\u201d",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 1,
+      "category": "attrition_missing_data",
+      "subcategory": "missing_data_handling_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Listwise deletion in 5-wave panel \u2014 methodologically inappropriate but requires knowing FIML is standard",
+      "original_snippet": "Missing data were imputed using FIML.",
+      "modified_snippet": "Analyses were conducted using listwise deletion.",
+      "description": "Changed FIML to listwise deletion \u2014 in 5-wave panel study, listwise deletion would dramatically reduce N and produce biased estimates if dropout is non-random"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "design",
+      "subcategory": "attrition not reported",
+      "description": "Longitudinal studies require reporting the original sample size, wave-by-wave retention, attrition patterns, and whether attrition is related to key variables. The manuscript defers retention information to a website and then uses listwise deletion, preventing evaluation of attrition bias.",
+      "quote": "\u201cFull details about the sample, including the procedure, retention, and demographics of participants, are available on the NZAVS website.\u201d",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  }
+]

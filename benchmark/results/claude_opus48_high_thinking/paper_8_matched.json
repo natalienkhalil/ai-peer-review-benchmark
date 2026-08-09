@@ -1,0 +1,218 @@
+[
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "statistical_errors",
+      "subcategory": "gpower_option_changed",
+      "difficulty": 3,
+      "difficulty_rationale": "G*Power menu option changed \u2014 must know specific G*Power interface options",
+      "original_snippet": "The option used in G*Power was 'ANOVA: Repeated measures, within-between interaction'.",
+      "modified_snippet": "The option used in G*Power was 'ANOVA: Repeated measures, within-between'.",
+      "description": "Removed 'interaction' from G*Power option \u2014 computes power for main effects test not the interaction that tests the core hypothesis"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "power claim ignores dyadic clustering and planned-comparison N",
+      "description": "The conclusion that 240 participants gives 'excellent power' for medium effects relies on independence and on planned-comparison requirements (e.g., 82 for a medium effect). With 60 participants per group (effectively 30 pairs per group as independent units), the effective sample for between-group comparisons is far smaller than assumed, so the power claim is likely overstated for the key interaction and follow-up comparisons.",
+      "quote": "Considering the accessible financial, organizational and time resources, a sample of 240 participants was assumed; this allows for excellent power to detect medium and large effect sizes but not small ones.",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "methodological_design",
+      "subcategory": "counterbalancing_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Counterbalancing removed \u2014 must know item confounds are fatal for within-subjects discussed/not-discussed comparison",
+      "original_snippet": "In order to counterbalance the discussed details, 50% of the pairs will discuss different critical details than the other 50% of the pairs. For example, half the pairs will talk about Eric's cap color but without discussing his company logo (version A of the discussion), while the other pairs will d...",
+      "modified_snippet": "In order to ensure sufficient discussion, each pair will discuss the same set of four critical details during the collaborative recall phase. For example, all pairs will talk about Eric's cap color and his company logo.",
+      "description": "Removed item counterbalancing \u2014 without it, discussed vs non-discussed comparison confounds item difficulty with experimental manipulation"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "contradictory counterbalancing vs. fixed discussed items",
+      "description": "The Design section states that discussed and non-discussed items are fully counterbalanced, but the Procedure states that every pair discusses the same fixed set of four critical details. If the same four items are always 'discussed' and the same four always 'non-discussed,' then discussion status is completely confounded with item identity, so any discussed/non-discussed difference could be an item effect rather than a misinformation effect. The two statements are mutually exclusive.",
+      "quote": "In order to ensure sufficient discussion, each pair will discuss the same set of four critical details during the collaborative recall phase. For example, all pairs will talk about Eric\u2019s cap color and his company logo.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "construct_validity",
+      "subcategory": "disputed_classification_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Disputed/non-disputed classification removed \u2014 must know not all discussed items contain misinformation",
+      "original_snippet": "In addition, while scoring the individual memory test accuracy on the discussed questions (items containing misleading information), we will categorize participants\u2019 answers into two groups: \"disputed\" and \"non-disputed\". More precisely, if a pair of participants disagreed with each other and gave d...",
+      "modified_snippet": "In addition, while scoring the individual memory test accuracy on the discussed questions (items containing misleading information), we will categorize all discussed items as having contained misinformation, as the collaborative recall procedure is designed to expose participants to their partner\u2019s ...",
+      "description": "Removed disputed/non-disputed classification \u2014 treats all discussed items as containing misinformation when some may not have; conflates delivered vs non-delivered misinformation"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "classifying all discussed items as 'misinformation' regardless of actual exposure",
+      "description": "All discussed items are categorized as containing misinformation, assuming the procedure exposed each participant to a conflicting co-witness version. However, partners may have guessed, agreed with the correct detail, or not actually voiced the conflicting detail. Without verifying from the audio that conflicting information was actually delivered to each participant on each item, this scoring misclassifies exposure and biases the misinformation index.",
+      "quote": "we will categorize all discussed items as having contained misinformation, as the collaborative recall procedure is designed to expose participants to their partner\u2019s differing version of events.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "causal_inference",
+      "subcategory": "intervention_timing_reversed",
+      "difficulty": 2,
+      "difficulty_rationale": "Pre vs post misinformation intervention \u2014 must understand encoding vs retrieval distinction",
+      "original_snippet": "we decided to place the methods inducing resistance to misinformation after the collaborative recall phase (that is, after exposing participants to misinformation). The main reason for that is that we wanted to make our research closer to real life settings. In reality, one rarely has a chance to do...",
+      "modified_snippet": "we decided to place the methods inducing resistance to misinformation before the collaborative recall phase (that is, before exposing participants to misinformation). The main reason for that is that we wanted to inoculate participants against the influence of misinformation before it could take eff...",
+      "description": "Changed intervention from post- to pre-misinformation \u2014 tests encoding prevention instead of retrieval resistance; invalidates IMP theoretical framework which requires post-exposure placement"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "intervention timing contradicts itself and the procedure",
+      "description": "The manuscript states in one place that the interventions/warning are placed AFTER the collaborative recall, and in another that the methods are placed BEFORE the collaborative recall to 'inoculate participants before misinformation could take effect.' The actual Procedure places the interventions as Phase 3, after collaborative recall (Phase 2). The 'before collaborative recall' justification directly contradicts the stated design and undermines the inoculation rationale.",
+      "quote": "What is important, we decided to place the methods inducing resistance to misinformation before the collaborative recall phase (that is, before exposing participants to misinformation). The main reason for that is that we wanted to inoculate participants against the influence of misinformation before it could take effect.",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "internal_consistency",
+      "subcategory": "directionality_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Directional tests but sample sizes match two-tailed \u2014 must verify power calculation assumptions",
+      "original_snippet": "Comparisons among all groups and non-directional significance tests are assumed.",
+      "modified_snippet": "Comparisons among all groups and directional significance tests are assumed.",
+      "description": "Changed 'non-directional' to 'directional' \u2014 reported sample sizes (492, 82, 34) are for two-tailed tests; one-tailed would need smaller N, creating inconsistency"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "analytic_flexibility",
+      "subcategory": "directional (one-tailed) tests pre-specified",
+      "description": "Directional significance tests are assumed for the group comparisons, which roughly doubles power relative to two-tailed tests but is only appropriate if effects in the opposite direction would be treated as null. Given the authors themselves note that the interventions could plausibly increase conformity (e.g., reduced confidence), one-tailed testing may be inappropriate and inflates Type I error for the favored direction.",
+      "quote": "Comparisons among all groups and directional significance tests are assumed.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "reporting_completeness",
+      "subcategory": "hypothesis_awareness_exclusion_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Hypothesis awareness exclusion removed \u2014 must know this is critical in deception paradigms",
+      "original_snippet": "Next, the subjects will be requested to say what they think the real purpose of the study was. If any of the participants correctly guesses our hypotheses, they will be excluded from the analysis and replaced with another person in order to maintain the correct sample size. We realize that this may ...",
+      "modified_snippet": "Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis of any relationship between hypothesis awareness and performance.",
+      "description": "Removed pre-registered exclusion of hypothesis-aware participants \u2014 critical safeguard in deception paradigm; also removed acknowledgment of differential exclusion risk"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "analytic_flexibility",
+      "subcategory": "hypothesis-awareness measured but no exclusion/handling rule",
+      "description": "Participants are asked to guess the study's true purpose and these responses are reserved for 'exploratory analysis,' but no a priori rule is given for whether suspicious participants (who detect the deception/MORI duality) will be excluded or how their awareness will be incorporated. Detection of the dual-movie manipulation could directly drive responses, and leaving handling unspecified introduces post hoc flexibility.",
+      "quote": "Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis of any relationship between hypothesis awareness and performance.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "generalizability",
+      "subcategory": "age_matching_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Within-pair age matching removed \u2014 must know authority dynamics in memory conformity",
+      "original_snippet": "In addition, the age of the participants in each pair will be matched as far as possible.",
+      "modified_snippet": "",
+      "description": "Removed within-pair age matching \u2014 age differences activate authority/deference dynamics that inflate conformity through social influence rather than informational influence"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "theoretical_conceptual",
+      "subcategory": "normative_influence_caveat_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "'Completely ruled out' vs 'has little use' \u2014 must recognize experimenter-awareness caveat was theoretically important",
+      "original_snippet": "we assumed that the normative impact explanation of the memory conformity effect has little use in this study: participants work on their own and do not compare their answers with anybody, therefore there is little cost of disagreeing (although it is still possible that some pressure exists as the p...",
+      "modified_snippet": "we assumed that the normative impact explanation of the memory conformity effect is completely ruled out in this study: participants work on their own and do not compare their answers with anybody, therefore there is no cost of disagreeing.",
+      "description": "Changed 'has little use' to 'completely ruled out' and removed experimenter-awareness caveat \u2014 overclaims mechanism specificity"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "theoretical_conceptual",
+      "subcategory": "overclaim that normative influence is 'completely ruled out'",
+      "description": "The claim that normative impact is 'completely ruled out' because the final test is individual is too strong. Normative pressure during the collaborative discussion can produce agreement and re-encoding that persists into the private test, and social influence at encoding/consolidation is not eliminated merely because the test is private. Overstating this removes an important alternative explanation.",
+      "quote": "we assumed that the normative impact explanation of the memory conformity effect is completely ruled out in this study: participants work on their own and do not compare their answers with anybody, therefore there is no cost of disagreeing.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "analytic_flexibility",
+      "subcategory": "test_format_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Open-ended\u2192forced-choice changes baseline conformity rate and scoring categories \u2014 must know format matters",
+      "original_snippet": "In the present research, the individual memory test will be in the form of open-ended questions.",
+      "modified_snippet": "In the present research, the individual memory test will also use the two-alternative forced-choice format.",
+      "description": "Changed from open-ended to forced-choice \u2014 inflates conformity rates (50% guessing baseline vs much lower); scoring categories (correct, misinformation, other) don't make sense with forced-choice"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "open-ended vs. forced-choice test format contradiction",
+      "description": "The Procedure and Analysis sections describe the individual memory test as containing 20 open-ended questions, but the Analysis plan elsewhere states the individual memory test will use a two-alternative forced-choice format. These are incompatible response formats with very different scoring and psychometric properties, and the discrepancy makes it impossible to know how the primary outcome will actually be measured or scored.",
+      "quote": "In the present research, the individual memory test will also use the two-alternative forced-choice format.",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 8,
+      "category": "attrition_missing_data",
+      "subcategory": "exposure_exclusion_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Co-witness exposure exclusion removed \u2014 must know non-exposed participants dilute the effect",
+      "original_snippet": "In addition, participants who are not exposed to co-witness details at all (that is, the participants who did not hear any potentially misleading information from the partner) will be excluded from the analyses.",
+      "modified_snippet": "",
+      "description": "Removed exclusion of non-exposed participants \u2014 including those who received zero misinformation dilutes the conformity effect and biases against finding both the basic effect and intervention benefit"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  }
+]

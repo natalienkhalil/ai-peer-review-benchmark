@@ -1,0 +1,164 @@
+{
+  "paper_id": 5,
+  "provider_name": "gemini_pro_run3",
+  "issues": [
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing Table Data",
+      "description": "Table 2 is referenced in the text and has a title and note, but the actual data for the table is completely missing from the manuscript.",
+      "quote": "Table 2 Descriptive Statistics for All Replication Studies Note. n/a = Data not available. n/c = Data not collected",
+      "location": "Results (Tables section)",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent Effect Size Values",
+      "description": "The original effect size for the 'Advantageous' outcome is reported inconsistently across the manuscript. It is listed as -.300 in Table 1 and -.30 in the text, but as -0.33 in Table 3 and later in the discussion.",
+      "quote": "Original r for Advantageous: -0.33",
+      "location": "Results (Table 1, Table 3) / Discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory Significance Claim",
+      "description": "The results section states that the meta-analytic effect for 'Connect' has a p-value of .065 (which is not significant at alpha = .05). However, the discussion explicitly claims this effect is significantly different from zero.",
+      "quote": "However, the meta-analytic effect size was .09, and significantly different from zero.",
+      "location": "Discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Misreported Prediction Interval",
+      "description": "In the discussion for the 'Safety' outcome, the authors quote the 95% Confidence Interval [-.40, -.15] but incorrectly label it as the Prediction Interval. The actual PI reported in the results section was [-.54, -.03].",
+      "quote": "The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.",
+      "location": "Discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent Prediction Interval Values",
+      "description": "The prediction interval for the 'Connect' outcome is reported as [-.09, .26] in the results section, but it changes to [-.07, .27] in the discussion.",
+      "quote": "supported by the 95% PI of [-.07, .27], which includes zero.",
+      "location": "Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent Fail-Safe N Values",
+      "description": "The Fail-Safe N for the 'Express' outcome is reported as 3 in the results section, but it is stated as 5 in the discussion.",
+      "quote": "The FSN analysis, which indicated that only five unreported studies could reduce the results...",
+      "location": "Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent Fail-Safe N Values",
+      "description": "The Fail-Safe N for the 'Connect' outcome is reported as 5 in the results section, but it is stated as 11 in the discussion.",
+      "quote": "These findings also seemed somewhat unstable, as shown by the low FSN (11 studies).",
+      "location": "Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Invalid Use of Fail-Safe N",
+      "description": "The authors calculated a Fail-Safe N for the 'Connect' outcome, even though the meta-analytic effect was not statistically significant (p = .065). FSN is only mathematically meaningful for significant effects to determine how many null studies are needed to render them non-significant.",
+      "quote": "The FSN was 5 studies.",
+      "location": "Results (Opportunity to Connect with Others)",
+      "severity": "major"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Misinterpretation of Meta-Analytic Results",
+      "description": "For the 'Express' outcome, the meta-analysis found a statistically significant effect (p = .021). However, the authors incorrectly interpret the low FSN and the non-significance of individual underpowered studies as evidence to be 'confident' in a 'lack of an effect'. A low FSN means a significant effect is fragile, not that it proves the null hypothesis.",
+      "quote": "The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect as our replications.",
+      "location": "Discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Misunderstanding of p-value Distributions",
+      "description": "The authors claim that a p-value between .04 and .05 is more likely under a true null hypothesis than a false one. This is statistically incorrect; under a true null, p-values are uniformly distributed, whereas under a true effect, they are right-skewed. A p-value of .05 is generally less likely under the null than under a true effect. The cited literature refers to p-hacking, not the behavior of true nulls.",
+      "quote": "p-values between .04 and .05 have been demonstrated to be relatively more likely in the case of a true null hypothesis than a false one",
+      "location": "Results (Opportunity to Connect with Others)",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Post-hoc Model Selection",
+      "description": "The authors chose the REML meta-analytic model over the DL model because it produced 'more interpretable heterogeneity estimates'. Model selection should be specified a priori based on statistical properties, not post-hoc based on which results look better or are easier to interpret.",
+      "quote": "We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data",
+      "location": "Method (Meta-analytic method)",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Inaccurate Software Description",
+      "description": "The authors state that the `rma` function in the `metafor` package accepts `r` and `N` parameters. This is inaccurate; `rma` requires effect sizes and their sampling variances. If they passed `N` directly as a variance parameter, the weighting would be completely wrong. They likely used `escalc` or a wrapper but failed to report their actual computational steps.",
+      "quote": "The rma function was used, which accepts the effect size r and N parameters",
+      "location": "Method (Meta-analytic method)",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Ambiguous Effect Size Metric",
+      "description": "The authors calculated effect size r from t-statistics and degrees of freedom from the original study's regression results. If the original study used multiple regression, this yields a partial correlation. It is unclear if the replications used simple or multiple regression, meaning the meta-analysis might be inappropriately combining partial and zero-order correlations.",
+      "quote": "The original Forest and Wood (2012) regression results included t-statistics and degrees of freedom for all variables, so we chose to calculate effect size r for all four outcome variables in the study.",
+      "location": "Method (Effect size extraction)",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Unstandardized Data Processing",
+      "description": "The authors note that different replication teams handled the data differently (e.g., summing vs. mean-averaging items, using 4-point vs. 5-point scales). Despite having access to the raw data for all studies, the authors relied on the teams' independent analyses rather than standardizing the data processing pipeline themselves.",
+      "quote": "The means for scores in most studies implied that the items were mean averaged, but the Gordon study’s mean implied items were summed.",
+      "location": "Method (Participants in and Procedures)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Outdated Statistical Method",
+      "description": "The authors rely heavily on the Fail-Safe N (FSN) to evaluate the robustness of their findings. FSN is widely considered an outdated and flawed metric in modern meta-analysis because it focuses on statistical significance rather than effect size and assumes unpublished studies have an effect size of exactly zero.",
+      "quote": "Finally, we conducted a fail-safe number (FSN) analysis (Rosenberg, 2005) using the fsn function.",
+      "location": "Method (Meta-analytic method)",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory Demographic Statements",
+      "description": "The authors state that no demographic information other than race was collected in the studies. However, in the immediately preceding sentence, they report the gender breakdown across all datasets, contradicting the claim that no other demographics were collected.",
+      "quote": "In three replications... race data was collected, but in all other studies no other demographic information was collected",
+      "location": "Method (Participants in and Procedures)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing Study Identification",
+      "description": "The authors mention that one replication study failed to report regression results, so they calculated the statistics themselves from the raw data. However, they do not specify which of the seven studies this was.",
+      "quote": "One replication study failed to report regression results, so we calculated the regression statistics from the study’s dataset",
+      "location": "Method (Effect size extraction)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Incorrect Table Headers",
+      "description": "Table 1 has repeating headers for the constructs (e.g., 'Express, Express') instead of labeling the columns as beta and p-value, making the table difficult to read and interpret.",
+      "quote": "Express | Express |  | Connect | Connect |  | Safety | Safety |  | Advantageous | Advantageous",
+      "location": "Results (Table 1)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Duplicated Table Column",
+      "description": "Table 3 contains a duplicated column for the 95% CI, which is a formatting and reporting error.",
+      "quote": "[ -0.59 , -0.01 ] | [ -0.59 , -0.01 ]",
+      "location": "Results (Table 3)",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Missing Table Data\",\n      \"description\": \"Table 2 is referenced in the text and has a title and note, but the actual data for the table is completely missing from the manuscript.\",\n      \"quote\": \"Table 2 Descriptive Statistics for All Replication Studies Note. n/a = Data not available. n/c = Data not collected\",\n      \"location\": \"Results (Tables section)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Inconsistent Effect Size Values\",\n      \"description\": \"The original effect size for the 'Advantageous' outcome is reported inconsistently across the manuscript. It is listed as -.300 in Table 1 and -.30 in the text, but as -0.33 in Table 3 and later in the discussion.\",\n      \"quote\": \"Original r for Advantageous: -0.33\",\n      \"location\": \"Results (Table 1, Table 3) / Discussion\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradictory Significance Claim\",\n      \"description\": \"The results section states that the meta-analytic effect for 'Connect' has a p-value of .065 (which is not significant at alpha = .05). However, the discussion explicitly claims this effect is significantly different from zero.\",\n      \"quote\": \"However, the meta-analytic effect size was .09, and significantly different from zero.\",\n      \"location\": \"Discussion\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Misreported Prediction Interval\",\n      \"description\": \"In the discussion for the 'Safety' outcome, the authors quote the 95% Confidence Interval [-.40, -.15] but incorrectly label it as the Prediction Interval. The actual PI reported in the results section was [-.54, -.03].\",\n      \"quote\": \"The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.\",\n      \"location\": \"Discussion\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Inconsistent Prediction Interval Values\",\n      \"description\": \"The prediction interval for the 'Connect' outcome is reported as [-.09, .26] in the results section, but it changes to [-.07, .27] in the discussion.\",\n      \"quote\": \"supported by the 95% PI of [-.07, .27], which includes zero.\",\n      \"location\": \"Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Inconsistent Fail-Safe N Values\",\n      \"description\": \"The Fail-Safe N for the 'Express' outcome is reported as 3 in the results section, but it is stated as 5 in the discussion.\",\n      \"quote\": \"The FSN analysis, which indicated that only five unreported studies could reduce the results...\",\n      \"location\": \"Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Inconsistent Fail-Safe N Values\",\n      \"description\": \"The Fail-Safe N for the 'Connect' outcome is reported as 5 in the results section, but it is stated as 11 in the discussion.\",\n      \"quote\": \"These findings also seemed somewhat unstable, as shown by the low FSN (11 studies).\",\n      \"location\": \"Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Invalid Use of Fail-Safe N\",\n      \"description\": \"The authors calculated a Fail-Safe N for the 'Connect' outcome, even though the meta-analytic effect was not statistically significant (p = .065). FSN is only mathematically meaningful for significant effects to determine how many null studies are needed to render them non-significant.\",\n      \"quote\": \"The FSN was 5 studies.\",\n      \"location\": \"Results (Opportunity to Connect with Others)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"theoretical_conceptual\",\n      \"subcategory\": \"Misinterpretation of Meta-Analytic Results\",\n      \"description\": \"For the 'Express' outcome, the meta-analysis found a statistically significant effect (p = .021). However, the authors incorrectly interpret the low FSN and the non-significance of individual underpowered studies as evidence to be 'confident' in a 'lack of an effect'. A low FSN means a significant effect is fragile, not that it proves the null hypothesis.\",\n      \"quote\": \"The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect as our replications.\",\n      \"location\": \"Discussion\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"theoretical_conceptual\",\n      \"subcategory\": \"Misunderstanding of p-value Distributions\",\n      \"description\": \"The authors claim that a p-value between .04 and .05 is more likely under a true null hypothesis than a false one. This is statistically incorrect; under a true null, p-values are uniformly distributed, whereas under a true effect, they are right-skewed. A p-value of .05 is generally less likely under the null than under a true effect. The cited literature refers to p-hacking, not the behavior of true nulls.\",\n      \"quote\": \"p-values between .04 and .05 have been demonstrated to be relatively more likely in the case of a true null hypothesis than a false one\",\n      \"location\": \"Results (Opportunity to Connect with Others)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Post-hoc Model Selection\",\n      \"description\": \"The authors chose the REML meta-analytic model over the DL model because it produced 'more interpretable heterogeneity estimates'. Model selection should be specified a priori based on statistical properties, not post-hoc based on which results look better or are easier to interpret.\",\n      \"quote\": \"We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data\",\n      \"location\": \"Method (Meta-analytic method)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Inaccurate Software Description\",\n      \"description\": \"The authors state that the `rma` function in the `metafor` package accepts `r` and `N` parameters. This is inaccurate; `rma` requires effect sizes and their sampling variances. If they passed `N` directly as a variance parameter, the weighting would be completely wrong. They likely used `escalc` or a wrapper but failed to report their actual computational steps.\",\n      \"quote\": \"The rma function was used, which accepts the effect size r and N parameters\",\n      \"location\": \"Method (Meta-analytic method)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Ambiguous Effect Size Metric\",\n      \"description\": \"The authors calculated effect size r from t-statistics and degrees of freedom from the original study's regression results. If the original study used multiple regression, this yields a partial correlation. It is unclear if the replications used simple or multiple regression, meaning the meta-analysis might be inappropriately combining partial and zero-order correlations.\",\n      \"quote\": \"The original Forest and Wood (2012) regression results included t-statistics and degrees of freedom for all variables, so we chose to calculate effect size r for all four outcome variables in the study.\",\n      \"location\": \"Method (Effect size extraction)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Unstandardized Data Processing\",\n      \"description\": \"The authors note that different replication teams handled the data differently (e.g., summing vs. mean-averaging items, using 4-point vs. 5-point scales). Despite having access to the raw data for all studies, the authors relied on the teams' independent analyses rather than standardizing the data processing pipeline themselves.\",\n      \"quote\": \"The means for scores in most studies implied that the items were mean averaged, but the Gordon study’s mean implied items were summed.\",\n      \"location\": \"Method (Participants in and Procedures)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Outdated Statistical Method\",\n      \"description\": \"The authors rely heavily on the Fail-Safe N (FSN) to evaluate the robustness of their findings. FSN is widely considered an outdated and flawed metric in modern meta-analysis because it focuses on statistical significance rather than effect size and assumes unpublished studies have an effect size of exactly zero.\",\n      \"quote\": \"Finally, we conducted a fail-safe number (FSN) analysis (Rosenberg, 2005) using the fsn function.\",\n      \"location\": \"Method (Meta-analytic method)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradictory Demographic Statements\",\n      \"description\": \"The authors state that no demographic information other than race was collected in the studies. However, in the immediately preceding sentence, they report the gender breakdown across all datasets, contradicting the claim that no other demographics were collected.\",\n      \"quote\": \"In three replications... race data was collected, but in all other studies no other demographic information was collected\",\n      \"location\": \"Method (Participants in and Procedures)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Missing Study Identification\",\n      \"description\": \"The authors mention that one replication study failed to report regression results, so they calculated the statistics themselves from the raw data. However, they do not specify which of the seven studies this was.\",\n      \"quote\": \"One replication study failed to report regression results, so we calculated the regression statistics from the study’s dataset\",\n      \"location\": \"Method (Effect size extraction)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Incorrect Table Headers\",\n      \"description\": \"Table 1 has repeating headers for the constructs (e.g., 'Express, Express') instead of labeling the columns as beta and p-value, making the table difficult to read and interpret.\",\n      \"quote\": \"Express | Express |  | Connect | Connect |  | Safety | Safety |  | Advantageous | Advantageous\",\n      \"location\": \"Results (Table 1)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Duplicated Table Column\",\n      \"description\": \"Table 3 contains a duplicated column for the 95% CI, which is a formatting and reporting error.\",\n      \"quote\": \"[ -0.59 , -0.01 ] | [ -0.59 , -0.01 ]\",\n      \"location\": \"Results (Table 3)\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 15324,
+    "output_tokens": 2643
+  }
+}

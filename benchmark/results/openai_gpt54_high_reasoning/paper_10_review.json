@@ -1,0 +1,236 @@
+{
+  "paper_id": 10,
+  "provider_name": "openai_gpt54_high_reasoning",
+  "issues": [
+    {
+      "category": "statistical_errors",
+      "subcategory": "incorrect_diagnosticity_formula",
+      "description": "The formula given for type diagnosticity is mathematically inconsistent with the construct as described and with the reported values. If the denominator were truly 'the total number of words falling into this category,' diagnosticity values near 1.0 for individual suffixes would be impossible except for categories containing only that suffix. The appendix values also sum to approximately 1 across categories for each suffix, implying the denominator was actually the total number of words with that suffix. As written, the method is wrong and not reproducible.",
+      "quote": "For a particular suffix, type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "incorrect_token_specificity_formula",
+      "description": "The token-based specificity formula does not match the stated definition of specificity. Specificity is defined relative to 'all possible spellings of a sound sequence' within a lexical category, but the token formula conditions on words that already contain the target spelling. That would estimate pronunciation regularity within the spelling, not spelling choice given sound and category. This makes the reported token specificity values uninterpretable and unreproducible from the written method.",
+      "quote": "A second measure of specificity, based on word tokens, was obtained by dividing the summed frequency of words ending in this phonological and orthographic sequence and falling into this category by the summed frequency of all words that contain the spelling and fall into this category.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "suffix_inclusion_criterion_violated",
+      "description": "The manuscript states that only suffixes occurring in at least three different words were extracted, but the appendix includes multiple suffixes with type frequencies of 1 or 2. This directly contradicts the stated inclusion rule and undermines confidence in the corpus extraction procedure.",
+      "quote": "Using this list of words as our database, we extracted all spellings annotated as derivational suffixes in CELEX that occur in at least three different words. This process revealed 154 written suffixes in total. ... 14 | +ante | 0.000 | 1.000 | 0.000 | NA | 1.000 | NA | 1 | 1.500 | 0.000 ... 31 | +drome | 0.000 | 1.000 | 0.000 | NA | 1.000 | NA | 2 | 0.000 | 0.000",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "arithmetic_mismatch_in_suffix_counts",
+      "description": "The reported counts do not add up. Excluding 64 suffixes from 154 should leave 90, not 95. This suggests either the exclusion count or the remaining-suffix count is wrong.",
+      "quote": "we excluded all suffixes that occur in fewer than 20 different words in the CELEX database, i.e. 64 suffixes (Baayen et al., 1993). For the remaining 95 suffixes",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "reversed_mapping_claims",
+      "description": "The manuscript reverses the roles of diagnosticity and specificity when moving from the computational section to the experimental predictions. It first says diagnosticity (spelling-to-meaning) should affect spelling production and specificity (meaning-to-spelling) should affect print-to-meaning tasks, then immediately predicts the opposite in the experiments. This is a conceptual contradiction at the core of the paper's framework.",
+      "quote": "we hypothesise that diagnosticity, a measure of spelling-to-meaning consistency, would impact on tasks that involve the production of spelling, while specificity, a measure of meaning-to-spelling consistency, would impact on tasks involving the mapping of print to meaning (i.e. semantic categorisation, reading). ... We predicted that in tasks requiring access to grammatical information from printed spellings (lexical category judgment and sentence reading), spellings with higher diagnosticity should yield stronger behavioural effects ... Similarly, we predicted that in tasks requiring production of spellings associated with a particular lexical category, stronger behavioural effects would be observed for those spellings with higher specificity.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "equating_lexical_category_with_meaning",
+      "description": "The paper frames lexical category as 'one aspect of word meaning.' Lexical category is primarily a grammatical/syntactic property, not a semantic construct in the ordinary sense. This conceptual move inflates claims about 'spelling-to-meaning' when the actual construct tested is largely morphosyntactic class membership.",
+      "quote": "This paper focuses on one aspect of word meaning, specifically, lexical category (e.g., noun, adjective, verb; see Baayen et al., 2011, for a similar conceptualisation of “meaning”).",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "incomplete_operationalization_of_lexical_category",
+      "description": "The computational analysis considers only nouns, adjectives, and verbs, yet the paper generalizes to 'meaningful regularities' in English derivational suffixes broadly. The manuscript later acknowledges that some low-scoring suffixes actually index lexical categories not considered here (e.g., -WISE, -TEEN). This means the core measures are systematically incomplete and can misclassify or undervalue suffixes associated with omitted categories such as adverbs or numerals, inflating claims about overall diagnosticity/specificity.",
+      "quote": "Our analyses consider three major lexical categories: nouns, adjectives, and verbs. ... we removed seven suffixes with diagnosticity below 0.35, because these are indicative of lexical categories we have not considered in this paper (e.g. –WISE, –TEEN).",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "unclear_aggregation_of_category_specific_metrics",
+      "description": "Diagnosticity and specificity are defined for a suffix with respect to a particular lexical category, yet the results report a single mean diagnosticity and specificity 'for suffixes' and correlations between 'the type variables' without explaining how category-specific values were reduced to one value per suffix. This prevents replication and makes the reported summary statistics ambiguous.",
+      "quote": "We define diagnosticity as the strength with which a suffix spelling predicts lexical category. ... For a given lexical category, we then divided the number of words containing the suffix spelling ... Mean type diagnosticity for suffixes is 0.78 (token – 0.77), mean specificity is 0.82 (token – 0.83).",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "orthographic_vs_morphological_confound_in_experiment_1",
+      "description": "Experiment 1 is explicitly unable to distinguish whether participants are using morphological knowledge, orthographic ending statistics, or some other orthographic cue. Because the authors did not include controls to adjudicate these possibilities, the experiment cannot support strong claims about sensitivity to morphological spelling-meaning regularities specifically.",
+      "quote": "We did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement (e.g. orthographic vs morphological).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "insufficient_random_effects_and_pseudoreplication",
+      "description": "The analyses rely on trial-level mixed models without adequate random-effects structure. Experiment 1 includes only a subject random intercept; Experiment 2 is said to use the same approach; Experiment 3 includes subject and suffix intercepts but still omits item random effects and random slopes. Because key predictors (diagnosticity/specificity) vary at the suffix level, treating repeated trials as independent without appropriate crossed random effects can substantially inflate significance and overstate precision.",
+      "quote": "We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\"). ... The analyses were otherwise identical to those in Experiment 1. ... All models included trial order as a main effect, and random intercepts for subjects and for suffixes.",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "unaddressed_missing_responses_in_experiment_1",
+      "description": "A substantial proportion of Experiment 1 data were missing, but the manuscript does not report whether missingness differed by condition or suffix type, nor how this could bias results. Timeouts in a task with no speed emphasis may reflect uncertainty that is itself condition-relevant, so simply dropping these observations may distort inference.",
+      "quote": "We used generalised mixed modelling analysis from the lme4 package in R (Bates et al., 2014) on 1,625 data points (11.7% of data points were missing due to timeouts or button presses that did not correspond to a response).",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "condition_confounded_with_category_pair_in_experiment_2",
+      "description": "The congruent vs. incongruent contrast is not homogeneous across items. Different suffixes are tested with different category oppositions (noun vs adjective, noun vs verb, adjective vs noun, adjective vs verb, verb vs noun), yet the model collapses these all into a single 'context condition' factor. Any overall effect may therefore reflect differences among category contrasts rather than spelling specificity per se.",
+      "quote": "For each suffix’s target spelling two context types were selected – one that was congruent with the category that this spelling denoted and one that was incongruent with it. Naturally, the pairing of congruent and incongruent context types was different across suffixes",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "impossible_test_statistic_p_value_pair",
+      "description": "The reported token-analysis result is internally impossible: a z value of 0.60 cannot yield p < 0.01. This is a clear reporting or calculation error in a key inferential result.",
+      "quote": "As predicted, the interaction between specificity and condition was significant, such that the target spelling became used more often in the congruent condition than in the incongruent condition as its specificity increased (B = 1.9, z = 2.8, p < 0.01; for the token analyses - z = 0.60, p < 0.01)",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "manual_coding_without_reliability_information",
+      "description": "The dependent variable in Experiment 2 was derived by manual extraction from typed responses, but the manuscript gives no coding protocol, no blinding information, and no inter-rater reliability. This is important because coding typed nonword spellings can involve judgment calls.",
+      "quote": "Suffix spellings were manually extracted from whole nonword spellings (1,914 analysable data points).",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "insufficient_participant_characterization",
+      "description": "Participant descriptions omit information needed to interpret and replicate the work, including age, gender distribution, native-language status, literacy/reading criteria, and (for eye tracking) vision status. These are especially important in a study of skilled reading and spelling.",
+      "quote": "Participants were 46 undergraduate students at Royal Holloway, University of London.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "multiple_eye_tracking_outcomes_without_a_priori_hypotheses",
+      "description": "The eye-tracking study was explicitly run without concrete predictions about which measures would be affected, and the authors examined a wide range of outcomes. No multiplicity correction is reported. This creates substantial researcher degrees of freedom and elevates the risk of false-positive findings.",
+      "quote": "We did not have any concrete predictions as to which eye-movement measures would be affected by the diagnosticity manipulation, so we chose to monitor a variety of typically studied measures",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "subjective_post_hoc_trial_exclusion",
+      "description": "Experiment 3 includes trial exclusion based on visual inspection with vague criteria ('considerable deviation'), which introduces subjective flexibility. Without pre-specified rules or blinding, such exclusions can inadvertently bias results.",
+      "quote": "All trials were also visually inspected in order to identify those where participants had not read the sentences in full, or where any considerable deviation in the eye-tracking trace was evident during the trial.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "pretarget_context_imbalance_in_experiment_3",
+      "description": "The sentence contexts were not fully matched across congruency conditions. The number of pretarget words differed significantly, which can affect eye-movement behavior via launch-site distance, parafoveal preview, and sentence wrap-up. This is a direct design confound for target-region measures.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "misreported_percentage",
+      "description": "Comprehension accuracy is reported as a percentage but formatted as a proportion. '0.86%' would mean less than 1% accuracy, which is incompatible with the stated range. This is a reporting error that creates ambiguity about participant performance.",
+      "quote": "Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "inconsistent_effect_sizes_between_text_and_table",
+      "description": "The effect estimates reported in the text do not match those in Table 5. For go-past time, the text reports B = 41, t = 3.837, whereas the table reports B = 43, t = 3.76. For regressions-out, the text reports B = 0.3, z = 3.12, whereas the table reports B = 0.25, z = 2.65. These discrepancies undermine confidence in the reported analyses.",
+      "quote": "There was an effect of congruency on go-past time (B = 41, t = 3.837, p < 0.001) ... The effect of congruency on regressions-out was significant in the expected direction ... (B = 0.3, z = 3.12, p < 0.01). ... Table 5 ... Go-past time | 458 (129) | 507 (125) | 49 | 43 | t = 3.76 ... Regressions-out | 0.14 (0.1) | 0.17 (0.1) | 0.03 | 0.25 | z = 2.65 **",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "inadequate_handling_of_convergence_warning",
+      "description": "The manuscript treats a convergence warning as a 'false positive' simply because results were similar under a different optimizer. Convergence warnings can reflect model misspecification, non-identifiability, or insufficient information, and cannot be dismissed this way. More thorough diagnostics or model simplification are needed.",
+      "quote": "The original model produced a convergence warning when the variables were added. One way to assess if this warning is a false positive is to refit this model using a different optimisation procedure, such as “bobyqa” (Powell, 2009). We did this, and observed that the fits of these two models and the significance levels for the fixed effects were identical, indicating that the initial warning was indeed a false positive",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "selective_follow_up_of_only_significant_eye_measures",
+      "description": "After testing many eye-tracking measures, the manuscript performs graded diagnosticity follow-ups only on the two measures that were already significant. This selective second-stage testing capitalizes on chance and can inflate apparent support for the graded-effects claim.",
+      "quote": "Further analyses investigated whether the size of the congruency effects on the go-past and regressions-out measures was influenced by the degree to which suffix spellings were diagnostic of lexical category.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "unsupported_evolutionary_functional_claim",
+      "description": "The paper makes causal-historical claims that English spelling 'became fractionated' to maximize the transmission of meaningful information. The presented evidence is largely synchronic corpus analysis plus behavioral experiments on modern readers. That design cannot establish historical adaptation or optimization.",
+      "quote": "However, the results of our analyses suggest that the proliferation of spellings in English may actually be functional. ... That is, the multiple spellings permissible for particular sound sequences seem to be fractionated in such a way as to allow particular spellings to become reserved for particular functions.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "flawed_entropy_regression_interpretation",
+      "description": "The entropy comparison is analyzed and interpreted in a statistically problematic way. The manuscript claims that the slope of lm(Hspelling ~ Hphonology) directly determines whether spelling or phonology is more informative, but this depends on both slope and intercept and is not a valid criterion on its own. The reported t = 25.32 tests whether the slope differs from 0, not from 1, and the method for the F test against 1 is not explained. The mean entropy difference reported (0.61 vs 0.63) is also extremely small relative to the strength of the claim.",
+      "quote": "We then examined the slope of the regression equation lm(Hspelling ~ Hphonology). There are three possible outcomes from this analysis. A slope of 1 indicates that suffix pronunciations and their spellings provide the same degree of information about lexical category; a slope greater than 1 indicates that phonology is more predictive of category compared to spelling; and a slope less than 1 would support our conjecture that spelling is more predictive of category compared to phonology. We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "post_hoc_pruning_in_frequency_correlations",
+      "description": "The exploratory analyses of why some suffixes are more diagnostic/specific rely on successive data-dependent exclusions: removing low-diagnosticity suffixes because they belong to unmodeled categories, then removing all suffixes with diagnosticity of 1, after which the sign of the correlation changes. This post hoc pruning makes the resulting correlations highly contingent and weakens theoretical interpretation.",
+      "quote": "we removed seven suffixes with diagnosticity below 0.35 ... Once we remove these 40 suffixes, a positive correlation is observed (0.23, p < 0.05) ... As with the diagnosticity analyses, we excluded 20 suffixes with a low specificity ... We also removed all suffixes with the specificity of 1",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "overgeneralization_from_narrow_student_sample",
+      "description": "All behavioral experiments were conducted on undergraduates from a single UK university, yet the discussion generalizes to 'the average reader' and 'skilled readers' broadly. This sample limitation is not adequately acknowledged, and the findings may not generalize across ages, literacy levels, dialects, or educational backgrounds.",
+      "quote": "Participants were 29 undergraduate students from Royal Holloway University of London. ... We have shown that the average reader learns and subsequently relies on morphological cues to class even without explicit instruction to do so",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "reducing_suffixes_to_most_frequent_pronunciation",
+      "description": "Specificity is supposed to characterize spelling choice for a sound sequence, but the analysis collapses each suffix to only its most frequent pronunciation. This discards real pronunciation variability and can misestimate the relationship between sound, spelling, and category, especially for heterogeneous English suffixes.",
+      "quote": "Only the most frequent pronunciation was considered for each suffix.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "sentence_frames_do_not_cleanly_fix_lexical_category",
+      "description": "The contextual manipulation in Experiments 2 and 3 does not consistently enforce a unique lexical category. The noun frames are claimed to be exclusive, but adjective frames only 'maximised the probability' of adjective interpretations, and verb frames are defined merely by following an adverb. This weakens the validity of the 'predicted category' manipulation.",
+      "quote": "Nonwords in the noun context template occupied the syntactic position of a direct/indirect object following an adjective, and so could only be interpreted as nouns. Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain, that maximised the probability that they would be perceived as adjectives. Nonwords in verb contexts followed an adverb.",
+      "location": "methods",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"statistical_errors\",\"subcategory\":\"incorrect_diagnosticity_formula\",\"description\":\"The formula given for type diagnosticity is mathematically inconsistent with the construct as described and with the reported values. If the denominator were truly 'the total number of words falling into this category,' diagnosticity values near 1.0 for individual suffixes would be impossible except for categories containing only that suffix. The appendix values also sum to approximately 1 across categories for each suffix, implying the denominator was actually the total number of words with that suffix. As written, the method is wrong and not reproducible.\",\"quote\":\"For a particular suffix, type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistical_errors\",\"subcategory\":\"incorrect_token_specificity_formula\",\"description\":\"The token-based specificity formula does not match the stated definition of specificity. Specificity is defined relative to 'all possible spellings of a sound sequence' within a lexical category, but the token formula conditions on words that already contain the target spelling. That would estimate pronunciation regularity within the spelling, not spelling choice given sound and category. This makes the reported token specificity values uninterpretable and unreproducible from the written method.\",\"quote\":\"A second measure of specificity, based on word tokens, was obtained by dividing the summed frequency of words ending in this phonological and orthographic sequence and falling into this category by the summed frequency of all words that contain the spelling and fall into this category.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"internal_consistency\",\"subcategory\":\"suffix_inclusion_criterion_violated\",\"description\":\"The manuscript states that only suffixes occurring in at least three different words were extracted, but the appendix includes multiple suffixes with type frequencies of 1 or 2. This directly contradicts the stated inclusion rule and undermines confidence in the corpus extraction procedure.\",\"quote\":\"Using this list of words as our database, we extracted all spellings annotated as derivational suffixes in CELEX that occur in at least three different words. This process revealed 154 written suffixes in total. ... 14 | +ante | 0.000 | 1.000 | 0.000 | NA | 1.000 | NA | 1 | 1.500 | 0.000 ... 31 | +drome | 0.000 | 1.000 | 0.000 | NA | 1.000 | NA | 2 | 0.000 | 0.000\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"arithmetic_mismatch_in_suffix_counts\",\"description\":\"The reported counts do not add up. Excluding 64 suffixes from 154 should leave 90, not 95. This suggests either the exclusion count or the remaining-suffix count is wrong.\",\"quote\":\"we excluded all suffixes that occur in fewer than 20 different words in the CELEX database, i.e. 64 suffixes (Baayen et al., 1993). For the remaining 95 suffixes\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"reversed_mapping_claims\",\"description\":\"The manuscript reverses the roles of diagnosticity and specificity when moving from the computational section to the experimental predictions. It first says diagnosticity (spelling-to-meaning) should affect spelling production and specificity (meaning-to-spelling) should affect print-to-meaning tasks, then immediately predicts the opposite in the experiments. This is a conceptual contradiction at the core of the paper's framework.\",\"quote\":\"we hypothesise that diagnosticity, a measure of spelling-to-meaning consistency, would impact on tasks that involve the production of spelling, while specificity, a measure of meaning-to-spelling consistency, would impact on tasks involving the mapping of print to meaning (i.e. semantic categorisation, reading). ... We predicted that in tasks requiring access to grammatical information from printed spellings (lexical category judgment and sentence reading), spellings with higher diagnosticity should yield stronger behavioural effects ... Similarly, we predicted that in tasks requiring production of spellings associated with a particular lexical category, stronger behavioural effects would be observed for those spellings with higher specificity.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"equating_lexical_category_with_meaning\",\"description\":\"The paper frames lexical category as 'one aspect of word meaning.' Lexical category is primarily a grammatical/syntactic property, not a semantic construct in the ordinary sense. This conceptual move inflates claims about 'spelling-to-meaning' when the actual construct tested is largely morphosyntactic class membership.\",\"quote\":\"This paper focuses on one aspect of word meaning, specifically, lexical category (e.g., noun, adjective, verb; see Baayen et al., 2011, for a similar conceptualisation of “meaning”).\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"incomplete_operationalization_of_lexical_category\",\"description\":\"The computational analysis considers only nouns, adjectives, and verbs, yet the paper generalizes to 'meaningful regularities' in English derivational suffixes broadly. The manuscript later acknowledges that some low-scoring suffixes actually index lexical categories not considered here (e.g., -WISE, -TEEN). This means the core measures are systematically incomplete and can misclassify or undervalue suffixes associated with omitted categories such as adverbs or numerals, inflating claims about overall diagnosticity/specificity.\",\"quote\":\"Our analyses consider three major lexical categories: nouns, adjectives, and verbs. ... we removed seven suffixes with diagnosticity below 0.35, because these are indicative of lexical categories we have not considered in this paper (e.g. –WISE, –TEEN).\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"unclear_aggregation_of_category_specific_metrics\",\"description\":\"Diagnosticity and specificity are defined for a suffix with respect to a particular lexical category, yet the results report a single mean diagnosticity and specificity 'for suffixes' and correlations between 'the type variables' without explaining how category-specific values were reduced to one value per suffix. This prevents replication and makes the reported summary statistics ambiguous.\",\"quote\":\"We define diagnosticity as the strength with which a suffix spelling predicts lexical category. ... For a given lexical category, we then divided the number of words containing the suffix spelling ... Mean type diagnosticity for suffixes is 0.78 (token – 0.77), mean specificity is 0.82 (token – 0.83).\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"orthographic_vs_morphological_confound_in_experiment_1\",\"description\":\"Experiment 1 is explicitly unable to distinguish whether participants are using morphological knowledge, orthographic ending statistics, or some other orthographic cue. Because the authors did not include controls to adjudicate these possibilities, the experiment cannot support strong claims about sensitivity to morphological spelling-meaning regularities specifically.\",\"quote\":\"We did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement (e.g. orthographic vs morphological).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"insufficient_random_effects_and_pseudoreplication\",\"description\":\"The analyses rely on trial-level mixed models without adequate random-effects structure. Experiment 1 includes only a subject random intercept; Experiment 2 is said to use the same approach; Experiment 3 includes subject and suffix intercepts but still omits item random effects and random slopes. Because key predictors (diagnosticity/specificity) vary at the suffix level, treating repeated trials as independent without appropriate crossed random effects can substantially inflate significance and overstate precision.\",\"quote\":\"We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \\\"binomial\\\"). ... The analyses were otherwise identical to those in Experiment 1. ... All models included trial order as a main effect, and random intercepts for subjects and for suffixes.\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"unaddressed_missing_responses_in_experiment_1\",\"description\":\"A substantial proportion of Experiment 1 data were missing, but the manuscript does not report whether missingness differed by condition or suffix type, nor how this could bias results. Timeouts in a task with no speed emphasis may reflect uncertainty that is itself condition-relevant, so simply dropping these observations may distort inference.\",\"quote\":\"We used generalised mixed modelling analysis from the lme4 package in R (Bates et al., 2014) on 1,625 data points (11.7% of data points were missing due to timeouts or button presses that did not correspond to a response).\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"condition_confounded_with_category_pair_in_experiment_2\",\"description\":\"The congruent vs. incongruent contrast is not homogeneous across items. Different suffixes are tested with different category oppositions (noun vs adjective, noun vs verb, adjective vs noun, adjective vs verb, verb vs noun), yet the model collapses these all into a single 'context condition' factor. Any overall effect may therefore reflect differences among category contrasts rather than spelling specificity per se.\",\"quote\":\"For each suffix’s target spelling two context types were selected – one that was congruent with the category that this spelling denoted and one that was incongruent with it. Naturally, the pairing of congruent and incongruent context types was different across suffixes\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"impossible_test_statistic_p_value_pair\",\"description\":\"The reported token-analysis result is internally impossible: a z value of 0.60 cannot yield p < 0.01. This is a clear reporting or calculation error in a key inferential result.\",\"quote\":\"As predicted, the interaction between specificity and condition was significant, such that the target spelling became used more often in the congruent condition than in the incongruent condition as its specificity increased (B = 1.9, z = 2.8, p < 0.01; for the token analyses - z = 0.60, p < 0.01)\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"manual_coding_without_reliability_information\",\"description\":\"The dependent variable in Experiment 2 was derived by manual extraction from typed responses, but the manuscript gives no coding protocol, no blinding information, and no inter-rater reliability. This is important because coding typed nonword spellings can involve judgment calls.\",\"quote\":\"Suffix spellings were manually extracted from whole nonword spellings (1,914 analysable data points).\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"insufficient_participant_characterization\",\"description\":\"Participant descriptions omit information needed to interpret and replicate the work, including age, gender distribution, native-language status, literacy/reading criteria, and (for eye tracking) vision status. These are especially important in a study of skilled reading and spelling.\",\"quote\":\"Participants were 46 undergraduate students at Royal Holloway, University of London.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"multiple_eye_tracking_outcomes_without_a_priori_hypotheses\",\"description\":\"The eye-tracking study was explicitly run without concrete predictions about which measures would be affected, and the authors examined a wide range of outcomes. No multiplicity correction is reported. This creates substantial researcher degrees of freedom and elevates the risk of false-positive findings.\",\"quote\":\"We did not have any concrete predictions as to which eye-movement measures would be affected by the diagnosticity manipulation, so we chose to monitor a variety of typically studied measures\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"subjective_post_hoc_trial_exclusion\",\"description\":\"Experiment 3 includes trial exclusion based on visual inspection with vague criteria ('considerable deviation'), which introduces subjective flexibility. Without pre-specified rules or blinding, such exclusions can inadvertently bias results.\",\"quote\":\"All trials were also visually inspected in order to identify those where participants had not read the sentences in full, or where any considerable deviation in the eye-tracking trace was evident during the trial.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"pretarget_context_imbalance_in_experiment_3\",\"description\":\"The sentence contexts were not fully matched across congruency conditions. The number of pretarget words differed significantly, which can affect eye-movement behavior via launch-site distance, parafoveal preview, and sentence wrap-up. This is a direct design confound for target-region measures.\",\"quote\":\"Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"misreported_percentage\",\"description\":\"Comprehension accuracy is reported as a percentage but formatted as a proportion. '0.86%' would mean less than 1% accuracy, which is incompatible with the stated range. This is a reporting error that creates ambiguity about participant performance.\",\"quote\":\"Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"internal_consistency\",\"subcategory\":\"inconsistent_effect_sizes_between_text_and_table\",\"description\":\"The effect estimates reported in the text do not match those in Table 5. For go-past time, the text reports B = 41, t = 3.837, whereas the table reports B = 43, t = 3.76. For regressions-out, the text reports B = 0.3, z = 3.12, whereas the table reports B = 0.25, z = 2.65. These discrepancies undermine confidence in the reported analyses.\",\"quote\":\"There was an effect of congruency on go-past time (B = 41, t = 3.837, p < 0.001) ... The effect of congruency on regressions-out was significant in the expected direction ... (B = 0.3, z = 3.12, p < 0.01). ... Table 5 ... Go-past time | 458 (129) | 507 (125) | 49 | 43 | t = 3.76 ... Regressions-out | 0.14 (0.1) | 0.17 (0.1) | 0.03 | 0.25 | z = 2.65 **\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"inadequate_handling_of_convergence_warning\",\"description\":\"The manuscript treats a convergence warning as a 'false positive' simply because results were similar under a different optimizer. Convergence warnings can reflect model misspecification, non-identifiability, or insufficient information, and cannot be dismissed this way. More thorough diagnostics or model simplification are needed.\",\"quote\":\"The original model produced a convergence warning when the variables were added. One way to assess if this warning is a false positive is to refit this model using a different optimisation procedure, such as “bobyqa” (Powell, 2009). We did this, and observed that the fits of these two models and the significance levels for the fixed effects were identical, indicating that the initial warning was indeed a false positive\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"selective_follow_up_of_only_significant_eye_measures\",\"description\":\"After testing many eye-tracking measures, the manuscript performs graded diagnosticity follow-ups only on the two measures that were already significant. This selective second-stage testing capitalizes on chance and can inflate apparent support for the graded-effects claim.\",\"quote\":\"Further analyses investigated whether the size of the congruency effects on the go-past and regressions-out measures was influenced by the degree to which suffix spellings were diagnostic of lexical category.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"causal_inference\",\"subcategory\":\"unsupported_evolutionary_functional_claim\",\"description\":\"The paper makes causal-historical claims that English spelling 'became fractionated' to maximize the transmission of meaningful information. The presented evidence is largely synchronic corpus analysis plus behavioral experiments on modern readers. That design cannot establish historical adaptation or optimization.\",\"quote\":\"However, the results of our analyses suggest that the proliferation of spellings in English may actually be functional. ... That is, the multiple spellings permissible for particular sound sequences seem to be fractionated in such a way as to allow particular spellings to become reserved for particular functions.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"flawed_entropy_regression_interpretation\",\"description\":\"The entropy comparison is analyzed and interpreted in a statistically problematic way. The manuscript claims that the slope of lm(Hspelling ~ Hphonology) directly determines whether spelling or phonology is more informative, but this depends on both slope and intercept and is not a valid criterion on its own. The reported t = 25.32 tests whether the slope differs from 0, not from 1, and the method for the F test against 1 is not explained. The mean entropy difference reported (0.61 vs 0.63) is also extremely small relative to the strength of the claim.\",\"quote\":\"We then examined the slope of the regression equation lm(Hspelling ~ Hphonology). There are three possible outcomes from this analysis. A slope of 1 indicates that suffix pronunciations and their spellings provide the same degree of information about lexical category; a slope greater than 1 indicates that phonology is more predictive of category compared to spelling; and a slope less than 1 would support our conjecture that spelling is more predictive of category compared to phonology. We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"post_hoc_pruning_in_frequency_correlations\",\"description\":\"The exploratory analyses of why some suffixes are more diagnostic/specific rely on successive data-dependent exclusions: removing low-diagnosticity suffixes because they belong to unmodeled categories, then removing all suffixes with diagnosticity of 1, after which the sign of the correlation changes. This post hoc pruning makes the resulting correlations highly contingent and weakens theoretical interpretation.\",\"quote\":\"we removed seven suffixes with diagnosticity below 0.35 ... Once we remove these 40 suffixes, a positive correlation is observed (0.23, p < 0.05) ... As with the diagnosticity analyses, we excluded 20 suffixes with a low specificity ... We also removed all suffixes with the specificity of 1\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"generalizability\",\"subcategory\":\"overgeneralization_from_narrow_student_sample\",\"description\":\"All behavioral experiments were conducted on undergraduates from a single UK university, yet the discussion generalizes to 'the average reader' and 'skilled readers' broadly. This sample limitation is not adequately acknowledged, and the findings may not generalize across ages, literacy levels, dialects, or educational backgrounds.\",\"quote\":\"Participants were 29 undergraduate students from Royal Holloway University of London. ... We have shown that the average reader learns and subsequently relies on morphological cues to class even without explicit instruction to do so\",\"location\":\"discussion\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"reducing_suffixes_to_most_frequent_pronunciation\",\"description\":\"Specificity is supposed to characterize spelling choice for a sound sequence, but the analysis collapses each suffix to only its most frequent pronunciation. This discards real pronunciation variability and can misestimate the relationship between sound, spelling, and category, especially for heterogeneous English suffixes.\",\"quote\":\"Only the most frequent pronunciation was considered for each suffix.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"sentence_frames_do_not_cleanly_fix_lexical_category\",\"description\":\"The contextual manipulation in Experiments 2 and 3 does not consistently enforce a unique lexical category. The noun frames are claimed to be exclusive, but adjective frames only 'maximised the probability' of adjective interpretations, and verb frames are defined merely by following an adverb. This weakens the validity of the 'predicted category' manipulation.\",\"quote\":\"Nonwords in the noun context template occupied the syntactic position of a direct/indirect object following an adjective, and so could only be interpreted as nouns. Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain, that maximised the probability that they would be perceived as adjectives. Nonwords in verb contexts followed an adverb.\",\"location\":\"methods\",\"severity\":\"moderate\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 33019,
+    "output_tokens": 19649
+  }
+}

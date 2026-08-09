@@ -1,0 +1,197 @@
+[
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "statistical_errors",
+      "subcategory": "p_value_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Chi-square(3)=8.74 gives p\u2248.033 not .003 \u2014 requires mental computation or lookup",
+      "original_snippet": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.033.",
+      "modified_snippet": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.",
+      "description": "Changed p from .033 to .003 \u2014 chi-square(3)=8.74 yields p~.033 not .003; makes marginal finding appear robust"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "incorrect p-value in text vs. table",
+      "description": "The results section reports the chi-square test for sadness as \u03c7\u00b2(3)=8.74, p=.003, but Table 2 lists the same test with p=.033. For \u03c7\u00b2=8.74 with df=3, the correct p-value is approximately .033 (since \u03c7\u00b2(3) critical value at .05 is 7.815 and at .01 is 11.345). The text value of p=.003 appears to be a typographical error (extra zero shifting the decimal). This matters because p=.003 versus p=.033 conveys substantially different levels of evidence, and .033 without multiple-comparisons correction is only marginally below the conventional threshold.",
+      "quote": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "methodological_design",
+      "subcategory": "comparison_condition_altered",
+      "difficulty": 2,
+      "difficulty_rationale": "Typical vs positive mood changes comparison gradient \u2014 must understand risk-level anchoring",
+      "original_snippet": "two-week episode of positive mood (i.e., more positive mood than usual and no ideation or attempt).",
+      "modified_snippet": "two-week episode of typical mood (i.e., neither particularly positive nor negative mood and no ideation or attempt).",
+      "description": "Changed positive mood to typical/neutral mood \u2014 compresses risk gradient, eliminates theoretical contrast between suicidal states and genuinely positive states"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "construct_validity",
+      "subcategory": "construct_label_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Self-focus vs rumination \u2014 must know these are distinct constructs in suicidology",
+      "original_snippet": "we tested whether use of first-person pronouns (as an indicator of self-focus) was greater prior to suicide attempts",
+      "modified_snippet": "we tested whether use of first-person pronouns (as an indicator of rumination) was greater prior to suicide attempts",
+      "description": "Changed 'self-focus' to 'rumination' \u2014 different constructs (Baumeister escape theory vs Nolen-Hoeksema response styles); first-person pronouns index self-referential attention, not repetitive negative thinking"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "first-person pronouns conflated with rumination in conversational context",
+      "description": "The study operationalizes self-focused rumination as singular first-person pronoun use ('I' words), citing theory and research from written poetry, clinical interview transcripts, and forum posts. However, in dyadic SMS conversation, first-person pronoun usage is driven heavily by syntactic and pragmatic conventions ('I'll pick you up,' 'I agree,' 'I can't make it'). The rate of 'I' usage in text messages is constrained by communicative function, not purely by psychological self-focus. This mapping fundamentally differs from the prior studies cited (Stirman & Pennebaker, 2001, used poetry; Venek et al., 2014, used clinical interviews). The construct validity for 'rumination' in the SMS context is not established.",
+      "quote": "In the current study, we tested whether use of first-person pronouns (as an indicator of rumination) was greater prior to suicide attempts",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "causal_inference",
+      "subcategory": "temporal_logic_altered",
+      "difficulty": 2,
+      "difficulty_rationale": "Comparison conditions should have no temporal change expectation \u2014 must understand slope logic",
+      "original_snippet": "for episode types of lower suicide risk (for which there is no theoretical expectation of temporal change).",
+      "modified_snippet": "for episode types of lower suicide risk (for which there is also a theoretical expectation of temporal change).",
+      "description": "Changed 'no expectation of temporal change' to 'also an expectation' \u2014 undermines the slope comparison logic; comparison conditions should be flat baselines"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "internal_consistency",
+      "subcategory": "iatrogenic_means_reversed",
+      "difficulty": 1,
+      "difficulty_rationale": "Means show increase (0.82\u21921.03) but text says 'decreased' \u2014 arithmetic contradiction",
+      "original_snippet": "and desire to die from pre (M=0.82, SD=1.10) to post (M=0.61, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "modified_snippet": "and desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "description": "Changed post desire-to-die from 0.61 to 1.03 \u2014 means now show INCREASE while text says 'decreased'; safety-critical inconsistency in iatrogenic check"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "direction of iatrogenic change contradicts stated interpretation",
+      "description": "The paper reports that desire to die went from pre (M=0.82) to post (M=1.03), an increase of 0.21 points, yet states this change 'significantly decreased slightly, t(32)=2.23, p=.033.' The reported means unambiguously show an increase, not a decrease. A positive t-statistic of 2.23 (not reported as negative) is consistent with an increase. If the scale is scored so that higher values indicate less desire to die, this is nowhere stated and contradicts the label 'desire to die (0-10).' As written, the authors claim their study produced a significant protective effect when the numbers show the opposite (a possible mild iatrogenic increase in suicidality), which directly affects the ethical conclusions about safety of the protocol.",
+      "quote": "desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "reporting_completeness",
+      "subcategory": "episode_window_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "using the two-week period prior to the attempt as a \u201csuicide attempt episode\u201d",
+      "modified_snippet": "using the one-week period prior to the attempt as a \u201csuicide attempt episode\u201d",
+      "description": "Changed 'two-week' to 'one-week' in episode definition but all other references say 'two weeks' / '14 days' \u2014 cross-section inconsistency"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "generalizability",
+      "subcategory": "recruitment_source_hidden",
+      "difficulty": 3,
+      "difficulty_rationale": "University pool removed \u2014 must cross-reference with Table 1 demographics to notice",
+      "original_snippet": "A sample of 33 participants with at least one reported past suicide attempt were recruited from the University of Virginia Psychology Department\u2019s participant pool and from the Charlottesville community.",
+      "modified_snippet": "A sample of 33 participants with at least one reported past suicide attempt were recruited from the Charlottesville community.",
+      "description": "Removed university participant pool source \u2014 hides that sample is mostly college students (94% 'some college', mean age 20.4), making findings appear more generalizable"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "generalizability",
+      "subcategory": "highly unrepresentative sample limits external validity",
+      "description": "The sample is 84.8% female, mean age 20.4 years (SD=2.4), 94% with 'some college,' and recruited exclusively from a university participant pool. Males account for 15.2% of the sample yet are approximately four times more likely than females to die by suicide\u2014the outcome of greatest clinical concern. The authors acknowledge this limitation only briefly. More critically, the paper's conclusions ('text messages could identify suicide risk in real time,' 'real-time digital biomarkers') are stated in universal terms without adequate qualification for age, gender, educational attainment, or socioeconomic factors that may profoundly affect both texting behavior and the language patterns studied. The clinical implications section discusses deploying a monitoring tool for 'suicidal individuals' generally, which far exceeds what this sample supports.",
+      "quote": "Results suggest private electronic communication has the potential to provide real-time digital markers of suicide risk.",
+      "location": "abstract",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "theoretical_conceptual",
+      "subcategory": "theory_mechanism_changed",
+      "difficulty": 3,
+      "difficulty_rationale": "Social support vs social engagement \u2014 subtle construct distinction",
+      "original_snippet": "In theory, social support should combat such feelings and increase feelings of connectedness.",
+      "modified_snippet": "In theory, social engagement should combat such feelings and increase feelings of connectedness.",
+      "description": "Changed 'social support' (perceived caring) to 'social engagement' (behavioral frequency) \u2014 collapses theory-operationalization gap that's a real limitation; message volume is weak proxy for perceived support"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "analytic_flexibility",
+      "subcategory": "random_effects_simplified",
+      "difficulty": 2,
+      "difficulty_rationale": "No random slopes with marginal p-values \u2014 must know Barr et al recommendations",
+      "original_snippet": "Models with the full set of random slopes did not converge; therefore, only a by-participant slope of episode type was included in the final model.",
+      "modified_snippet": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "description": "Removed all random slopes (kept only intercepts) \u2014 fails to account for participant variability in episode effects; inflates Type I error per Barr et al (2013); key p-values near .05 may become false positives"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "methodological_design",
+      "subcategory": "random slopes dropped due to non-convergence without principled alternative",
+      "description": "The paper cites Barr et al. (2013) to justify a maximal random effects structure, then reports: 'Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.' This is a significant departure from the recommended approach. Barr et al. (2013) and subsequent work (e.g., Bates et al., 2015; Matuschek et al., 2017) provide principled strategies for handling convergence failures, including using alternative optimizers, simplifying random effects in a theoretically motivated way, or using likelihood-ratio tests to determine the optimal structure. Dropping all random slopes entirely (rather than simplifying selectively) likely underestimates standard errors and inflates Type I error for the Analysis 2 interaction tests, which are the paper's primary novel findings.",
+      "quote": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "attrition_missing_data",
+      "subcategory": "missing_data_pattern_concealed",
+      "difficulty": 2,
+      "difficulty_rationale": "Claims all 27 had attempt data but only 15 did \u2014 must check if 27=27 makes sense given design",
+      "original_snippet": "Among these 27 participants, 15 had data from at least one reported suicide attempt; the other 12 participants contributed data from non-suicide attempt episodes and were still included in the analyses.",
+      "modified_snippet": "Among these 27 participants, all had data from at least one reported suicide attempt.",
+      "description": "Concealed that only 15/27 (56%) had attempt SMS data \u2014 hides selection bias in who contributes to the critical attempt vs non-attempt comparisons"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  }
+]

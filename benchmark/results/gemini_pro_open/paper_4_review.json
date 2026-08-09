@@ -1,0 +1,252 @@
+{
+  "paper_id": 4,
+  "provider_name": "gemini_pro_open",
+  "issues": [
+    {
+      "category": "design",
+      "subcategory": "mischaracterization of study design",
+      "description": "The authors describe their study as a 'prospective research design' because they reconstructed timelines. This is fundamentally incorrect. Asking participants to retrospectively recall past events and analyzing historical data from those periods constitutes a retrospective cohort or case-crossover design, not a prospective one. This mischaracterization misleads the reader regarding the level of evidence.",
+      "quote": "By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design...",
+      "location": "Introduction (Need for Better Identification of Acute Suicide Risk)",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "overstated claims",
+      "description": "The title and manuscript repeatedly frame the findings as identifying suicide risk in 'real time.' However, the data were collected and analyzed retrospectively based on participants' recall of past events. The study provides no evidence of real-time predictive capability or real-time monitoring.",
+      "quote": "Can Text Messages Identify Suicide Risk in Real Time?",
+      "location": "Title / Abstract / Discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "circular analysis / data dredging",
+      "description": "The authors visually inspected the data to determine when the rate of change was most pronounced (around 7 days) to justify their 2-week window. Using the data to define the parameters of the analysis and then testing hypotheses on those same data introduces circularity (double-dipping) and severely inflates Type I error.",
+      "quote": "The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.",
+      "location": "Methods (Interview and episode identification)",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "model misspecification",
+      "description": "The authors state they aimed for a maximal random effects structure but dropped all random slopes when the maximal model failed to converge. Dropping all random slopes drastically inflates Type I error rates for within-subject designs. Best practice is to iteratively simplify the random effects structure (e.g., removing correlations, then least variance slopes) rather than dropping them entirely.",
+      "quote": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "location": "Methods (Plan for Primary Analysis 2)",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "uncorrected multiple testing",
+      "description": "The authors conducted dozens of statistical tests (14 variables x 2 primary analysis types + pairwise follow-ups) but explicitly chose not to correct for multiple comparisons. Given the small sample size and exploratory nature, the few significant findings (some with p-values just below .05) are highly likely to be false positives.",
+      "quote": "we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction) but rather view any significant results in light of these caveats",
+      "location": "Discussion (Limitations and Conclusion)",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "data misinterpretation",
+      "description": "The text states that the desire to die 'significantly decreased slightly' from pre to post. However, the reported means are pre=0.82 and post=1.03. This represents an increase in the desire to die, not a decrease. This is a blatant misreporting of the descriptive statistics.",
+      "quote": "desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "location": "Results (Iatrogenic effects)",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inappropriate statistical test",
+      "description": "The authors used a paired t-test to assess changes in 'desire to die' from pre to post. The mean scores (0.82 and 1.03 on a 0-10 scale) indicate a severe floor effect and highly skewed, non-normal data. A non-parametric test (e.g., Wilcoxon signed-rank test) should have been used.",
+      "quote": "desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "location": "Results (Iatrogenic effects)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "data discrepancy",
+      "description": "There is a discrepancy between the text and Table 2 regarding the p-value for the main effect of episode type on sadness. The text reports p=.003, while Table 2 reports p=.033.",
+      "quote": "Text: \"significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.\" Table 2: \"Sadness (sad) | 2=8.74 | 3 | 3 | .033\"",
+      "location": "Results / Table 2",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "typographical error",
+      "description": "A p-value is reported with an extra digit, which is likely a typographical error that undermines the precision of the statistical reporting.",
+      "quote": "positive (z=2.54, p=.0111) episodes",
+      "location": "Results (Results of Primary Analysis 2)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "formatting error",
+      "description": "The chi-square symbol is missing throughout the text and tables, appearing simply as '2' or '2(3)'. This makes the statistical reporting confusing and unprofessional.",
+      "quote": "2(3)=8.74, p=.003",
+      "location": "Results / Tables 2 & 3",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "table formatting",
+      "description": "Table 2 contains duplicate 'df' columns in the header for the first set of tests, and misaligned headers for the Sentiment section.",
+      "quote": "Test | df | df | p | β | SE | Test | p",
+      "location": "Table 2",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "misleading sample size",
+      "description": "The abstract states N=33, implying 33 participants' text messages were analyzed. However, the results clarify that only 27 participants had SMS data, and only 21 attempts had corresponding SMS data. The abstract should reflect the actual analytic sample size.",
+      "quote": "Individuals reporting a history of suicide attempt (N=33) retrospectively identified past attempts... Language analysis software scored 189,478 text messages",
+      "location": "Abstract",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "unmeasured confounding",
+      "description": "The within-subjects design compares episodes that may have occurred years apart. Texting habits, language use, and LIWC dictionary relevance change significantly over time and with age. The manuscript does not mention controlling for the recency of the episode or the participant's age at the time of the episode.",
+      "quote": "availability of and access to personal messaging data dating back prior to significant life events (e.g., suicide attempt)",
+      "location": "Methods (Phone screen / Interview and episode identification)",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "selection bias",
+      "description": "The study excluded data from iPhone users who had encryption settings they couldn't bypass. This introduces a potential selection bias, as privacy-conscious individuals or those with newer/more secure devices might systematically differ in their mental health or communication patterns.",
+      "quote": "a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.",
+      "location": "Methods (Communications data collection)",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "measurement validity",
+      "description": "LIWC relies on word counts and proportions, which are notoriously unreliable for very short texts like individual SMS messages (which often contain abbreviations, emojis, and lack standard grammar). The authors do not address the validity of LIWC specifically for message-level SMS data.",
+      "quote": "Each individual SMS message was inputted into and scored using the 2015 version of Linguistic Inquiry and Word Count (LIWC)",
+      "location": "Methods (Data preparation and scoring)",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "HARKing",
+      "description": "When self-focus did not differentiate between attempt and positive episodes, the authors provided a highly speculative post-hoc explanation linking positive episodes to the 'energy and activation' needed for a suicide attempt. This reads as hypothesizing after the results are known to explain away a null finding.",
+      "quote": "it is plausible that there are similarities between psychological states during attempt and during positive episodes, which may be reflected by similarities in language use.",
+      "location": "Discussion (Self-focus)",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "construct validity",
+      "description": "The study defines 'suicide attempts' very broadly, including interrupted and aborted attempts. Furthermore, 71% of the analyzed attempts resulted in no physical harm. Grouping these with actual attempts dilutes the construct of a 'suicide attempt' and limits generalizability to lethal or near-lethal suicidal behavior.",
+      "quote": "while 71% of incidents did not result in any physical harm (e.g., driving to high place, such as a bridge, but deciding not to jump).",
+      "location": "Results (Characteristics of suicide attempts)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "terminology error",
+      "description": "The authors state they used 'Likelihood-ratio (Wald chi-square) tests'. These are two different statistical tests. A Likelihood Ratio Test compares the log-likelihoods of two nested models, while a Wald test uses the estimated variance of the parameter. They cannot be the same thing.",
+      "quote": "Likelihood-ratio (Wald chi-square) tests were performed to compare goodness of fit",
+      "location": "Methods (Plan for Primary Analysis 1)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "power analysis flaw",
+      "description": "The power analysis is based on assuming 30 suicide attempters with usable SMS data. However, only 21 attempts had SMS data, meaning the study did not even meet its own underpowered target for detecting large effects, making the null findings uninterpretable.",
+      "quote": "We determined that a sample size of 30 suicide attempters... would provide enough power to detect only large effect sizes... Among the 21 attempts with corresponding SMS data...",
+      "location": "Methods (Sample size and power considerations) & Results",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "vague operationalization",
+      "description": "It is unclear how participants retrospectively identified a specific 2-week period of 'typical mood' or 'depressed mood' from their past with exact dates, especially if these were not anchored to a specific memorable event. This introduces massive recall bias and date inaccuracy.",
+      "quote": "two-week episodes of depressed mood or high stress... and 4) two-week episode of typical mood... Participants were generally confident about the accuracy of the dates they selected",
+      "location": "Methods (Interview and episode identification)",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "contradictory text",
+      "description": "In 'Plan for Primary Analysis 1', the authors state they included a 'random by-participant slope for episode type'. But in 'Plan for Primary Analysis 2', they state 'no random slopes were included in the final model.' It is ambiguous if Analysis 1 retained the random slope or if all models lacked them.",
+      "quote": "A random by-participant slope for episode type and random intercepts... were included as the random effects.\" vs \"therefore, no random slopes were included in the final model.",
+      "location": "Methods (Plan for Primary Analysis 1 & 2)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "level of analysis / zero-inflation",
+      "description": "The authors analyzed data at the message level. While mixed models handle nested data, analyzing sentiment per message rather than aggregating per day or episode leads to severe zero-inflation issues, as most single SMS messages will have 0 words in specific LIWC categories (like 'death' or 'anger'). The manuscript does not mention handling zero-inflation.",
+      "quote": "This approach also allowed us to maximize sources of variance by analyzing on the message level rather than only mean values by episode",
+      "location": "Methods (Advantages of mixed-effects models)",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "incomplete reporting",
+      "description": "The authors state that beta values serve as effect sizes and are reported. However, in Tables 2 and 3, the beta and SE columns are completely blank for the main omnibus tests, only appearing for the pairwise comparisons.",
+      "quote": "Here, β (standardized values of the model parameter estimates in log odds units) are reported and serve as effect sizes.",
+      "location": "Methods (Plan for Primary Analysis 1) & Tables 2/3",
+      "severity": "minor"
+    },
+    {
+      "category": "design",
+      "subcategory": "vague operationalization",
+      "description": "The time variable ranges from -14 to 0. It is unclear if 'Day 0' is the exact day of the suicide attempt, and if so, whether messages sent *after* the attempt on Day 0 were excluded. Including post-attempt messages on Day 0 would confound the predictive analysis.",
+      "quote": "day of episode (numerical factor ranging from -14 to 0)",
+      "location": "Methods (Plan for Primary Analysis 2)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "fragile results",
+      "description": "Several of the key significant findings have p-values just under the .05 threshold (e.g., Anger interaction p=.049). Combined with the lack of multiple comparison corrections and the dropping of random slopes, these results are highly fragile and likely spurious.",
+      "quote": "Episode type (Attempt vs. Ideation) × Time ... z=1.96 | .049\" and \"Anger (anger) | 2=7.83 | 3 | .049",
+      "location": "Table 3",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent terminology",
+      "description": "The manuscript uses 'positive mood' and 'typical mood' interchangeably. In the Methods, it defines the 4th episode type as 'typical mood'. But throughout the rest of the paper, it is referred to as 'positive mood'.",
+      "quote": "Methods: \"4) two-week episode of typical mood\". Results/Discussion: \"positive mood\".",
+      "location": "Methods vs Results/Discussion",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "model misspecification",
+      "description": "The models testing changes over time include 'day of episode' as a continuous variable, assuming a linear change over the 14 days. However, the visual inspection mentioned earlier suggests a non-linear trajectory. Modeling this strictly linearly may miss the actual functional form of the change.",
+      "quote": "day of episode (numerical factor ranging from -14 to 0)",
+      "location": "Methods (Plan for Primary Analysis 2)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "omitted variable bias",
+      "description": "The mixed-effects models do not appear to include any demographic covariates (e.g., age, gender) or clinical covariates. While the within-subject design controls for time-invariant participant characteristics, age at the time of the episode is time-varying and should be controlled for.",
+      "quote": "A series of mixed-effects models were performed with episode type as a within-subject fixed effect... and the language feature of interest as the outcome variable.",
+      "location": "Methods (Plan for Primary Analysis 1)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "unadjusted confounder",
+      "description": "Text message length varies wildly. It is not explicitly stated if total word count per message was included as a covariate or offset in the models predicting word counts/proportions, which is crucial since longer messages naturally have more words of any category.",
+      "quote": "converted into counts and then entered as proportions in our models (i.e., number of words in a given text message belonging to versus not belonging to the LIWC category)",
+      "location": "Methods (Data preparation and scoring)",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "ecological validity",
+      "description": "The authors claim the data is ecologically valid because it accumulates automatically. However, the retrospective identification of the dates by the participants introduces significant recall bias, undermining the ecological validity of the episode classification.",
+      "quote": "ecological private SMS data to gain insight into possible novel, real-time digital biomarkers",
+      "location": "Introduction (Overview and Hypotheses)",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"mischaracterization of study design\",\n      \"description\": \"The authors describe their study as a 'prospective research design' because they reconstructed timelines. This is fundamentally incorrect. Asking participants to retrospectively recall past events and analyzing historical data from those periods constitutes a retrospective cohort or case-crossover design, not a prospective one. This mischaracterization misleads the reader regarding the level of evidence.\",\n      \"quote\": \"By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design...\",\n      \"location\": \"Introduction (Need for Better Identification of Acute Suicide Risk)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"overstated claims\",\n      \"description\": \"The title and manuscript repeatedly frame the findings as identifying suicide risk in 'real time.' However, the data were collected and analyzed retrospectively based on participants' recall of past events. The study provides no evidence of real-time predictive capability or real-time monitoring.\",\n      \"quote\": \"Can Text Messages Identify Suicide Risk in Real Time?\",\n      \"location\": \"Title / Abstract / Discussion\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"circular analysis / data dredging\",\n      \"description\": \"The authors visually inspected the data to determine when the rate of change was most pronounced (around 7 days) to justify their 2-week window. Using the data to define the parameters of the analysis and then testing hypotheses on those same data introduces circularity (double-dipping) and severely inflates Type I error.\",\n      \"quote\": \"The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.\",\n      \"location\": \"Methods (Interview and episode identification)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"model misspecification\",\n      \"description\": \"The authors state they aimed for a maximal random effects structure but dropped all random slopes when the maximal model failed to converge. Dropping all random slopes drastically inflates Type I error rates for within-subject designs. Best practice is to iteratively simplify the random effects structure (e.g., removing correlations, then least variance slopes) rather than dropping them entirely.\",\n      \"quote\": \"Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.\",\n      \"location\": \"Methods (Plan for Primary Analysis 2)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"uncorrected multiple testing\",\n      \"description\": \"The authors conducted dozens of statistical tests (14 variables x 2 primary analysis types + pairwise follow-ups) but explicitly chose not to correct for multiple comparisons. Given the small sample size and exploratory nature, the few significant findings (some with p-values just below .05) are highly likely to be false positives.\",\n      \"quote\": \"we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction) but rather view any significant results in light of these caveats\",\n      \"location\": \"Discussion (Limitations and Conclusion)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"data misinterpretation\",\n      \"description\": \"The text states that the desire to die 'significantly decreased slightly' from pre to post. However, the reported means are pre=0.82 and post=1.03. This represents an increase in the desire to die, not a decrease. This is a blatant misreporting of the descriptive statistics.\",\n      \"quote\": \"desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.\",\n      \"location\": \"Results (Iatrogenic effects)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"inappropriate statistical test\",\n      \"description\": \"The authors used a paired t-test to assess changes in 'desire to die' from pre to post. The mean scores (0.82 and 1.03 on a 0-10 scale) indicate a severe floor effect and highly skewed, non-normal data. A non-parametric test (e.g., Wilcoxon signed-rank test) should have been used.\",\n      \"quote\": \"desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.\",\n      \"location\": \"Results (Iatrogenic effects)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"data discrepancy\",\n      \"description\": \"There is a discrepancy between the text and Table 2 regarding the p-value for the main effect of episode type on sadness. The text reports p=.003, while Table 2 reports p=.033.\",\n      \"quote\": \"Text: \\\"significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.\\\" Table 2: \\\"Sadness (sad) | 2=8.74 | 3 | 3 | .033\\\"\",\n      \"location\": \"Results / Table 2\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"typographical error\",\n      \"description\": \"A p-value is reported with an extra digit, which is likely a typographical error that undermines the precision of the statistical reporting.\",\n      \"quote\": \"positive (z=2.54, p=.0111) episodes\",\n      \"location\": \"Results (Results of Primary Analysis 2)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"formatting error\",\n      \"description\": \"The chi-square symbol is missing throughout the text and tables, appearing simply as '2' or '2(3)'. This makes the statistical reporting confusing and unprofessional.\",\n      \"quote\": \"2(3)=8.74, p=.003\",\n      \"location\": \"Results / Tables 2 & 3\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"table formatting\",\n      \"description\": \"Table 2 contains duplicate 'df' columns in the header for the first set of tests, and misaligned headers for the Sentiment section.\",\n      \"quote\": \"Test | df | df | p | β | SE | Test | p\",\n      \"location\": \"Table 2\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"misleading sample size\",\n      \"description\": \"The abstract states N=33, implying 33 participants' text messages were analyzed. However, the results clarify that only 27 participants had SMS data, and only 21 attempts had corresponding SMS data. The abstract should reflect the actual analytic sample size.\",\n      \"quote\": \"Individuals reporting a history of suicide attempt (N=33) retrospectively identified past attempts... Language analysis software scored 189,478 text messages\",\n      \"location\": \"Abstract\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"unmeasured confounding\",\n      \"description\": \"The within-subjects design compares episodes that may have occurred years apart. Texting habits, language use, and LIWC dictionary relevance change significantly over time and with age. The manuscript does not mention controlling for the recency of the episode or the participant's age at the time of the episode.\",\n      \"quote\": \"availability of and access to personal messaging data dating back prior to significant life events (e.g., suicide attempt)\",\n      \"location\": \"Methods (Phone screen / Interview and episode identification)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"selection bias\",\n      \"description\": \"The study excluded data from iPhone users who had encryption settings they couldn't bypass. This introduces a potential selection bias, as privacy-conscious individuals or those with newer/more secure devices might systematically differ in their mental health or communication patterns.\",\n      \"quote\": \"a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.\",\n      \"location\": \"Methods (Communications data collection)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"measurement validity\",\n      \"description\": \"LIWC relies on word counts and proportions, which are notoriously unreliable for very short texts like individual SMS messages (which often contain abbreviations, emojis, and lack standard grammar). The authors do not address the validity of LIWC specifically for message-level SMS data.\",\n      \"quote\": \"Each individual SMS message was inputted into and scored using the 2015 version of Linguistic Inquiry and Word Count (LIWC)\",\n      \"location\": \"Methods (Data preparation and scoring)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"HARKing\",\n      \"description\": \"When self-focus did not differentiate between attempt and positive episodes, the authors provided a highly speculative post-hoc explanation linking positive episodes to the 'energy and activation' needed for a suicide attempt. This reads as hypothesizing after the results are known to explain away a null finding.\",\n      \"quote\": \"it is plausible that there are similarities between psychological states during attempt and during positive episodes, which may be reflected by similarities in language use.\",\n      \"location\": \"Discussion (Self-focus)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"construct validity\",\n      \"description\": \"The study defines 'suicide attempts' very broadly, including interrupted and aborted attempts. Furthermore, 71% of the analyzed attempts resulted in no physical harm. Grouping these with actual attempts dilutes the construct of a 'suicide attempt' and limits generalizability to lethal or near-lethal suicidal behavior.\",\n      \"quote\": \"while 71% of incidents did not result in any physical harm (e.g., driving to high place, such as a bridge, but deciding not to jump).\",\n      \"location\": \"Results (Characteristics of suicide attempts)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"terminology error\",\n      \"description\": \"The authors state they used 'Likelihood-ratio (Wald chi-square) tests'. These are two different statistical tests. A Likelihood Ratio Test compares the log-likelihoods of two nested models, while a Wald test uses the estimated variance of the parameter. They cannot be the same thing.\",\n      \"quote\": \"Likelihood-ratio (Wald chi-square) tests were performed to compare goodness of fit\",\n      \"location\": \"Methods (Plan for Primary Analysis 1)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"power analysis flaw\",\n      \"description\": \"The power analysis is based on assuming 30 suicide attempters with usable SMS data. However, only 21 attempts had SMS data, meaning the study did not even meet its own underpowered target for detecting large effects, making the null findings uninterpretable.\",\n      \"quote\": \"We determined that a sample size of 30 suicide attempters... would provide enough power to detect only large effect sizes... Among the 21 attempts with corresponding SMS data...\",\n      \"location\": \"Methods (Sample size and power considerations) & Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"vague operationalization\",\n      \"description\": \"It is unclear how participants retrospectively identified a specific 2-week period of 'typical mood' or 'depressed mood' from their past with exact dates, especially if these were not anchored to a specific memorable event. This introduces massive recall bias and date inaccuracy.\",\n      \"quote\": \"two-week episodes of depressed mood or high stress... and 4) two-week episode of typical mood... Participants were generally confident about the accuracy of the dates they selected\",\n      \"location\": \"Methods (Interview and episode identification)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"contradictory text\",\n      \"description\": \"In 'Plan for Primary Analysis 1', the authors state they included a 'random by-participant slope for episode type'. But in 'Plan for Primary Analysis 2', they state 'no random slopes were included in the final model.' It is ambiguous if Analysis 1 retained the random slope or if all models lacked them.\",\n      \"quote\": \"A random by-participant slope for episode type and random intercepts... were included as the random effects.\\\" vs \\\"therefore, no random slopes were included in the final model.\",\n      \"location\": \"Methods (Plan for Primary Analysis 1 & 2)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"level of analysis / zero-inflation\",\n      \"description\": \"The authors analyzed data at the message level. While mixed models handle nested data, analyzing sentiment per message rather than aggregating per day or episode leads to severe zero-inflation issues, as most single SMS messages will have 0 words in specific LIWC categories (like 'death' or 'anger'). The manuscript does not mention handling zero-inflation.\",\n      \"quote\": \"This approach also allowed us to maximize sources of variance by analyzing on the message level rather than only mean values by episode\",\n      \"location\": \"Methods (Advantages of mixed-effects models)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"incomplete reporting\",\n      \"description\": \"The authors state that beta values serve as effect sizes and are reported. However, in Tables 2 and 3, the beta and SE columns are completely blank for the main omnibus tests, only appearing for the pairwise comparisons.\",\n      \"quote\": \"Here, β (standardized values of the model parameter estimates in log odds units) are reported and serve as effect sizes.\",\n      \"location\": \"Methods (Plan for Primary Analysis 1) & Tables 2/3\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"vague operationalization\",\n      \"description\": \"The time variable ranges from -14 to 0. It is unclear if 'Day 0' is the exact day of the suicide attempt, and if so, whether messages sent *after* the attempt on Day 0 were excluded. Including post-attempt messages on Day 0 would confound the predictive analysis.\",\n      \"quote\": \"day of episode (numerical factor ranging from -14 to 0)\",\n      \"location\": \"Methods (Plan for Primary Analysis 2)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"fragile results\",\n      \"description\": \"Several of the key significant findings have p-values just under the .05 threshold (e.g., Anger interaction p=.049). Combined with the lack of multiple comparison corrections and the dropping of random slopes, these results are highly fragile and likely spurious.\",\n      \"quote\": \"Episode type (Attempt vs. Ideation) × Time ... z=1.96 | .049\\\" and \\\"Anger (anger) | 2=7.83 | 3 | .049\",\n      \"location\": \"Table 3\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"inconsistent terminology\",\n      \"description\": \"The manuscript uses 'positive mood' and 'typical mood' interchangeably. In the Methods, it defines the 4th episode type as 'typical mood'. But throughout the rest of the paper, it is referred to as 'positive mood'.\",\n      \"quote\": \"Methods: \\\"4) two-week episode of typical mood\\\". Results/Discussion: \\\"positive mood\\\".\",\n      \"location\": \"Methods vs Results/Discussion\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"model misspecification\",\n      \"description\": \"The models testing changes over time include 'day of episode' as a continuous variable, assuming a linear change over the 14 days. However, the visual inspection mentioned earlier suggests a non-linear trajectory. Modeling this strictly linearly may miss the actual functional form of the change.\",\n      \"quote\": \"day of episode (numerical factor ranging from -14 to 0)\",\n      \"location\": \"Methods (Plan for Primary Analysis 2)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"omitted variable bias\",\n      \"description\": \"The mixed-effects models do not appear to include any demographic covariates (e.g., age, gender) or clinical covariates. While the within-subject design controls for time-invariant participant characteristics, age at the time of the episode is time-varying and should be controlled for.\",\n      \"quote\": \"A series of mixed-effects models were performed with episode type as a within-subject fixed effect... and the language feature of interest as the outcome variable.\",\n      \"location\": \"Methods (Plan for Primary Analysis 1)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"unadjusted confounder\",\n      \"description\": \"Text message length varies wildly. It is not explicitly stated if total word count per message was included as a covariate or offset in the models predicting word counts/proportions, which is crucial since longer messages naturally have more words of any category.\",\n      \"quote\": \"converted into counts and then entered as proportions in our models (i.e., number of words in a given text message belonging to versus not belonging to the LIWC category)\",\n      \"location\": \"Methods (Data preparation and scoring)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"ecological validity\",\n      \"description\": \"The authors claim the data is ecologically valid because it accumulates automatically. However, the retrospective identification of the dates by the participants introduces significant recall bias, undermining the ecological validity of the episode classification.\",\n      \"quote\": \"ecological private SMS data to gain insight into possible novel, real-time digital biomarkers\",\n      \"location\": \"Introduction (Overview and Hypotheses)\",\n      \"severity\": \"moderate\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 20204,
+    "output_tokens": 4288
+  }
+}

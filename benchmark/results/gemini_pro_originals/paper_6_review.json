@@ -1,0 +1,124 @@
+{
+  "paper_id": 6,
+  "provider_name": "gemini_pro_originals",
+  "issues": [
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory statements about demographic data collection",
+      "description": "The authors state that demographic questions were only asked at Time 1. However, they later claim to have excluded 56 participants because their demographic information was not consistent across measurement periods. This is a logical impossibility and raises serious concerns about the data cleaning process and the integrity of the dataset.",
+      "quote": "As an exception, demographic questions were asked solely during the first wave (T1). [...] demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age)",
+      "location": "Methods (Participants & Procedure / Measures)",
+      "severity": "critical"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unexplained variations in sample size across text and tables",
+      "description": "The manuscript states a final sample size of N = 372 after exclusions. However, Table 1 and Table 2 report N = 321, and Table 3 reports N = 244. There is no explanation for the loss of 51 participants between the text and Tables 1/2, nor is the massive drop to 244 in Table 3 adequately justified beyond a brief mention of missingness on the moderator.",
+      "quote": "This resulted in a final sample size of N = 372. [...] Note. N = 321. (Table 1 & 2) [...] Note. N = 244. (Table 3)",
+      "location": "Methods (Participants & Procedure) and Results (Tables 1-3)",
+      "severity": "critical"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Severe multicollinearity and lack of discriminant validity",
+      "description": "Table 1 shows correlations between Compassion Fatigue and Enacted Incivility of .92 at T1 and .94 at T4. Correlations this high indicate that the measures are not capturing distinct constructs, violating discriminant validity. Despite the CFA claims, these bivariate correlations strongly suggest severe multicollinearity, which compromises the regression estimates.",
+      "quote": "T1 Compassion Fatigue and T1 Enacted Incivility r = .92; T4 Compassion Fatigue and T4 Enacted Incivility r = .94.",
+      "location": "Results (Table 1)",
+      "severity": "critical"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Cross-sectional paths in a supposedly longitudinal model",
+      "description": "The authors claim to test a sequential mediation 'over time' (T2 -> T3 -> T4 -> T4). However, the final path from Compassion Fatigue to Enacted Incivility is measured concurrently at Time 4. This makes the final stage of the mediation cross-sectional, undermining the claim that the study models how these relationships unfold over time and allows for stronger causal inferences.",
+      "quote": "Time 2 experienced patient incivility was indirectly related to Time 4 enacted incivility toward patients through negative emotions toward patients and compassion fatigue.",
+      "location": "Analytic Strategy and Results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Failure to include stated autoregressive controls",
+      "description": "The authors explicitly state that Time 1 data was reserved to control for autoregressive (baseline) effects in the subsequent waves. However, Tables 2 and 3 do not include any Time 1 variables as predictors. If autoregressive controls were omitted, the models do not test change over time as claimed; if they were included but hidden, the reporting is highly misleading.",
+      "quote": "the first wave was reserved for controlling for autoregressive effects, and the subsequent waves were included for hypothesis testing... As such, the first time point is modeled to control for baseline effects in the regression model in the second through fourth waves.",
+      "location": "Analytic Strategy and Results (Tables 2 & 3)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent coefficient, standard error, and p-values",
+      "description": "The text reports an indirect effect of B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10]. A B of .06 with an SE of .04 yields a z-value of 1.5, which is not statistically significant (p = .13), and the reported 95% CI does not match these parameters. Table 2 reports SE = .02 for this effect, indicating a typo in the text, but such errors undermine confidence in the statistical reporting.",
+      "quote": "(B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10])",
+      "location": "Results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Misreported CFA fit statistics",
+      "description": "The CFA results report alternative models with degrees of freedom of 3, 2, and 1, and chi-square values around 82. These are clearly delta chi-square (difference) tests, not the absolute fit statistics for the models, which should have degrees of freedom in the hundreds (given 25 items). This indicates a fundamental misunderstanding or misreporting of CFA fit indices.",
+      "quote": "a three-factor model wherein both incivility measures were set to load onto the same factor (3) = 82.52... a two-factor model... (2) = 82.65",
+      "location": "Analytic Strategy",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unjustified listwise deletion of massive missing data",
+      "description": "The perceived patient acuity measure had a massive amount of missing data (reducing the sample from 372 to 244, a 34% loss). The authors appear to have used listwise deletion for the moderation analysis without testing for missing completely at random (MCAR) or using modern missing data techniques like FIML or multiple imputation, likely biasing the moderation results.",
+      "quote": "For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range... Note. N = 244. The sample size was reduced due to missingness on the moderator variable.",
+      "location": "Methods (Measures) and Results (Table 3)",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Undisclosed control variables",
+      "description": "'Work Hours' at T1, T2, and T3 are included in the correlation matrix and regression tables as control variables, but this variable is never mentioned in the Methods section, nor is the rationale for its inclusion as a control variable provided.",
+      "quote": "T2 Work Hours and T3 Work Hours in Tables 1, 2, and 3.",
+      "location": "Methods and Results (Tables 1-3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Misinterpretation of relative importance analysis",
+      "description": "The authors state that the predictors accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility. These numbers sum to exactly 100%. Relative importance analysis partitions the *explained* variance (R-squared), not the total variance of the dependent variable. The text misrepresents these figures as absolute variance explained.",
+      "quote": "The results revealed compassion fatigue, negative emotion, and experienced incivility accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility, respectively.",
+      "location": "Results (Supplemental analyses)",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Unvalidated single-item measure for moderator",
+      "description": "Patient acuity is measured using a single, self-generated item asking participants to estimate the percentage of 'severe' patients based on their department's scale. This is highly subjective, relies on varying departmental standards, and lacks psychometric validation, making it a weak operationalization of the construct.",
+      "quote": "what percentage of patients under your care in the past week would be considered 'severe'?",
+      "location": "Methods (Measures)",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Math error in participant exclusion calculation",
+      "description": "The text states that 468 nurses responded at T1 and 450 responded at T4, which is a difference of 18 participants. However, the text claims that exactly 16 people were excluded due to missing time points.",
+      "quote": "n = 468 nurses responded at time 1... n = 450 responded at time 4... Only participants who completed all four surveys (n = 16 people excluded due to missing time points)",
+      "location": "Methods (Participants & Procedure)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Misattribution of scale authorship",
+      "description": "The authors cite Cortina et al. (2001) for the 'Enacted Incivility Scale'. Cortina et al. (2001) developed the Workplace Incivility Scale, which measures *experienced* incivility. The authors adapted these items to measure enacted incivility, but incorrectly cite it as an existing Enacted Incivility Scale by Cortina.",
+      "quote": "Enacted Incivility. Four items from the Enacted Incivility Scale (Cortina et al., 2001) were used to measure the frequency participants instigated incivility towards their patients.",
+      "location": "Methods (Measures)",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Demographic percentages exceed 100%",
+      "description": "The reported percentages for race/ethnicity (74.55% White, 15.45% Hispanic/Latino, 5.76% Black, 4.85% Asian) sum to 100.61%. While this could be due to participants selecting multiple categories, it is not explained and appears to be a reporting error.",
+      "quote": "74.55% of the respondents self-identified as White, 15.45% self-identified as Hispanic or Latino, 5.76% self-identified as Black, and 4.85% self-identified as Asian.",
+      "location": "Methods (Participants & Procedure)",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradictory statements about demographic data collection\",\n      \"description\": \"The authors state that demographic questions were only asked at Time 1. However, they later claim to have excluded 56 participants because their demographic information was not consistent across measurement periods. This is a logical impossibility and raises serious concerns about the data cleaning process and the integrity of the dataset.\",\n      \"quote\": \"As an exception, demographic questions were asked solely during the first wave (T1). [...] demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age)\",\n      \"location\": \"Methods (Participants & Procedure / Measures)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"Unexplained variations in sample size across text and tables\",\n      \"description\": \"The manuscript states a final sample size of N = 372 after exclusions. However, Table 1 and Table 2 report N = 321, and Table 3 reports N = 244. There is no explanation for the loss of 51 participants between the text and Tables 1/2, nor is the massive drop to 244 in Table 3 adequately justified beyond a brief mention of missingness on the moderator.\",\n      \"quote\": \"This resulted in a final sample size of N = 372. [...] Note. N = 321. (Table 1 & 2) [...] Note. N = 244. (Table 3)\",\n      \"location\": \"Methods (Participants & Procedure) and Results (Tables 1-3)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Severe multicollinearity and lack of discriminant validity\",\n      \"description\": \"Table 1 shows correlations between Compassion Fatigue and Enacted Incivility of .92 at T1 and .94 at T4. Correlations this high indicate that the measures are not capturing distinct constructs, violating discriminant validity. Despite the CFA claims, these bivariate correlations strongly suggest severe multicollinearity, which compromises the regression estimates.\",\n      \"quote\": \"T1 Compassion Fatigue and T1 Enacted Incivility r = .92; T4 Compassion Fatigue and T4 Enacted Incivility r = .94.\",\n      \"location\": \"Results (Table 1)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Cross-sectional paths in a supposedly longitudinal model\",\n      \"description\": \"The authors claim to test a sequential mediation 'over time' (T2 -> T3 -> T4 -> T4). However, the final path from Compassion Fatigue to Enacted Incivility is measured concurrently at Time 4. This makes the final stage of the mediation cross-sectional, undermining the claim that the study models how these relationships unfold over time and allows for stronger causal inferences.\",\n      \"quote\": \"Time 2 experienced patient incivility was indirectly related to Time 4 enacted incivility toward patients through negative emotions toward patients and compassion fatigue.\",\n      \"location\": \"Analytic Strategy and Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Failure to include stated autoregressive controls\",\n      \"description\": \"The authors explicitly state that Time 1 data was reserved to control for autoregressive (baseline) effects in the subsequent waves. However, Tables 2 and 3 do not include any Time 1 variables as predictors. If autoregressive controls were omitted, the models do not test change over time as claimed; if they were included but hidden, the reporting is highly misleading.\",\n      \"quote\": \"the first wave was reserved for controlling for autoregressive effects, and the subsequent waves were included for hypothesis testing... As such, the first time point is modeled to control for baseline effects in the regression model in the second through fourth waves.\",\n      \"location\": \"Analytic Strategy and Results (Tables 2 & 3)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inconsistent coefficient, standard error, and p-values\",\n      \"description\": \"The text reports an indirect effect of B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10]. A B of .06 with an SE of .04 yields a z-value of 1.5, which is not statistically significant (p = .13), and the reported 95% CI does not match these parameters. Table 2 reports SE = .02 for this effect, indicating a typo in the text, but such errors undermine confidence in the statistical reporting.\",\n      \"quote\": \"(B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10])\",\n      \"location\": \"Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Misreported CFA fit statistics\",\n      \"description\": \"The CFA results report alternative models with degrees of freedom of 3, 2, and 1, and chi-square values around 82. These are clearly delta chi-square (difference) tests, not the absolute fit statistics for the models, which should have degrees of freedom in the hundreds (given 25 items). This indicates a fundamental misunderstanding or misreporting of CFA fit indices.\",\n      \"quote\": \"a three-factor model wherein both incivility measures were set to load onto the same factor (3) = 82.52... a two-factor model... (2) = 82.65\",\n      \"location\": \"Analytic Strategy\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"Unjustified listwise deletion of massive missing data\",\n      \"description\": \"The perceived patient acuity measure had a massive amount of missing data (reducing the sample from 372 to 244, a 34% loss). The authors appear to have used listwise deletion for the moderation analysis without testing for missing completely at random (MCAR) or using modern missing data techniques like FIML or multiple imputation, likely biasing the moderation results.\",\n      \"quote\": \"For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range... Note. N = 244. The sample size was reduced due to missingness on the moderator variable.\",\n      \"location\": \"Methods (Measures) and Results (Table 3)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Undisclosed control variables\",\n      \"description\": \"'Work Hours' at T1, T2, and T3 are included in the correlation matrix and regression tables as control variables, but this variable is never mentioned in the Methods section, nor is the rationale for its inclusion as a control variable provided.\",\n      \"quote\": \"T2 Work Hours and T3 Work Hours in Tables 1, 2, and 3.\",\n      \"location\": \"Methods and Results (Tables 1-3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Misinterpretation of relative importance analysis\",\n      \"description\": \"The authors state that the predictors accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility. These numbers sum to exactly 100%. Relative importance analysis partitions the *explained* variance (R-squared), not the total variance of the dependent variable. The text misrepresents these figures as absolute variance explained.\",\n      \"quote\": \"The results revealed compassion fatigue, negative emotion, and experienced incivility accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility, respectively.\",\n      \"location\": \"Results (Supplemental analyses)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Unvalidated single-item measure for moderator\",\n      \"description\": \"Patient acuity is measured using a single, self-generated item asking participants to estimate the percentage of 'severe' patients based on their department's scale. This is highly subjective, relies on varying departmental standards, and lacks psychometric validation, making it a weak operationalization of the construct.\",\n      \"quote\": \"what percentage of patients under your care in the past week would be considered 'severe'?\",\n      \"location\": \"Methods (Measures)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Math error in participant exclusion calculation\",\n      \"description\": \"The text states that 468 nurses responded at T1 and 450 responded at T4, which is a difference of 18 participants. However, the text claims that exactly 16 people were excluded due to missing time points.\",\n      \"quote\": \"n = 468 nurses responded at time 1... n = 450 responded at time 4... Only participants who completed all four surveys (n = 16 people excluded due to missing time points)\",\n      \"location\": \"Methods (Participants & Procedure)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Misattribution of scale authorship\",\n      \"description\": \"The authors cite Cortina et al. (2001) for the 'Enacted Incivility Scale'. Cortina et al. (2001) developed the Workplace Incivility Scale, which measures *experienced* incivility. The authors adapted these items to measure enacted incivility, but incorrectly cite it as an existing Enacted Incivility Scale by Cortina.\",\n      \"quote\": \"Enacted Incivility. Four items from the Enacted Incivility Scale (Cortina et al., 2001) were used to measure the frequency participants instigated incivility towards their patients.\",\n      \"location\": \"Methods (Measures)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Demographic percentages exceed 100%\",\n      \"description\": \"The reported percentages for race/ethnicity (74.55% White, 15.45% Hispanic/Latino, 5.76% Black, 4.85% Asian) sum to 100.61%. While this could be due to participants selecting multiple categories, it is not explained and appears to be a reporting error.\",\n      \"quote\": \"74.55% of the respondents self-identified as White, 15.45% self-identified as Hispanic or Latino, 5.76% self-identified as Black, and 4.85% self-identified as Asian.\",\n      \"location\": \"Methods (Participants & Procedure)\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 27698,
+    "output_tokens": 2558
+  }
+}

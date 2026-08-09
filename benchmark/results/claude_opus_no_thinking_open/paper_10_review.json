@@ -1,0 +1,268 @@
+{
+  "paper_id": 10,
+  "provider_name": "claude_opus_no_thinking_open",
+  "issues": [
+    {
+      "category": "design",
+      "subcategory": "Confound between morphological and orthographic cues",
+      "description": "The authors acknowledge but do not adequately control for the possibility that the effects they attribute to morphological knowledge could be driven by sub-morphemic orthographic regularities. In Experiment 1, they explicitly state they 'did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement.' Without a control condition using non-morphemic endings that have similar distributional properties, it is impossible to determine whether participants are responding to morphological structure per se or to orthographic patterns that happen to correlate with lexical category.",
+      "quote": "We did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement (e.g. orthographic vs morphological).",
+      "location": "methods (Experiment 1)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Missing random effects structure",
+      "description": "In Experiment 1, the mixed model includes only a random intercept for subjects but no random intercept for items (nonwords or suffixes). This violates the principle that both sources of random variation should be accounted for when generalizing across both participants and items. The absence of item-level random effects inflates Type I error rates. The same concern applies to Experiment 2.",
+      "quote": "We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "location": "results (Experiment 1)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Transformation of diagnosticity variable",
+      "description": "The authors multiplied diagnosticity by -1 for noun-diagnostic suffixes to create a single continuous predictor, then ran the analysis. This sign transformation conflates the direction of the effect with the magnitude of diagnosticity, and the authors themselves seem concerned about this, running separate analyses. However, the combined analysis treats diagnosticity as a single linear predictor across two qualitatively different categories, which assumes a symmetric and linear relationship that may not hold.",
+      "quote": "In order to investigate this statistically, we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.",
+      "location": "results (Experiment 1)",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Small and unbalanced sample of suffixes",
+      "description": "In Experiment 1, only 20 suffixes were used (10 noun, 10 adjective), and in Experiment 2, only 11 suffixes were used. Given that the key analyses examine graded effects of diagnosticity/specificity across suffixes, the small number of suffixes severely limits statistical power for detecting these graded relationships and makes the results highly dependent on the particular suffixes selected.",
+      "quote": "Twenty suffixes diagnostic for the noun or adjective category were selected (See Table 2).",
+      "location": "methods (Experiment 1)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Multiple comparisons without correction",
+      "description": "In Experiment 3, six different eye-movement measures are tested for the congruency effect without any correction for multiple comparisons. The authors find significant effects on only two of six measures (go-past time and regressions-out), but the probability of finding at least one significant result by chance increases substantially with six tests.",
+      "quote": "We did not have any concrete predictions as to which eye-movement measures would be affected by the diagnosticity manipulation, so we chose to monitor a variety of typically studied measures",
+      "location": "results (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Inconsistent reporting of comprehension accuracy",
+      "description": "Comprehension accuracy in Experiment 3 is reported as '0.86%' which appears to be a typographical error (should be 86% or 0.86 proportion). Additionally, the range is reported as '0.66% to 0.98%', with the lower bound of 66% being quite low and potentially indicating some participants were not adequately engaged with the task. No participants appear to have been excluded based on low comprehension accuracy.",
+      "quote": "Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).",
+      "location": "results (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Unmatched pre-target word count across conditions",
+      "description": "In Experiment 3, the number of words before the target differed significantly between congruent and incongruent conditions (4.75 vs 5.23, p < .05). This means that the amount of contextual information available before encountering the target nonword differs across conditions, which could influence expectations and eye-movement behavior independently of the congruency manipulation.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "methods (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Confound between sentence structure and congruency",
+      "description": "The sentence templates used for noun, adjective, and verb contexts have fundamentally different syntactic structures. Congruent adjective-suffix nonwords always appear in adjective sentence frames (after copular/linking verbs), while incongruent adjective-suffix nonwords appear in noun or verb frames. Any differences could reflect difficulty with particular sentence structures rather than sensitivity to spelling-meaning regularities per se. The congruent and incongruent conditions are not matched on syntactic complexity or predictability of the target position.",
+      "quote": "Nonwords in the noun context template occupied the syntactic position of a direct/indirect object following an adjective, and so could only be interpreted as nouns. Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain",
+      "location": "methods (Experiment 2/3)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Convergence warning handled questionably",
+      "description": "The authors report a convergence warning in the regressions-out model in Experiment 3 and address it by refitting with a different optimizer (bobyqa). While this is a reasonable first step, identical fits from two optimizers do not guarantee that the solution is correct—it could mean both converged to the same local minimum. More robust approaches (e.g., simplifying the random effects structure, checking gradient values) would be more convincing.",
+      "quote": "The original model produced a convergence warning when the variables were added. One way to assess if this warning is a false positive is to refit this model using a different optimisation procedure, such as \"bobyqa\" (Powell, 2009). We did this, and observed that the fits of these two models and the significance levels for the fixed effects were identical, indicating that the initial warning was indeed a false positive",
+      "location": "results (Experiment 3)",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Circularity in computational analysis",
+      "description": "The diagnosticity and specificity measures are computed from CELEX, which includes both genuinely suffixed words and pseudosuffixed words (e.g., 'corner' for -ER). The authors justify this by citing evidence that people identify morphemes within pseudoaffixed words. However, including pseudoaffixed words inflates the apparent relationship between spelling and meaning because these words' category distributions may differ from genuinely suffixed words. The measures thus reflect a mixture of true morphological regularity and accidental orthographic co-occurrence.",
+      "quote": "We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).",
+      "location": "methods (Computational Analysis)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Missing data not fully explained",
+      "description": "In Experiment 1, 11.7% of data points were missing due to timeouts or non-responses. This is a substantial proportion of data loss for a simple binary classification task with a 2-second timeout. The authors do not analyze whether missing data were systematically related to condition or suffix type, which could bias the results.",
+      "quote": "11.7% of data points were missing due to timeouts or button presses that did not correspond to a response",
+      "location": "results (Experiment 1)",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "No power analysis or sample size justification",
+      "description": "None of the three experiments report a power analysis or provide justification for the sample sizes used (46, 29, and 47 participants respectively). Experiment 2 in particular has a relatively small sample (N=29) for detecting graded effects of specificity across only 11 suffixes.",
+      "quote": "Participants were 29 undergraduate students from Royal Holloway University of London.",
+      "location": "methods (Experiments 1-3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Demand characteristics in Experiment 1",
+      "description": "In Experiment 1, participants are explicitly told to classify nonwords as nouns or adjectives. The instructions provide definitions and examples of these categories. This explicit framing may encourage participants to use metalinguistic strategies (e.g., consciously recalling words with similar endings) rather than reflecting implicit knowledge of spelling-meaning regularities. The authors claim this reflects 'extracted information about lexical category from written language' but the task demands explicit categorization.",
+      "quote": "You will be asked to decide if a letter string looks like a noun or an adjective. NOUN is a person, animal, place, thing, or idea: For example, AUNT, CAT, FOREST, CUP, LOVE. ADJECTIVE is an attribute of a noun: For example, SWEET, RED, SIMPLE",
+      "location": "methods (Experiment 1)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Token-based analyses show weaker or null effects",
+      "description": "Across all three experiments, token-based measures consistently show weaker effects than type-based measures, and in some cases are non-significant (e.g., adjective-specific suffixes in Experiment 1 show no effect of token diagnosticity, p > 0.8). The authors acknowledge this but do not adequately explain why token measures should be less relevant, given that token frequency is typically considered more psychologically relevant for exposure-based learning. The post-hoc explanation invoking contextual diversity is speculative.",
+      "quote": "The results based on token measures were similar (main effect of diagnosticity, and an effect of diagnosticity on noun-diagnostic suffixes), but adjective-specific suffixes did not show an effect of diagnosticity (p > 0.8).",
+      "location": "results (Experiment 1) / General Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Verb suffixes excluded from analysis in Experiment 3",
+      "description": "In Experiment 3, 40 filler nonwords with verb-diagnostic suffixes were included but not analyzed because 'the majority of verb suffixes do not discriminate lexical category.' This selective exclusion reduces the generalizability of the findings and means the congruency manipulation is tested only for nouns and adjectives. The rationale for exclusion (diagnosticity < 0.5) is applied post-hoc to verb suffixes but not to the noun/adjective suffixes, some of which also have relatively low diagnosticity (e.g., -AN at 0.50).",
+      "quote": "Forty filler nonwords whose suffix spellings were diagnostic for verbs were added so that sentence contexts would be balanced across all three lexical categories. These filler nonwords were not analysed, because the majority of verb suffixes do not discriminate lexical category (i.e. diagnosticity is less than 0.5).",
+      "location": "methods (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Generalizability limited to derivational suffixes",
+      "description": "The entire framework is built around derivational suffixes, which represent only one aspect of morphology. The authors' broad claims about 'the relationship between spelling and meaning' and the functional nature of English spelling inconsistency are not warranted based solely on suffix data. Prefixes, compounding, and other morphological processes are not considered.",
+      "quote": "We close by arguing that English spelling may have become fractionated in such a way that the high degree of spelling-sound inconsistency maximises the transmission of meaningful information.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Marginal effects interpreted as supporting hypotheses",
+      "description": "In Experiment 3, the effect of diagnosticity on go-past times in the incongruent condition is described as 'a trend' at p = 0.13, and the effect on regressions-out in the incongruent condition is marginally significant at p = 0.08. These are interpreted as supporting the hypothesis despite not reaching conventional significance thresholds.",
+      "quote": "whereas there was a trend towards an effect in the incongruent condition (B = 36.35, t = 1.58, p = 0.13)",
+      "location": "results (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Incomplete model specification for Experiment 3",
+      "description": "For Experiment 3, the authors state that 'All models included trial order as a main effect, and random intercepts for subjects and for suffixes' but do not report the full model formula or whether random slopes were considered. Given the recommendations in the literature for maximal random effects structures, the omission of random slopes (e.g., for congruency by subjects and by items) could lead to anti-conservative inference.",
+      "quote": "All models included trial order as a main effect, and random intercepts for subjects and for suffixes. However, in the interest of space we report only those effects pertaining to our main variable of interest, congruency",
+      "location": "results (Experiment 3)",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "Nonword naturalness and plausibility not controlled",
+      "description": "The nonwords were created by concatenating CVC stems with suffixes, but no norming study was conducted to verify that these nonwords were perceived as plausible English words or that they were equally natural across conditions. Some combinations may have been more or less word-like, which could influence processing independently of the suffix manipulation.",
+      "quote": "Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator",
+      "location": "methods (Experiment 1)",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Entropy analysis interpretation",
+      "description": "The entropy analysis comparing Hspelling and Hsound yields a slope of 0.9, which is statistically different from 1 but represents a very small difference (mean H of 0.61 vs 0.63). The authors interpret this as evidence that 'the spellings of derivational suffixes generally yield better prediction of lexical category than do their spoken realisations,' but the practical significance of this difference is minimal and may not support the strong theoretical claims made about spelling being functionally superior to phonology for conveying meaning.",
+      "quote": "We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Experiment 2 lacks counterbalancing of suffix-context pairings",
+      "description": "In Experiment 2, each participant saw all 66 sentences, with each suffix appearing three times in congruent and three times in incongruent contexts. However, the assignment of specific nonwords to congruent vs. incongruent conditions was not counterbalanced across participants—all participants received the same assignment. This means that any idiosyncratic properties of specific nonwords are confounded with condition.",
+      "quote": "Each subject saw all 66 sentences.",
+      "location": "methods (Experiment 2)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Inconsistent reporting of specificity effect in Experiment 2",
+      "description": "For the token-based specificity analysis in Experiment 2, the authors report 'z = 0.60, p < 0.01' which is inconsistent—a z-value of 0.60 would correspond to p ≈ 0.55, not p < 0.01. This appears to be a reporting error.",
+      "quote": "for the token analyses - z = 0.60, p < 0.01",
+      "location": "results (Experiment 2)",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "CELEX database limitations",
+      "description": "The computational analysis relies entirely on the CELEX database, which is based on a specific corpus and may not accurately represent the distribution of words that modern English readers encounter. CELEX is also known to contain errors in morphological parsing. The authors do not discuss these limitations or validate their measures against alternative corpora.",
+      "quote": "We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)",
+      "location": "methods (Computational Analysis)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Correlation between diagnosticity and specificity",
+      "description": "The correlation between diagnosticity and specificity is moderate (r = 0.53 for types, r = 0.47 for tokens), meaning these constructs share substantial variance. When the authors test effects of diagnosticity in Experiments 1 and 3, and specificity in Experiment 2, they do not control for the other construct. It is therefore unclear whether the behavioral effects are uniquely attributable to the construct being tested or to shared variance with the other construct.",
+      "quote": "The correlation between the type variables is 0.53, p < 0.0001; that between the token variables – 0.47, p < 0.0001. This indicates that the two constructs are related although they capture distinct properties of suffixes.",
+      "location": "results (Computational Analysis)",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Experiment 1 conducted after unrelated testing",
+      "description": "Experiment 1 was conducted at the end of a longer, unrelated testing session. Participant fatigue could affect performance on this task, potentially increasing the 11.7% missing data rate and adding noise to the results.",
+      "quote": "This experiment was conducted at the end of a longer, unrelated testing session.",
+      "location": "methods (Experiment 1)",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Causal claims about writing system evolution",
+      "description": "The authors make strong claims about English spelling having 'evolved' or 'become fractionated' to maximize meaningful information transmission. However, the data presented are entirely synchronic (cross-sectional analysis of present-day English). The diachronic evidence cited is from Berg and Aronoff (2017) and covers only a few suffixes. The evolutionary/functional claims go well beyond what the current data can support.",
+      "quote": "English spelling may have become fractionated in such a way that the high degree of spelling-sound inconsistency maximises the transmission of meaningful information in the service of skilled reading.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Effect sizes not reported",
+      "description": "Across all three experiments, no effect sizes (e.g., Cohen's d, odds ratios, R²) are reported for the key findings. Only regression coefficients (B values) and test statistics are provided, making it difficult to assess the practical significance of the effects.",
+      "quote": "Results showed a main effect of suffix condition such that noun-diagnostic suffixes elicited more \"noun\" responses (B = -1.57, z = -4.224, p < 0.0001)",
+      "location": "results (all experiments)",
+      "severity": "minor"
+    },
+    {
+      "category": "design",
+      "subcategory": "Forced binary choice in Experiment 1",
+      "description": "Participants in Experiment 1 were forced to choose between 'noun' and 'adjective' only. This excludes the possibility that some suffixes might be perceived as verb-like or as belonging to no clear category. The forced binary choice may artificially inflate the apparent sensitivity to noun-adjective distinctions.",
+      "quote": "participants indicated their adjective-noun decisions via button press",
+      "location": "methods (Experiment 1)",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Selective exclusion in corpus analyses",
+      "description": "In the 'Why are some suffixes more diagnostic than others?' section, the authors remove suffixes with diagnosticity of 1 (40 suffixes) and suffixes with diagnosticity below 0.35 (7 suffixes) before examining the correlation between frequency and diagnosticity. This selective exclusion of nearly a third of the data to obtain a desired positive correlation is concerning and could be seen as data-dependent analysis.",
+      "quote": "Once we remove these 40 suffixes, a positive correlation is observed (0.23, p < 0.05), meaning that highly diagnostic suffixes tend to be those that occur in many words.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Single pronunciation assumption",
+      "description": "The computational analysis considers only the most frequent pronunciation for each suffix when computing specificity. This simplification ignores dialectal variation and alternative pronunciations that could affect the mapping between sound and spelling, potentially biasing the specificity estimates.",
+      "quote": "Only the most frequent pronunciation was considered for each suffix.",
+      "location": "methods (Computational Analysis)",
+      "severity": "minor"
+    },
+    {
+      "category": "design",
+      "subcategory": "Potential confound of suffix length with condition in Experiment 3",
+      "description": "The noun and adjective suffixes used in Experiment 3 differ in their typical lengths (e.g., -NESS, -MENT vs. -Y, -IC). Since the target region for eye-tracking analysis is the entire nonword, differences in nonword length across conditions could influence fixation measures. The authors do not report whether nonword length was matched across congruent and incongruent conditions.",
+      "quote": "The region of interest for analysis was the nonword.",
+      "location": "methods (Experiment 3)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Regressions-out estimate inconsistency",
+      "description": "In Table 5, the estimate for regressions-out is reported as B = 0.25 with z = 2.65, but in the text the estimate is reported as B = 0.3 with z = 3.12. These values do not match, suggesting either a typographical error or that different models were used.",
+      "quote": "The effect of congruency on regressions-out was significant in the expected direction, i.e. incongruent targets were more likely to elicit regressions to earlier regions of the sentence (B = 0.3, z = 3.12, p < 0.01).",
+      "location": "results (Experiment 3)",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "```json\n{\n  \"issues\": [\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Confound between morphological and orthographic cues\",\n      \"description\": \"The authors acknowledge but do not adequately control for the possibility that the effects they attribute to morphological knowledge could be driven by sub-morphemic orthographic regularities. In Experiment 1, they explicitly state they 'did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement.' Without a control condition using non-morphemic endings that have similar distributional properties, it is impossible to determine whether participants are responding to morphological structure per se or to orthographic patterns that happen to correlate with lexical category.\",\n      \"quote\": \"We did not include non-pseudoaffixed words because the goal of this experiment was not to adjudicate between types of cues used in lexical category judgement (e.g. orthographic vs morphological).\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Missing random effects structure\",\n      \"description\": \"In Experiment 1, the mixed model includes only a random intercept for subjects but no random intercept for items (nonwords or suffixes). This violates the principle that both sources of random variation should be accounted for when generalizing across both participants and items. The absence of item-level random effects inflates Type I error rates. The same concern applies to Experiment 2.\",\n      \"quote\": \"We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \\\"binomial\\\").\",\n      \"location\": \"results (Experiment 1)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Transformation of diagnosticity variable\",\n      \"description\": \"The authors multiplied diagnosticity by -1 for noun-diagnostic suffixes to create a single continuous predictor, then ran the analysis. This sign transformation conflates the direction of the effect with the magnitude of diagnosticity, and the authors themselves seem concerned about this, running separate analyses. However, the combined analysis treats diagnosticity as a single linear predictor across two qualitatively different categories, which assumes a symmetric and linear relationship that may not hold.\",\n      \"quote\": \"In order to investigate this statistically, we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.\",\n      \"location\": \"results (Experiment 1)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Small and unbalanced sample of suffixes\",\n      \"description\": \"In Experiment 1, only 20 suffixes were used (10 noun, 10 adjective), and in Experiment 2, only 11 suffixes were used. Given that the key analyses examine graded effects of diagnosticity/specificity across suffixes, the small number of suffixes severely limits statistical power for detecting these graded relationships and makes the results highly dependent on the particular suffixes selected.\",\n      \"quote\": \"Twenty suffixes diagnostic for the noun or adjective category were selected (See Table 2).\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Multiple comparisons without correction\",\n      \"description\": \"In Experiment 3, six different eye-movement measures are tested for the congruency effect without any correction for multiple comparisons. The authors find significant effects on only two of six measures (go-past time and regressions-out), but the probability of finding at least one significant result by chance increases substantially with six tests.\",\n      \"quote\": \"We did not have any concrete predictions as to which eye-movement measures would be affected by the diagnosticity manipulation, so we chose to monitor a variety of typically studied measures\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Inconsistent reporting of comprehension accuracy\",\n      \"description\": \"Comprehension accuracy in Experiment 3 is reported as '0.86%' which appears to be a typographical error (should be 86% or 0.86 proportion). Additionally, the range is reported as '0.66% to 0.98%', with the lower bound of 66% being quite low and potentially indicating some participants were not adequately engaged with the task. No participants appear to have been excluded based on low comprehension accuracy.\",\n      \"quote\": \"Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Unmatched pre-target word count across conditions\",\n      \"description\": \"In Experiment 3, the number of words before the target differed significantly between congruent and incongruent conditions (4.75 vs 5.23, p < .05). This means that the amount of contextual information available before encountering the target nonword differs across conditions, which could influence expectations and eye-movement behavior independently of the congruency manipulation.\",\n      \"quote\": \"Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).\",\n      \"location\": \"methods (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Confound between sentence structure and congruency\",\n      \"description\": \"The sentence templates used for noun, adjective, and verb contexts have fundamentally different syntactic structures. Congruent adjective-suffix nonwords always appear in adjective sentence frames (after copular/linking verbs), while incongruent adjective-suffix nonwords appear in noun or verb frames. Any differences could reflect difficulty with particular sentence structures rather than sensitivity to spelling-meaning regularities per se. The congruent and incongruent conditions are not matched on syntactic complexity or predictability of the target position.\",\n      \"quote\": \"Nonwords in the noun context template occupied the syntactic position of a direct/indirect object following an adjective, and so could only be interpreted as nouns. Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain\",\n      \"location\": \"methods (Experiment 2/3)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Convergence warning handled questionably\",\n      \"description\": \"The authors report a convergence warning in the regressions-out model in Experiment 3 and address it by refitting with a different optimizer (bobyqa). While this is a reasonable first step, identical fits from two optimizers do not guarantee that the solution is correct—it could mean both converged to the same local minimum. More robust approaches (e.g., simplifying the random effects structure, checking gradient values) would be more convincing.\",\n      \"quote\": \"The original model produced a convergence warning when the variables were added. One way to assess if this warning is a false positive is to refit this model using a different optimisation procedure, such as \\\"bobyqa\\\" (Powell, 2009). We did this, and observed that the fits of these two models and the significance levels for the fixed effects were identical, indicating that the initial warning was indeed a false positive\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Circularity in computational analysis\",\n      \"description\": \"The diagnosticity and specificity measures are computed from CELEX, which includes both genuinely suffixed words and pseudosuffixed words (e.g., 'corner' for -ER). The authors justify this by citing evidence that people identify morphemes within pseudoaffixed words. However, including pseudoaffixed words inflates the apparent relationship between spelling and meaning because these words' category distributions may differ from genuinely suffixed words. The measures thus reflect a mixture of true morphological regularity and accidental orthographic co-occurrence.\",\n      \"quote\": \"We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).\",\n      \"location\": \"methods (Computational Analysis)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Missing data not fully explained\",\n      \"description\": \"In Experiment 1, 11.7% of data points were missing due to timeouts or non-responses. This is a substantial proportion of data loss for a simple binary classification task with a 2-second timeout. The authors do not analyze whether missing data were systematically related to condition or suffix type, which could bias the results.\",\n      \"quote\": \"11.7% of data points were missing due to timeouts or button presses that did not correspond to a response\",\n      \"location\": \"results (Experiment 1)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"No power analysis or sample size justification\",\n      \"description\": \"None of the three experiments report a power analysis or provide justification for the sample sizes used (46, 29, and 47 participants respectively). Experiment 2 in particular has a relatively small sample (N=29) for detecting graded effects of specificity across only 11 suffixes.\",\n      \"quote\": \"Participants were 29 undergraduate students from Royal Holloway University of London.\",\n      \"location\": \"methods (Experiments 1-3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Demand characteristics in Experiment 1\",\n      \"description\": \"In Experiment 1, participants are explicitly told to classify nonwords as nouns or adjectives. The instructions provide definitions and examples of these categories. This explicit framing may encourage participants to use metalinguistic strategies (e.g., consciously recalling words with similar endings) rather than reflecting implicit knowledge of spelling-meaning regularities. The authors claim this reflects 'extracted information about lexical category from written language' but the task demands explicit categorization.\",\n      \"quote\": \"You will be asked to decide if a letter string looks like a noun or an adjective. NOUN is a person, animal, place, thing, or idea: For example, AUNT, CAT, FOREST, CUP, LOVE. ADJECTIVE is an attribute of a noun: For example, SWEET, RED, SIMPLE\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Token-based analyses show weaker or null effects\",\n      \"description\": \"Across all three experiments, token-based measures consistently show weaker effects than type-based measures, and in some cases are non-significant (e.g., adjective-specific suffixes in Experiment 1 show no effect of token diagnosticity, p > 0.8). The authors acknowledge this but do not adequately explain why token measures should be less relevant, given that token frequency is typically considered more psychologically relevant for exposure-based learning. The post-hoc explanation invoking contextual diversity is speculative.\",\n      \"quote\": \"The results based on token measures were similar (main effect of diagnosticity, and an effect of diagnosticity on noun-diagnostic suffixes), but adjective-specific suffixes did not show an effect of diagnosticity (p > 0.8).\",\n      \"location\": \"results (Experiment 1) / General Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Verb suffixes excluded from analysis in Experiment 3\",\n      \"description\": \"In Experiment 3, 40 filler nonwords with verb-diagnostic suffixes were included but not analyzed because 'the majority of verb suffixes do not discriminate lexical category.' This selective exclusion reduces the generalizability of the findings and means the congruency manipulation is tested only for nouns and adjectives. The rationale for exclusion (diagnosticity < 0.5) is applied post-hoc to verb suffixes but not to the noun/adjective suffixes, some of which also have relatively low diagnosticity (e.g., -AN at 0.50).\",\n      \"quote\": \"Forty filler nonwords whose suffix spellings were diagnostic for verbs were added so that sentence contexts would be balanced across all three lexical categories. These filler nonwords were not analysed, because the majority of verb suffixes do not discriminate lexical category (i.e. diagnosticity is less than 0.5).\",\n      \"location\": \"methods (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Generalizability limited to derivational suffixes\",\n      \"description\": \"The entire framework is built around derivational suffixes, which represent only one aspect of morphology. The authors' broad claims about 'the relationship between spelling and meaning' and the functional nature of English spelling inconsistency are not warranted based solely on suffix data. Prefixes, compounding, and other morphological processes are not considered.\",\n      \"quote\": \"We close by arguing that English spelling may have become fractionated in such a way that the high degree of spelling-sound inconsistency maximises the transmission of meaningful information.\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Marginal effects interpreted as supporting hypotheses\",\n      \"description\": \"In Experiment 3, the effect of diagnosticity on go-past times in the incongruent condition is described as 'a trend' at p = 0.13, and the effect on regressions-out in the incongruent condition is marginally significant at p = 0.08. These are interpreted as supporting the hypothesis despite not reaching conventional significance thresholds.\",\n      \"quote\": \"whereas there was a trend towards an effect in the incongruent condition (B = 36.35, t = 1.58, p = 0.13)\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Incomplete model specification for Experiment 3\",\n      \"description\": \"For Experiment 3, the authors state that 'All models included trial order as a main effect, and random intercepts for subjects and for suffixes' but do not report the full model formula or whether random slopes were considered. Given the recommendations in the literature for maximal random effects structures, the omission of random slopes (e.g., for congruency by subjects and by items) could lead to anti-conservative inference.\",\n      \"quote\": \"All models included trial order as a main effect, and random intercepts for subjects and for suffixes. However, in the interest of space we report only those effects pertaining to our main variable of interest, congruency\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Nonword naturalness and plausibility not controlled\",\n      \"description\": \"The nonwords were created by concatenating CVC stems with suffixes, but no norming study was conducted to verify that these nonwords were perceived as plausible English words or that they were equally natural across conditions. Some combinations may have been more or less word-like, which could influence processing independently of the suffix manipulation.\",\n      \"quote\": \"Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Entropy analysis interpretation\",\n      \"description\": \"The entropy analysis comparing Hspelling and Hsound yields a slope of 0.9, which is statistically different from 1 but represents a very small difference (mean H of 0.61 vs 0.63). The authors interpret this as evidence that 'the spellings of derivational suffixes generally yield better prediction of lexical category than do their spoken realisations,' but the practical significance of this difference is minimal and may not support the strong theoretical claims made about spelling being functionally superior to phonology for conveying meaning.\",\n      \"quote\": \"We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Experiment 2 lacks counterbalancing of suffix-context pairings\",\n      \"description\": \"In Experiment 2, each participant saw all 66 sentences, with each suffix appearing three times in congruent and three times in incongruent contexts. However, the assignment of specific nonwords to congruent vs. incongruent conditions was not counterbalanced across participants—all participants received the same assignment. This means that any idiosyncratic properties of specific nonwords are confounded with condition.\",\n      \"quote\": \"Each subject saw all 66 sentences.\",\n      \"location\": \"methods (Experiment 2)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Inconsistent reporting of specificity effect in Experiment 2\",\n      \"description\": \"For the token-based specificity analysis in Experiment 2, the authors report 'z = 0.60, p < 0.01' which is inconsistent—a z-value of 0.60 would correspond to p ≈ 0.55, not p < 0.01. This appears to be a reporting error.\",\n      \"quote\": \"for the token analyses - z = 0.60, p < 0.01\",\n      \"location\": \"results (Experiment 2)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"CELEX database limitations\",\n      \"description\": \"The computational analysis relies entirely on the CELEX database, which is based on a specific corpus and may not accurately represent the distribution of words that modern English readers encounter. CELEX is also known to contain errors in morphological parsing. The authors do not discuss these limitations or validate their measures against alternative corpora.\",\n      \"quote\": \"We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)\",\n      \"location\": \"methods (Computational Analysis)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Correlation between diagnosticity and specificity\",\n      \"description\": \"The correlation between diagnosticity and specificity is moderate (r = 0.53 for types, r = 0.47 for tokens), meaning these constructs share substantial variance. When the authors test effects of diagnosticity in Experiments 1 and 3, and specificity in Experiment 2, they do not control for the other construct. It is therefore unclear whether the behavioral effects are uniquely attributable to the construct being tested or to shared variance with the other construct.\",\n      \"quote\": \"The correlation between the type variables is 0.53, p < 0.0001; that between the token variables – 0.47, p < 0.0001. This indicates that the two constructs are related although they capture distinct properties of suffixes.\",\n      \"location\": \"results (Computational Analysis)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Experiment 1 conducted after unrelated testing\",\n      \"description\": \"Experiment 1 was conducted at the end of a longer, unrelated testing session. Participant fatigue could affect performance on this task, potentially increasing the 11.7% missing data rate and adding noise to the results.\",\n      \"quote\": \"This experiment was conducted at the end of a longer, unrelated testing session.\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Causal claims about writing system evolution\",\n      \"description\": \"The authors make strong claims about English spelling having 'evolved' or 'become fractionated' to maximize meaningful information transmission. However, the data presented are entirely synchronic (cross-sectional analysis of present-day English). The diachronic evidence cited is from Berg and Aronoff (2017) and covers only a few suffixes. The evolutionary/functional claims go well beyond what the current data can support.\",\n      \"quote\": \"English spelling may have become fractionated in such a way that the high degree of spelling-sound inconsistency maximises the transmission of meaningful information in the service of skilled reading.\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Effect sizes not reported\",\n      \"description\": \"Across all three experiments, no effect sizes (e.g., Cohen's d, odds ratios, R²) are reported for the key findings. Only regression coefficients (B values) and test statistics are provided, making it difficult to assess the practical significance of the effects.\",\n      \"quote\": \"Results showed a main effect of suffix condition such that noun-diagnostic suffixes elicited more \\\"noun\\\" responses (B = -1.57, z = -4.224, p < 0.0001)\",\n      \"location\": \"results (all experiments)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Forced binary choice in Experiment 1\",\n      \"description\": \"Participants in Experiment 1 were forced to choose between 'noun' and 'adjective' only. This excludes the possibility that some suffixes might be perceived as verb-like or as belonging to no clear category. The forced binary choice may artificially inflate the apparent sensitivity to noun-adjective distinctions.\",\n      \"quote\": \"participants indicated their adjective-noun decisions via button press\",\n      \"location\": \"methods (Experiment 1)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Selective exclusion in corpus analyses\",\n      \"description\": \"In the 'Why are some suffixes more diagnostic than others?' section, the authors remove suffixes with diagnosticity of 1 (40 suffixes) and suffixes with diagnosticity below 0.35 (7 suffixes) before examining the correlation between frequency and diagnosticity. This selective exclusion of nearly a third of the data to obtain a desired positive correlation is concerning and could be seen as data-dependent analysis.\",\n      \"quote\": \"Once we remove these 40 suffixes, a positive correlation is observed (0.23, p < 0.05), meaning that highly diagnostic suffixes tend to be those that occur in many words.\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Single pronunciation assumption\",\n      \"description\": \"The computational analysis considers only the most frequent pronunciation for each suffix when computing specificity. This simplification ignores dialectal variation and alternative pronunciations that could affect the mapping between sound and spelling, potentially biasing the specificity estimates.\",\n      \"quote\": \"Only the most frequent pronunciation was considered for each suffix.\",\n      \"location\": \"methods (Computational Analysis)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Potential confound of suffix length with condition in Experiment 3\",\n      \"description\": \"The noun and adjective suffixes used in Experiment 3 differ in their typical lengths (e.g., -NESS, -MENT vs. -Y, -IC). Since the target region for eye-tracking analysis is the entire nonword, differences in nonword length across conditions could influence fixation measures. The authors do not report whether nonword length was matched across congruent and incongruent conditions.\",\n      \"quote\": \"The region of interest for analysis was the nonword.\",\n      \"location\": \"methods (Experiment 3)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Regressions-out estimate inconsistency\",\n      \"description\": \"In Table 5, the estimate for regressions-out is reported as B = 0.25 with z = 2.65, but in the text the estimate is reported as B = 0.3 with z = 3.12. These values do not match, suggesting either a typographical error or that different models were used.\",\n      \"quote\": \"The effect of congruency on regressions-out was significant in the expected direction, i.e. incongruent targets were more likely to elicit regressions to earlier regions of the sentence (B = 0.3, z = 3.12, p < 0.01).\",\n      \"location\": \"results (Experiment 3)\",\n      \"severity\": \"moderate\"\n    }\n  ]\n}\n```",
+  "model_id": "claude-opus-4-6",
+  "token_usage": {
+    "input_tokens": 36652,
+    "output_tokens": 6070
+  }
+}

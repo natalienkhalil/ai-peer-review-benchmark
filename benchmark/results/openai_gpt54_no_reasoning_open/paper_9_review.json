@@ -1,0 +1,492 @@
+{
+  "paper_id": 9,
+  "provider_name": "openai_gpt54_no_reasoning_open",
+  "issues": [
+    {
+      "category": "design",
+      "subcategory": "oversample/representativeness bias",
+      "description": "The study combines a nationally matched sample with an additional oversample of past-year sports-wagering participants, but the analytic plan treats the combined data as if it were simply a large general sample. No survey weights, stratification adjustments, or model-based corrections are specified to recover population-representative estimates after oversampling. This threatens validity of prevalence estimates, regression coefficients, and cross-behavior comparisons, especially for gambling-related analyses and any pooled analyses.",
+      "quote": "This work will make use of an upcoming study (N=4,000) involving a representative sample of the U.S. population (n=2,500) and a sample of sports-wagering individuals in the U.S. (n=1,500).",
+      "location": "abstract",
+      "severity": "critical"
+    },
+    {
+      "category": "design",
+      "subcategory": "sampling frame mismatch",
+      "description": "Participants are recruited from an online opt-in panel and 'matched' to norms rather than sampled probabilistically. Calling this sample 'nationally representative' overstates generalizability. Without details on panel recruitment, matching variables, weighting, and response rates, representativeness is uncertain, especially for stigmatized behaviors such as pornography use and illicit drug use.",
+      "quote": "Participants will be recruited by YouGov Opinion Polling and matched to U.S. representative norms.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "no weighting plan",
+      "description": "The manuscript never specifies whether survey weights supplied by YouGov will be used in descriptive or inferential analyses. In an unmatched/oversampled panel, unweighted OLS may produce biased estimates and incorrect standard errors. This is especially important because conclusions are framed as population-level and nationally representative.",
+      "quote": "Data will be provided by YouGov in SPSS format... data will be imported into and analyzed using R statistical software.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "hypothesis confirmation bias",
+      "description": "The manuscript repeatedly states an aim to 'demonstrate' that moral incongruence is unique to sexual behavior, indicating a confirmatory stance that may bias interpretation. A registered report should neutrally test competing hypotheses rather than frame the study as designed to establish a preferred conclusion.",
+      "quote": "with a specific goal of demonstrating that moral incongruence is unique in predicting compulsive sexual behaviors.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "overinterpretation of CSBD caveat",
+      "description": "The paper implies that if moral incongruence predicts self-reported pornography problems but not other addictions, this would support the ICD-11 diagnostic caveat for CSBD. But the study does not assess clinician-rated diagnosis, functional impairment, differential diagnosis, or the caveat's intended use in diagnosis; it assesses self-reported symptoms in a community survey. Therefore the design cannot validate or invalidate the diagnostic wording in ICD-11.",
+      "quote": "should we find that moral incongruence—defined as the interaction between moral disapproval of a behavior and the frequency of engaging in that behavior—only predicts self-reported problematic use of pornography, then this work would provide strong evidence for the validity of the PPMI... Furthermore... there would be additional evidence supporting the inclusion of moral distress as a diagnostic consideration in the ICD-11 for CSBD.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "construct misdefinition",
+      "description": "The paper defines moral incongruence as the interaction of moral disapproval and behavior frequency, but elsewhere describes it as the interaction of moral disapproval with 'severity of consequences.' This is a substantive inconsistency in the core construct definition. Using different operational definitions undermines interpretability and preregistration clarity.",
+      "quote": "Central to the proposed study is the measurement of moral incongruence as the interaction of moral disapproval of an action with severity of consequences from the action. That is, the present study seeks to test whether the observed effects of interactions present in prior literature for pornography use (i.e., between moral disapproval and frequency of use) extend to addictive disorders more broadly.",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent coding of frequency scale",
+      "description": "The frequency scale is described inconsistently across sections. In the Methods for pornography, the scale is reported as 1 to 6, whereas elsewhere and in supplemental materials it is 0 to 5. Inclusion criteria are also defined using scores >1, which would exclude 'once or twice' if the 1-6 coding is used but include it if 0-5 coding is used. This ambiguity affects who is analyzed and how variables are scaled.",
+      "quote": "Pornography viewing frequency will be assessed using the same modified frequency scale as is present on the ASSIST, wherein participants will report past-year frequency of pornography use on a scale of 1 (never) to 6 (more than once per day). ... only participants who report viewing pornography at least once in the past 12 months (i.e., scores > 1 on the frequency measure) will complete the remaining items described below.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "contradictory inclusion criteria",
+      "description": "The manuscript first states that only participants endorsing past-year use will complete further measures of problematic use, then later states that key measures of problematic use and moral disapproval will be administered to all participants regardless of engagement. These contradictory procedures create uncertainty about missingness, sample denominators, and whether non-users contribute zeros or are excluded.",
+      "quote": "Only participants who endorse past-year use will complete further measures of problematic use.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "contradictory inclusion criteria",
+      "description": "This statement directly conflicts with earlier descriptions that only past-year users complete downstream items. Such inconsistency makes the analytic sample and handling of structural zeros impossible to determine.",
+      "quote": "For each target behavior and corresponding measure of problematic use or addiction, key measures will be administered to all participants regardless of their engagement in the behavior. That is, we will administer measures of problematic use and moral disapproval to all participants in the sample.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "structural confounding by restricting to users",
+      "description": "If analyses are restricted to past-year users only, the interaction between moral disapproval and frequency is estimated in a truncated range of frequency and excludes the most morally disapproving non-users, who are conceptually central to moral incongruence. Restriction can distort interaction estimates, induce collider bias, and make results incomparable across behaviors with very different prevalence.",
+      "quote": "Only participants who endorse past-year use will complete further measures of problematic use.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "nonparallel recall windows",
+      "description": "Predictors and outcomes are measured over different recall windows across domains: behavior frequency over the past 12 months, ASSIST problem items over the past 3 months, pornography problems over the past 6 months, and gambling problems over the last 12 months. These mismatched windows complicate interpretation of associations and comparisons across behaviors; an interaction based on annual frequency predicting 3-month or 6-month symptom reports is not directly parallel.",
+      "quote": "participants will report the frequency with which they have engaged in those behaviors over the past 12 months... To assess problematic or potentially addictive use... In the past three months...",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "heterogeneous outcomes across behaviors",
+      "description": "The primary outcomes differ substantially in content and psychometric basis across domains: modified ASSIST average for substances, BPS sum for pornography, PGSI average for gambling, plus modified ASSIST outcomes for pornography and gambling in Table 1. These outcomes are not metrically comparable, so cross-behavior claims about uniqueness of interaction effects may reflect measurement differences rather than substantive differences.",
+      "quote": "with pornography and gambling assessed using the validate measures of problematic use (the Brief Pornography Screen and the Problem Gambling Severity Index, respectively).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "invalid modification of validated instrument",
+      "description": "The ASSIST is extensively modified: substance categories are changed, response anchors altered, alcohol quantity threshold removed, nicotine categories broadened, cannabis added separately, and pornography/gambling inserted as new domains. These modifications invalidate known scoring properties and cutoffs. The resulting 'problematic use' averages are not validated measures, threatening construct validity and comparability.",
+      "quote": "To assess substance use behaviors, we will use a modified version of the Alcohol, Smoking and Substance Involvement Screening Test (ASSIST... Our modifications are described below.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "unvalidated extension to gambling/pornography",
+      "description": "The study explicitly extends ASSIST items to pornography and gambling despite acknowledging that this approach is unvalidated. Because major conclusions depend on comparing effects across these domains, use of an unvalidated cross-domain outcome threatens the central inference.",
+      "quote": "We will also include pornography and gambling as response options on the NIDA-ASSIST... Although such an approach is not currently validated for gambling or pornography...",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "altered alcohol measure",
+      "description": "The original NIDA quick screen for alcohol assesses heavy episodic drinking using sex-specific thresholds, but the study instead analyzes general alcohol frequency. This changes the construct from risky drinking to any drinking frequency, which may weaken relevance to addiction symptoms and make alcohol nonparallel to other substances.",
+      "quote": "for the sake of the present study, we will look at alcohol frequency more generally (i.e., asking participants how often they have consumed alcohol without specifying the quantity consumed).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "lumping dissimilar nicotine products",
+      "description": "Combining cigarettes, smokeless tobacco, and vaping into one nicotine item collapses distinct behaviors with different norms, moral meanings, frequencies, and risk profiles. This broad aggregation may obscure true associations and render moral disapproval items poorly aligned with the behavior frequency variable.",
+      "quote": "we will make it explicitly clear that smoked tobacco products, e-cigarettes/vapes, and smokeless tobacco products are all subsumed by our single question on tobacco/nicotine.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "heterogeneous substance categories",
+      "description": "The categories 'illegal/illicit drugs' and 'prescription drugs for non-medical reasons' are broad composites spanning very different substances with very different prevalence, moral valuations, and addictive potential. A single frequency, moral disapproval, and problem score for each composite is conceptually crude and may attenuate or distort effects.",
+      "quote": "we will assess past year frequency of alcohol use, nicotine products, prescription drugs for non-medical reasons, and illegal drugs.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "single-item moral disapproval",
+      "description": "Moral disapproval is measured by a single item for each behavior. Single items have limited reliability and may inadequately capture a multifaceted construct (moral wrongness, religious prohibition, social stigma, self-ideal discrepancy, guilt). Measurement error in a moderator is especially problematic because it attenuates interaction effects and can produce false conclusions of null uniqueness for non-sexual behaviors.",
+      "quote": "For each substance, we will ask participants to rate their agreement with the following statement “I believe that using ________ is morally wrong” on a scale of 1 (strongly disagree) to 7 (strongly agree).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "item contamination by guilt/morality",
+      "description": "The Brief Pornography Screen includes an item about guilt ('You continue to use pornography even though you feel guilty about it'). Because guilt is conceptually proximate to moral disapproval, the pornography outcome is contaminated by the predictor, mechanically inflating associations and making pornography appear more uniquely linked to morality than other domains. This threatens the study's main comparative inference.",
+      "quote": "5. You continue to use pornography even though you feel guilty about it.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "outcome contamination by guilt",
+      "description": "The PGSI contains an item about guilt, which may itself capture moral disapproval rather than disorder severity. Although this affects gambling too, the extent and wording differ across measures, contributing to non-equivalence of outcomes and possible predictor-outcome overlap.",
+      "quote": "Have you felt guilty about the way you gamble or what happens when you gamble?",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "inappropriate score construction",
+      "description": "The manuscript proposes averaging ASSIST items with radically different scales (0-5 frequency items and 0/3/6 lifetime/recent concern/control items). Averaging ordinal items with non-equidistant categories and mixed time frames assumes interval properties and equal weighting without validation. This composite may not represent any coherent construct.",
+      "quote": "Responses to each of the above five items will be averaged for each substance of interest",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "mixed time frames within composite",
+      "description": "The ASSIST-derived outcome combines past 3-month urges/problems/interference with lifetime/recency items about concern and failed control. The resulting average blends different reference periods, which undermines interpretability and may confound chronic history with current severity.",
+      "quote": "Participants will respond to three frequency based questions... “In the past three months...” ... Participants will also respond to two questions “Has a friend or relative or anyone else ever expressed concern...” and “Have you ever tried and failed to control... ”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "ordinal outcomes treated as continuous",
+      "description": "The main analyses use OLS linear regression on outcomes derived from ordinal items with severe skew/zero inflation likely, especially for low-prevalence substances. This may yield biased estimates and heteroskedastic residuals. More appropriate models might include ordinal, count, zero-inflated, hurdle, or generalized linear models, or latent-variable approaches for ordinal indicators.",
+      "quote": "we will conduct moderation analyses using the lm function in the stats package for R statistical software",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "interaction on arbitrary numeric coding",
+      "description": "Behavior frequency is measured on a coarse ordinal scale (0-5), then centered and multiplied with moral disapproval to create an interaction. Treating these categories as equally spaced may not reflect actual behavioral frequency, especially between 'monthly,' 'weekly,' 'daily,' and 'more than once per day.' Interaction coefficients may therefore be scale artifacts.",
+      "quote": "focal predictors (behavioral frequency measures) and moderators (moral disapproval questions) will be centered and their interaction term calculated.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "equivalence testing not aligned with model scale",
+      "description": "The equivalence region is defined using standardized betas from prior studies, but the described regression analyses use raw-form predictors processed in SPSS. It is unclear whether equivalence tests will be applied to standardized or unstandardized coefficients, and how standardization will be harmonized across behaviors with different variances and prevalence. This ambiguity undermines the preregistered inferential target.",
+      "quote": "For moderation analyses, key variables will be entered in their raw form during data processing in SPSS, and their product will be computed. We will use the Anderson-Hauck equivalence test... with an equivalence region based on the smallest effect size of interest (SESOI) of δ= .27.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "inconsistent SESOI specification",
+      "description": "The manuscript first states SESOI δ = .27, then later says the equivalence region is based on β = .11 and repeatedly refers to hypotheses being supported if the observed effect falls within |.11|. These are materially different thresholds. This contradiction makes the registered equivalence test uninterpretable.",
+      "quote": "We will use the Anderson-Hauck equivalence test for regression... with an equivalence region based on the smallest effect size of interest (SESOI) of δ= .27.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "conflicting SESOI threshold",
+      "description": "This later passage contradicts the earlier claim that δ=.27, switching the SESOI to β=.11. Because conclusions hinge on equivalence, this unresolved discrepancy is critical.",
+      "quote": "we elected to set our SESOI (δ) for our equivalence interval equal to the observed standardized estimate (β value) corresponding to the smallest effect listed above (β=.11...",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "post hoc shifting equivalence bounds",
+      "description": "The authors plan to redefine the equivalence region based on the observed pornography interaction if initial hypotheses fail. This is data-dependent thresholding that compromises the confirmatory nature of the registered report and inflates flexibility in interpretation. The null/non-null standard should not be derived from observed study data after seeing results.",
+      "quote": "we will conduct exploratory analyses wherein we redefine the region of equivalence using the lower bounds of the 95% CI for the standardized estimate for our pornography outcome.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "another post hoc equivalence rule",
+      "description": "The manuscript proposes a second alternative equivalence region for underpowered behaviors, tied to an effect from prior pornography analyses. This effectively changes the research question for low-prevalence substances and creates asymmetrical criteria across behaviors, undermining the central comparison.",
+      "quote": "Should we lack power to sufficient test equivalence with null effects for the above behaviors, we will adjust analyses accordingly. Specifically, rather than testing whether or not the effect of moral incongruence for these behaviors falls within the region of equivalence for our primary SESOI, we will test an alternative model where our equivalence region is defined by the lower bound of the 95% CI for the standardized estimate of moral incongruence in predicting self-reported addiction to pornography",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "inadequate multiple testing control",
+      "description": "The study plans at least eight moderation models, multiple outcomes for pornography and gambling, bivariate correlations across many variables, and exploratory fallback analyses, but no familywise error or false discovery correction is specified for the primary hypothesis tests. This increases risk of Type I error and selective emphasis.",
+      "quote": "In total, we will conduct 8 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest, with pornography and gambling assessed using the validate measures of problematic use (the Brief Pornography Screen and the Problem Gambling Severity Index, respectively).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "power mismatch for low-prevalence groups",
+      "description": "The authors acknowledge very low power for prescription drug misuse and illicit drug analyses under the primary SESOI. Yet strong claims are still framed about moral incongruence not generalizing to substance use. Underpowered equivalence tests cannot support absence-of-effect conclusions; lack of evidence is not evidence of equivalence when sample sizes are inadequate.",
+      "quote": "Prescription Drug Misuse | 3.5% | 140 | .057 | .301",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "complete-case/structural missingness assumptions",
+      "description": "The authors state they anticipate 'no unplanned missingness' and do not expect data quality problems because of YouGov procedures. This overlooks item nonresponse, skip-pattern missingness, and missingness associated with stigmatized behaviors. No plan is provided for handling missing covariate or outcome data, nor for distinguishing missing from structural zeros.",
+      "quote": "Accordingly, we do not anticipate having to remove responses from the dataset due to inattentive or invalid response styles or due to careless responding. Additionally, we anticipate no unplanned missingness of data.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent number of outcomes",
+      "description": "The manuscript says regression assumptions will be tested for 'each of the eight proposed outcomes,' but Table 1 and the text indicate multiple outcomes for pornography and gambling, implying more than eight outcome variables or analyses. This inconsistency obscures the analytic multiplicity and exact model count.",
+      "quote": "assumptions of regression ... will be tested for each of the eight proposed outcomes.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "non-comparable behavior frequency measures",
+      "description": "Gambling frequency is measured as an average across multiple distinct gambling activities, pornography frequency as a single item about viewing alone, and substance frequency as one item per broad category. These frequency predictors are not conceptually or metrically parallel, weakening any claim that interaction effects can be compared across domains.",
+      "quote": "To form a measure of gambling frequency, an average across gambling behaviors will be taken.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "glaring inconsistency in gambling measure description",
+      "description": "In the main methods, gambling frequency is said to be assessed using a single item, yet later an average across gambling behaviors is described, and the supplement shows only a single overall gambling frequency item. This inconsistency makes the actual predictor unclear.",
+      "quote": "We will assess gambling frequency using a single item.... To form a measure of gambling frequency, an average across gambling behaviors will be taken.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "non-equivalent pornography frequency item",
+      "description": "Pornography frequency only asks about use 'alone (i.e., without a partner).' This excludes partnered pornography use, which may still be morally disapproved and associated with self-perceived problems. The measure is narrower than the moral disapproval item ('pornography use') and narrower than the BPS, producing predictor-outcome mismatch.",
+      "quote": "Viewed pornography alone (i.e., without a partner)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "covariate under-adjustment",
+      "description": "Only age, gender, and religiousness are included as covariates despite panel data containing ideology, education, income, marital status, region, religious affiliation, and political variables likely associated with both moral disapproval and behavior frequency. Omitting obvious confounders may bias moral disapproval coefficients and interactions.",
+      "quote": "In each case, we intend on including religiousness, age, and gender as covariates",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "binary gender coding misfit",
+      "description": "Gender is modeled as binary (male vs not-male), which collapses women and all nonbinary respondents into a single category. This is conceptually poor, may miscode panel data, and could distort adjustment if associations differ across groups. It also conflicts with the supplemental survey branching, which distinguishes only man/woman for alcohol questions.",
+      "quote": "gender (binary where 1 = male, and 0 =not-male)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "inconsistent alcohol sex/gender branching",
+      "description": "The supplemental instrument branches heavy drinking items based on 'IF GENDER = WOMAN' and 'IF GENDER = MAN,' while covariates treat gender as male vs not-male. This inconsistency risks misclassification and unclear handling of respondents outside these categories.",
+      "quote": "IF GENDER = WOMAN ... IF GENDER = MAN",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "self-report symptoms conflated with disorder",
+      "description": "The paper frequently equates self-reported feelings of addiction/problematic use with actual addictive disorder symptoms and uses language suggesting relevance to CSBD and gambling/substance use disorders. Yet the measures are self-report screening instruments or modified items, not diagnoses, and may be heavily influenced by stigma. This conflation overstates clinical implications.",
+      "quote": "we seek to establish whether moral incongruence ... influences self-perceived feelings of addiction to both behaviors (i.e., gambling) and substances (alcohol, nicotine, cannabis, prescription drugs, and illicit drugs).",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "causal language in cross-sectional design",
+      "description": "The manuscript repeatedly uses causal or directional language ('predict,' 'influences,' 'driving') despite a cross-sectional design with simultaneous self-reports. Such wording overstates what can be concluded and obscures possibilities of reverse causation (e.g., perceived addiction increasing moral condemnation) and common-method bias.",
+      "quote": "we seek to establish whether moral incongruence... influences self-perceived feelings of addiction",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "common-method variance",
+      "description": "All focal variables are self-reported in the same survey, often with highly similar wording and shared evaluative tone. This design inflates associations through common-method variance and consistency motifs, especially between moral wrongness items and guilt/problem items. The manuscript does not acknowledge or mitigate this threat.",
+      "quote": "Participants will also respond to two questions... for each substance... Additionally, we will include a series of single-item moral disapproval questions...",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "mode/social desirability bias",
+      "description": "The study targets sensitive and stigmatized behaviors and moral judgments in an online panel but provides no strategy to assess or mitigate social desirability, item nonresponse, or underreporting. Differential underreporting may itself be correlated with moral disapproval or religiousness, biasing the central interaction estimates.",
+      "quote": "The primary focus of this project is to assess the prevalence of sports-wagering behaviors in the American public and how those behaviors relate to a wide variety of other behavioral addiction symptoms, substance use behaviors, and general mental well-being.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "poor handling of zero inflation",
+      "description": "For low-base-rate outcomes such as prescription misuse and illicit drug problems, symptom scores will likely have mass at zero and extreme skew. OLS moderation without a zero-inflated/hurdle framework may perform poorly and interaction terms may be driven by sparse cells, yet no such modeling plan is offered.",
+      "quote": "Prescription Drug Misuse | 3.5% | 140",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "unclear standard error estimation",
+      "description": "No plan is described for robust standard errors, heteroskedasticity-consistent inference, or design-based variance estimation despite likely heteroskedasticity, non-normality, and panel weighting issues. Reliance on assumption checks and fallback supplemental analyses is insufficiently specified for confirmatory inference.",
+      "quote": "in cases where assumptions are substantially violated, we will conduct supplemental analyses to test the robustness of our models, as appropriate.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "vague contingency plans",
+      "description": "The phrase 'as appropriate' leaves unspecified what analyses will replace OLS under assumption violations. In a registered report, analytic contingencies should be explicit and reproducible rather than discretionary.",
+      "quote": "we will conduct supplemental analyses to test the robustness of our models, as appropriate.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "unclear outcome selection for pornography/gambling",
+      "description": "Table 1 indicates both BPS/PGSI and modified ASSIST outcomes for pornography and gambling, but the main moderation plan later mentions only BPS and PGSI for those domains. It is unclear whether both outcomes will be primary, secondary, or exploratory. This ambiguity creates analytic flexibility and multiplicity.",
+      "quote": "Pornography Use | Brief Pornography Screen Sum Score and modified NIDA-ASSIST items\nGambling Behavior | Problem Gambling Severity Index and modified NIDA-ASSIST items",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "misuse of reliability metrics with ordinal items",
+      "description": "The plan reports Cronbach's alpha and omega total for included scales but does not specify ordinal reliability estimates or polychoric-based methods for heavily ordinal items. Standard alpha on mixed ordinal/non-equidistant items can be misleading.",
+      "quote": "measures of internal consistency for included scales (Cronbach’s alpha and Omega total), will be calculated using the psych package",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "table corruption/errors",
+      "description": "Table 2 is visibly corrupted, repeating the same footnote text multiple times across columns. This makes the table difficult to interpret and raises concerns about editorial accuracy in the registered protocol, including whether power calculations were correctly communicated.",
+      "quote": "1. All substance estimates based on the 2019-2020 National Survey on Drug Use and Health... [repeated multiple times across the row]",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "reference and typographical errors",
+      "description": "There are visible reference problems and typographical errors, including an invalid reference entry ('a9h.') and wording problems like 'validate measures' and 'estimated achieved power based.' While not fatal alone, these errors reduce confidence in care taken with the protocol.",
+      "quote": "Willoughby, B. J. (2019). Stuck in the Porn Box. Archives of Sexual Behavior, 48(2), 449–453. a9h.",
+      "location": "references",
+      "severity": "minor"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "moral disapproval vs moral incongruence conflation",
+      "description": "The manuscript sometimes treats direct effects of moral disapproval as evidence relevant to moral incongruence and sometimes treats only the interaction as moral incongruence. This slippage muddles hypotheses and interpretation, especially because direct effects may simply reflect negative self-evaluation rather than discrepancy between values and behavior.",
+      "quote": "We expect to find that the simple, direct effect of moral disapproval of pornography on self-reported feelings of addiction to pornography will be significant and positive... We also expect to find that the interaction of moral disapproval of pornography use and pornography viewing frequency will positively predict...",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "inadequate test of uniqueness claim",
+      "description": "The central claim concerns uniqueness to 'sexual behavior,' yet the study operationalizes sexual behavior solely as pornography viewing. Other sexual behaviors relevant to CSBD are not measured. Therefore even perfect support would only show uniqueness relative to pornography in this dataset, not sexual behavior broadly.",
+      "quote": "the purpose of the present work is to test whether the moral incongruence model of problematic pornography use may generalize to addictions more broadly or whether it is unique to pornography use and sexual behavior.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "moral item content differs across domains",
+      "description": "The morality items are phrased generically ('using X is morally wrong'), but the target behaviors differ in legal status, social acceptability, and meaning of 'use' versus 'engage in' versus 'viewing.' A single generic moral wrongness item may not be comparable across alcohol, illicit drugs, gambling, and pornography, undermining cross-domain comparison of interaction sizes.",
+      "quote": "I believe that drinking alcohol is morally wrong... I believe that using illegal/illicit drugs is morally wrong.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "problem outcome includes interpersonal concern item",
+      "description": "One ASSIST-derived outcome item asks whether others ever expressed concern. This may reflect social network norms and stigma rather than addiction severity. Because moral environments vary with religiosity and culture, this item can inflate associations between moral disapproval and 'problem' scores independently of actual dysregulation.",
+      "quote": "Has a friend or relative or anyone else ever expressed concern about your use of or engagement in the following?",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "problem outcome includes failed control item across nonusers/low users",
+      "description": "The modified ASSIST asks all listed domains parallel questions about trying and failing to control/cut down. For behaviors engaged in rarely, and especially if administered to nonusers, this can create awkward or structurally impossible responses, complicating score meaning and potentially producing artifactual zeros or missingness.",
+      "quote": "Have you ever tried and failed to control, cut down or stop using (or doing) the following?",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "collider/selection bias due to user-only symptom assessment",
+      "description": "If symptom items are only administered to users, analyses condition on behavior engagement, which is itself likely related to moral disapproval. This can induce collider bias in associations among moral disapproval, frequency, and symptoms. The contradictory protocol about whether nonusers receive outcomes prevents evaluation of this major threat.",
+      "quote": "only participants who endorse past-year use will complete further measures of problematic use.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "direct comparison across coefficients not formally tested",
+      "description": "The study aims to show that the interaction is unique to pornography relative to other addictions, but the plan largely relies on separate regressions and equivalence tests within each behavior rather than formal cross-model comparisons of interaction effects using a common model or pooled interaction-by-domain framework. Separate significance/equivalence decisions do not directly establish differences between domains.",
+      "quote": "In total, we will conduct 8 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "alternative explanations not modeled",
+      "description": "Moral disapproval may proxy for broader conservatism, stigma sensitivity, shame proneness, psychopathology, or social desirability. None of these are measured or adjusted, yet strong conclusions are proposed about moral incongruence itself. This threatens construct validity of the central predictor.",
+      "quote": "we will ask participants to rate their agreement with the following statement “I believe that using ________ is morally wrong”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "study embedded in gambling-focused survey",
+      "description": "The broader survey is centered on sports wagering behaviors and funded by a responsible gambling organization. Embedding the present study in a gambling-focused survey may prime gambling-related cognitions, moral evaluations, or self-presentation, potentially affecting responses across domains. No discussion of context effects is provided.",
+      "quote": "Participants will be recruited in late March of 2022 as a part of a larger study of sports wagering behaviors in the American populace funded by the International Center for Responsible Gaming.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "timeline inconsistency for registered report",
+      "description": "The manuscript describes an 'upcoming study' and future data collection in late March 2022, but this temporal language may be inconsistent with the actual submission timing and raises concern about whether data collection may already have occurred. For a registered report, timing of registration relative to data access is essential and should be explicitly documented.",
+      "quote": "Participants will be recruited in late March of 2022",
+      "location": "methods",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"design\",\"subcategory\":\"oversample/representativeness bias\",\"description\":\"The study combines a nationally matched sample with an additional oversample of past-year sports-wagering participants, but the analytic plan treats the combined data as if it were simply a large general sample. No survey weights, stratification adjustments, or model-based corrections are specified to recover population-representative estimates after oversampling. This threatens validity of prevalence estimates, regression coefficients, and cross-behavior comparisons, especially for gambling-related analyses and any pooled analyses.\",\"quote\":\"This work will make use of an upcoming study (N=4,000) involving a representative sample of the U.S. population (n=2,500) and a sample of sports-wagering individuals in the U.S. (n=1,500).\",\"location\":\"abstract\",\"severity\":\"critical\"},{\"category\":\"design\",\"subcategory\":\"sampling frame mismatch\",\"description\":\"Participants are recruited from an online opt-in panel and 'matched' to norms rather than sampled probabilistically. Calling this sample 'nationally representative' overstates generalizability. Without details on panel recruitment, matching variables, weighting, and response rates, representativeness is uncertain, especially for stigmatized behaviors such as pornography use and illicit drug use.\",\"quote\":\"Participants will be recruited by YouGov Opinion Polling and matched to U.S. representative norms.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"no weighting plan\",\"description\":\"The manuscript never specifies whether survey weights supplied by YouGov will be used in descriptive or inferential analyses. In an unmatched/oversampled panel, unweighted OLS may produce biased estimates and incorrect standard errors. This is especially important because conclusions are framed as population-level and nationally representative.\",\"quote\":\"Data will be provided by YouGov in SPSS format... data will be imported into and analyzed using R statistical software.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"conceptual\",\"subcategory\":\"hypothesis confirmation bias\",\"description\":\"The manuscript repeatedly states an aim to 'demonstrate' that moral incongruence is unique to sexual behavior, indicating a confirmatory stance that may bias interpretation. A registered report should neutrally test competing hypotheses rather than frame the study as designed to establish a preferred conclusion.\",\"quote\":\"with a specific goal of demonstrating that moral incongruence is unique in predicting compulsive sexual behaviors.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"overinterpretation of CSBD caveat\",\"description\":\"The paper implies that if moral incongruence predicts self-reported pornography problems but not other addictions, this would support the ICD-11 diagnostic caveat for CSBD. But the study does not assess clinician-rated diagnosis, functional impairment, differential diagnosis, or the caveat's intended use in diagnosis; it assesses self-reported symptoms in a community survey. Therefore the design cannot validate or invalidate the diagnostic wording in ICD-11.\",\"quote\":\"should we find that moral incongruence—defined as the interaction between moral disapproval of a behavior and the frequency of engaging in that behavior—only predicts self-reported problematic use of pornography, then this work would provide strong evidence for the validity of the PPMI... Furthermore... there would be additional evidence supporting the inclusion of moral distress as a diagnostic consideration in the ICD-11 for CSBD.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"construct misdefinition\",\"description\":\"The paper defines moral incongruence as the interaction of moral disapproval and behavior frequency, but elsewhere describes it as the interaction of moral disapproval with 'severity of consequences.' This is a substantive inconsistency in the core construct definition. Using different operational definitions undermines interpretability and preregistration clarity.\",\"quote\":\"Central to the proposed study is the measurement of moral incongruence as the interaction of moral disapproval of an action with severity of consequences from the action. That is, the present study seeks to test whether the observed effects of interactions present in prior literature for pornography use (i.e., between moral disapproval and frequency of use) extend to addictive disorders more broadly.\",\"location\":\"introduction\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"inconsistent coding of frequency scale\",\"description\":\"The frequency scale is described inconsistently across sections. In the Methods for pornography, the scale is reported as 1 to 6, whereas elsewhere and in supplemental materials it is 0 to 5. Inclusion criteria are also defined using scores >1, which would exclude 'once or twice' if the 1-6 coding is used but include it if 0-5 coding is used. This ambiguity affects who is analyzed and how variables are scaled.\",\"quote\":\"Pornography viewing frequency will be assessed using the same modified frequency scale as is present on the ASSIST, wherein participants will report past-year frequency of pornography use on a scale of 1 (never) to 6 (more than once per day). ... only participants who report viewing pornography at least once in the past 12 months (i.e., scores > 1 on the frequency measure) will complete the remaining items described below.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"contradictory inclusion criteria\",\"description\":\"The manuscript first states that only participants endorsing past-year use will complete further measures of problematic use, then later states that key measures of problematic use and moral disapproval will be administered to all participants regardless of engagement. These contradictory procedures create uncertainty about missingness, sample denominators, and whether non-users contribute zeros or are excluded.\",\"quote\":\"Only participants who endorse past-year use will complete further measures of problematic use.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"contradictory inclusion criteria\",\"description\":\"This statement directly conflicts with earlier descriptions that only past-year users complete downstream items. Such inconsistency makes the analytic sample and handling of structural zeros impossible to determine.\",\"quote\":\"For each target behavior and corresponding measure of problematic use or addiction, key measures will be administered to all participants regardless of their engagement in the behavior. That is, we will administer measures of problematic use and moral disapproval to all participants in the sample.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"structural confounding by restricting to users\",\"description\":\"If analyses are restricted to past-year users only, the interaction between moral disapproval and frequency is estimated in a truncated range of frequency and excludes the most morally disapproving non-users, who are conceptually central to moral incongruence. Restriction can distort interaction estimates, induce collider bias, and make results incomparable across behaviors with very different prevalence.\",\"quote\":\"Only participants who endorse past-year use will complete further measures of problematic use.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"nonparallel recall windows\",\"description\":\"Predictors and outcomes are measured over different recall windows across domains: behavior frequency over the past 12 months, ASSIST problem items over the past 3 months, pornography problems over the past 6 months, and gambling problems over the last 12 months. These mismatched windows complicate interpretation of associations and comparisons across behaviors; an interaction based on annual frequency predicting 3-month or 6-month symptom reports is not directly parallel.\",\"quote\":\"participants will report the frequency with which they have engaged in those behaviors over the past 12 months... To assess problematic or potentially addictive use... In the past three months...\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"heterogeneous outcomes across behaviors\",\"description\":\"The primary outcomes differ substantially in content and psychometric basis across domains: modified ASSIST average for substances, BPS sum for pornography, PGSI average for gambling, plus modified ASSIST outcomes for pornography and gambling in Table 1. These outcomes are not metrically comparable, so cross-behavior claims about uniqueness of interaction effects may reflect measurement differences rather than substantive differences.\",\"quote\":\"with pornography and gambling assessed using the validate measures of problematic use (the Brief Pornography Screen and the Problem Gambling Severity Index, respectively).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"invalid modification of validated instrument\",\"description\":\"The ASSIST is extensively modified: substance categories are changed, response anchors altered, alcohol quantity threshold removed, nicotine categories broadened, cannabis added separately, and pornography/gambling inserted as new domains. These modifications invalidate known scoring properties and cutoffs. The resulting 'problematic use' averages are not validated measures, threatening construct validity and comparability.\",\"quote\":\"To assess substance use behaviors, we will use a modified version of the Alcohol, Smoking and Substance Involvement Screening Test (ASSIST... Our modifications are described below.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"unvalidated extension to gambling/pornography\",\"description\":\"The study explicitly extends ASSIST items to pornography and gambling despite acknowledging that this approach is unvalidated. Because major conclusions depend on comparing effects across these domains, use of an unvalidated cross-domain outcome threatens the central inference.\",\"quote\":\"We will also include pornography and gambling as response options on the NIDA-ASSIST... Although such an approach is not currently validated for gambling or pornography...\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"altered alcohol measure\",\"description\":\"The original NIDA quick screen for alcohol assesses heavy episodic drinking using sex-specific thresholds, but the study instead analyzes general alcohol frequency. This changes the construct from risky drinking to any drinking frequency, which may weaken relevance to addiction symptoms and make alcohol nonparallel to other substances.\",\"quote\":\"for the sake of the present study, we will look at alcohol frequency more generally (i.e., asking participants how often they have consumed alcohol without specifying the quantity consumed).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"lumping dissimilar nicotine products\",\"description\":\"Combining cigarettes, smokeless tobacco, and vaping into one nicotine item collapses distinct behaviors with different norms, moral meanings, frequencies, and risk profiles. This broad aggregation may obscure true associations and render moral disapproval items poorly aligned with the behavior frequency variable.\",\"quote\":\"we will make it explicitly clear that smoked tobacco products, e-cigarettes/vapes, and smokeless tobacco products are all subsumed by our single question on tobacco/nicotine.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"heterogeneous substance categories\",\"description\":\"The categories 'illegal/illicit drugs' and 'prescription drugs for non-medical reasons' are broad composites spanning very different substances with very different prevalence, moral valuations, and addictive potential. A single frequency, moral disapproval, and problem score for each composite is conceptually crude and may attenuate or distort effects.\",\"quote\":\"we will assess past year frequency of alcohol use, nicotine products, prescription drugs for non-medical reasons, and illegal drugs.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"single-item moral disapproval\",\"description\":\"Moral disapproval is measured by a single item for each behavior. Single items have limited reliability and may inadequately capture a multifaceted construct (moral wrongness, religious prohibition, social stigma, self-ideal discrepancy, guilt). Measurement error in a moderator is especially problematic because it attenuates interaction effects and can produce false conclusions of null uniqueness for non-sexual behaviors.\",\"quote\":\"For each substance, we will ask participants to rate their agreement with the following statement “I believe that using ________ is morally wrong” on a scale of 1 (strongly disagree) to 7 (strongly agree).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"item contamination by guilt/morality\",\"description\":\"The Brief Pornography Screen includes an item about guilt ('You continue to use pornography even though you feel guilty about it'). Because guilt is conceptually proximate to moral disapproval, the pornography outcome is contaminated by the predictor, mechanically inflating associations and making pornography appear more uniquely linked to morality than other domains. This threatens the study's main comparative inference.\",\"quote\":\"5. You continue to use pornography even though you feel guilty about it.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"outcome contamination by guilt\",\"description\":\"The PGSI contains an item about guilt, which may itself capture moral disapproval rather than disorder severity. Although this affects gambling too, the extent and wording differ across measures, contributing to non-equivalence of outcomes and possible predictor-outcome overlap.\",\"quote\":\"Have you felt guilty about the way you gamble or what happens when you gamble?\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"inappropriate score construction\",\"description\":\"The manuscript proposes averaging ASSIST items with radically different scales (0-5 frequency items and 0/3/6 lifetime/recent concern/control items). Averaging ordinal items with non-equidistant categories and mixed time frames assumes interval properties and equal weighting without validation. This composite may not represent any coherent construct.\",\"quote\":\"Responses to each of the above five items will be averaged for each substance of interest\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"mixed time frames within composite\",\"description\":\"The ASSIST-derived outcome combines past 3-month urges/problems/interference with lifetime/recency items about concern and failed control. The resulting average blends different reference periods, which undermines interpretability and may confound chronic history with current severity.\",\"quote\":\"Participants will respond to three frequency based questions... “In the past three months...” ... Participants will also respond to two questions “Has a friend or relative or anyone else ever expressed concern...” and “Have you ever tried and failed to control... ”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"ordinal outcomes treated as continuous\",\"description\":\"The main analyses use OLS linear regression on outcomes derived from ordinal items with severe skew/zero inflation likely, especially for low-prevalence substances. This may yield biased estimates and heteroskedastic residuals. More appropriate models might include ordinal, count, zero-inflated, hurdle, or generalized linear models, or latent-variable approaches for ordinal indicators.\",\"quote\":\"we will conduct moderation analyses using the lm function in the stats package for R statistical software\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"interaction on arbitrary numeric coding\",\"description\":\"Behavior frequency is measured on a coarse ordinal scale (0-5), then centered and multiplied with moral disapproval to create an interaction. Treating these categories as equally spaced may not reflect actual behavioral frequency, especially between 'monthly,' 'weekly,' 'daily,' and 'more than once per day.' Interaction coefficients may therefore be scale artifacts.\",\"quote\":\"focal predictors (behavioral frequency measures) and moderators (moral disapproval questions) will be centered and their interaction term calculated.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"equivalence testing not aligned with model scale\",\"description\":\"The equivalence region is defined using standardized betas from prior studies, but the described regression analyses use raw-form predictors processed in SPSS. It is unclear whether equivalence tests will be applied to standardized or unstandardized coefficients, and how standardization will be harmonized across behaviors with different variances and prevalence. This ambiguity undermines the preregistered inferential target.\",\"quote\":\"For moderation analyses, key variables will be entered in their raw form during data processing in SPSS, and their product will be computed. We will use the Anderson-Hauck equivalence test... with an equivalence region based on the smallest effect size of interest (SESOI) of δ= .27.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"inconsistent SESOI specification\",\"description\":\"The manuscript first states SESOI δ = .27, then later says the equivalence region is based on β = .11 and repeatedly refers to hypotheses being supported if the observed effect falls within |.11|. These are materially different thresholds. This contradiction makes the registered equivalence test uninterpretable.\",\"quote\":\"We will use the Anderson-Hauck equivalence test for regression... with an equivalence region based on the smallest effect size of interest (SESOI) of δ= .27.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"conflicting SESOI threshold\",\"description\":\"This later passage contradicts the earlier claim that δ=.27, switching the SESOI to β=.11. Because conclusions hinge on equivalence, this unresolved discrepancy is critical.\",\"quote\":\"we elected to set our SESOI (δ) for our equivalence interval equal to the observed standardized estimate (β value) corresponding to the smallest effect listed above (β=.11...\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"post hoc shifting equivalence bounds\",\"description\":\"The authors plan to redefine the equivalence region based on the observed pornography interaction if initial hypotheses fail. This is data-dependent thresholding that compromises the confirmatory nature of the registered report and inflates flexibility in interpretation. The null/non-null standard should not be derived from observed study data after seeing results.\",\"quote\":\"we will conduct exploratory analyses wherein we redefine the region of equivalence using the lower bounds of the 95% CI for the standardized estimate for our pornography outcome.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"another post hoc equivalence rule\",\"description\":\"The manuscript proposes a second alternative equivalence region for underpowered behaviors, tied to an effect from prior pornography analyses. This effectively changes the research question for low-prevalence substances and creates asymmetrical criteria across behaviors, undermining the central comparison.\",\"quote\":\"Should we lack power to sufficient test equivalence with null effects for the above behaviors, we will adjust analyses accordingly. Specifically, rather than testing whether or not the effect of moral incongruence for these behaviors falls within the region of equivalence for our primary SESOI, we will test an alternative model where our equivalence region is defined by the lower bound of the 95% CI for the standardized estimate of moral incongruence in predicting self-reported addiction to pornography\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"inadequate multiple testing control\",\"description\":\"The study plans at least eight moderation models, multiple outcomes for pornography and gambling, bivariate correlations across many variables, and exploratory fallback analyses, but no familywise error or false discovery correction is specified for the primary hypothesis tests. This increases risk of Type I error and selective emphasis.\",\"quote\":\"In total, we will conduct 8 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest, with pornography and gambling assessed using the validate measures of problematic use (the Brief Pornography Screen and the Problem Gambling Severity Index, respectively).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"power mismatch for low-prevalence groups\",\"description\":\"The authors acknowledge very low power for prescription drug misuse and illicit drug analyses under the primary SESOI. Yet strong claims are still framed about moral incongruence not generalizing to substance use. Underpowered equivalence tests cannot support absence-of-effect conclusions; lack of evidence is not evidence of equivalence when sample sizes are inadequate.\",\"quote\":\"Prescription Drug Misuse | 3.5% | 140 | .057 | .301\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"complete-case/structural missingness assumptions\",\"description\":\"The authors state they anticipate 'no unplanned missingness' and do not expect data quality problems because of YouGov procedures. This overlooks item nonresponse, skip-pattern missingness, and missingness associated with stigmatized behaviors. No plan is provided for handling missing covariate or outcome data, nor for distinguishing missing from structural zeros.\",\"quote\":\"Accordingly, we do not anticipate having to remove responses from the dataset due to inattentive or invalid response styles or due to careless responding. Additionally, we anticipate no unplanned missingness of data.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"inconsistent number of outcomes\",\"description\":\"The manuscript says regression assumptions will be tested for 'each of the eight proposed outcomes,' but Table 1 and the text indicate multiple outcomes for pornography and gambling, implying more than eight outcome variables or analyses. This inconsistency obscures the analytic multiplicity and exact model count.\",\"quote\":\"assumptions of regression ... will be tested for each of the eight proposed outcomes.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"non-comparable behavior frequency measures\",\"description\":\"Gambling frequency is measured as an average across multiple distinct gambling activities, pornography frequency as a single item about viewing alone, and substance frequency as one item per broad category. These frequency predictors are not conceptually or metrically parallel, weakening any claim that interaction effects can be compared across domains.\",\"quote\":\"To form a measure of gambling frequency, an average across gambling behaviors will be taken.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"glaring inconsistency in gambling measure description\",\"description\":\"In the main methods, gambling frequency is said to be assessed using a single item, yet later an average across gambling behaviors is described, and the supplement shows only a single overall gambling frequency item. This inconsistency makes the actual predictor unclear.\",\"quote\":\"We will assess gambling frequency using a single item.... To form a measure of gambling frequency, an average across gambling behaviors will be taken.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"non-equivalent pornography frequency item\",\"description\":\"Pornography frequency only asks about use 'alone (i.e., without a partner).' This excludes partnered pornography use, which may still be morally disapproved and associated with self-perceived problems. The measure is narrower than the moral disapproval item ('pornography use') and narrower than the BPS, producing predictor-outcome mismatch.\",\"quote\":\"Viewed pornography alone (i.e., without a partner)\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"covariate under-adjustment\",\"description\":\"Only age, gender, and religiousness are included as covariates despite panel data containing ideology, education, income, marital status, region, religious affiliation, and political variables likely associated with both moral disapproval and behavior frequency. Omitting obvious confounders may bias moral disapproval coefficients and interactions.\",\"quote\":\"In each case, we intend on including religiousness, age, and gender as covariates\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"binary gender coding misfit\",\"description\":\"Gender is modeled as binary (male vs not-male), which collapses women and all nonbinary respondents into a single category. This is conceptually poor, may miscode panel data, and could distort adjustment if associations differ across groups. It also conflicts with the supplemental survey branching, which distinguishes only man/woman for alcohol questions.\",\"quote\":\"gender (binary where 1 = male, and 0 =not-male)\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"inconsistent alcohol sex/gender branching\",\"description\":\"The supplemental instrument branches heavy drinking items based on 'IF GENDER = WOMAN' and 'IF GENDER = MAN,' while covariates treat gender as male vs not-male. This inconsistency risks misclassification and unclear handling of respondents outside these categories.\",\"quote\":\"IF GENDER = WOMAN ... IF GENDER = MAN\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"self-report symptoms conflated with disorder\",\"description\":\"The paper frequently equates self-reported feelings of addiction/problematic use with actual addictive disorder symptoms and uses language suggesting relevance to CSBD and gambling/substance use disorders. Yet the measures are self-report screening instruments or modified items, not diagnoses, and may be heavily influenced by stigma. This conflation overstates clinical implications.\",\"quote\":\"we seek to establish whether moral incongruence ... influences self-perceived feelings of addiction to both behaviors (i.e., gambling) and substances (alcohol, nicotine, cannabis, prescription drugs, and illicit drugs).\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"causal language in cross-sectional design\",\"description\":\"The manuscript repeatedly uses causal or directional language ('predict,' 'influences,' 'driving') despite a cross-sectional design with simultaneous self-reports. Such wording overstates what can be concluded and obscures possibilities of reverse causation (e.g., perceived addiction increasing moral condemnation) and common-method bias.\",\"quote\":\"we seek to establish whether moral incongruence... influences self-perceived feelings of addiction\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"common-method variance\",\"description\":\"All focal variables are self-reported in the same survey, often with highly similar wording and shared evaluative tone. This design inflates associations through common-method variance and consistency motifs, especially between moral wrongness items and guilt/problem items. The manuscript does not acknowledge or mitigate this threat.\",\"quote\":\"Participants will also respond to two questions... for each substance... Additionally, we will include a series of single-item moral disapproval questions...\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"mode/social desirability bias\",\"description\":\"The study targets sensitive and stigmatized behaviors and moral judgments in an online panel but provides no strategy to assess or mitigate social desirability, item nonresponse, or underreporting. Differential underreporting may itself be correlated with moral disapproval or religiousness, biasing the central interaction estimates.\",\"quote\":\"The primary focus of this project is to assess the prevalence of sports-wagering behaviors in the American public and how those behaviors relate to a wide variety of other behavioral addiction symptoms, substance use behaviors, and general mental well-being.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"poor handling of zero inflation\",\"description\":\"For low-base-rate outcomes such as prescription misuse and illicit drug problems, symptom scores will likely have mass at zero and extreme skew. OLS moderation without a zero-inflated/hurdle framework may perform poorly and interaction terms may be driven by sparse cells, yet no such modeling plan is offered.\",\"quote\":\"Prescription Drug Misuse | 3.5% | 140\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"unclear standard error estimation\",\"description\":\"No plan is described for robust standard errors, heteroskedasticity-consistent inference, or design-based variance estimation despite likely heteroskedasticity, non-normality, and panel weighting issues. Reliance on assumption checks and fallback supplemental analyses is insufficiently specified for confirmatory inference.\",\"quote\":\"in cases where assumptions are substantially violated, we will conduct supplemental analyses to test the robustness of our models, as appropriate.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"vague contingency plans\",\"description\":\"The phrase 'as appropriate' leaves unspecified what analyses will replace OLS under assumption violations. In a registered report, analytic contingencies should be explicit and reproducible rather than discretionary.\",\"quote\":\"we will conduct supplemental analyses to test the robustness of our models, as appropriate.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"unclear outcome selection for pornography/gambling\",\"description\":\"Table 1 indicates both BPS/PGSI and modified ASSIST outcomes for pornography and gambling, but the main moderation plan later mentions only BPS and PGSI for those domains. It is unclear whether both outcomes will be primary, secondary, or exploratory. This ambiguity creates analytic flexibility and multiplicity.\",\"quote\":\"Pornography Use | Brief Pornography Screen Sum Score and modified NIDA-ASSIST items\\nGambling Behavior | Problem Gambling Severity Index and modified NIDA-ASSIST items\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"misuse of reliability metrics with ordinal items\",\"description\":\"The plan reports Cronbach's alpha and omega total for included scales but does not specify ordinal reliability estimates or polychoric-based methods for heavily ordinal items. Standard alpha on mixed ordinal/non-equidistant items can be misleading.\",\"quote\":\"measures of internal consistency for included scales (Cronbach’s alpha and Omega total), will be calculated using the psych package\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"reporting\",\"subcategory\":\"table corruption/errors\",\"description\":\"Table 2 is visibly corrupted, repeating the same footnote text multiple times across columns. This makes the table difficult to interpret and raises concerns about editorial accuracy in the registered protocol, including whether power calculations were correctly communicated.\",\"quote\":\"1. All substance estimates based on the 2019-2020 National Survey on Drug Use and Health... [repeated multiple times across the row]\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"reporting\",\"subcategory\":\"reference and typographical errors\",\"description\":\"There are visible reference problems and typographical errors, including an invalid reference entry ('a9h.') and wording problems like 'validate measures' and 'estimated achieved power based.' While not fatal alone, these errors reduce confidence in care taken with the protocol.\",\"quote\":\"Willoughby, B. J. (2019). Stuck in the Porn Box. Archives of Sexual Behavior, 48(2), 449–453. a9h.\",\"location\":\"references\",\"severity\":\"minor\"},{\"category\":\"conceptual\",\"subcategory\":\"moral disapproval vs moral incongruence conflation\",\"description\":\"The manuscript sometimes treats direct effects of moral disapproval as evidence relevant to moral incongruence and sometimes treats only the interaction as moral incongruence. This slippage muddles hypotheses and interpretation, especially because direct effects may simply reflect negative self-evaluation rather than discrepancy between values and behavior.\",\"quote\":\"We expect to find that the simple, direct effect of moral disapproval of pornography on self-reported feelings of addiction to pornography will be significant and positive... We also expect to find that the interaction of moral disapproval of pornography use and pornography viewing frequency will positively predict...\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"inadequate test of uniqueness claim\",\"description\":\"The central claim concerns uniqueness to 'sexual behavior,' yet the study operationalizes sexual behavior solely as pornography viewing. Other sexual behaviors relevant to CSBD are not measured. Therefore even perfect support would only show uniqueness relative to pornography in this dataset, not sexual behavior broadly.\",\"quote\":\"the purpose of the present work is to test whether the moral incongruence model of problematic pornography use may generalize to addictions more broadly or whether it is unique to pornography use and sexual behavior.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"moral item content differs across domains\",\"description\":\"The morality items are phrased generically ('using X is morally wrong'), but the target behaviors differ in legal status, social acceptability, and meaning of 'use' versus 'engage in' versus 'viewing.' A single generic moral wrongness item may not be comparable across alcohol, illicit drugs, gambling, and pornography, undermining cross-domain comparison of interaction sizes.\",\"quote\":\"I believe that drinking alcohol is morally wrong... I believe that using illegal/illicit drugs is morally wrong.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"problem outcome includes interpersonal concern item\",\"description\":\"One ASSIST-derived outcome item asks whether others ever expressed concern. This may reflect social network norms and stigma rather than addiction severity. Because moral environments vary with religiosity and culture, this item can inflate associations between moral disapproval and 'problem' scores independently of actual dysregulation.\",\"quote\":\"Has a friend or relative or anyone else ever expressed concern about your use of or engagement in the following?\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"problem outcome includes failed control item across nonusers/low users\",\"description\":\"The modified ASSIST asks all listed domains parallel questions about trying and failing to control/cut down. For behaviors engaged in rarely, and especially if administered to nonusers, this can create awkward or structurally impossible responses, complicating score meaning and potentially producing artifactual zeros or missingness.\",\"quote\":\"Have you ever tried and failed to control, cut down or stop using (or doing) the following?\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"collider/selection bias due to user-only symptom assessment\",\"description\":\"If symptom items are only administered to users, analyses condition on behavior engagement, which is itself likely related to moral disapproval. This can induce collider bias in associations among moral disapproval, frequency, and symptoms. The contradictory protocol about whether nonusers receive outcomes prevents evaluation of this major threat.\",\"quote\":\"only participants who endorse past-year use will complete further measures of problematic use.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"direct comparison across coefficients not formally tested\",\"description\":\"The study aims to show that the interaction is unique to pornography relative to other addictions, but the plan largely relies on separate regressions and equivalence tests within each behavior rather than formal cross-model comparisons of interaction effects using a common model or pooled interaction-by-domain framework. Separate significance/equivalence decisions do not directly establish differences between domains.\",\"quote\":\"In total, we will conduct 8 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"alternative explanations not modeled\",\"description\":\"Moral disapproval may proxy for broader conservatism, stigma sensitivity, shame proneness, psychopathology, or social desirability. None of these are measured or adjusted, yet strong conclusions are proposed about moral incongruence itself. This threatens construct validity of the central predictor.\",\"quote\":\"we will ask participants to rate their agreement with the following statement “I believe that using ________ is morally wrong”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"study embedded in gambling-focused survey\",\"description\":\"The broader survey is centered on sports wagering behaviors and funded by a responsible gambling organization. Embedding the present study in a gambling-focused survey may prime gambling-related cognitions, moral evaluations, or self-presentation, potentially affecting responses across domains. No discussion of context effects is provided.\",\"quote\":\"Participants will be recruited in late March of 2022 as a part of a larger study of sports wagering behaviors in the American populace funded by the International Center for Responsible Gaming.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"timeline inconsistency for registered report\",\"description\":\"The manuscript describes an 'upcoming study' and future data collection in late March 2022, but this temporal language may be inconsistent with the actual submission timing and raises concern about whether data collection may already have occurred. For a registered report, timing of registration relative to data access is essential and should be explicitly documented.\",\"quote\":\"Participants will be recruited in late March of 2022\",\"location\":\"methods\",\"severity\":\"moderate\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 19576,
+    "output_tokens": 7161
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "paper_id": 3,
+  "provider_name": "openai_gpt54_high_reasoning_open",
+  "issues": [
+    {
+      "category": "conceptual",
+      "subcategory": "unsupported necessity claim",
+      "description": "The central conclusion is stronger than the design supports. The study does not manipulate or eliminate causal understanding; it only observes that a particular post-task explicit test score does not increase across generations. From this, one cannot conclude that causal understanding is \"not necessary\" for technological improvement. At most, the study shows that cumulative improvement can occur even when this specific explicit measure remains low or unchanged.",
+      "quote": "Here, we show that a physical artifact becomes progressively optimized across generations of social learners in the absence of explicit causal understanding. Moreover, we find that the transmission of causal models across generations has no noticeable effect on the pace of cultural evolution.",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "validity",
+      "subcategory": "construct validity of causal understanding",
+      "description": "The manuscript treats a short, post-hoc, 10-item wheel-comparison task as a rigorous measure of causal understanding, but that test captures only a narrow form of explicit verbalizable prediction. It does not measure implicit knowledge, partial causal intuitions, ability to reason about trade-offs between variables, or understanding expressed during search. Because the main thesis rests on this construct, weak construct validity directly threatens the interpretation.",
+      "quote": "This allowed us to rigorously measure participants’ causal understanding of the system after they completed their 5 trials (Figure 1.E). Participants’ understanding was evaluated by presenting them with pairs of wheels that differed in their configurations, and asking them to estimate how long each wheel would take to reach the bottom of the rails.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "aggregation masks theoretically relevant effects",
+      "description": "The main confirmatory analysis collapses inertia and centre-of-mass understanding into one total score after the preregistered model failed. This is especially problematic because the authors later report that inherited theories increase one component of understanding while decreasing the other. Aggregating the two dimensions can therefore mathematically cancel real treatment effects and produce a misleading null result on the very outcome used to support the paper’s conclusion.",
+      "quote": "As a result, the preregistered model did not converge so we ran our analysis on aggregated score and removed the terms associated the variable “Physical Principle” in the reported model.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inadequate handling of model nonconvergence",
+      "description": "The stated reason for abandoning the preregistered model is not convincing. A negative correlation between two outcome components does not inherently justify collapsing them; it suggests the need for a different model specification, such as multivariate, separate binomial, or hierarchical models with correlated random effects. Replacing the preregistered analysis with an aggregated-score analysis changes the estimand and weakens confirmatory inference.",
+      "quote": "However, analyses revealed that understanding scores about inertia and centre of mass were negatively correlated (Supplementary Figure 9 and Supplementary Table 7) and some individuals better understood inertia than centre of mass while others better understood centre of mass than inertia (Figure 3I and Supplementary Figure 2). As a result, the preregistered model did not converge so we ran our analysis on aggregated score",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inappropriate outcome model for bounded counts",
+      "description": "Understanding scores are bounded discrete counts, yet they were analyzed with a linear model. Such models can imply impossible values, ignore the binomial nature of the data, and distort uncertainty estimates, especially with only 10 items. A binomial/logistic or ordinal model would be more appropriate.",
+      "quote": "We fitted a linear model with “Score” as the outcome variable, “Generation” as a predictor variable and “Chain’s identity” as a random effect",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inappropriate outcome model for zero-inflated/skewed speed data",
+      "description": "Wheel speed includes non-descents, which are structurally different from slow descents, and the distribution is likely skewed and bounded. Modeling these data with a simple linear Gaussian model, especially after coding failures as 0 in some analyses, risks misspecification. A hurdle, zero-inflated, censored, or two-part model would better reflect the data-generating process.",
+      "quote": "Wheels that did not go down were attributed a speed of 0. Data were restricted to participants’ last two trials in order to limit the occurrence of wheels that did not descend in the dataset. We fitted a linear model with “Speed” as the outcome variable",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "biased and inconsistent handling of failures",
+      "description": "Poor outcomes were handled inconsistently across analyses. In some analyses the data were restricted to the last two trials specifically to reduce non-descents, whereas in another analysis failures were coded as zero. This makes performance estimates non-comparable across analyses and can bias conclusions if failure rates differ across generations or treatments. Because non-descents are substantively part of performance, excluding or downweighting them can inflate apparent optimization.",
+      "quote": "Data were restricted to participants’ last two trials in order to limit the occurrence of wheels that did not descend in the dataset. ... Wheels that did not go down were attributed a speed of 0.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "design",
+      "subcategory": "analysis focuses on strategically transmitted trials",
+      "description": "The analyses concentrate on the last two trials, but those are exactly the trials participants knew would be transmitted and on which successor-linked incentives operated. This makes them strategically special rather than representative of participants’ own optimization. Analysing only these trials conflates individual problem-solving with attempts to teach, signal, or leave useful information for the next participant.",
+      "quote": "Participants were informed that their last two trials would be transmitted to the next participant in the chain, and that their reward depended both on their own performance and on the performance of the next participant in the chain.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "teaching incentive confound",
+      "description": "The incentive structure explicitly rewards improving the next participant’s outcomes, not just one’s own wheel performance. This likely induces deliberate teaching or strategic transmission behavior, which is conceptually different from passive selective retention of modifications. The manuscript interprets improvement as evidence about cumulative culture without understanding, but the design embeds pedagogy and prosocial teaching incentives.",
+      "quote": "Participants were informed that their last two trials would be transmitted to the next participant in the chain, and that their reward depended both on their own performance and on the performance of the next participant in the chain.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "treatment confounds transmission with theory generation and test priming",
+      "description": "The \"Configurations + Theory\" condition changes several things at once: participants receive a theory, are told they will write a theory, and actually write one before the understanding test is completed. Any treatment difference could therefore reflect articulation, reflection, metacognitive prompting, or test priming rather than transmission per se. This prevents clean causal attribution to inherited theories.",
+      "quote": "in which participants could also formulate an explicit written theory about the physical system and transmit it to the next participant in the chain. ... Participants were asked to write their theory before the test phase was completed.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "no asocial control condition",
+      "description": "The study lacks a non-social baseline or an individual-learning control with equivalent total search opportunity. Without such a comparison, it is impossible to determine whether the observed gains reflect cumulative cultural transmission per se or simply what individuals could achieve through repeated trial-and-error with more attempts. The design therefore supports only limited claims about cumulative cultural adaptation.",
+      "quote": "All participants except those in the first generation were provided with social information.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "no a priori sample size determination",
+      "description": "The authors explicitly state that no statistical methods were used to determine sample size. Given that the key claims rely on treatment and generation interactions at the chain level, 14 chains per treatment may be underpowered, especially for null-effect claims. This is particularly concerning because the credible intervals reported are wide enough to include potentially meaningful effects.",
+      "quote": "No statistical methods were used to pre-determine sample sizes but our sample sizes (i.e. number of independent chains) are larger than those reported in previous publications30,31.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "absence-of-evidence interpreted as evidence-of-absence",
+      "description": "The manuscript repeatedly treats imprecise estimates that include zero as support for no effect. But wide intervals do not show that theory transmission has no meaningful effect; they show uncertainty. A Bayesian analysis could have quantified evidence for a null region or model comparison, but the manuscript instead overstates a null conclusion.",
+      "quote": "Thus, these analyses do not provide substantial support for the idea that the transmission of explicit causal theories affects wheel optimization and individual understanding.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "internal inconsistency in interpretation of interaction",
+      "description": "The reported generation-by-treatment interval for understanding excludes zero, yet the manuscript concludes that the analyses do not provide substantial support for an effect. This is inconsistent with the paper’s own inferential language elsewhere and suggests selective interpretation or lack of a clear decision rule.",
+      "quote": "Generation x Treatment 95% CI: (0.03, 0.81), mean = 0.44, Figure 2.B). Thus, these analyses do not provide substantial support for the idea that the transmission of explicit causal theories affects wheel optimization and individual understanding.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "data-driven model selection despite preregistration",
+      "description": "The confirmatory analysis was not purely preregistered: the final model was selected by comparing candidate models based on fit to the observed data. This introduces researcher degrees of freedom and undermines the inferential strength of the preregistration, especially when used to support strong confirmatory claims.",
+      "quote": "The final model specification was selected after comparing several candidate models based on fit to the observed data.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "bias",
+      "subcategory": "lack of blinding with experimenter involvement",
+      "description": "The experimenter physically implemented the participant’s chosen configuration and data collection/analysis were not blinded. Because the experimenter handled the apparatus, knew the condition, and could potentially introduce subtle differences in setup, expectancy or handling bias cannot be ruled out. This matters especially in a physical task where small setup differences can affect descent time.",
+      "quote": "Once the configuration was confirmed by the participant, the experimenter positioned the weights on the physical wheel accordingly ... Data collection and was not performed blind to the conditions of the experiments.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "insufficient Bayesian model specification",
+      "description": "The manuscript does not report key details needed to evaluate or reproduce the Bayesian analyses, such as priors, number of chains, iterations, warmup, convergence diagnostics, effective sample sizes, or posterior predictive checks. Given the small sample and the prominence of Bayesian inference in the results, these omissions matter for assessing robustness.",
+      "quote": "We ran a series of Bayesian multi-level models in R 32. Models were fitted using map2stan in the rethinking package 33 and 95% credible intervals were used to make inferences.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "fixed test order",
+      "description": "All participants received the same item order on the understanding test. This allows order effects, fatigue, practice, and carryover to confound the score, and prevents separating item difficulty from position effects. Randomization or counterbalancing would have improved measurement validity.",
+      "quote": "All participants were exposed to the same 10 pairs of wheels in the same order.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "understanding score not fully specified",
+      "description": "The manuscript does not clearly explain how answers were scored, how the \"No difference\" option was treated, whether any pairs truly had equal performance, or how the chance baseline was derived. Because understanding scores are central to the paper’s conclusions, the scoring rule should be explicit in the main text.",
+      "quote": "For each pair, participants could submit 3 possible answers: “Wheel 1”, “Wheel 2” or “No difference”.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "post hoc observational subgroup analyses interpreted causally",
+      "description": "The mechanism claims are based on exploratory subgroup analyses of participants who happened to inherit different kinds of theories, and on post hoc grouping of control participants by the kinds of wheels they produced. These are not randomized comparisons; inherited theory type is endogenous to prior participants and chain history. The resulting analyses can suggest hypotheses, but they do not justify causal statements about theory transmission canalizing exploration or understanding.",
+      "quote": "These results suggest that the understanding patterns observed in participants who received unidimensional theories is likely the result of the canalizing effect of theory transmission on exploration.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "tiny exploratory subgroup sizes",
+      "description": "Some of the exploratory groups are extremely small, especially the \"full theory\" subgroup. Heat maps, understanding patterns, and mechanistic interpretations based on such small Ns are unstable and highly sensitive to individual cases. The manuscript nevertheless draws strong inferences from them.",
+      "quote": "Of the 56 participants who inherited a theory (all participants in the “Configurations + Theory” treatment except first-generation participants), 15 inherited an inertia-related theory, 17 inherited a centre-of-mass-related theory, 6 inherited a full theory and 18 inherited diverse, irrelevant theories.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "unsupported generalization beyond studied social composition",
+      "description": "The discussion claims generalization to mixed-gender collaborative settings even though the experiment used only single-sex chains. No mixed-gender condition was tested, so this statement is unsupported and overreaches beyond the evidence.",
+      "quote": "These findings generalize beyond the single-sex chain compositions used here, suggesting cultural transmission operates similarly in mixed-gender collaborative settings.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "theory transmission artificially constrained",
+      "description": "Theories were restricted to 340 characters and to a fixed sentence stem. This may have discouraged nuanced, multidimensional, or trade-off-based explanations and therefore biased the observed theory content toward simplicity. That matters because the paper interprets the prevalence of simple theories as evidence about spontaneous human causal modeling.",
+      "quote": "Theories had to be less than 340 characters long and always started with “The wheel covers the distance faster when...”.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "external validity overreach",
+      "description": "The experiment uses a simple, low-dimensional laboratory optimization task with French university students and five-person transmission chains, yet the manuscript draws conclusions about the origins of complex technologies and archaeological interpretation. A one-object, two-parameter search problem is a limited model of real technological systems, which are socially distributed, multi-component, and embedded in rich ecological and functional constraints.",
+      "quote": "Finally, although the physics of the system are by no means trivial, the optimization problem is low-dimensional, which provides a conservative test of our hypotheses, compared to the many-dimensional problem of optimizing, for example, the performance of a bow 13. ... In any case, our experiment indicates that one should be cautious when interpreting complex archaeological materials as evidence for sophisticated cognitive abilities",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "results are inconsistent with claimed absence of understanding",
+      "description": "Elsewhere the manuscript acknowledges that participants were above chance and had useful intuitions about the system. This is inconsistent with framing the study as showing improvement in the absence of causal understanding. The results are more compatible with partial, biased, or dimension-specific understanding than with no meaningful understanding at all.",
+      "quote": "Participants who did not inherit any theory (“Configurations” treatment) scored similarly (and better than chance) on questions about inertia and questions about centre of mass (Figure 3I). ... This indicates that participants had appropriate intuitions about how to maximize acceleration",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent track length/speed definition",
+      "description": "The manuscript alternates between describing the wheel as traveling 1 meter and reporting switches 92 cm apart. Because speed is calculated from descent time, this inconsistency affects the reported speeds, maxima, and payoff calculations. The exact measured distance should be stated consistently.",
+      "quote": "The physical system was a wheel that traveled down a 1-meter long inclined track. ... Two push-button switches (made from computer mice) were located 92 cm apart on the rails",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "payoff function unclear and potentially inconsistent",
+      "description": "The payoff formula appears able to generate negative values for very slow or non-descending wheels, yet participants are described as receiving an additional amount ranging from 0 to 26€. The manuscript does not explain whether payoffs were truncated, rescaled, or otherwise constrained. Because incentives are central to behavior in this design, this ambiguity affects interpretability and replicability.",
+      "quote": "The following equation determined the payoff of each wheel:\n\n[1 -  ((MaxSpeed – RecordedSpeed) / (MaxSpeed – MinSpeed))] x 3 + Bonus\n\nwith MaxSpeed  = 160, MinSpeed = 96. RecordedSpeed was the recorded average speed of the wheel. Bonus took the value 0.2 for wheels that descended and 0 otherwise. ... Participants received 3€ for participating and an additional amount ranging from 0 and 26€ depending on their own performance and the performance of the next participant in their chain",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "no pre-task baseline for understanding",
+      "description": "Understanding was only measured after participants completed the optimization task. Without a baseline measure, the study cannot assess within-person change in understanding or determine whether any between-generation differences reflect learning versus pre-existing variation. This weakens claims about how understanding changed over cultural generations.",
+      "quote": "Participants’ understanding was evaluated after they completed their 5 trials",
+      "location": "introduction",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"conceptual\",\"subcategory\":\"unsupported necessity claim\",\"description\":\"The central conclusion is stronger than the design supports. The study does not manipulate or eliminate causal understanding; it only observes that a particular post-task explicit test score does not increase across generations. From this, one cannot conclude that causal understanding is \\\"not necessary\\\" for technological improvement. At most, the study shows that cumulative improvement can occur even when this specific explicit measure remains low or unchanged.\",\"quote\":\"Here, we show that a physical artifact becomes progressively optimized across generations of social learners in the absence of explicit causal understanding. Moreover, we find that the transmission of causal models across generations has no noticeable effect on the pace of cultural evolution.\",\"location\":\"introduction\",\"severity\":\"critical\"},{\"category\":\"validity\",\"subcategory\":\"construct validity of causal understanding\",\"description\":\"The manuscript treats a short, post-hoc, 10-item wheel-comparison task as a rigorous measure of causal understanding, but that test captures only a narrow form of explicit verbalizable prediction. It does not measure implicit knowledge, partial causal intuitions, ability to reason about trade-offs between variables, or understanding expressed during search. Because the main thesis rests on this construct, weak construct validity directly threatens the interpretation.\",\"quote\":\"This allowed us to rigorously measure participants’ causal understanding of the system after they completed their 5 trials (Figure 1.E). Participants’ understanding was evaluated by presenting them with pairs of wheels that differed in their configurations, and asking them to estimate how long each wheel would take to reach the bottom of the rails.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"aggregation masks theoretically relevant effects\",\"description\":\"The main confirmatory analysis collapses inertia and centre-of-mass understanding into one total score after the preregistered model failed. This is especially problematic because the authors later report that inherited theories increase one component of understanding while decreasing the other. Aggregating the two dimensions can therefore mathematically cancel real treatment effects and produce a misleading null result on the very outcome used to support the paper’s conclusion.\",\"quote\":\"As a result, the preregistered model did not converge so we ran our analysis on aggregated score and removed the terms associated the variable “Physical Principle” in the reported model.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistical\",\"subcategory\":\"inadequate handling of model nonconvergence\",\"description\":\"The stated reason for abandoning the preregistered model is not convincing. A negative correlation between two outcome components does not inherently justify collapsing them; it suggests the need for a different model specification, such as multivariate, separate binomial, or hierarchical models with correlated random effects. Replacing the preregistered analysis with an aggregated-score analysis changes the estimand and weakens confirmatory inference.\",\"quote\":\"However, analyses revealed that understanding scores about inertia and centre of mass were negatively correlated (Supplementary Figure 9 and Supplementary Table 7) and some individuals better understood inertia than centre of mass while others better understood centre of mass than inertia (Figure 3I and Supplementary Figure 2). As a result, the preregistered model did not converge so we ran our analysis on aggregated score\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"inappropriate outcome model for bounded counts\",\"description\":\"Understanding scores are bounded discrete counts, yet they were analyzed with a linear model. Such models can imply impossible values, ignore the binomial nature of the data, and distort uncertainty estimates, especially with only 10 items. A binomial/logistic or ordinal model would be more appropriate.\",\"quote\":\"We fitted a linear model with “Score” as the outcome variable, “Generation” as a predictor variable and “Chain’s identity” as a random effect\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"inappropriate outcome model for zero-inflated/skewed speed data\",\"description\":\"Wheel speed includes non-descents, which are structurally different from slow descents, and the distribution is likely skewed and bounded. Modeling these data with a simple linear Gaussian model, especially after coding failures as 0 in some analyses, risks misspecification. A hurdle, zero-inflated, censored, or two-part model would better reflect the data-generating process.\",\"quote\":\"Wheels that did not go down were attributed a speed of 0. Data were restricted to participants’ last two trials in order to limit the occurrence of wheels that did not descend in the dataset. We fitted a linear model with “Speed” as the outcome variable\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"biased and inconsistent handling of failures\",\"description\":\"Poor outcomes were handled inconsistently across analyses. In some analyses the data were restricted to the last two trials specifically to reduce non-descents, whereas in another analysis failures were coded as zero. This makes performance estimates non-comparable across analyses and can bias conclusions if failure rates differ across generations or treatments. Because non-descents are substantively part of performance, excluding or downweighting them can inflate apparent optimization.\",\"quote\":\"Data were restricted to participants’ last two trials in order to limit the occurrence of wheels that did not descend in the dataset. ... Wheels that did not go down were attributed a speed of 0.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"design\",\"subcategory\":\"analysis focuses on strategically transmitted trials\",\"description\":\"The analyses concentrate on the last two trials, but those are exactly the trials participants knew would be transmitted and on which successor-linked incentives operated. This makes them strategically special rather than representative of participants’ own optimization. Analysing only these trials conflates individual problem-solving with attempts to teach, signal, or leave useful information for the next participant.\",\"quote\":\"Participants were informed that their last two trials would be transmitted to the next participant in the chain, and that their reward depended both on their own performance and on the performance of the next participant in the chain.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"teaching incentive confound\",\"description\":\"The incentive structure explicitly rewards improving the next participant’s outcomes, not just one’s own wheel performance. This likely induces deliberate teaching or strategic transmission behavior, which is conceptually different from passive selective retention of modifications. The manuscript interprets improvement as evidence about cumulative culture without understanding, but the design embeds pedagogy and prosocial teaching incentives.\",\"quote\":\"Participants were informed that their last two trials would be transmitted to the next participant in the chain, and that their reward depended both on their own performance and on the performance of the next participant in the chain.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"treatment confounds transmission with theory generation and test priming\",\"description\":\"The \\\"Configurations + Theory\\\" condition changes several things at once: participants receive a theory, are told they will write a theory, and actually write one before the understanding test is completed. Any treatment difference could therefore reflect articulation, reflection, metacognitive prompting, or test priming rather than transmission per se. This prevents clean causal attribution to inherited theories.\",\"quote\":\"in which participants could also formulate an explicit written theory about the physical system and transmit it to the next participant in the chain. ... Participants were asked to write their theory before the test phase was completed.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"no asocial control condition\",\"description\":\"The study lacks a non-social baseline or an individual-learning control with equivalent total search opportunity. Without such a comparison, it is impossible to determine whether the observed gains reflect cumulative cultural transmission per se or simply what individuals could achieve through repeated trial-and-error with more attempts. The design therefore supports only limited claims about cumulative cultural adaptation.\",\"quote\":\"All participants except those in the first generation were provided with social information.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"no a priori sample size determination\",\"description\":\"The authors explicitly state that no statistical methods were used to determine sample size. Given that the key claims rely on treatment and generation interactions at the chain level, 14 chains per treatment may be underpowered, especially for null-effect claims. This is particularly concerning because the credible intervals reported are wide enough to include potentially meaningful effects.\",\"quote\":\"No statistical methods were used to pre-determine sample sizes but our sample sizes (i.e. number of independent chains) are larger than those reported in previous publications30,31.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"absence-of-evidence interpreted as evidence-of-absence\",\"description\":\"The manuscript repeatedly treats imprecise estimates that include zero as support for no effect. But wide intervals do not show that theory transmission has no meaningful effect; they show uncertainty. A Bayesian analysis could have quantified evidence for a null region or model comparison, but the manuscript instead overstates a null conclusion.\",\"quote\":\"Thus, these analyses do not provide substantial support for the idea that the transmission of explicit causal theories affects wheel optimization and individual understanding.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"internal inconsistency in interpretation of interaction\",\"description\":\"The reported generation-by-treatment interval for understanding excludes zero, yet the manuscript concludes that the analyses do not provide substantial support for an effect. This is inconsistent with the paper’s own inferential language elsewhere and suggests selective interpretation or lack of a clear decision rule.\",\"quote\":\"Generation x Treatment 95% CI: (0.03, 0.81), mean = 0.44, Figure 2.B). Thus, these analyses do not provide substantial support for the idea that the transmission of explicit causal theories affects wheel optimization and individual understanding.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"data-driven model selection despite preregistration\",\"description\":\"The confirmatory analysis was not purely preregistered: the final model was selected by comparing candidate models based on fit to the observed data. This introduces researcher degrees of freedom and undermines the inferential strength of the preregistration, especially when used to support strong confirmatory claims.\",\"quote\":\"The final model specification was selected after comparing several candidate models based on fit to the observed data.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"bias\",\"subcategory\":\"lack of blinding with experimenter involvement\",\"description\":\"The experimenter physically implemented the participant’s chosen configuration and data collection/analysis were not blinded. Because the experimenter handled the apparatus, knew the condition, and could potentially introduce subtle differences in setup, expectancy or handling bias cannot be ruled out. This matters especially in a physical task where small setup differences can affect descent time.\",\"quote\":\"Once the configuration was confirmed by the participant, the experimenter positioned the weights on the physical wheel accordingly ... Data collection and was not performed blind to the conditions of the experiments.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"insufficient Bayesian model specification\",\"description\":\"The manuscript does not report key details needed to evaluate or reproduce the Bayesian analyses, such as priors, number of chains, iterations, warmup, convergence diagnostics, effective sample sizes, or posterior predictive checks. Given the small sample and the prominence of Bayesian inference in the results, these omissions matter for assessing robustness.\",\"quote\":\"We ran a series of Bayesian multi-level models in R 32. Models were fitted using map2stan in the rethinking package 33 and 95% credible intervals were used to make inferences.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"fixed test order\",\"description\":\"All participants received the same item order on the understanding test. This allows order effects, fatigue, practice, and carryover to confound the score, and prevents separating item difficulty from position effects. Randomization or counterbalancing would have improved measurement validity.\",\"quote\":\"All participants were exposed to the same 10 pairs of wheels in the same order.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"understanding score not fully specified\",\"description\":\"The manuscript does not clearly explain how answers were scored, how the \\\"No difference\\\" option was treated, whether any pairs truly had equal performance, or how the chance baseline was derived. Because understanding scores are central to the paper’s conclusions, the scoring rule should be explicit in the main text.\",\"quote\":\"For each pair, participants could submit 3 possible answers: “Wheel 1”, “Wheel 2” or “No difference”.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"validity\",\"subcategory\":\"post hoc observational subgroup analyses interpreted causally\",\"description\":\"The mechanism claims are based on exploratory subgroup analyses of participants who happened to inherit different kinds of theories, and on post hoc grouping of control participants by the kinds of wheels they produced. These are not randomized comparisons; inherited theory type is endogenous to prior participants and chain history. The resulting analyses can suggest hypotheses, but they do not justify causal statements about theory transmission canalizing exploration or understanding.\",\"quote\":\"These results suggest that the understanding patterns observed in participants who received unidimensional theories is likely the result of the canalizing effect of theory transmission on exploration.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"tiny exploratory subgroup sizes\",\"description\":\"Some of the exploratory groups are extremely small, especially the \\\"full theory\\\" subgroup. Heat maps, understanding patterns, and mechanistic interpretations based on such small Ns are unstable and highly sensitive to individual cases. The manuscript nevertheless draws strong inferences from them.\",\"quote\":\"Of the 56 participants who inherited a theory (all participants in the “Configurations + Theory” treatment except first-generation participants), 15 inherited an inertia-related theory, 17 inherited a centre-of-mass-related theory, 6 inherited a full theory and 18 inherited diverse, irrelevant theories.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"unsupported generalization beyond studied social composition\",\"description\":\"The discussion claims generalization to mixed-gender collaborative settings even though the experiment used only single-sex chains. No mixed-gender condition was tested, so this statement is unsupported and overreaches beyond the evidence.\",\"quote\":\"These findings generalize beyond the single-sex chain compositions used here, suggesting cultural transmission operates similarly in mixed-gender collaborative settings.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"theory transmission artificially constrained\",\"description\":\"Theories were restricted to 340 characters and to a fixed sentence stem. This may have discouraged nuanced, multidimensional, or trade-off-based explanations and therefore biased the observed theory content toward simplicity. That matters because the paper interprets the prevalence of simple theories as evidence about spontaneous human causal modeling.\",\"quote\":\"Theories had to be less than 340 characters long and always started with “The wheel covers the distance faster when...”.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"external validity overreach\",\"description\":\"The experiment uses a simple, low-dimensional laboratory optimization task with French university students and five-person transmission chains, yet the manuscript draws conclusions about the origins of complex technologies and archaeological interpretation. A one-object, two-parameter search problem is a limited model of real technological systems, which are socially distributed, multi-component, and embedded in rich ecological and functional constraints.\",\"quote\":\"Finally, although the physics of the system are by no means trivial, the optimization problem is low-dimensional, which provides a conservative test of our hypotheses, compared to the many-dimensional problem of optimizing, for example, the performance of a bow 13. ... In any case, our experiment indicates that one should be cautious when interpreting complex archaeological materials as evidence for sophisticated cognitive abilities\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"results are inconsistent with claimed absence of understanding\",\"description\":\"Elsewhere the manuscript acknowledges that participants were above chance and had useful intuitions about the system. This is inconsistent with framing the study as showing improvement in the absence of causal understanding. The results are more compatible with partial, biased, or dimension-specific understanding than with no meaningful understanding at all.\",\"quote\":\"Participants who did not inherit any theory (“Configurations” treatment) scored similarly (and better than chance) on questions about inertia and questions about centre of mass (Figure 3I). ... This indicates that participants had appropriate intuitions about how to maximize acceleration\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"inconsistent track length/speed definition\",\"description\":\"The manuscript alternates between describing the wheel as traveling 1 meter and reporting switches 92 cm apart. Because speed is calculated from descent time, this inconsistency affects the reported speeds, maxima, and payoff calculations. The exact measured distance should be stated consistently.\",\"quote\":\"The physical system was a wheel that traveled down a 1-meter long inclined track. ... Two push-button switches (made from computer mice) were located 92 cm apart on the rails\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"payoff function unclear and potentially inconsistent\",\"description\":\"The payoff formula appears able to generate negative values for very slow or non-descending wheels, yet participants are described as receiving an additional amount ranging from 0 to 26€. The manuscript does not explain whether payoffs were truncated, rescaled, or otherwise constrained. Because incentives are central to behavior in this design, this ambiguity affects interpretability and replicability.\",\"quote\":\"The following equation determined the payoff of each wheel:\\n\\n[1 -  ((MaxSpeed – RecordedSpeed) / (MaxSpeed – MinSpeed))] x 3 + Bonus\\n\\nwith MaxSpeed  = 160, MinSpeed = 96. RecordedSpeed was the recorded average speed of the wheel. Bonus took the value 0.2 for wheels that descended and 0 otherwise. ... Participants received 3€ for participating and an additional amount ranging from 0 and 26€ depending on their own performance and the performance of the next participant in their chain\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"no pre-task baseline for understanding\",\"description\":\"Understanding was only measured after participants completed the optimization task. Without a baseline measure, the study cannot assess within-person change in understanding or determine whether any between-generation differences reflect learning versus pre-existing variation. This weakens claims about how understanding changed over cultural generations.\",\"quote\":\"Participants’ understanding was evaluated after they completed their 5 trials\",\"location\":\"introduction\",\"severity\":\"moderate\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 9100,
+    "output_tokens": 17223
+  }
+}

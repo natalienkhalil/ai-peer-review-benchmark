@@ -1,0 +1,148 @@
+{
+  "paper_id": 2,
+  "provider_name": "gemini_pro_originals",
+  "issues": [
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incorrect Confidence Intervals",
+      "description": "The 95% confidence intervals reported in Table 10 and Table 14 for the post-hoc t-tests include zero, yet the corresponding p-values are reported as significant (p < .05). For example, in Table 10, 'Identifiable VS Statistical' has p = .049 but a CI of [-0.05, 0.20]. A confidence interval that includes zero mathematically contradicts a significant p-value for a difference between means. Furthermore, the CI does not align with the reported mean difference of 0.29.",
+      "quote": "Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076 | [-0.05, 0.20] | .049*",
+      "location": "Results (Table 10 and Table 14)",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incorrect Cohen's d Calculation",
+      "description": "The Cohen's d values reported for the post-hoc tests in Tables 10 and 14 are mathematically incorrect. For instance, in Table 10, a t-value of -2.40 with group sizes of roughly 167 yields a Cohen's d of approximately 0.26, but the table reports d = 0.076. Similarly, in Table 14, a t-value of 2.47 is reported with d = 0.08, which is substantially underestimated.",
+      "quote": "Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076",
+      "location": "Results (Table 10 and Table 14)",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradiction between Abstract and Results",
+      "description": "The abstract claims that the results supported the hypothesis that people have a lower rating of perceived impact for an identifiable victim. However, the results section states there was no significant difference between the identifiable and statistical victim conditions (p = 1.000), and the only significant difference was between the statistical and joint conditions. Furthermore, the original hypothesis (Hypothesis 6) predicted a *higher* perceived impact for identifiable victims, making the abstract's claim both empirically and theoretically contradictory.",
+      "quote": "Results have supported the hypothesis that people have a lower rating of perceived impact of donation when they faced an identifiable victim or an identifiable victim provided with victim statistics.",
+      "location": "Abstract vs. Results",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Hypothetical vs. Real Donation",
+      "description": "The replication changes the dependent variable from a real donation (where participants actually give up money they received) to an imaginary/hypothetical donation. Hypothetical donations are highly susceptible to social desirability bias and often fail to correlate with actual financial sacrifice. This is a major threat to construct validity and makes the study a conceptual rather than a close replication.",
+      "quote": "Participants are required to indicate how much they would donate from $0 to $5 to the corresponding victim(s) instead of donating the money to Save the Children after signing a charity request letter.",
+      "location": "Method (Table 6)",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Misclassification of Replication Type",
+      "description": "The authors classify their study as a 'close to very close replication' based on the Lebel et al. (2018) framework. However, according to that very framework, changing the DV stimuli (real to hypothetical money), IV stimuli (updated victim info), and physical setting (lab to online MTurk) constitutes a 'far replication' or 'conceptual replication.'",
+      "quote": "Replication classification | close to very close replication",
+      "location": "Method (Table 6)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Missing Multiple Comparison Correction for DVs",
+      "description": "The authors conduct six separate two-way ANOVAs for the segregated feeling variables (Table 13) without applying any alpha correction (e.g., Bonferroni or FDR) for multiple dependent variables. This inflates the family-wise error rate, making the marginally significant p-value (.045) for perceived impact highly likely to be a Type I error.",
+      "quote": "We conducted a 2 (intervention) X 3 (identifiability) two way ANOVA to examine the effect of identifiability and intervention on segregated affective reactions",
+      "location": "Results (Table 13)",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Confounded Joint Condition",
+      "description": "The authors state they applied the explicit intervention (learning about the effect) to the joint condition (which was originally designed as an implicit intervention) to 'allow the comparison of explicit and implicit manipulation with fewer confounds.' However, applying an explicit intervention to an implicit intervention condition creates a double-intervention confound, making it impossible to isolate the effects of either.",
+      "quote": "To combine study 1 and 3 into a single study, intervention will be applied to the joint condition to allow the comparison of explicit and implicit manipulation with fewer confounds.",
+      "location": "Method (Table 6)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inappropriate Contrast Test",
+      "description": "The authors conduct a contrast comparing the 'identifiable/no intervention' condition against the combination (average) of the other five conditions. This assumes the other five conditions are equivalent to each other. Given that the other conditions include both explicit and implicit interventions, averaging them is theoretically unjustified and statistically uninterpretable.",
+      "quote": "contrast the mean difference of identifiable/no intervention on donation with the combination of 5 conditions  (statistical/no intervention, statistical/intervention, identifiable/intervention, joint/intervention, joint/no intervention)",
+      "location": "Method (Table 5)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing Details on Simulated Data Generation",
+      "description": "The manuscript states that the results are based on a 'randomized dataset produced by Qualtrics.' However, it does not specify the parameters used to generate this data (e.g., whether it was generated under a null hypothesis, or using the original effect sizes). Without this information, it is impossible to evaluate whether the significant findings (e.g., the interaction effect) are expected true positives or Type I errors.",
+      "quote": "We generated a dummy set of samples in the Qualtrics survey (N = 1000) and found no empirical support for the effect of analytical reasoning on the identifiable victim effect.",
+      "location": "Abstract and Method",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Sign Error in t-statistic",
+      "description": "In Table 10, the t-value for 'Identifiable VS Statistical' is reported as -2.40. However, the text states that the Identifiable mean (2.54) is higher than the Statistical mean (2.24). If Identifiable > Statistical, the t-value should be positive (or the label should be Statistical VS Identifiable). This inconsistency makes it unclear which direction the effect actually took in the simulated data.",
+      "quote": "Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076 | [-0.05, 0.20] | .049*",
+      "location": "Results (Table 10)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Unreported Degrees of Freedom",
+      "description": "In Table 2, the degrees of freedom for the error term (df2) are reported as 'N/A' for the original study. However, given the reported N=159 and 3 groups, df2 can be easily calculated as 156. Reporting 'N/A' suggests a lack of thoroughness in extracting statistics from the target article.",
+      "quote": "Identifiability Identifiable victim | 2.38 | N/A | 2 | N/A | 5.67 | <.01** | .07",
+      "location": "Introduction (Table 2)",
+      "severity": "minor"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Unacknowledged Sample Differences",
+      "description": "The replication shifts from an in-person student sample to an online MTurk sample. MTurk workers often have different financial constraints, attention spans, and exposure to psychological studies (non-naivete) compared to university students. The authors do not discuss how this shift might impact the generalizability or replicability of the identifiable victim effect, especially for a donation paradigm.",
+      "quote": "We will recruit participants on the Mechanical Amazon Turk platform while the original study recruited participants sitting inside the school centre of a university in Pennsylvania",
+      "location": "Method (Table 6)",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Typographical Errors in Citations",
+      "description": "The manuscript repeatedly misspells the name of a key author, Paul Slovic, as 'Solvic' in the text, which undermines the professionalism and attention to detail of the manuscript.",
+      "quote": "Solvic (2007) urged the public not to rely on our unreliable emotional responses",
+      "location": "Introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incorrect Power Analysis Justification",
+      "description": "The authors state that a power analysis for d = -0.36 requires a sample size of 314 to achieve 0.95 power at alpha = .05. However, an independent samples t-test for d = 0.36 requires approximately N = 404 for 95% power (two-tailed). The origin of the N = 314 figure is mathematically unclear and likely incorrect.",
+      "quote": "Given the smallest effect size regarding the effect of intervention (learning identifiable victim effect or not) on donation was found in the original study with Cohens’d = -0.36, the corresponding sample size to detect such effect was 314.",
+      "location": "Method (Participants)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Non-standard ANOVA Reporting",
+      "description": "In Table 1, the authors report the F-statistic, p-value, and effect size redundantly for each level of the factors (e.g., Identifiable victim and Statistical victim) rather than for the factor itself (Identifiability). This is a non-standard and confusing way to report ANOVA results, as the F-test evaluates the variance between the groups, not the individual groups themselves.",
+      "quote": "Identifiable victim | 2.12 | 2.13 | 1 | 115 | 6.75 | <.05* | .06",
+      "location": "Introduction (Table 1)",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Redundant Pairwise Comparisons",
+      "description": "In the Data Analysis plan (Table 5), the authors state they will conduct Bonferroni-adjusted pairwise comparisons for the main effect of intervention if it is significant. Because the intervention factor only has two levels, the ANOVA main effect already tests the exact difference between these two groups. A pairwise comparison is mathematically redundant and unnecessary.",
+      "quote": "b. effect of intervention on donation (with joint condition)",
+      "location": "Method (Table 5)",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incomplete Interaction Analysis",
+      "description": "The authors report a significant interaction between identifiability and intervention on donation (p = .015). However, they do not follow up this significant interaction with standard simple main effects analyses (e.g., testing the effect of intervention within each identifiability condition). Instead, they only report a highly specific and unjustified contrast (1 vs 5 conditions), leaving the nature of the interaction unexplored.",
+      "quote": "Given the significant interaction effect, we also conducted a t-test to study if the mean of  identifiable/no intervention condition is different from the mean of combining other five conditions on donation.",
+      "location": "Results",
+      "severity": "major"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incorrect Confidence Intervals\",\n      \"description\": \"The 95% confidence intervals reported in Table 10 and Table 14 for the post-hoc t-tests include zero, yet the corresponding p-values are reported as significant (p < .05). For example, in Table 10, 'Identifiable VS Statistical' has p = .049 but a CI of [-0.05, 0.20]. A confidence interval that includes zero mathematically contradicts a significant p-value for a difference between means. Furthermore, the CI does not align with the reported mean difference of 0.29.\",\n      \"quote\": \"Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076 | [-0.05, 0.20] | .049*\",\n      \"location\": \"Results (Table 10 and Table 14)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incorrect Cohen's d Calculation\",\n      \"description\": \"The Cohen's d values reported for the post-hoc tests in Tables 10 and 14 are mathematically incorrect. For instance, in Table 10, a t-value of -2.40 with group sizes of roughly 167 yields a Cohen's d of approximately 0.26, but the table reports d = 0.076. Similarly, in Table 14, a t-value of 2.47 is reported with d = 0.08, which is substantially underestimated.\",\n      \"quote\": \"Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076\",\n      \"location\": \"Results (Table 10 and Table 14)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradiction between Abstract and Results\",\n      \"description\": \"The abstract claims that the results supported the hypothesis that people have a lower rating of perceived impact for an identifiable victim. However, the results section states there was no significant difference between the identifiable and statistical victim conditions (p = 1.000), and the only significant difference was between the statistical and joint conditions. Furthermore, the original hypothesis (Hypothesis 6) predicted a *higher* perceived impact for identifiable victims, making the abstract's claim both empirically and theoretically contradictory.\",\n      \"quote\": \"Results have supported the hypothesis that people have a lower rating of perceived impact of donation when they faced an identifiable victim or an identifiable victim provided with victim statistics.\",\n      \"location\": \"Abstract vs. Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Hypothetical vs. Real Donation\",\n      \"description\": \"The replication changes the dependent variable from a real donation (where participants actually give up money they received) to an imaginary/hypothetical donation. Hypothetical donations are highly susceptible to social desirability bias and often fail to correlate with actual financial sacrifice. This is a major threat to construct validity and makes the study a conceptual rather than a close replication.\",\n      \"quote\": \"Participants are required to indicate how much they would donate from $0 to $5 to the corresponding victim(s) instead of donating the money to Save the Children after signing a charity request letter.\",\n      \"location\": \"Method (Table 6)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Misclassification of Replication Type\",\n      \"description\": \"The authors classify their study as a 'close to very close replication' based on the Lebel et al. (2018) framework. However, according to that very framework, changing the DV stimuli (real to hypothetical money), IV stimuli (updated victim info), and physical setting (lab to online MTurk) constitutes a 'far replication' or 'conceptual replication.'\",\n      \"quote\": \"Replication classification | close to very close replication\",\n      \"location\": \"Method (Table 6)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Missing Multiple Comparison Correction for DVs\",\n      \"description\": \"The authors conduct six separate two-way ANOVAs for the segregated feeling variables (Table 13) without applying any alpha correction (e.g., Bonferroni or FDR) for multiple dependent variables. This inflates the family-wise error rate, making the marginally significant p-value (.045) for perceived impact highly likely to be a Type I error.\",\n      \"quote\": \"We conducted a 2 (intervention) X 3 (identifiability) two way ANOVA to examine the effect of identifiability and intervention on segregated affective reactions\",\n      \"location\": \"Results (Table 13)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Confounded Joint Condition\",\n      \"description\": \"The authors state they applied the explicit intervention (learning about the effect) to the joint condition (which was originally designed as an implicit intervention) to 'allow the comparison of explicit and implicit manipulation with fewer confounds.' However, applying an explicit intervention to an implicit intervention condition creates a double-intervention confound, making it impossible to isolate the effects of either.\",\n      \"quote\": \"To combine study 1 and 3 into a single study, intervention will be applied to the joint condition to allow the comparison of explicit and implicit manipulation with fewer confounds.\",\n      \"location\": \"Method (Table 6)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inappropriate Contrast Test\",\n      \"description\": \"The authors conduct a contrast comparing the 'identifiable/no intervention' condition against the combination (average) of the other five conditions. This assumes the other five conditions are equivalent to each other. Given that the other conditions include both explicit and implicit interventions, averaging them is theoretically unjustified and statistically uninterpretable.\",\n      \"quote\": \"contrast the mean difference of identifiable/no intervention on donation with the combination of 5 conditions  (statistical/no intervention, statistical/intervention, identifiable/intervention, joint/intervention, joint/no intervention)\",\n      \"location\": \"Method (Table 5)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Missing Details on Simulated Data Generation\",\n      \"description\": \"The manuscript states that the results are based on a 'randomized dataset produced by Qualtrics.' However, it does not specify the parameters used to generate this data (e.g., whether it was generated under a null hypothesis, or using the original effect sizes). Without this information, it is impossible to evaluate whether the significant findings (e.g., the interaction effect) are expected true positives or Type I errors.\",\n      \"quote\": \"We generated a dummy set of samples in the Qualtrics survey (N = 1000) and found no empirical support for the effect of analytical reasoning on the identifiable victim effect.\",\n      \"location\": \"Abstract and Method\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Sign Error in t-statistic\",\n      \"description\": \"In Table 10, the t-value for 'Identifiable VS Statistical' is reported as -2.40. However, the text states that the Identifiable mean (2.54) is higher than the Statistical mean (2.24). If Identifiable > Statistical, the t-value should be positive (or the label should be Statistical VS Identifiable). This inconsistency makes it unclear which direction the effect actually took in the simulated data.\",\n      \"quote\": \"Identifiable VS Statistical | 994 | -2.40 | 0.13 | 0.076 | [-0.05, 0.20] | .049*\",\n      \"location\": \"Results (Table 10)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Unreported Degrees of Freedom\",\n      \"description\": \"In Table 2, the degrees of freedom for the error term (df2) are reported as 'N/A' for the original study. However, given the reported N=159 and 3 groups, df2 can be easily calculated as 156. Reporting 'N/A' suggests a lack of thoroughness in extracting statistics from the target article.\",\n      \"quote\": \"Identifiability Identifiable victim | 2.38 | N/A | 2 | N/A | 5.67 | <.01** | .07\",\n      \"location\": \"Introduction (Table 2)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"Unacknowledged Sample Differences\",\n      \"description\": \"The replication shifts from an in-person student sample to an online MTurk sample. MTurk workers often have different financial constraints, attention spans, and exposure to psychological studies (non-naivete) compared to university students. The authors do not discuss how this shift might impact the generalizability or replicability of the identifiable victim effect, especially for a donation paradigm.\",\n      \"quote\": \"We will recruit participants on the Mechanical Amazon Turk platform while the original study recruited participants sitting inside the school centre of a university in Pennsylvania\",\n      \"location\": \"Method (Table 6)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Typographical Errors in Citations\",\n      \"description\": \"The manuscript repeatedly misspells the name of a key author, Paul Slovic, as 'Solvic' in the text, which undermines the professionalism and attention to detail of the manuscript.\",\n      \"quote\": \"Solvic (2007) urged the public not to rely on our unreliable emotional responses\",\n      \"location\": \"Introduction\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incorrect Power Analysis Justification\",\n      \"description\": \"The authors state that a power analysis for d = -0.36 requires a sample size of 314 to achieve 0.95 power at alpha = .05. However, an independent samples t-test for d = 0.36 requires approximately N = 404 for 95% power (two-tailed). The origin of the N = 314 figure is mathematically unclear and likely incorrect.\",\n      \"quote\": \"Given the smallest effect size regarding the effect of intervention (learning identifiable victim effect or not) on donation was found in the original study with Cohens’d = -0.36, the corresponding sample size to detect such effect was 314.\",\n      \"location\": \"Method (Participants)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Non-standard ANOVA Reporting\",\n      \"description\": \"In Table 1, the authors report the F-statistic, p-value, and effect size redundantly for each level of the factors (e.g., Identifiable victim and Statistical victim) rather than for the factor itself (Identifiability). This is a non-standard and confusing way to report ANOVA results, as the F-test evaluates the variance between the groups, not the individual groups themselves.\",\n      \"quote\": \"Identifiable victim | 2.12 | 2.13 | 1 | 115 | 6.75 | <.05* | .06\",\n      \"location\": \"Introduction (Table 1)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Redundant Pairwise Comparisons\",\n      \"description\": \"In the Data Analysis plan (Table 5), the authors state they will conduct Bonferroni-adjusted pairwise comparisons for the main effect of intervention if it is significant. Because the intervention factor only has two levels, the ANOVA main effect already tests the exact difference between these two groups. A pairwise comparison is mathematically redundant and unnecessary.\",\n      \"quote\": \"b. effect of intervention on donation (with joint condition)\",\n      \"location\": \"Method (Table 5)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incomplete Interaction Analysis\",\n      \"description\": \"The authors report a significant interaction between identifiability and intervention on donation (p = .015). However, they do not follow up this significant interaction with standard simple main effects analyses (e.g., testing the effect of intervention within each identifiability condition). Instead, they only report a highly specific and unjustified contrast (1 vs 5 conditions), leaving the nature of the interaction unexplored.\",\n      \"quote\": \"Given the significant interaction effect, we also conducted a t-test to study if the mean of  identifiable/no intervention condition is different from the mean of combining other five conditions on donation.\",\n      \"location\": \"Results\",\n      \"severity\": \"major\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 12836,
+    "output_tokens": 3006
+  }
+}

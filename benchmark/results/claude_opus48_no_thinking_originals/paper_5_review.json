@@ -1,0 +1,252 @@
+{
+  "paper_id": 5,
+  "provider_name": "claude_opus48_no_thinking_originals",
+  "issues": [
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent FSN values between Results and Discussion",
+      "description": "The Results section reports the fail-safe number (FSN) for the Connect outcome as 5 studies, but the Discussion reports it as 11 studies ('the low FSN (11 studies)'). These contradictory values for the same statistic undermine confidence in the reported analyses and prevent readers from assessing robustness.",
+      "quote": "These findings also seemed somewhat unstable, as shown by the low FSN (11 studies).",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent FSN for Express outcome",
+      "description": "In the Results, the FSN for the Express outcome is reported as 3 studies ('The FSN was 3 studies'), but the Discussion states 'only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant.' These values are contradictory for the same outcome.",
+      "quote": "The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent original effect size for Advantageous outcome",
+      "description": "The abstract and Table 1 report the original Advantageous effect size as -.30, but the Discussion and Table 3 use -.33. The text states '(-.02 to -.30 vs. -.33)' while the abstract states 'original effect size = -.30'. This inconsistency affects the effect size comparison and CI calculations.",
+      "quote": "All of the replications showed effects in the same direction as the original, but with widely varying and smaller effect sizes than the original (-.02 to -.30 vs. -.33)",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Prediction interval reported inconsistently",
+      "description": "For the Connect outcome, the Results report the 95% PI as [-.09, .26], but the Discussion reports it as [-.07, .27]. These different intervals for the same analysis are contradictory.",
+      "quote": "supported by the 95% PI of [-.07, .27], which includes zero",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Mislabeled prediction interval as effect size CI",
+      "description": "For Safety, the Discussion states 'The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect' but [-.40, -.15] is actually the 95% CI of the meta-analytic effect size reported in Results, not the PI (which was [-.54, -.03]). This confuses two distinct statistical quantities with very different interpretations.",
+      "quote": "The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Express PI mislabeled/contradicted",
+      "description": "For the Express outcome, the Discussion states 'the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's.' However, the Results section reports [.01, .14] as the 95% CI/PI for the meta-analytic effect size, and describes it ambiguously. The claim that the PI 'came close to, but did not include, zero' contradicts the lower bound of .01, but more importantly the interval labeled as PI here matches the CI in Results, indicating confusion between CI and PI.",
+      "quote": "the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Conflating point null rejection with practical conclusions about future studies",
+      "description": "The authors repeatedly interpret prediction intervals and CIs as definitive statements about what 'future studies will find' (e.g., '95% of future studies would find an effect size smaller'). A prediction interval describes the expected range of true effects in similar studies, not a guarantee about the proportion of future studies, and these overinterpretations are compounded by the acknowledged small number of studies (k=7), which makes PI estimation highly unstable.",
+      "quote": "the 95% CI and prediction interval (PI) indicated future studies would show an effect size between .01 and .14",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Misinterpretation of fail-safe N",
+      "description": "The FSN (Rosenberg method) addresses the file-drawer problem by estimating how many null studies would nullify a result; it is widely criticized as a measure of robustness and does not address publication bias direction or effect size validity. The authors treat high FSN as evidence of robustness and a 'considerable' effect size, an overinterpretation. Moreover, an FSN of 133 for Safety based on only 7 studies should be interpreted cautiously given known instability with small k.",
+      "quote": "These results also seemed to be somewhat robust, as indicated by a high FSN (133). We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions, and that the size of this effect is considerable.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Unjustified inference of publication bias in original study",
+      "description": "The authors repeatedly attribute smaller replication effect sizes to publication bias in the original single study. Publication bias is a property of a literature/selection process across many studies, not something that can be inferred from one original study being larger than its replications (which is expected under regression to the mean and the winner's curse without invoking bias). Asserting publication bias from a single original-vs-replication comparison is a conceptual/statistical overreach.",
+      "quote": "the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's, all factors indicating the presence of publication bias in the original study",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Treating standardized beta as identical to effect size r without justification",
+      "description": "The note states 'Effect size r is equivalent to the beta coefficient.' In a simple bivariate regression with one predictor, standardized beta equals r, but this equivalence only holds for single-predictor models. The methods do not clearly establish that all replications used single-predictor regressions (self-esteem only), and if any covariates were included, beta would not equal r. This needs explicit confirmation.",
+      "quote": "Effect size r is equivalent to the beta coefficient.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing Table 2 demographic data",
+      "description": "Table 2 is referenced multiple times for demographic, descriptive, and reliability statistics, but the table contains only a note ('n/a = Data not available. n/c = Data not collected') with no actual data presented. This prevents readers from evaluating sample composition, descriptive statistics, and key comparisons across studies.",
+      "quote": "Table 2 shows each study's descriptive statistics for gender, race, and the mean and standard deviation for self-esteem and each of the four outcome variables.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unknown missing data handling",
+      "description": "The authors acknowledge that missing data handling procedures are unknown for most studies because analysis scripts were not posted. Different missing data approaches across studies could materially affect effect size estimates and their comparability, yet this heterogeneity in analytic procedure is not modeled or addressed beyond acknowledgment.",
+      "quote": "Contributors did not always post analysis scripts, so procedures to account for missing data are not known for all studies.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent scoring (summed vs averaged) across studies",
+      "description": "The authors note that the Gordon study appears to have summed rather than averaged items, while others averaged. Inconsistent composite score construction can affect regression coefficients and standardization, potentially introducing artifactual heterogeneity into the meta-analysis. This inconsistency is acknowledged but not corrected or its impact assessed.",
+      "quote": "The means for scores in most studies implied that the items were mean averaged, but the Gordon study's mean implied items were summed.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Heterogeneous measurement scales combined without adjustment",
+      "description": "Two studies (IIT-Sp16, IIT-Sp17) used a 5-point RSE scale while others used a 4-point scale, and IIT-Sp16 had altered item wording and order. Although standardized betas/r are scale-invariant to some degree, changing the response scale and item wording alters the construct measurement and could affect reliability and relationships. Combining these without sensitivity analysis is a design concern, especially since these same studies produced the largest Safety effects.",
+      "quote": "most replications used the original four-point scale, while two replications (IIT-Sp16 and IIT-Sp17) used a five-point scale",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Uncontrolled procedural variation (lab vs online, group vs individual)",
+      "description": "Studies varied in administration mode (lab only, online only, both) and the SAU study ran participants in groups of 2-6 rather than individually. These are potential confounds that could systematically affect responses about self-disclosure and Facebook perceptions. The authors decline to test these as moderators due to small k, leaving these variations as unaddressed sources of bias.",
+      "quote": "three replications had participants complete in lab only, two used online only, and two used both methods). Participants completing questionnaires in the lab did so alone, except for the SAU replication, which ran participants in groups of two to six.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Computing effect size r from a study without reported regression",
+      "description": "One replication failed to report regression results, so the authors computed regression statistics themselves from the raw data. Without knowing whether their analytic choices (covariates, missing data, scoring) matched the other studies, this introduces a researcher degree of freedom and potential inconsistency in how that study's effect size was derived.",
+      "quote": "One replication study failed to report regression results, so we calculated the regression statistics from the study's dataset which was made openly available on OSF.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Sample size range contradicts stated minimum and original N",
+      "description": "The text states the minimum sample size was '80 for the present study as this was the sample size in the original study,' and that the CREP minimum 'was generally set at the original study's sample size...but set at 100 for larger studies.' Yet original N was 80, below the 100 threshold described, and the abstract/intro claim the original 'sample sizes were small enough to be feasible.' This creates ambiguity about whether the minimum was 80 or 100, and the meta-analysis includes studies (e.g., SAU N=81, Gordon N=80) near this threshold.",
+      "quote": "this size was generally set at the original study's sample size (which were small enough to be feasible for undergraduate student researchers, but set at 100 for larger studies)",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent participant exclusion count",
+      "description": "The text states 'Five participants who were not Facebook users were excluded from analyses' across all studies, but it is unclear how this small uniform exclusion maps across seven studies with different sizes, and exclusion handling/criteria are not consistently documented (analysis scripts often missing). The exclusion procedures cannot be verified for most studies.",
+      "quote": "Five participants who were not Facebook users were excluded from analyses.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Overclaim about future studies from undergraduate US samples",
+      "description": "All participants were US undergraduates, yet the authors make broad claims about what 'future studies will find' and about individuals generally ('individuals with low self-esteem will feel safer self-disclosing on Facebook'). The narrow, homogeneous sampling frame (college students, US only) limits generalizability to the broader population the conclusions imply.",
+      "quote": "We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions, and that the size of this effect is considerable.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Causal/predictive language from correlational regression",
+      "description": "The design is correlational (self-esteem regressed on perception measures), yet the manuscript consistently uses predictive/causal framing ('self-esteem predicted', 'low self-esteem predicts perceptions'). While 'predict' is sometimes used in a statistical sense, the discussion's interpretive claims about social compensation mechanisms and what low-self-esteem individuals 'will feel' edge toward causal interpretation unsupported by the cross-sectional correlational design.",
+      "quote": "future researchers can be relatively confident of finding that low self-esteem predicts perceptions that Facebook is a safer and more advantageous place to self-disclose than FTF interactions",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Misuse of p just-below-.05 argument",
+      "description": "The authors invoke literature that p-values between .04 and .05 are more likely under a true null to argue against the original Connect finding (p=.05). This argument applies to distributions of p-values across many studies, not to interpreting a single study's specific p-value; using it to discount one original result is a conceptual misapplication.",
+      "quote": "It is worth noting that the original study obtained a p-value of .05, and p-values between .04 and .05 have been demonstrated to be relatively more likely in the case of a true null hypothesis than a false one",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Choice of REML and exclusion of moderator analyses",
+      "description": "The authors made several analytic choices (REML vs DL, random-effects, not conducting moderator analyses, computing missing regression from raw data) that introduce researcher degrees of freedom. While some are justified, the decision not to explore moderators is based on small k, but heterogeneity for Safety was substantial (I2=71.76%), where understanding moderators would be most important. The pre-registration covered individual studies but not the meta-analytic plan itself, leaving meta-analytic decisions potentially post hoc.",
+      "quote": "Because each of these potential moderating factors occurred in only one or two of the seven replications, we chose not to explore these issues in more depth.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Meta-analysis not pre-registered",
+      "description": "The Preregistration badge applies to individual studies' data collection/analysis, but the meta-analytic synthesis methods (effect size extraction choices, REML, FSN, Anderson-Maxwell difference tests) do not appear to have been pre-registered. Given the analytic flexibility involved in synthesis, this distinction should be clearly disclosed and the synthesis decisions flagged as exploratory.",
+      "quote": "the data collection and data analysis methods were preregistered at each individual study's OSF page",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Facebook-specific measure validity amid platform shifts",
+      "description": "The authors themselves note that by 2016-17 participants may have been implicitly comparing Facebook to Snapchat/Instagram, which were not salient in 2012. This means the construct being measured (perceptions of Facebook relative to FTF) may not be equivalent across the original and replications, threatening construct comparability and complicating interpretation of effect size differences as replication failures versus measurement non-equivalence.",
+      "quote": "Participants in our replication studies may have been implicitly comparing Facebook usage to Snapchat and Instagram when rating its usefulness for self-expression and connection with others, whereas these platforms would not have been a consideration for participants in Forest and Wood's (2012) study.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Heterogeneity interpretation despite acknowledged bias",
+      "description": "The authors report and interpret I2 values (e.g., 71.76% for Safety, 44.39% for Connect) with wide CIs, while simultaneously acknowledging these statistics are biased with small k. Reporting strong heterogeneity language ('some evidence of heterogeneity') based on statistics they admit are unreliable creates interpretive tension, and these heterogeneity findings are not consistently propagated into the conclusions.",
+      "quote": "heterogeneity measures are known to be biased for meta-analysis involving small numbers of studies (Borenstein et al., 2009; von Hippel, 2015). Consequently, we are reluctant to draw conclusive inferences from the heterogeneity statistics.",
+      "location": "discussion",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Demographic percentages do not sum/match across reporting",
+      "description": "The original study demographics are reported as '73% and 21%... (6% were undisclosed)' for female/male, but the replication aggregate is '67% female and 33% male,' summing to 100% with no undisclosed category, suggesting different handling of missing gender data across original and replications that is not reconciled.",
+      "quote": "Across datasets, 67% of all participants were female and 33% were male, compared with 73% and 21% in the original study (6% were \"undisclosed\")",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Citation/reference errors undermine traceability",
+      "description": "Several references are inconsistent or erroneous (e.g., 'Masicampo & Lelande, 2012' in text vs 'Masicampo, E. J., & Lalande, D. R. (2012)' in references; 'Calin-Jagerman' vs 'Calin-Jageman'; 'Paschler' vs 'Pashler'; CREP expanded as both 'Collaborative Replication and Education Project' and 'Collaborative Research and Education Project'). These reduce the reliability of citation-based claims and traceability.",
+      "quote": "given the inconsistent CREP expansion: \"Collaborative Replication and Education Project (CREP)\" vs \"Collaborative Research and Education Project (CREP; Grahe, et al., 2016",
+      "location": "introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Citation-impact framing as justification",
+      "description": "The introduction leans heavily on citation metrics (145 citations, 99th percentile) to justify importance and to imply the finding's influence, but high citation count does not establish robustness or correctness, and using it as a premise for inferring publication bias or importance conflates impact with validity.",
+      "quote": "the article has been cited 145 times (12.17 times the average for similar articles), putting it in the 99th percentile of citations for psychology articles in the previous 18 months",
+      "location": "introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Number of institutions vs studies discrepancy",
+      "description": "The manuscript states 'five diverse institutions' produced the replications, but lists seven studies from what appears to be five institutions (BYU-Idaho x2, IIT x2, Gordon, MSU, SAU). This means some institutions contributed multiple datasets, creating potential non-independence (same labs, mentors, procedures) that is not accounted for in the random-effects meta-analysis treating studies as independent.",
+      "quote": "These CREP research teams represented five diverse institutions, both public and private",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Express meta-analytic significance vs null conclusion tension",
+      "description": "The Results report the Express meta-analytic effect r=.08 was 'statistically different from zero' (p=.021), yet the conclusion is framed as supporting the original null finding ('self-esteem did not relate to perceived opportunities for self-expression'). A significant meta-analytic effect contradicts the 'no relationship' framing, and this tension between a significant pooled effect and a 'null supported' narrative is not adequately reconciled.",
+      "quote": "Even though the effect size meta-analysis revealed that the point-estimate meta-analytic effect size of the seven replication studies, r = .08, p = .021, was statistically different from zero... all individual replications found regression coefficients not significantly different from zero.",
+      "location": "results",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\": [{\"category\": \"internal_consistency\", \"subcategory\": \"Inconsistent FSN values between Results and Discussion\", \"description\": \"The Results section reports the fail-safe number (FSN) for the Connect outcome as 5 studies, but the Discussion reports it as 11 studies ('the low FSN (11 studies)'). These contradictory values for the same statistic undermine confidence in the reported analyses and prevent readers from assessing robustness.\", \"quote\": \"These findings also seemed somewhat unstable, as shown by the low FSN (11 studies).\", \"location\": \"discussion\", \"severity\": \"major\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Inconsistent FSN for Express outcome\", \"description\": \"In the Results, the FSN for the Express outcome is reported as 3 studies ('The FSN was 3 studies'), but the Discussion states 'only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant.' These values are contradictory for the same outcome.\", \"quote\": \"The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect\", \"location\": \"discussion\", \"severity\": \"major\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Inconsistent original effect size for Advantageous outcome\", \"description\": \"The abstract and Table 1 report the original Advantageous effect size as -.30, but the Discussion and Table 3 use -.33. The text states '(-.02 to -.30 vs. -.33)' while the abstract states 'original effect size = -.30'. This inconsistency affects the effect size comparison and CI calculations.\", \"quote\": \"All of the replications showed effects in the same direction as the original, but with widely varying and smaller effect sizes than the original (-.02 to -.30 vs. -.33)\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Prediction interval reported inconsistently\", \"description\": \"For the Connect outcome, the Results report the 95% PI as [-.09, .26], but the Discussion reports it as [-.07, .27]. These different intervals for the same analysis are contradictory.\", \"quote\": \"supported by the 95% PI of [-.07, .27], which includes zero\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Mislabeled prediction interval as effect size CI\", \"description\": \"For Safety, the Discussion states 'The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect' but [-.40, -.15] is actually the 95% CI of the meta-analytic effect size reported in Results, not the PI (which was [-.54, -.03]). This confuses two distinct statistical quantities with very different interpretations.\", \"quote\": \"The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Express PI mislabeled/contradicted\", \"description\": \"For the Express outcome, the Discussion states 'the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's.' However, the Results section reports [.01, .14] as the 95% CI/PI for the meta-analytic effect size, and describes it ambiguously. The claim that the PI 'came close to, but did not include, zero' contradicts the lower bound of .01, but more importantly the interval labeled as PI here matches the CI in Results, indicating confusion between CI and PI.\", \"quote\": \"the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Conflating point null rejection with practical conclusions about future studies\", \"description\": \"The authors repeatedly interpret prediction intervals and CIs as definitive statements about what 'future studies will find' (e.g., '95% of future studies would find an effect size smaller'). A prediction interval describes the expected range of true effects in similar studies, not a guarantee about the proportion of future studies, and these overinterpretations are compounded by the acknowledged small number of studies (k=7), which makes PI estimation highly unstable.\", \"quote\": \"the 95% CI and prediction interval (PI) indicated future studies would show an effect size between .01 and .14\", \"location\": \"results\", \"severity\": \"moderate\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Misinterpretation of fail-safe N\", \"description\": \"The FSN (Rosenberg method) addresses the file-drawer problem by estimating how many null studies would nullify a result; it is widely criticized as a measure of robustness and does not address publication bias direction or effect size validity. The authors treat high FSN as evidence of robustness and a 'considerable' effect size, an overinterpretation. Moreover, an FSN of 133 for Safety based on only 7 studies should be interpreted cautiously given known instability with small k.\", \"quote\": \"These results also seemed to be somewhat robust, as indicated by a high FSN (133). We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions, and that the size of this effect is considerable.\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Unjustified inference of publication bias in original study\", \"description\": \"The authors repeatedly attribute smaller replication effect sizes to publication bias in the original single study. Publication bias is a property of a literature/selection process across many studies, not something that can be inferred from one original study being larger than its replications (which is expected under regression to the mean and the winner's curse without invoking bias). Asserting publication bias from a single original-vs-replication comparison is a conceptual/statistical overreach.\", \"quote\": \"the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study's, all factors indicating the presence of publication bias in the original study\", \"location\": \"discussion\", \"severity\": \"major\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Treating standardized beta as identical to effect size r without justification\", \"description\": \"The note states 'Effect size r is equivalent to the beta coefficient.' In a simple bivariate regression with one predictor, standardized beta equals r, but this equivalence only holds for single-predictor models. The methods do not clearly establish that all replications used single-predictor regressions (self-esteem only), and if any covariates were included, beta would not equal r. This needs explicit confirmation.\", \"quote\": \"Effect size r is equivalent to the beta coefficient.\", \"location\": \"results\", \"severity\": \"moderate\"}, {\"category\": \"reporting_completeness\", \"subcategory\": \"Missing Table 2 demographic data\", \"description\": \"Table 2 is referenced multiple times for demographic, descriptive, and reliability statistics, but the table contains only a note ('n/a = Data not available. n/c = Data not collected') with no actual data presented. This prevents readers from evaluating sample composition, descriptive statistics, and key comparisons across studies.\", \"quote\": \"Table 2 shows each study's descriptive statistics for gender, race, and the mean and standard deviation for self-esteem and each of the four outcome variables.\", \"location\": \"results\", \"severity\": \"major\"}, {\"category\": \"attrition_missing_data\", \"subcategory\": \"Unknown missing data handling\", \"description\": \"The authors acknowledge that missing data handling procedures are unknown for most studies because analysis scripts were not posted. Different missing data approaches across studies could materially affect effect size estimates and their comparability, yet this heterogeneity in analytic procedure is not modeled or addressed beyond acknowledgment.\", \"quote\": \"Contributors did not always post analysis scripts, so procedures to account for missing data are not known for all studies.\", \"location\": \"methods\", \"severity\": \"major\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Inconsistent scoring (summed vs averaged) across studies\", \"description\": \"The authors note that the Gordon study appears to have summed rather than averaged items, while others averaged. Inconsistent composite score construction can affect regression coefficients and standardization, potentially introducing artifactual heterogeneity into the meta-analysis. This inconsistency is acknowledged but not corrected or its impact assessed.\", \"quote\": \"The means for scores in most studies implied that the items were mean averaged, but the Gordon study's mean implied items were summed.\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"methodological_design\", \"subcategory\": \"Heterogeneous measurement scales combined without adjustment\", \"description\": \"Two studies (IIT-Sp16, IIT-Sp17) used a 5-point RSE scale while others used a 4-point scale, and IIT-Sp16 had altered item wording and order. Although standardized betas/r are scale-invariant to some degree, changing the response scale and item wording alters the construct measurement and could affect reliability and relationships. Combining these without sensitivity analysis is a design concern, especially since these same studies produced the largest Safety effects.\", \"quote\": \"most replications used the original four-point scale, while two replications (IIT-Sp16 and IIT-Sp17) used a five-point scale\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"methodological_design\", \"subcategory\": \"Uncontrolled procedural variation (lab vs online, group vs individual)\", \"description\": \"Studies varied in administration mode (lab only, online only, both) and the SAU study ran participants in groups of 2-6 rather than individually. These are potential confounds that could systematically affect responses about self-disclosure and Facebook perceptions. The authors decline to test these as moderators due to small k, leaving these variations as unaddressed sources of bias.\", \"quote\": \"three replications had participants complete in lab only, two used online only, and two used both methods). Participants completing questionnaires in the lab did so alone, except for the SAU replication, which ran participants in groups of two to six.\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Computing effect size r from a study without reported regression\", \"description\": \"One replication failed to report regression results, so the authors computed regression statistics themselves from the raw data. Without knowing whether their analytic choices (covariates, missing data, scoring) matched the other studies, this introduces a researcher degree of freedom and potential inconsistency in how that study's effect size was derived.\", \"quote\": \"One replication study failed to report regression results, so we calculated the regression statistics from the study's dataset which was made openly available on OSF.\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Sample size range contradicts stated minimum and original N\", \"description\": \"The text states the minimum sample size was '80 for the present study as this was the sample size in the original study,' and that the CREP minimum 'was generally set at the original study's sample size...but set at 100 for larger studies.' Yet original N was 80, below the 100 threshold described, and the abstract/intro claim the original 'sample sizes were small enough to be feasible.' This creates ambiguity about whether the minimum was 80 or 100, and the meta-analysis includes studies (e.g., SAU N=81, Gordon N=80) near this threshold.\", \"quote\": \"this size was generally set at the original study's sample size (which were small enough to be feasible for undergraduate student researchers, but set at 100 for larger studies)\", \"location\": \"methods\", \"severity\": \"minor\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Inconsistent participant exclusion count\", \"description\": \"The text states 'Five participants who were not Facebook users were excluded from analyses' across all studies, but it is unclear how this small uniform exclusion maps across seven studies with different sizes, and exclusion handling/criteria are not consistently documented (analysis scripts often missing). The exclusion procedures cannot be verified for most studies.\", \"quote\": \"Five participants who were not Facebook users were excluded from analyses.\", \"location\": \"methods\", \"severity\": \"minor\"}, {\"category\": \"generalizability\", \"subcategory\": \"Overclaim about future studies from undergraduate US samples\", \"description\": \"All participants were US undergraduates, yet the authors make broad claims about what 'future studies will find' and about individuals generally ('individuals with low self-esteem will feel safer self-disclosing on Facebook'). The narrow, homogeneous sampling frame (college students, US only) limits generalizability to the broader population the conclusions imply.\", \"quote\": \"We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions, and that the size of this effect is considerable.\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"causal_inference\", \"subcategory\": \"Causal/predictive language from correlational regression\", \"description\": \"The design is correlational (self-esteem regressed on perception measures), yet the manuscript consistently uses predictive/causal framing ('self-esteem predicted', 'low self-esteem predicts perceptions'). While 'predict' is sometimes used in a statistical sense, the discussion's interpretive claims about social compensation mechanisms and what low-self-esteem individuals 'will feel' edge toward causal interpretation unsupported by the cross-sectional correlational design.\", \"quote\": \"future researchers can be relatively confident of finding that low self-esteem predicts perceptions that Facebook is a safer and more advantageous place to self-disclose than FTF interactions\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"theoretical_conceptual\", \"subcategory\": \"Misuse of p just-below-.05 argument\", \"description\": \"The authors invoke literature that p-values between .04 and .05 are more likely under a true null to argue against the original Connect finding (p=.05). This argument applies to distributions of p-values across many studies, not to interpreting a single study's specific p-value; using it to discount one original result is a conceptual misapplication.\", \"quote\": \"It is worth noting that the original study obtained a p-value of .05, and p-values between .04 and .05 have been demonstrated to be relatively more likely in the case of a true null hypothesis than a false one\", \"location\": \"results\", \"severity\": \"moderate\"}, {\"category\": \"analytic_flexibility\", \"subcategory\": \"Choice of REML and exclusion of moderator analyses\", \"description\": \"The authors made several analytic choices (REML vs DL, random-effects, not conducting moderator analyses, computing missing regression from raw data) that introduce researcher degrees of freedom. While some are justified, the decision not to explore moderators is based on small k, but heterogeneity for Safety was substantial (I2=71.76%), where understanding moderators would be most important. The pre-registration covered individual studies but not the meta-analytic plan itself, leaving meta-analytic decisions potentially post hoc.\", \"quote\": \"Because each of these potential moderating factors occurred in only one or two of the seven replications, we chose not to explore these issues in more depth.\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"reporting_completeness\", \"subcategory\": \"Meta-analysis not pre-registered\", \"description\": \"The Preregistration badge applies to individual studies' data collection/analysis, but the meta-analytic synthesis methods (effect size extraction choices, REML, FSN, Anderson-Maxwell difference tests) do not appear to have been pre-registered. Given the analytic flexibility involved in synthesis, this distinction should be clearly disclosed and the synthesis decisions flagged as exploratory.\", \"quote\": \"the data collection and data analysis methods were preregistered at each individual study's OSF page\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"construct_validity\", \"subcategory\": \"Facebook-specific measure validity amid platform shifts\", \"description\": \"The authors themselves note that by 2016-17 participants may have been implicitly comparing Facebook to Snapchat/Instagram, which were not salient in 2012. This means the construct being measured (perceptions of Facebook relative to FTF) may not be equivalent across the original and replications, threatening construct comparability and complicating interpretation of effect size differences as replication failures versus measurement non-equivalence.\", \"quote\": \"Participants in our replication studies may have been implicitly comparing Facebook usage to Snapchat and Instagram when rating its usefulness for self-expression and connection with others, whereas these platforms would not have been a consideration for participants in Forest and Wood's (2012) study.\", \"location\": \"discussion\", \"severity\": \"moderate\"}, {\"category\": \"statistical_errors\", \"subcategory\": \"Heterogeneity interpretation despite acknowledged bias\", \"description\": \"The authors report and interpret I2 values (e.g., 71.76% for Safety, 44.39% for Connect) with wide CIs, while simultaneously acknowledging these statistics are biased with small k. Reporting strong heterogeneity language ('some evidence of heterogeneity') based on statistics they admit are unreliable creates interpretive tension, and these heterogeneity findings are not consistently propagated into the conclusions.\", \"quote\": \"heterogeneity measures are known to be biased for meta-analysis involving small numbers of studies (Borenstein et al., 2009; von Hippel, 2015). Consequently, we are reluctant to draw conclusive inferences from the heterogeneity statistics.\", \"location\": \"discussion\", \"severity\": \"minor\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Demographic percentages do not sum/match across reporting\", \"description\": \"The original study demographics are reported as '73% and 21%... (6% were undisclosed)' for female/male, but the replication aggregate is '67% female and 33% male,' summing to 100% with no undisclosed category, suggesting different handling of missing gender data across original and replications that is not reconciled.\", \"quote\": \"Across datasets, 67% of all participants were female and 33% were male, compared with 73% and 21% in the original study (6% were \\\"undisclosed\\\")\", \"location\": \"methods\", \"severity\": \"minor\"}, {\"category\": \"reporting_completeness\", \"subcategory\": \"Citation/reference errors undermine traceability\", \"description\": \"Several references are inconsistent or erroneous (e.g., 'Masicampo & Lelande, 2012' in text vs 'Masicampo, E. J., & Lalande, D. R. (2012)' in references; 'Calin-Jagerman' vs 'Calin-Jageman'; 'Paschler' vs 'Pashler'; CREP expanded as both 'Collaborative Replication and Education Project' and 'Collaborative Research and Education Project'). These reduce the reliability of citation-based claims and traceability.\", \"quote\": \"given the inconsistent CREP expansion: \\\"Collaborative Replication and Education Project (CREP)\\\" vs \\\"Collaborative Research and Education Project (CREP; Grahe, et al., 2016\", \"location\": \"introduction\", \"severity\": \"minor\"}, {\"category\": \"generalizability\", \"subcategory\": \"Citation-impact framing as justification\", \"description\": \"The introduction leans heavily on citation metrics (145 citations, 99th percentile) to justify importance and to imply the finding's influence, but high citation count does not establish robustness or correctness, and using it as a premise for inferring publication bias or importance conflates impact with validity.\", \"quote\": \"the article has been cited 145 times (12.17 times the average for similar articles), putting it in the 99th percentile of citations for psychology articles in the previous 18 months\", \"location\": \"introduction\", \"severity\": \"minor\"}, {\"category\": \"methodological_design\", \"subcategory\": \"Number of institutions vs studies discrepancy\", \"description\": \"The manuscript states 'five diverse institutions' produced the replications, but lists seven studies from what appears to be five institutions (BYU-Idaho x2, IIT x2, Gordon, MSU, SAU). This means some institutions contributed multiple datasets, creating potential non-independence (same labs, mentors, procedures) that is not accounted for in the random-effects meta-analysis treating studies as independent.\", \"quote\": \"These CREP research teams represented five diverse institutions, both public and private\", \"location\": \"methods\", \"severity\": \"moderate\"}, {\"category\": \"internal_consistency\", \"subcategory\": \"Express meta-analytic significance vs null conclusion tension\", \"description\": \"The Results report the Express meta-analytic effect r=.08 was 'statistically different from zero' (p=.021), yet the conclusion is framed as supporting the original null finding ('self-esteem did not relate to perceived opportunities for self-expression'). A significant meta-analytic effect contradicts the 'no relationship' framing, and this tension between a significant pooled effect and a 'null supported' narrative is not adequately reconciled.\", \"quote\": \"Even though the effect size meta-analysis revealed that the point-estimate meta-analytic effect size of the seven replication studies, r = .08, p = .021, was statistically different from zero... all individual replications found regression coefficients not significantly different from zero.\", \"location\": \"results\", \"severity\": \"moderate\"}]}",
+  "model_id": "claude-opus-4-8",
+  "token_usage": {
+    "input_tokens": 20964,
+    "output_tokens": 7162
+  }
+}

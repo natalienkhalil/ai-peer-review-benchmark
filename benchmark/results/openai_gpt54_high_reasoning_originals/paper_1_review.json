@@ -1,0 +1,220 @@
+{
+  "paper_id": 1,
+  "provider_name": "openai_gpt54_high_reasoning_originals",
+  "issues": [
+    {
+      "category": "causal_inference",
+      "subcategory": "causal_language_from_observational_clpm",
+      "description": "The manuscript explicitly states that the cross-lagged panel model is being used to infer causal associations, and the discussion repeats causal interpretations. A conventional observational CLPM can establish temporal ordering under assumptions, but it does not by itself justify causal inference because unmeasured confounding, stable trait differences, and model misspecification can generate apparent cross-lagged effects.",
+      "quote": "We used cross-lagged path analysis to infer causal associations between SDO, RWA and willingness to sacrifice for the environment.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "between_person_within_person_conflation",
+      "description": "The authors use a traditional autoregressive cross-lagged panel model, which mixes stable between-person differences with within-person change. With five waves and very high autoregressive paths, a random-intercept CLPM or related within-person model would be more appropriate if the goal is to speak about changes over time. As specified, the model may attribute stable trait covariance to cross-lagged influence.",
+      "quote": "The autoregressive cross-lagged panel model allows examination of reciprocal influences among the three variables",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "attrition_reporting_absent",
+      "description": "This is a five-wave longitudinal study, but the manuscript does not report wave-specific sample sizes, retention rates, attrition patterns, or whether dropout was differential on key variables. Referring readers to a website is insufficient for evaluating attrition bias and the plausibility of the missing-data assumptions.",
+      "quote": "Full details about the sample, including the procedure, retention, and demographics of participants, are available on the NZAVS website.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "fiml_misdescribed_as_imputation",
+      "description": "FIML is an estimation approach, not an imputation method. Describing it as imputation is technically incorrect and obscures the assumptions being made. The manuscript also does not discuss the missing-at-random assumption or any checks relevant to whether FIML is appropriate here.",
+      "quote": "Missing data were imputed using FIML.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "missing_indicator_inconsistent_with_full_invariance",
+      "description": "One RWA item was not measured at Time 2, yet the authors state that factor loadings were constrained to equality across all five waves. Full longitudinal invariance cannot be claimed in the same way when one indicator is absent at one wave; this requires partial invariance handling and explicit reporting of how the missing indicator was modeled.",
+      "quote": "The item “Some of the best people in our country are those who are challenging our government, criticizing religion, and ignoring the “normal way” things are supposed to be done”, was not assessed at time two, but included in all other time points. ... We started by constraining the factor loadings of our latent variables to equality so that, for each factor, the individual items that make up the factor were set to be equal across time points.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "scalar_invariance_misreported_or_misspecified",
+      "description": "The manuscript appears to confuse item intercept invariance with equality of latent means. Constraining latent means to equality is not the same as testing scalar invariance, and it additionally imposes a substantive no-mean-change assumption across five years. This is both a measurement and substantive modeling decision that can distort the estimated dynamics.",
+      "quote": "Next, we constrained the means (intercepts) of the factors to equality. Put concretely, this made the latent means of the three constructs invariance from Time 1 to Time 5.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "untested_stationarity_constraints",
+      "description": "The stationary model constrains all cross-lagged effects, and apparently other parameters, to be identical across years. This is a strong assumption over a five-year period. The manuscript does not report comparison with a less constrained model or empirical evidence that stationarity holds, instead justifying the choice by author preference.",
+      "quote": "We tested the reciprocal influences between the constructs with a stationary cross-lagged model where all parameters are set as time-invariant. ... We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "poor_model_fit_accepted",
+      "description": "The reported fit includes a CFI of .86, which is below conventional thresholds for acceptable SEM fit. The authors dismiss this because CFI is affected by complexity and accept the model based on RMSEA/SRMR, but substantial misfit remains possible. Interpreting individual paths from a poorly fitting model is risky without further diagnostics or alternative model tests.",
+      "quote": "Overall, model fit was poorer for those indices affected by model complexity (e.g. χ2(2279) = 36511.73, p < .001, CFI = .86), however those less influenced by complexity pointed to good fit (RMSEA = .03, 90% CI [.025, .026], SRMR = .07), therefore the model was accepted.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "invalid_ci_comparison_of_dependent_correlations",
+      "description": "The manuscript infers that one correlation is stronger than another from non-overlapping confidence intervals. That is not a valid test for the difference between two dependent correlations sharing a common variable. A formal test of the difference is required.",
+      "quote": "Of note here is that the zero-order correlation between SDO and environmentalism was stronger than the correlation for RWA, as indicated by the non-overlapping confidence interval.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unstandardized_path_comparison_scale_dependent",
+      "description": "The claim that SDO is a statistically stronger predictor than RWA is based on constraining unstandardized paths to equality. For latent predictors, comparisons of unstandardized coefficients are scale-dependent unless a clearly common metric is established and reported. Without transparent scaling information, the conclusion about relative strength is not secure.",
+      "quote": "We found that our original model provides significantly better fit to the data 2(1) = 50.98, p < .001, and thus conclude that SDO is a statistically stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "cross_equation_path_comparison_not_interpretable",
+      "description": "The manuscript compares cross-lagged coefficients in opposite directions and concludes one direction is stronger. Those coefficients come from different equations with different outcomes and residual variances, so direct strength comparisons are not straightforward. This is especially problematic when based on unstandardized coefficients from latent models.",
+      "quote": "However, while the association between SDO and environmentalism was bidirectional, the lagged effect on SDO was stronger than the reverse (2(1) = 39.97, p < .001), whilst there was no difference between the strength of the effect of RWA on environmentalism and vice versa (2(1) = 2.70, p = .100).",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "implausible_or_erroneous_chi_square_difference",
+      "description": "The reported χ²-difference value is extraordinarily large relative to the very small path estimates being compared, suggesting a likely typographical or analytic error. Because the discussion interprets this asymmetry substantively, this number should be checked and corrected.",
+      "quote": "These lagged effects were also statistically different (2(1) = 15,389.13, p < .001), a finding we explore more fully in the Discussion.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "sd_reported_instead_of_se",
+      "description": "The uncertainty term for regression/path coefficients should be reported as a standard error, not a standard deviation. Using SD here is technically incorrect and creates ambiguity about what was estimated.",
+      "quote": "SDO was a stronger predictor of change in environmental sacrifice (B = -.11, SD = .01, p < .001, 95% CI [-.13, -.09]) than RWA (B = -.02, SD = .01, p = .001, 95% CI [-.03, -.01]).",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "narrow_proxy_for_environmentalism",
+      "description": "The paper repeatedly frames the outcome as ‘environmentalism,’ but the actual measure is a two-item self-reported willingness to make sacrifices for the environment. This is a much narrower construct than environmentalism broadly construed, and it is not equivalent to environmental attitudes, concern, activism, or behavior.",
+      "quote": "Environmentalism was measured as individual’s willingness to make sacrifices for the environment.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "intention_behavior_mismatch",
+      "description": "The manuscript frequently interprets the outcome as behavior or action, but the measure is only willingness or intention. Intention does not equal enacted pro-environmental behavior, so conclusions about changing behavior are overstated.",
+      "quote": "We examine the longitudinal influence of SDO and RWA on people’s willingness to change their behaviour to benefit the environment in a national probability sample over five years.",
+      "location": "abstract",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "sdo_reinterpreted_as_dominance_over_nature",
+      "description": "The discussion treats SDO as if it directly measures a desire to dominate nature, but the instrument assesses attitudes toward social-group hierarchy. That leap from intergroup dominance to human–nature dominance is theoretical speculation, not something measured in this study.",
+      "quote": "This is perhaps the first hint that for those endorsing SDO, nature might be another ‘outgroup’ to assert dominance over.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "abbreviated_multidimensional_constructs",
+      "description": "The authors use short six-item versions of SDO and RWA and later interpret specific motives such as dominance, submission, and tradition. Especially for RWA, these are multidimensional constructs, and short scales with modest reliability and a missing item at one wave may not support such fine-grained substantive interpretation.",
+      "quote": "Social dominance orientation was assessed using six items from Sidanius and Pratto’s [1] SDO6 scale. ... Right-wing authoritarianism was assessed with six items from Altemeyer’s [27] RWA scale.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "unmeasured_confounding_not_addressed",
+      "description": "The paper makes causal claims without modeling obvious confounds or common causes. Variables such as general political ideology, party support, education, socioeconomic conditions, or exposure to salient climate events could influence both authoritarian/dominance attitudes and willingness to sacrifice for the environment. Temporal ordering alone does not solve confounding.",
+      "quote": "These results suggest that there is a causal pathway from ideological attitudes to environmentalism.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "insufficient_model_specification_for_replication",
+      "description": "Key SEM details needed for evaluation and replication are omitted from the manuscript. The estimator is not reported, treatment of the Likert indicators as continuous or categorical is unspecified, identification constraints are unclear, and the syntax is deferred until after acceptance. Reviewers cannot fully assess the model as described.",
+      "quote": "The autoregressive cross-lagged panel model allows examination of reciprocal influences among the three variables and was conducted in Mplus (version 7.3 [29]). A copy of the Mplus syntax used will be available on the NZAVS website upon acceptance of the manuscript.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "representativeness_overclaim",
+      "description": "The manuscript overstates how generalizable the findings are. The sample is from one country, is predominantly Pākehā, and the paper does not report retention/attrition or weighting procedures. Those limitations matter both for inference to New Zealand and especially for broader claims about ideology and environmentalism.",
+      "quote": "Our research uses a nationally representative sample, meaning that our results are highly generalisable, at least to the New Zealand population.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "ambiguous_panel_membership_and_effective_n",
+      "description": "It is unclear whether the 22,974 participants were all measured from baseline, whether they all provided data at all five waves, or whether entrants from later waves were included with planned missingness. This ambiguity prevents readers from understanding the effective sample size for each lag and the structure of the longitudinal data.",
+      "quote": "This study uses data from individuals who participated in the first five years of the project (from 2009 to 2013). Of the 22,974 participants included in this study, the average age was 43 years at Time 1 (2009; M = 43.07, SD = 14.67) and 62% were female.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "survey_weights_and_design_effects_not_reported",
+      "description": "For a study described as a national probability sample, the manuscript should report whether survey weights were used to adjust for sampling, nonresponse, and attrition, and whether any design effects were accounted for. Without this information, population-level interpretation is weakened.",
+      "quote": "We used data from the New Zealand Attitudes and Values Study [26], a nationally representative, longitudinal study of personality, social attitudes, and health outcomes.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "discretionary_modeling_choices_without_preregistration",
+      "description": "The manuscript does not mention preregistration, and important analytic choices appear discretionary: imposing stationarity because it suited the research question and changing the significance threshold because of sample size. Without a pre-specified plan or transparent comparison set of alternatives, researcher degrees of freedom remain substantial.",
+      "quote": "We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured. ... Because of the large sample size of this dataset, we adopted a conservative p-value threshold of p < .01 to indicate significance of findings",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "unsupported_socialization_claim",
+      "description": "The authors infer a national socialization process from asymmetric cross-lagged coefficients. That inference is not directly tested: the data contain no measure of socialization into authoritarianism versus social dominance, and the asymmetry could also reflect measurement issues, reliability differences, or model artifacts.",
+      "quote": "Because we found that RWA predicts SDO over time, but SDO does not predict RWA, this suggests that New Zealander’s are socialized into authoritarianism to a greater extent than social dominance.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "mechanisms_asserted_but_not_measured",
+      "description": "The discussion advances detailed psychological mechanisms about deservingness, exploitation, and hazard distribution, but none of these proposed mediators were measured. These paragraphs therefore go beyond what the data can support.",
+      "quote": "They believe that high-status social groups are at the top of the hierarchy because they are better than other, subjugated groups. As such, they believe they deserve to disproportionately benefit from environmental exploitation and avoid environmental hazards, while disregarding the effect this has on lower-status social groups.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "universal_motivational_claim_from_single_country_study",
+      "description": "The conclusion generalizes a specific New Zealand panel association on a narrow willingness measure into a broad claim about the primary motive behind environmental exploitation. That level of generalization is not warranted from the data presented.",
+      "quote": "These findings suggest that the motivation to exploit the environment comes primarily from the desire for dominance, and to a lesser extent from the desire to submit to tradition and authority.",
+      "location": "abstract",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"causal_inference\",\"subcategory\":\"causal_language_from_observational_clpm\",\"description\":\"The manuscript explicitly states that the cross-lagged panel model is being used to infer causal associations, and the discussion repeats causal interpretations. A conventional observational CLPM can establish temporal ordering under assumptions, but it does not by itself justify causal inference because unmeasured confounding, stable trait differences, and model misspecification can generate apparent cross-lagged effects.\",\"quote\":\"We used cross-lagged path analysis to infer causal associations between SDO, RWA and willingness to sacrifice for the environment.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"methodological_design\",\"subcategory\":\"between_person_within_person_conflation\",\"description\":\"The authors use a traditional autoregressive cross-lagged panel model, which mixes stable between-person differences with within-person change. With five waves and very high autoregressive paths, a random-intercept CLPM or related within-person model would be more appropriate if the goal is to speak about changes over time. As specified, the model may attribute stable trait covariance to cross-lagged influence.\",\"quote\":\"The autoregressive cross-lagged panel model allows examination of reciprocal influences among the three variables\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"attrition_reporting_absent\",\"description\":\"This is a five-wave longitudinal study, but the manuscript does not report wave-specific sample sizes, retention rates, attrition patterns, or whether dropout was differential on key variables. Referring readers to a website is insufficient for evaluating attrition bias and the plausibility of the missing-data assumptions.\",\"quote\":\"Full details about the sample, including the procedure, retention, and demographics of participants, are available on the NZAVS website.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"fiml_misdescribed_as_imputation\",\"description\":\"FIML is an estimation approach, not an imputation method. Describing it as imputation is technically incorrect and obscures the assumptions being made. The manuscript also does not discuss the missing-at-random assumption or any checks relevant to whether FIML is appropriate here.\",\"quote\":\"Missing data were imputed using FIML.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"missing_indicator_inconsistent_with_full_invariance\",\"description\":\"One RWA item was not measured at Time 2, yet the authors state that factor loadings were constrained to equality across all five waves. Full longitudinal invariance cannot be claimed in the same way when one indicator is absent at one wave; this requires partial invariance handling and explicit reporting of how the missing indicator was modeled.\",\"quote\":\"The item “Some of the best people in our country are those who are challenging our government, criticizing religion, and ignoring the “normal way” things are supposed to be done”, was not assessed at time two, but included in all other time points. ... We started by constraining the factor loadings of our latent variables to equality so that, for each factor, the individual items that make up the factor were set to be equal across time points.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"scalar_invariance_misreported_or_misspecified\",\"description\":\"The manuscript appears to confuse item intercept invariance with equality of latent means. Constraining latent means to equality is not the same as testing scalar invariance, and it additionally imposes a substantive no-mean-change assumption across five years. This is both a measurement and substantive modeling decision that can distort the estimated dynamics.\",\"quote\":\"Next, we constrained the means (intercepts) of the factors to equality. Put concretely, this made the latent means of the three constructs invariance from Time 1 to Time 5.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"untested_stationarity_constraints\",\"description\":\"The stationary model constrains all cross-lagged effects, and apparently other parameters, to be identical across years. This is a strong assumption over a five-year period. The manuscript does not report comparison with a less constrained model or empirical evidence that stationarity holds, instead justifying the choice by author preference.\",\"quote\":\"We tested the reciprocal influences between the constructs with a stationary cross-lagged model where all parameters are set as time-invariant. ... We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"poor_model_fit_accepted\",\"description\":\"The reported fit includes a CFI of .86, which is below conventional thresholds for acceptable SEM fit. The authors dismiss this because CFI is affected by complexity and accept the model based on RMSEA/SRMR, but substantial misfit remains possible. Interpreting individual paths from a poorly fitting model is risky without further diagnostics or alternative model tests.\",\"quote\":\"Overall, model fit was poorer for those indices affected by model complexity (e.g. χ2(2279) = 36511.73, p < .001, CFI = .86), however those less influenced by complexity pointed to good fit (RMSEA = .03, 90% CI [.025, .026], SRMR = .07), therefore the model was accepted.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"invalid_ci_comparison_of_dependent_correlations\",\"description\":\"The manuscript infers that one correlation is stronger than another from non-overlapping confidence intervals. That is not a valid test for the difference between two dependent correlations sharing a common variable. A formal test of the difference is required.\",\"quote\":\"Of note here is that the zero-order correlation between SDO and environmentalism was stronger than the correlation for RWA, as indicated by the non-overlapping confidence interval.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unstandardized_path_comparison_scale_dependent\",\"description\":\"The claim that SDO is a statistically stronger predictor than RWA is based on constraining unstandardized paths to equality. For latent predictors, comparisons of unstandardized coefficients are scale-dependent unless a clearly common metric is established and reported. Without transparent scaling information, the conclusion about relative strength is not secure.\",\"quote\":\"We found that our original model provides significantly better fit to the data 2(1) = 50.98, p < .001, and thus conclude that SDO is a statistically stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"cross_equation_path_comparison_not_interpretable\",\"description\":\"The manuscript compares cross-lagged coefficients in opposite directions and concludes one direction is stronger. Those coefficients come from different equations with different outcomes and residual variances, so direct strength comparisons are not straightforward. This is especially problematic when based on unstandardized coefficients from latent models.\",\"quote\":\"However, while the association between SDO and environmentalism was bidirectional, the lagged effect on SDO was stronger than the reverse (2(1) = 39.97, p < .001), whilst there was no difference between the strength of the effect of RWA on environmentalism and vice versa (2(1) = 2.70, p = .100).\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"implausible_or_erroneous_chi_square_difference\",\"description\":\"The reported χ²-difference value is extraordinarily large relative to the very small path estimates being compared, suggesting a likely typographical or analytic error. Because the discussion interprets this asymmetry substantively, this number should be checked and corrected.\",\"quote\":\"These lagged effects were also statistically different (2(1) = 15,389.13, p < .001), a finding we explore more fully in the Discussion.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"sd_reported_instead_of_se\",\"description\":\"The uncertainty term for regression/path coefficients should be reported as a standard error, not a standard deviation. Using SD here is technically incorrect and creates ambiguity about what was estimated.\",\"quote\":\"SDO was a stronger predictor of change in environmental sacrifice (B = -.11, SD = .01, p < .001, 95% CI [-.13, -.09]) than RWA (B = -.02, SD = .01, p = .001, 95% CI [-.03, -.01]).\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"construct_validity\",\"subcategory\":\"narrow_proxy_for_environmentalism\",\"description\":\"The paper repeatedly frames the outcome as ‘environmentalism,’ but the actual measure is a two-item self-reported willingness to make sacrifices for the environment. This is a much narrower construct than environmentalism broadly construed, and it is not equivalent to environmental attitudes, concern, activism, or behavior.\",\"quote\":\"Environmentalism was measured as individual’s willingness to make sacrifices for the environment.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"intention_behavior_mismatch\",\"description\":\"The manuscript frequently interprets the outcome as behavior or action, but the measure is only willingness or intention. Intention does not equal enacted pro-environmental behavior, so conclusions about changing behavior are overstated.\",\"quote\":\"We examine the longitudinal influence of SDO and RWA on people’s willingness to change their behaviour to benefit the environment in a national probability sample over five years.\",\"location\":\"abstract\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"sdo_reinterpreted_as_dominance_over_nature\",\"description\":\"The discussion treats SDO as if it directly measures a desire to dominate nature, but the instrument assesses attitudes toward social-group hierarchy. That leap from intergroup dominance to human–nature dominance is theoretical speculation, not something measured in this study.\",\"quote\":\"This is perhaps the first hint that for those endorsing SDO, nature might be another ‘outgroup’ to assert dominance over.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"abbreviated_multidimensional_constructs\",\"description\":\"The authors use short six-item versions of SDO and RWA and later interpret specific motives such as dominance, submission, and tradition. Especially for RWA, these are multidimensional constructs, and short scales with modest reliability and a missing item at one wave may not support such fine-grained substantive interpretation.\",\"quote\":\"Social dominance orientation was assessed using six items from Sidanius and Pratto’s [1] SDO6 scale. ... Right-wing authoritarianism was assessed with six items from Altemeyer’s [27] RWA scale.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"causal_inference\",\"subcategory\":\"unmeasured_confounding_not_addressed\",\"description\":\"The paper makes causal claims without modeling obvious confounds or common causes. Variables such as general political ideology, party support, education, socioeconomic conditions, or exposure to salient climate events could influence both authoritarian/dominance attitudes and willingness to sacrifice for the environment. Temporal ordering alone does not solve confounding.\",\"quote\":\"These results suggest that there is a causal pathway from ideological attitudes to environmentalism.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"insufficient_model_specification_for_replication\",\"description\":\"Key SEM details needed for evaluation and replication are omitted from the manuscript. The estimator is not reported, treatment of the Likert indicators as continuous or categorical is unspecified, identification constraints are unclear, and the syntax is deferred until after acceptance. Reviewers cannot fully assess the model as described.\",\"quote\":\"The autoregressive cross-lagged panel model allows examination of reciprocal influences among the three variables and was conducted in Mplus (version 7.3 [29]). A copy of the Mplus syntax used will be available on the NZAVS website upon acceptance of the manuscript.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"generalizability\",\"subcategory\":\"representativeness_overclaim\",\"description\":\"The manuscript overstates how generalizable the findings are. The sample is from one country, is predominantly Pākehā, and the paper does not report retention/attrition or weighting procedures. Those limitations matter both for inference to New Zealand and especially for broader claims about ideology and environmentalism.\",\"quote\":\"Our research uses a nationally representative sample, meaning that our results are highly generalisable, at least to the New Zealand population.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"ambiguous_panel_membership_and_effective_n\",\"description\":\"It is unclear whether the 22,974 participants were all measured from baseline, whether they all provided data at all five waves, or whether entrants from later waves were included with planned missingness. This ambiguity prevents readers from understanding the effective sample size for each lag and the structure of the longitudinal data.\",\"quote\":\"This study uses data from individuals who participated in the first five years of the project (from 2009 to 2013). Of the 22,974 participants included in this study, the average age was 43 years at Time 1 (2009; M = 43.07, SD = 14.67) and 62% were female.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"survey_weights_and_design_effects_not_reported\",\"description\":\"For a study described as a national probability sample, the manuscript should report whether survey weights were used to adjust for sampling, nonresponse, and attrition, and whether any design effects were accounted for. Without this information, population-level interpretation is weakened.\",\"quote\":\"We used data from the New Zealand Attitudes and Values Study [26], a nationally representative, longitudinal study of personality, social attitudes, and health outcomes.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"discretionary_modeling_choices_without_preregistration\",\"description\":\"The manuscript does not mention preregistration, and important analytic choices appear discretionary: imposing stationarity because it suited the research question and changing the significance threshold because of sample size. Without a pre-specified plan or transparent comparison set of alternatives, researcher degrees of freedom remain substantial.\",\"quote\":\"We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured. ... Because of the large sample size of this dataset, we adopted a conservative p-value threshold of p < .01 to indicate significance of findings\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"unsupported_socialization_claim\",\"description\":\"The authors infer a national socialization process from asymmetric cross-lagged coefficients. That inference is not directly tested: the data contain no measure of socialization into authoritarianism versus social dominance, and the asymmetry could also reflect measurement issues, reliability differences, or model artifacts.\",\"quote\":\"Because we found that RWA predicts SDO over time, but SDO does not predict RWA, this suggests that New Zealander’s are socialized into authoritarianism to a greater extent than social dominance.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"mechanisms_asserted_but_not_measured\",\"description\":\"The discussion advances detailed psychological mechanisms about deservingness, exploitation, and hazard distribution, but none of these proposed mediators were measured. These paragraphs therefore go beyond what the data can support.\",\"quote\":\"They believe that high-status social groups are at the top of the hierarchy because they are better than other, subjugated groups. As such, they believe they deserve to disproportionately benefit from environmental exploitation and avoid environmental hazards, while disregarding the effect this has on lower-status social groups.\",\"location\":\"discussion\",\"severity\":\"moderate\"},{\"category\":\"generalizability\",\"subcategory\":\"universal_motivational_claim_from_single_country_study\",\"description\":\"The conclusion generalizes a specific New Zealand panel association on a narrow willingness measure into a broad claim about the primary motive behind environmental exploitation. That level of generalization is not warranted from the data presented.\",\"quote\":\"These findings suggest that the motivation to exploit the environment comes primarily from the desire for dominance, and to a lesser extent from the desire to submit to tradition and authority.\",\"location\":\"abstract\",\"severity\":\"moderate\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 9499,
+    "output_tokens": 14743
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "paper_id": 7,
+  "provider_name": "gemini_pro_open",
+  "issues": [
+    {
+      "category": "statistical",
+      "subcategory": "Independence Violation in ANOVA",
+      "description": "The authors use 'Error Type' (illusory errors vs. other errors) as a within-subjects factor in a repeated measures ANOVA. This is statistically invalid because these two error types are mutually exclusive outcomes of the same categorical response variable on a given trial. Analyzing competing proportions from the same denominator as independent factors in an ANOVA violates the assumption of independence. A multinomial logistic regression or a hierarchical Bayesian model is required to properly model categorical response probabilities.",
+      "quote": "analysed in a Bayesian repeated measures ANOVA in JASP 0.16.4 , with the factors Target Type (real or pseudo-letter), Memory Delay (short, short with interference and long) and Error Type.",
+      "location": "Experiment 1 -> Analysis (and subsequent experiments)",
+      "severity": "critical"
+    },
+    {
+      "category": "validity",
+      "subcategory": "Massive Participant Exclusion Rate",
+      "description": "In Experiment 2, 92 out of 290 participants (~32%) were excluded based on an arbitrary threshold of having 10 or fewer high-confidence trials. Excluding nearly a third of the sample based on a post-randomization behavioral variable introduces severe selection bias. It restricts the findings to a subpopulation of highly confident individuals and undermines the generalizability of the results.",
+      "quote": "Exclusion of participants with too few high confidence trials in one or more cells of the design (10 trials or less) resulted in an inclusion of 198 participants (92 participants were excluded)",
+      "location": "Experiment 2 -> Analysis",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Mathematical Discrepancy in Attrition",
+      "description": "The reported numbers for participant inclusion and exclusion in Experiment 1 do not add up. The text states 45 started, 5 were excluded in training, leaving 40. It then states 5 participants were excluded due to low high-confidence trials, resulting in 23 included participants. 40 minus 5 is 35, not 23. The fate of the remaining 12 participants is completely unaccounted for.",
+      "quote": "45 participants started training, 5 participants were excluded based on their training results. The remaining 40 participants... Exclusion of participants with too few high confidence critical trials... resulted in an inclusion of 23 participants (5 participants were excluded)",
+      "location": "Experiment 1 -> Participants & Analysis",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "Response Screen Asymmetry",
+      "description": "In Experiment 1, the correct target appeared as a response option 83% of the time for real letters, but its pseudo-letter counterpart appeared only 16% of the time. (Note: 83+16=99%, leaving 1% unaccounted for). This massive asymmetry in the response screen could implicitly train participants to avoid selecting pseudo-letters, confounding the 'world knowledge' interpretation with an experiment-specific response bias.",
+      "quote": "If the target was a real letter, then it appeared as a response option on a randomly selected 83% of the trials, while its mirror reversed (pseudo-letter) version appeared as a response option on the other 16% of the trials.",
+      "location": "Experiment 1 -> Stimuli",
+      "severity": "major"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "Online Timing Reliability",
+      "description": "Experiment 4 was conducted online using browser-based scripting with a memory display time of 250 ms. Browser-based timing for brief visual stimuli (<300 ms) is notoriously unreliable due to variations in monitor refresh rates, operating system background processes, and browser latency. Without a timing validation check, the actual exposure duration could vary wildly between participants.",
+      "quote": "the data was collected in an online experiment, using Neurotask scripting",
+      "location": "Experiment 4 -> Procedure",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Listwise Deletion of Subjects",
+      "description": "In Experiment 3, a participant was excluded entirely because they had zero high-confidence responses in one cell of the design, which breaks the repeated measures ANOVA. Dropping entire subjects due to single empty cells is an outdated and biased method of handling missing data. A mixed-effects model would easily handle this without discarding the participant's valid data in other conditions.",
+      "quote": "Because of listwise deletion of missing values (resulting from 0 high confidence responses in one or more of the cells of the design), one participant was excluded from the main ANOVA.",
+      "location": "Experiment 3 -> Analysis",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "Ignoring Low Confidence Trials",
+      "description": "The authors exclude all low-confidence trials from their main analyses to isolate 'true' memory illusions. However, comparing the rates of illusions in high vs. low confidence trials is crucial to rule out response bias. If participants simply guess 'real letter' when they forget the stimulus, and happen to rate these guesses with high confidence due to the fluency of real letters, this is a bias, not a memory illusion. Analyzing low confidence trials is necessary to establish a baseline.",
+      "quote": "isolating high confidence responses is necessary to identify those responses that reflect a participant having an actual, albeit false, memory",
+      "location": "Introduction",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "Arbitrary Exclusion Threshold",
+      "description": "The threshold of '10 trials or less' for excluding participants based on high-confidence trial counts is arbitrary. The authors do not provide a justification for this specific number, nor do they provide a sensitivity analysis to show that their results are robust to different threshold choices.",
+      "quote": "Exclusion of participants with too few high confidence critical trials in one or more cells of the design (10 trials or less)",
+      "location": "Experiment 1 -> Analysis",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Unanalyzed Experimental Factor",
+      "description": "Experiment 1 manipulated set size (6 or 8 letters), but the analysis simply averages across this factor without including it in the model. Set size is a critical manipulation in working memory research; ignoring it wastes statistical power and obscures potential interactions between memory load and illusion rates.",
+      "quote": "resulted in an inclusion of 23 participants (5 participants were excluded) when the results were averaged across the set size conditions.",
+      "location": "Experiment 1 -> Analysis",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Weak Transient Expectation Manipulation",
+      "description": "In Experiment 2, cue color was used to induce expectations (25% vs 60% pseudo-letter probability). The failure to find an effect might simply be because participants did not implicitly learn these probabilities over the course of the experiment, especially given the cognitive load of the memory task. Concluding that transient expectations do not cause illusions is premature without a manipulation check.",
+      "quote": "If the fixation cross and the cue were red, a pseudo-letter was the target on 25% of the trials. The target was a pseudo-letter on 60% of the trials when the fixation cross and the cue were blue.",
+      "location": "Experiment 2 -> Procedure",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Sequential Analysis Stopping Rule",
+      "description": "Experiments 3 and 4 use a sequential analysis stopping rule (BF > 6 and BF > 10). While Bayes Factors are less susceptible to optional stopping than p-values, best practices for Bayesian sequential designs still require specifying a maximum sample size (N-max) to prevent infinite sampling if the true effect is near the boundary.",
+      "quote": "Every other day of testing, the sequential analysis was run, and once the outcome crossed a BF of 6, testing would stop.",
+      "location": "Experiment 3 -> Participants",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "Proactive Interference from Small Stimulus Pool",
+      "description": "By excluding 11 symmetrical letters, the authors are left with only 15 letters. Presenting 6 to 8 of these on every single trial means the entire stimulus pool is recycled constantly. This creates massive proactive interference, which may artificially inflate memory decay and reliance on priors compared to standard memory tasks.",
+      "quote": "the symmetrical letters A,H,I,M,O,T,U,V,W,X,Y were excluded from the memory and response displays",
+      "location": "Experiment 1 -> Stimuli",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Missing Data Availability Statement",
+      "description": "The manuscript does not contain a Data Availability Statement. It is standard practice (and required by most journals) to state whether the data, analysis scripts, and experimental code are available in a public repository (e.g., OSF, GitHub).",
+      "quote": "",
+      "location": "General",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Incorrect Figure Reference",
+      "description": "In the Results section of Experiment 4, the text references Figure 5. However, Figure 5 belongs to Experiment 3, and the correct figure for Experiment 4 is Figure 6.",
+      "quote": "Figure 5 shows the error rates for high confidence trials.",
+      "location": "Experiment 4 -> Results",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Table Formatting Errors",
+      "description": "Tables 1 through 6 contain duplicated column headers, indicating a formatting or copy-paste error during manuscript preparation.",
+      "quote": "Effects | Effects | P(incl) | P(incl) | P(excl) | P(excl)",
+      "location": "Results (Tables 1-6)",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Inconsistent Demographic Reporting",
+      "description": "The reporting of participant gender is inconsistent across experiments, switching between 'female', 'women', and 'men'. Standardized demographic reporting should be used throughout.",
+      "quote": "28 female; age range 19-30 years... 51 women; age range 17-46 years... 28 men; age range 17-41 years",
+      "location": "Methods (Participants sections)",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Incorrect Bayes Factor Interpretation",
+      "description": "The text states that BF < 0.33 is 'strong evidence for the null hypothesis'. In standard Jeffreys/Lee & Wagenmakers classification, BF < 0.33 (or 1/3) is considered 'moderate' or 'substantial' evidence for the null. 'Strong' evidence is typically BF < 0.1 (or 1/10).",
+      "quote": "BF < 0.33: strong evidence for the null hypothesis.",
+      "location": "Experiment 1 -> Analysis",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "Typographical Errors",
+      "description": "There are several typographical errors in the manuscript, including misspelled variable names and standard words.",
+      "quote": "'BFinlc>1000' (instead of BFincl); 'particpants' (instead of participants)",
+      "location": "Experiment 2 -> Results; Introduction",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Independence Violation in ANOVA\",\n      \"description\": \"The authors use 'Error Type' (illusory errors vs. other errors) as a within-subjects factor in a repeated measures ANOVA. This is statistically invalid because these two error types are mutually exclusive outcomes of the same categorical response variable on a given trial. Analyzing competing proportions from the same denominator as independent factors in an ANOVA violates the assumption of independence. A multinomial logistic regression or a hierarchical Bayesian model is required to properly model categorical response probabilities.\",\n      \"quote\": \"analysed in a Bayesian repeated measures ANOVA in JASP 0.16.4 , with the factors Target Type (real or pseudo-letter), Memory Delay (short, short with interference and long) and Error Type.\",\n      \"location\": \"Experiment 1 -> Analysis (and subsequent experiments)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"Massive Participant Exclusion Rate\",\n      \"description\": \"In Experiment 2, 92 out of 290 participants (~32%) were excluded based on an arbitrary threshold of having 10 or fewer high-confidence trials. Excluding nearly a third of the sample based on a post-randomization behavioral variable introduces severe selection bias. It restricts the findings to a subpopulation of highly confident individuals and undermines the generalizability of the results.\",\n      \"quote\": \"Exclusion of participants with too few high confidence trials in one or more cells of the design (10 trials or less) resulted in an inclusion of 198 participants (92 participants were excluded)\",\n      \"location\": \"Experiment 2 -> Analysis\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Mathematical Discrepancy in Attrition\",\n      \"description\": \"The reported numbers for participant inclusion and exclusion in Experiment 1 do not add up. The text states 45 started, 5 were excluded in training, leaving 40. It then states 5 participants were excluded due to low high-confidence trials, resulting in 23 included participants. 40 minus 5 is 35, not 23. The fate of the remaining 12 participants is completely unaccounted for.\",\n      \"quote\": \"45 participants started training, 5 participants were excluded based on their training results. The remaining 40 participants... Exclusion of participants with too few high confidence critical trials... resulted in an inclusion of 23 participants (5 participants were excluded)\",\n      \"location\": \"Experiment 1 -> Participants & Analysis\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Response Screen Asymmetry\",\n      \"description\": \"In Experiment 1, the correct target appeared as a response option 83% of the time for real letters, but its pseudo-letter counterpart appeared only 16% of the time. (Note: 83+16=99%, leaving 1% unaccounted for). This massive asymmetry in the response screen could implicitly train participants to avoid selecting pseudo-letters, confounding the 'world knowledge' interpretation with an experiment-specific response bias.\",\n      \"quote\": \"If the target was a real letter, then it appeared as a response option on a randomly selected 83% of the trials, while its mirror reversed (pseudo-letter) version appeared as a response option on the other 16% of the trials.\",\n      \"location\": \"Experiment 1 -> Stimuli\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"Online Timing Reliability\",\n      \"description\": \"Experiment 4 was conducted online using browser-based scripting with a memory display time of 250 ms. Browser-based timing for brief visual stimuli (<300 ms) is notoriously unreliable due to variations in monitor refresh rates, operating system background processes, and browser latency. Without a timing validation check, the actual exposure duration could vary wildly between participants.\",\n      \"quote\": \"the data was collected in an online experiment, using Neurotask scripting\",\n      \"location\": \"Experiment 4 -> Procedure\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Listwise Deletion of Subjects\",\n      \"description\": \"In Experiment 3, a participant was excluded entirely because they had zero high-confidence responses in one cell of the design, which breaks the repeated measures ANOVA. Dropping entire subjects due to single empty cells is an outdated and biased method of handling missing data. A mixed-effects model would easily handle this without discarding the participant's valid data in other conditions.\",\n      \"quote\": \"Because of listwise deletion of missing values (resulting from 0 high confidence responses in one or more of the cells of the design), one participant was excluded from the main ANOVA.\",\n      \"location\": \"Experiment 3 -> Analysis\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"Ignoring Low Confidence Trials\",\n      \"description\": \"The authors exclude all low-confidence trials from their main analyses to isolate 'true' memory illusions. However, comparing the rates of illusions in high vs. low confidence trials is crucial to rule out response bias. If participants simply guess 'real letter' when they forget the stimulus, and happen to rate these guesses with high confidence due to the fluency of real letters, this is a bias, not a memory illusion. Analyzing low confidence trials is necessary to establish a baseline.\",\n      \"quote\": \"isolating high confidence responses is necessary to identify those responses that reflect a participant having an actual, albeit false, memory\",\n      \"location\": \"Introduction\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Arbitrary Exclusion Threshold\",\n      \"description\": \"The threshold of '10 trials or less' for excluding participants based on high-confidence trial counts is arbitrary. The authors do not provide a justification for this specific number, nor do they provide a sensitivity analysis to show that their results are robust to different threshold choices.\",\n      \"quote\": \"Exclusion of participants with too few high confidence critical trials in one or more cells of the design (10 trials or less)\",\n      \"location\": \"Experiment 1 -> Analysis\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Unanalyzed Experimental Factor\",\n      \"description\": \"Experiment 1 manipulated set size (6 or 8 letters), but the analysis simply averages across this factor without including it in the model. Set size is a critical manipulation in working memory research; ignoring it wastes statistical power and obscures potential interactions between memory load and illusion rates.\",\n      \"quote\": \"resulted in an inclusion of 23 participants (5 participants were excluded) when the results were averaged across the set size conditions.\",\n      \"location\": \"Experiment 1 -> Analysis\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Weak Transient Expectation Manipulation\",\n      \"description\": \"In Experiment 2, cue color was used to induce expectations (25% vs 60% pseudo-letter probability). The failure to find an effect might simply be because participants did not implicitly learn these probabilities over the course of the experiment, especially given the cognitive load of the memory task. Concluding that transient expectations do not cause illusions is premature without a manipulation check.\",\n      \"quote\": \"If the fixation cross and the cue were red, a pseudo-letter was the target on 25% of the trials. The target was a pseudo-letter on 60% of the trials when the fixation cross and the cue were blue.\",\n      \"location\": \"Experiment 2 -> Procedure\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Sequential Analysis Stopping Rule\",\n      \"description\": \"Experiments 3 and 4 use a sequential analysis stopping rule (BF > 6 and BF > 10). While Bayes Factors are less susceptible to optional stopping than p-values, best practices for Bayesian sequential designs still require specifying a maximum sample size (N-max) to prevent infinite sampling if the true effect is near the boundary.\",\n      \"quote\": \"Every other day of testing, the sequential analysis was run, and once the outcome crossed a BF of 6, testing would stop.\",\n      \"location\": \"Experiment 3 -> Participants\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"Proactive Interference from Small Stimulus Pool\",\n      \"description\": \"By excluding 11 symmetrical letters, the authors are left with only 15 letters. Presenting 6 to 8 of these on every single trial means the entire stimulus pool is recycled constantly. This creates massive proactive interference, which may artificially inflate memory decay and reliance on priors compared to standard memory tasks.\",\n      \"quote\": \"the symmetrical letters A,H,I,M,O,T,U,V,W,X,Y were excluded from the memory and response displays\",\n      \"location\": \"Experiment 1 -> Stimuli\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Missing Data Availability Statement\",\n      \"description\": \"The manuscript does not contain a Data Availability Statement. It is standard practice (and required by most journals) to state whether the data, analysis scripts, and experimental code are available in a public repository (e.g., OSF, GitHub).\",\n      \"quote\": \"\",\n      \"location\": \"General\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Incorrect Figure Reference\",\n      \"description\": \"In the Results section of Experiment 4, the text references Figure 5. However, Figure 5 belongs to Experiment 3, and the correct figure for Experiment 4 is Figure 6.\",\n      \"quote\": \"Figure 5 shows the error rates for high confidence trials.\",\n      \"location\": \"Experiment 4 -> Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Table Formatting Errors\",\n      \"description\": \"Tables 1 through 6 contain duplicated column headers, indicating a formatting or copy-paste error during manuscript preparation.\",\n      \"quote\": \"Effects | Effects | P(incl) | P(incl) | P(excl) | P(excl)\",\n      \"location\": \"Results (Tables 1-6)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Inconsistent Demographic Reporting\",\n      \"description\": \"The reporting of participant gender is inconsistent across experiments, switching between 'female', 'women', and 'men'. Standardized demographic reporting should be used throughout.\",\n      \"quote\": \"28 female; age range 19-30 years... 51 women; age range 17-46 years... 28 men; age range 17-41 years\",\n      \"location\": \"Methods (Participants sections)\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"Incorrect Bayes Factor Interpretation\",\n      \"description\": \"The text states that BF < 0.33 is 'strong evidence for the null hypothesis'. In standard Jeffreys/Lee & Wagenmakers classification, BF < 0.33 (or 1/3) is considered 'moderate' or 'substantial' evidence for the null. 'Strong' evidence is typically BF < 0.1 (or 1/10).\",\n      \"quote\": \"BF < 0.33: strong evidence for the null hypothesis.\",\n      \"location\": \"Experiment 1 -> Analysis\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"Typographical Errors\",\n      \"description\": \"There are several typographical errors in the manuscript, including misspelled variable names and standard words.\",\n      \"quote\": \"'BFinlc>1000' (instead of BFincl); 'particpants' (instead of participants)\",\n      \"location\": \"Experiment 2 -> Results; Introduction\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 17729,
+    "output_tokens": 2758
+  }
+}

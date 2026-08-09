@@ -1,0 +1,196 @@
+{
+  "paper_id": 1,
+  "provider_name": "claude_opus48_no_thinking_originals",
+  "issues": [
+    {
+      "category": "causal_inference",
+      "subcategory": "Causal claims from observational data",
+      "description": "The authors repeatedly draw causal conclusions from cross-lagged panel correlational data. Cross-lagged panel models, even longitudinal ones, cannot establish causation; they cannot rule out confounding and have well-documented limitations for causal inference. The abstract title and multiple statements assert causal influence directly. This is the central interpretive overreach of the paper.",
+      "quote": "We used cross-lagged path analysis to infer causal associations between SDO, RWA and willingness to sacrifice for the environment.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Causal language in conclusions",
+      "description": "The discussion and conclusion assert causal pathways ('causal effect', 'desire to dominate leads to') despite the design being correlational/longitudinal. The authors themselves earlier note it is inappropriate to draw directional conclusions without longitudinal research, but then overinterpret a cross-lagged design as establishing causation. This contradicts standard caveats about cross-lagged designs and the third-variable concern they themselves raise.",
+      "quote": "With our findings of a temporal connection between SDO and environmentalism, this strengthens our confidence in SDO having a causal effect on environmental attitudes, and perhaps even being foundational for these attitudes.",
+      "location": "discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory causal stance",
+      "description": "The introduction explicitly states it is inappropriate to draw directional conclusions, yet the methods state the analysis is used 'to infer causal associations' and the discussion makes strong causal claims. This is an internal contradiction in the manuscript's epistemic stance.",
+      "quote": "It is therefore inappropriate to draw comments on the direction of any temporal association before more longitudinal research has been conducted.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Narrow operationalization of environmentalism",
+      "description": "Environmentalism is operationalized with only two items measuring willingness to make sacrifices/change routine. Yet the introduction and discussion discuss environmentalism broadly (climate change denial, environmental policy support, environmental attitudes, exploitation). The two-item willingness-to-sacrifice measure does not capture these broader constructs, creating a construct validity mismatch between the measure and the conclusions drawn about 'environmentalism' generally.",
+      "quote": "Environmentalism was measured as individual’s willingness to make sacrifices for the environment. These items were modelled from Liu and Sibley’s [28] two items on sacrifice intentions",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing reliability statistics",
+      "description": "The authors state reliabilities were 'poorer than is typically the case' but never report the actual reliability coefficients (e.g., Cronbach's alpha or omega) for any scale at any time point. Without these values, readers cannot evaluate measurement quality or the impact on the findings. The diagonal values in Table 1 (.69, .70, .76) are ambiguous—unclear whether these are reliabilities, and if so they are low for SDO and RWA.",
+      "quote": "Reliabilities for SDO and RWA were poorer than is typically the case when the full scales are used, but are consistent with expectations based on previous research using short measures [31].",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unreported attrition across five waves",
+      "description": "A five-year longitudinal study will have substantial attrition, but no information is provided on retention rates, how many participants completed each wave, or whether attrition was systematic (e.g., related to SDO, RWA, or environmentalism). Differential attrition could bias longitudinal estimates. The authors defer all retention details to a website rather than reporting them.",
+      "quote": "Full details about the sample, including the procedure, retention, and demographics of participants, are available on the NZAVS website.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "FIML justification and missingness mechanism unexamined",
+      "description": "Missing data were handled with FIML, but the manuscript provides no information on the amount or pattern of missingness, nor whether the MAR assumption underlying FIML is plausible given likely non-random dropout in a panel study. With 22,974 participants over five years, the extent of missing data at later waves is likely very large and could substantially affect results.",
+      "quote": "Missing data were imputed using FIML.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Mislabeling standard error as SD",
+      "description": "Throughout the results, parameter estimates are reported with 'SD' (standard deviation) when these are almost certainly standard errors (SE) of the estimates. For example, B = .83, SD = .01 with a 95% CI of [.82, .84] is consistent with a standard error, not a standard deviation. This is a consistent mislabeling that could confuse interpretation.",
+      "quote": "the autoregressive path for willingness to sacrifice was strong (B = .83, SD = .01, p < .001, 95% CI [.82, .84])",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Model fit interpretation / selective acceptance",
+      "description": "The model showed poor fit on CFI (.86, below the conventional .90/.95 thresholds) and a highly significant chi-square, yet the authors accepted the model based only on RMSEA and SRMR, attributing poor CFI to 'model complexity.' CFI is not primarily a complexity-driven index in the way implied; dismissing a low CFI without further investigation is a questionable justification. SRMR of .07 is also marginal.",
+      "quote": "Overall, model fit was poorer for those indices affected by model complexity (e.g. χ2(2279) = 36511.73, p < .001, CFI = .86), however those less influenced by complexity pointed to good fit (RMSEA = .03, 90% CI [.025, .026], SRMR = .07), therefore the model was accepted.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "RMSEA confidence interval inconsistency",
+      "description": "The point estimate of RMSEA is reported as .03 but the 90% CI is given as [.025, .026], which does not contain the point estimate .03 (.03 falls outside the upper bound of .026). This is an internal numerical inconsistency indicating a reporting or computational error.",
+      "quote": "RMSEA = .03, 90% CI [.025, .026]",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Non-invariant measurement across waves",
+      "description": "One RWA item was not administered at Time 2 ('Some of the best people...'), meaning the RWA latent variable is not measured identically across all waves. Despite this, factor loadings and residual variances were constrained to equality across time. Constraining loadings to equality when an indicator is missing at one wave complicates the invariance claim and may bias the RWA estimates, which is relevant given RWA is a key comparison variable.",
+      "quote": "The item “Some of the best people in our country are those who are challenging our government, criticizing religion, and ignoring the “normal way” things are supposed to be done”, was not assessed at time two, but included in all other time points.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Lack of pre-registration / undisclosed decisions",
+      "description": "No pre-registration is mentioned despite the use of a large existing dataset (NZAVS) where many variables and time windows could be selected. Decisions such as choosing the 2009-2013 window, the specific two-item environmentalism measure, the six SDO and six RWA items, and imposing full stationarity constraints involve researcher degrees of freedom that are not justified as pre-specified, raising concerns about analytic flexibility.",
+      "quote": "This study uses data from individuals who participated in the first five years of the project (from 2009 to 2013).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Imposing time-invariant constraints without testing",
+      "description": "The authors impose a fully stationary model (invariant loadings, intercepts, residuals, and cross-lagged paths) for interpretive convenience, but do not report testing whether these strong constraints are empirically justified (e.g., comparing to a freely estimated model). If the constraints are not tenable, the time-invariant parameters could misrepresent the data. The choice is justified by interest rather than empirical adequacy.",
+      "quote": "We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Overgeneralization despite single-country sample",
+      "description": "The authors claim results are 'highly generalisable' and then make culture-specific inferences (e.g., 'New Zealanders are socialized into authoritarianism'). The sample is overwhelmingly Pākehā (86%), 62% female, and from a single, politically distinctive country, yet conclusions are extended to broad psychological mechanisms. The demographic skew (gender, ethnicity) limits generalizability even within New Zealand.",
+      "quote": "Our research uses a nationally representative sample, meaning that our results are highly generalisable, at least to the New Zealand population.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Strong cultural causal claim from cross-lagged asymmetry",
+      "description": "From the single finding that RWA predicts SDO but not vice versa, the authors infer a broad socialization claim about New Zealanders. This is an overinterpretation of a directional asymmetry in cross-lagged coefficients, which can arise from differential reliability, stability, or measurement artifacts rather than substantive socialization processes. Notably RWA had much higher stability (B=.95) than SDO (B=.79), which can artifactually drive such asymmetries.",
+      "quote": "Because we found that RWA predicts SDO over time, but SDO does not predict RWA, this suggests that New Zealander’s are socialized into authoritarianism to a greater extent than social dominance.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Differential reliability/stability confounds cross-lagged comparison",
+      "description": "Cross-lagged coefficient comparisons (SDO vs RWA predicting environmentalism) are sensitive to differences in the reliability and autoregressive stability of the predictors. RWA and SDO have notably different stabilities (.95 vs .79) and likely different reliabilities (alphas around .69-.70). Concluding SDO is a 'statistically stronger predictor' without accounting for these differences may reflect measurement artifacts rather than true effect-size differences.",
+      "quote": "we conclude that SDO is a statistically stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Effect sizes not contextualized / practical significance",
+      "description": "Several 'significant' effects are extremely small (e.g., B = -.02 for RWA→environmentalism; B = -.01 for environmentalism→RWA; B = -.001 for SDO→RWA). With N≈23,000, trivially small effects reach significance even at p<.01. The authors do not discuss whether these effects are practically meaningful, and treat them as substantive (e.g., 'bidirectional association'), risking overinterpretation of negligible effects.",
+      "quote": "the lagged effect of willingness to sacrifice on both SDO and RWA were statistically significant and negative (B = -.04, SD = .002, p < .001, 95% CI [-.04, -.03] and B = -.01, SD = .002, p = .002, 95% CI [-.01, -.003], respectively)",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Misattribution of the dominant social paradigm",
+      "description": "The dominant social paradigm (DSP) is attributed to 'Noe and Snow [15]' whose cited work concerns the New Environmental Paradigm scale, not the DSP, which originates with other authors (e.g., Pirages & Ehrlich; Dunlap & Van Liere). This is a conceptual/attribution error that misrepresents the theoretical lineage.",
+      "quote": "a belief that is at the core of Noe and Snow’s [15] dominant social paradigm (DSP). The DSP indexes endorsement of ideological systems favouring growth and prosperity.",
+      "location": "introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Inconsistent/incomplete reporting of test statistics",
+      "description": "The model comparison tests are reported as '2(1) = 50.98' etc., apparently omitting the chi-square symbol (χ²), making it ambiguous what statistic is reported. While likely a formatting issue, it impairs clarity and replicability. The very large value (χ²(1) = 15,389.13) for the SDO-RWA asymmetry should also be scrutinized given the model constraints.",
+      "quote": "We found that our original model provides significantly better fit to the data 2(1) = 50.98, p < .001",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Diagonal values in correlation table ambiguous",
+      "description": "Table 1's diagonal (.69, .70, .76) is unlabeled in the note; readers cannot determine whether these are reliabilities, and if reliabilities, why the text says reliabilities are not reported numerically. This ambiguity undermines interpretation of measurement quality and of the disattenuation of correlations.",
+      "quote": "SDO | .69 |  | \nRWA | .21*** [.18, .23] | .70 | \nWILL | -.25*** [-.27, -.22] | -.08*** [-.11, -.05] | .76",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "No covariates / confound adjustment",
+      "description": "The cross-lagged model includes only the three focal constructs with no demographic or contextual covariates (age, gender, education, political orientation, income). Given the strong claims about social hierarchy and the acknowledged third-variable concern (economic factors), the absence of any covariate adjustment limits the ability to interpret the lagged paths as anything beyond simple temporal associations.",
+      "quote": "The model thus included three latent variables across five measurement points, where each variable within a time point was set to predict each variable in the subsequent time point.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Mismatch between predicted and obtained reciprocal SDO-RWA effects",
+      "description": "The authors predicted 'reciprocal cross-time effects' between SDO and RWA based on Duckitt's bidirectional claim, but found only a unidirectional effect (RWA→SDO). They then re-explain this post hoc using a different Duckitt argument. This shift from a falsified a priori prediction to a post hoc account, presented as confirmatory, reflects HARKing-type analytic flexibility.",
+      "quote": "Therefore, on the association between SDO and RWA over time, we expect reciprocal cross-time effects.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Extrapolation to climate change and environmental justice",
+      "description": "Much of the discussion extrapolates from a two-item willingness-to-sacrifice measure to broad claims about climate change vulnerability, environmental racism, and environmental inequality outcomes. These outcomes were not measured in the study, and the inferential leap from individual sacrifice intentions to societal environmental-justice dynamics is an overextension unsupported by the data collected.",
+      "quote": "Our findings therefore highlight Social Dominant’s way of thinking as having the potential to exacerbate environmental inequality, as the effects of unmitigated climate change disproportionately affect those lower in social status.",
+      "location": "discussion",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "```json\n{\n  \"issues\": [\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Causal claims from observational data\",\n      \"description\": \"The authors repeatedly draw causal conclusions from cross-lagged panel correlational data. Cross-lagged panel models, even longitudinal ones, cannot establish causation; they cannot rule out confounding and have well-documented limitations for causal inference. The abstract title and multiple statements assert causal influence directly. This is the central interpretive overreach of the paper.\",\n      \"quote\": \"We used cross-lagged path analysis to infer causal associations between SDO, RWA and willingness to sacrifice for the environment.\",\n      \"location\": \"methods\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Causal language in conclusions\",\n      \"description\": \"The discussion and conclusion assert causal pathways ('causal effect', 'desire to dominate leads to') despite the design being correlational/longitudinal. The authors themselves earlier note it is inappropriate to draw directional conclusions without longitudinal research, but then overinterpret a cross-lagged design as establishing causation. This contradicts standard caveats about cross-lagged designs and the third-variable concern they themselves raise.\",\n      \"quote\": \"With our findings of a temporal connection between SDO and environmentalism, this strengthens our confidence in SDO having a causal effect on environmental attitudes, and perhaps even being foundational for these attitudes.\",\n      \"location\": \"discussion\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradictory causal stance\",\n      \"description\": \"The introduction explicitly states it is inappropriate to draw directional conclusions, yet the methods state the analysis is used 'to infer causal associations' and the discussion makes strong causal claims. This is an internal contradiction in the manuscript's epistemic stance.\",\n      \"quote\": \"It is therefore inappropriate to draw comments on the direction of any temporal association before more longitudinal research has been conducted.\",\n      \"location\": \"introduction\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Narrow operationalization of environmentalism\",\n      \"description\": \"Environmentalism is operationalized with only two items measuring willingness to make sacrifices/change routine. Yet the introduction and discussion discuss environmentalism broadly (climate change denial, environmental policy support, environmental attitudes, exploitation). The two-item willingness-to-sacrifice measure does not capture these broader constructs, creating a construct validity mismatch between the measure and the conclusions drawn about 'environmentalism' generally.\",\n      \"quote\": \"Environmentalism was measured as individual’s willingness to make sacrifices for the environment. These items were modelled from Liu and Sibley’s [28] two items on sacrifice intentions\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Missing reliability statistics\",\n      \"description\": \"The authors state reliabilities were 'poorer than is typically the case' but never report the actual reliability coefficients (e.g., Cronbach's alpha or omega) for any scale at any time point. Without these values, readers cannot evaluate measurement quality or the impact on the findings. The diagonal values in Table 1 (.69, .70, .76) are ambiguous—unclear whether these are reliabilities, and if so they are low for SDO and RWA.\",\n      \"quote\": \"Reliabilities for SDO and RWA were poorer than is typically the case when the full scales are used, but are consistent with expectations based on previous research using short measures [31].\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"Unreported attrition across five waves\",\n      \"description\": \"A five-year longitudinal study will have substantial attrition, but no information is provided on retention rates, how many participants completed each wave, or whether attrition was systematic (e.g., related to SDO, RWA, or environmentalism). Differential attrition could bias longitudinal estimates. The authors defer all retention details to a website rather than reporting them.\",\n      \"quote\": \"Full details about the sample, including the procedure, retention, and demographics of participants, are available on the NZAVS website.\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"FIML justification and missingness mechanism unexamined\",\n      \"description\": \"Missing data were handled with FIML, but the manuscript provides no information on the amount or pattern of missingness, nor whether the MAR assumption underlying FIML is plausible given likely non-random dropout in a panel study. With 22,974 participants over five years, the extent of missing data at later waves is likely very large and could substantially affect results.\",\n      \"quote\": \"Missing data were imputed using FIML.\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Mislabeling standard error as SD\",\n      \"description\": \"Throughout the results, parameter estimates are reported with 'SD' (standard deviation) when these are almost certainly standard errors (SE) of the estimates. For example, B = .83, SD = .01 with a 95% CI of [.82, .84] is consistent with a standard error, not a standard deviation. This is a consistent mislabeling that could confuse interpretation.\",\n      \"quote\": \"the autoregressive path for willingness to sacrifice was strong (B = .83, SD = .01, p < .001, 95% CI [.82, .84])\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Model fit interpretation / selective acceptance\",\n      \"description\": \"The model showed poor fit on CFI (.86, below the conventional .90/.95 thresholds) and a highly significant chi-square, yet the authors accepted the model based only on RMSEA and SRMR, attributing poor CFI to 'model complexity.' CFI is not primarily a complexity-driven index in the way implied; dismissing a low CFI without further investigation is a questionable justification. SRMR of .07 is also marginal.\",\n      \"quote\": \"Overall, model fit was poorer for those indices affected by model complexity (e.g. χ2(2279) = 36511.73, p < .001, CFI = .86), however those less influenced by complexity pointed to good fit (RMSEA = .03, 90% CI [.025, .026], SRMR = .07), therefore the model was accepted.\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"RMSEA confidence interval inconsistency\",\n      \"description\": \"The point estimate of RMSEA is reported as .03 but the 90% CI is given as [.025, .026], which does not contain the point estimate .03 (.03 falls outside the upper bound of .026). This is an internal numerical inconsistency indicating a reporting or computational error.\",\n      \"quote\": \"RMSEA = .03, 90% CI [.025, .026]\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Non-invariant measurement across waves\",\n      \"description\": \"One RWA item was not administered at Time 2 ('Some of the best people...'), meaning the RWA latent variable is not measured identically across all waves. Despite this, factor loadings and residual variances were constrained to equality across time. Constraining loadings to equality when an indicator is missing at one wave complicates the invariance claim and may bias the RWA estimates, which is relevant given RWA is a key comparison variable.\",\n      \"quote\": \"The item “Some of the best people in our country are those who are challenging our government, criticizing religion, and ignoring the “normal way” things are supposed to be done”, was not assessed at time two, but included in all other time points.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Lack of pre-registration / undisclosed decisions\",\n      \"description\": \"No pre-registration is mentioned despite the use of a large existing dataset (NZAVS) where many variables and time windows could be selected. Decisions such as choosing the 2009-2013 window, the specific two-item environmentalism measure, the six SDO and six RWA items, and imposing full stationarity constraints involve researcher degrees of freedom that are not justified as pre-specified, raising concerns about analytic flexibility.\",\n      \"quote\": \"This study uses data from individuals who participated in the first five years of the project (from 2009 to 2013).\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Imposing time-invariant constraints without testing\",\n      \"description\": \"The authors impose a fully stationary model (invariant loadings, intercepts, residuals, and cross-lagged paths) for interpretive convenience, but do not report testing whether these strong constraints are empirically justified (e.g., comparing to a freely estimated model). If the constraints are not tenable, the time-invariant parameters could misrepresent the data. The choice is justified by interest rather than empirical adequacy.\",\n      \"quote\": \"We imposed this stationary cross-lagged model because we were more interested in the overall and comparative effects of SDO and RWA on changes in environmentalism, and not on whether these effects change during the interval measured.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"Overgeneralization despite single-country sample\",\n      \"description\": \"The authors claim results are 'highly generalisable' and then make culture-specific inferences (e.g., 'New Zealanders are socialized into authoritarianism'). The sample is overwhelmingly Pākehā (86%), 62% female, and from a single, politically distinctive country, yet conclusions are extended to broad psychological mechanisms. The demographic skew (gender, ethnicity) limits generalizability even within New Zealand.\",\n      \"quote\": \"Our research uses a nationally representative sample, meaning that our results are highly generalisable, at least to the New Zealand population.\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Strong cultural causal claim from cross-lagged asymmetry\",\n      \"description\": \"From the single finding that RWA predicts SDO but not vice versa, the authors infer a broad socialization claim about New Zealanders. This is an overinterpretation of a directional asymmetry in cross-lagged coefficients, which can arise from differential reliability, stability, or measurement artifacts rather than substantive socialization processes. Notably RWA had much higher stability (B=.95) than SDO (B=.79), which can artifactually drive such asymmetries.\",\n      \"quote\": \"Because we found that RWA predicts SDO over time, but SDO does not predict RWA, this suggests that New Zealander’s are socialized into authoritarianism to a greater extent than social dominance.\",\n      \"location\": \"discussion\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Differential reliability/stability confounds cross-lagged comparison\",\n      \"description\": \"Cross-lagged coefficient comparisons (SDO vs RWA predicting environmentalism) are sensitive to differences in the reliability and autoregressive stability of the predictors. RWA and SDO have notably different stabilities (.95 vs .79) and likely different reliabilities (alphas around .69-.70). Concluding SDO is a 'statistically stronger predictor' without accounting for these differences may reflect measurement artifacts rather than true effect-size differences.\",\n      \"quote\": \"we conclude that SDO is a statistically stronger predictor of change in willingness to sacrifice for the environment than RWA in our sample.\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Effect sizes not contextualized / practical significance\",\n      \"description\": \"Several 'significant' effects are extremely small (e.g., B = -.02 for RWA→environmentalism; B = -.01 for environmentalism→RWA; B = -.001 for SDO→RWA). With N≈23,000, trivially small effects reach significance even at p<.01. The authors do not discuss whether these effects are practically meaningful, and treat them as substantive (e.g., 'bidirectional association'), risking overinterpretation of negligible effects.\",\n      \"quote\": \"the lagged effect of willingness to sacrifice on both SDO and RWA were statistically significant and negative (B = -.04, SD = .002, p < .001, 95% CI [-.04, -.03] and B = -.01, SD = .002, p = .002, 95% CI [-.01, -.003], respectively)\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"theoretical_conceptual\",\n      \"subcategory\": \"Misattribution of the dominant social paradigm\",\n      \"description\": \"The dominant social paradigm (DSP) is attributed to 'Noe and Snow [15]' whose cited work concerns the New Environmental Paradigm scale, not the DSP, which originates with other authors (e.g., Pirages & Ehrlich; Dunlap & Van Liere). This is a conceptual/attribution error that misrepresents the theoretical lineage.\",\n      \"quote\": \"a belief that is at the core of Noe and Snow’s [15] dominant social paradigm (DSP). The DSP indexes endorsement of ideological systems favouring growth and prosperity.\",\n      \"location\": \"introduction\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Inconsistent/incomplete reporting of test statistics\",\n      \"description\": \"The model comparison tests are reported as '2(1) = 50.98' etc., apparently omitting the chi-square symbol (χ²), making it ambiguous what statistic is reported. While likely a formatting issue, it impairs clarity and replicability. The very large value (χ²(1) = 15,389.13) for the SDO-RWA asymmetry should also be scrutinized given the model constraints.\",\n      \"quote\": \"We found that our original model provides significantly better fit to the data 2(1) = 50.98, p < .001\",\n      \"location\": \"results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Diagonal values in correlation table ambiguous\",\n      \"description\": \"Table 1's diagonal (.69, .70, .76) is unlabeled in the note; readers cannot determine whether these are reliabilities, and if reliabilities, why the text says reliabilities are not reported numerically. This ambiguity undermines interpretation of measurement quality and of the disattenuation of correlations.\",\n      \"quote\": \"SDO | .69 |  | \\nRWA | .21*** [.18, .23] | .70 | \\nWILL | -.25*** [-.27, -.22] | -.08*** [-.11, -.05] | .76\",\n      \"location\": \"results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"No covariates / confound adjustment\",\n      \"description\": \"The cross-lagged model includes only the three focal constructs with no demographic or contextual covariates (age, gender, education, political orientation, income). Given the strong claims about social hierarchy and the acknowledged third-variable concern (economic factors), the absence of any covariate adjustment limits the ability to interpret the lagged paths as anything beyond simple temporal associations.\",\n      \"quote\": \"The model thus included three latent variables across five measurement points, where each variable within a time point was set to predict each variable in the subsequent time point.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Mismatch between predicted and obtained reciprocal SDO-RWA effects\",\n      \"description\": \"The authors predicted 'reciprocal cross-time effects' between SDO and RWA based on Duckitt's bidirectional claim, but found only a unidirectional effect (RWA→SDO). They then re-explain this post hoc using a different Duckitt argument. This shift from a falsified a priori prediction to a post hoc account, presented as confirmatory, reflects HARKing-type analytic flexibility.\",\n      \"quote\": \"Therefore, on the association between SDO and RWA over time, we expect reciprocal cross-time effects.\",\n      \"location\": \"introduction\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"Extrapolation to climate change and environmental justice\",\n      \"description\": \"Much of the discussion extrapolates from a two-item willingness-to-sacrifice measure to broad claims about climate change vulnerability, environmental racism, and environmental inequality outcomes. These outcomes were not measured in the study, and the inferential leap from individual sacrifice intentions to societal environmental-justice dynamics is an overextension unsupported by the data collected.\",\n      \"quote\": \"Our findings therefore highlight Social Dominant’s way of thinking as having the potential to exacerbate environmental inequality, as the effects of unmitigated climate change disproportionately affect those lower in social status.\",\n      \"location\": \"discussion\",\n      \"severity\": \"moderate\"\n    }\n  ]\n}\n```",
+  "model_id": "claude-opus-4-8",
+  "token_usage": {
+    "input_tokens": 15136,
+    "output_tokens": 5967
+  }
+}

@@ -1,0 +1,211 @@
+[
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "statistical_errors",
+      "subcategory": "random_effect_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Random suffix intercept removed \u2014 must know language-as-fixed-effect fallacy",
+      "original_snippet": "We included two random intercepts, one for subjects and one for suffixes. This analysis was expressed in the model glmer (response ~ condition + (1|subject) + (1|suffix), data, family = \"binomial\").",
+      "modified_snippet": "We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "description": "Removed random intercept for suffixes \u2014 'language as fixed effect fallacy' (Clark, 1973); ignores suffix-level clustering, inflating Type I error"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "methodological_design",
+      "subcategory": "no item random effects in Experiments 1 and 2",
+      "description": "The mixed models in Experiments 1 and 2 include only random intercepts for subjects, with no random effects for items (nonwords or suffixes). This means the analyses do not account for variability across items, violating the requirement for generalizability across both subjects and items (the 'language-as-fixed-effect fallacy'). Experiment 3 includes random intercepts for suffixes but not for individual nonword items. Without by-item random effects, the reported effects may not generalize beyond the specific stimuli used.",
+      "quote": "We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "location": "results (Experiments 1 and 2)",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "methodological_design",
+      "subcategory": "counterbalancing_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Counterbalancing removed \u2014 must know item confounds are fatal without Latin square",
+      "original_snippet": "We used two experimental lists to counterbalance the assignment of nonwords to the congruent/incongruent conditions across participants (List 1 is presented in Appendix D).  This counterbalancing procedure helps to ensure that any effects of the congruency variable are not the result of important it...",
+      "modified_snippet": "List 1 is presented in Appendix D.",
+      "description": "Removed Latin-square counterbalancing \u2014 without it, item properties are perfectly confounded with condition in within-subject design"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "methodological_design",
+      "subcategory": "lack of counterbalancing in Experiment 1",
+      "description": "In Experiment 1, stimuli were divided into two lists with 40 items per list, with each suffix occurring twice only. However, the assignment of specific nonwords to lists is not described as counterbalanced across participants. If the same nonwords always appear in the same list, any item-specific effects cannot be separated from list effects. Furthermore, with only two exposures per suffix, the reliability of suffix-level estimates used in the graded diagnosticity analyses is questionable.",
+      "quote": "stimuli were divided into two experimental lists with 40 items per list. Participants saw only one list; each suffix occurred twice only.",
+      "location": "methods (Experiment 1)",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "construct_validity",
+      "subcategory": "diagnosticity_formula_changed",
+      "difficulty": 1,
+      "difficulty_rationale": "Formula now computes P(suffix|category) not P(category|suffix) \u2014 denominator mismatch with definition",
+      "original_snippet": "For a particular suffix, type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words that contain the suffix.",
+      "modified_snippet": "For a particular suffix, type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.",
+      "description": "Changed denominator from P(category|suffix) to P(suffix|category) \u2014 this IS specificity, not diagnosticity; collapses the paper's central theoretical distinction"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "diagnosticity formula appears to describe relative frequency, not predictive validity",
+      "description": "The authors define type diagnosticity as 'the number of words ending in this suffix and falling into this category divided by the total number of words falling into this category.' This formula computes the proportion of all words in a category that end in a given suffix\u2014essentially a measure of how common the suffix is among words of that category. This is not the same as how well the suffix predicts the category (which would be the proportion of words with the suffix that belong to the category). The authors acknowledge this resembles 'cue validity' but the formula as stated computes something closer to sensitivity/recall rather than precision/predictive value.",
+      "quote": "type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.",
+      "location": "computational analysis methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "causal_inference",
+      "subcategory": "confound_check_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Confound check for pre-target word count removed \u2014 must know this imbalance was acknowledged earlier",
+      "original_snippet": "To check if these effects could be explained by a difference in the number of words pre-target (more words pre-target in incongruent contexts than in congruent ones), we added the interaction of this number with the congruency variable to the corresponding linear mixed models. The addition of extra ...",
+      "modified_snippet": "These results therefore suggest that the category information conveyed by suffix spelling is used during sentence integration processes.",
+      "description": "Deleted entire pre-target word count confound check \u2014 the paper acknowledged this confound (significant p<.05 condition difference) and explicitly ruled it out; now the confound is unaddressed"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "methodological_design",
+      "subcategory": "unbalanced design with unmatched pre-target word counts",
+      "description": "The authors report that the number of words pre-target differed significantly between congruent and incongruent conditions (4.75 vs 5.23, t(64) = 2.07, p < 0.05). This is a significant confound for eye-tracking measures, as the amount of prior context affects sentence processing difficulty and integration demands. The authors note this difference but do not control for it in their analyses, potentially confounding the congruency effect with differences in sentence length and processing load prior to the target.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "methods (Experiment 3)",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "internal_consistency",
+      "subcategory": "inclusion_exclusion_contradicted",
+      "difficulty": 1,
+      "difficulty_rationale": "'Balanced across three categories' but next sentence says fillers not analyzed \u2014 adjacent contradiction",
+      "original_snippet": "Forty filler nonwords whose suffix spellings were diagnostic for verbs were added so that sentence contexts would be more varied.",
+      "modified_snippet": "Forty filler nonwords whose suffix spellings were diagnostic for verbs were added so that sentence contexts would be balanced across all three lexical categories.",
+      "description": "Changed 'more varied' to 'balanced across all three categories' \u2014 contradicted by next sentence (fillers not analyzed due to low diagnosticity) and actual numbers (80 experimental vs 40 filler = not balanced)"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "reporting_completeness",
+      "subcategory": "viewing_distance_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "Participants were seated at a viewing distance of 70cm",
+      "modified_snippet": "Participants were seated at a viewing distance of 140cm",
+      "description": "Changed viewing distance from 70cm to 140cm but character width still reported as 0.3\u00b0 \u2014 geometry inconsistent (should be ~0.15\u00b0 at 140cm)"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "reporting_completeness",
+      "subcategory": "missing information about viewing distance and visual angle calculations",
+      "description": "The paper reports a viewing distance of 140cm, which is unusually large for eye-tracking studies (typical distances are 50-80cm). At 140cm, the reported character width of 0.3 degrees corresponds to approximately 0.73mm per character, which seems implausibly small. The authors do not explain why such an unusual viewing distance was used, and the visual angle calculations should be verified. This detail is important for assessing whether the experimental setup was appropriate for detecting fixation differences on individual words.",
+      "quote": "Participants were seated at a viewing distance of 140cm, with this position maintained with a table-mounted head and chin rest... black Courier font (size 14pt, horizontal character width 0.3o)",
+      "location": "methods (Experiment 3)",
+      "severity": "minor"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "generalizability",
+      "subcategory": "screening_criteria_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Native speaker and no-learning-difficulties screening removed \u2014 must know these are essential for morphological sensitivity",
+      "original_snippet": "They were native English speakers with no history of reading, spelling, or learning difficulties.",
+      "modified_snippet": "",
+      "description": "Removed native speaker and no-learning-difficulties screening \u2014 non-native speakers and dyslexic participants would have different suffix-category sensitivity, adding noise and potentially attenuating effects"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "theoretical_conceptual",
+      "subcategory": "task_predictions_swapped",
+      "difficulty": 1,
+      "difficulty_rationale": "Diagnosticity\u2192spelling and specificity\u2192reading, but experiments show opposite \u2014 inverts entire logic",
+      "original_snippet": "That is, we hypothesise that diagnosticity, a measure of spelling-to-meaning consistency, would impact on tasks that involve the mapping of print to meaning (i.e. semantic categorisation, reading), while specificity, a measure of meaning-to-spelling consistency, would impact on spelling behaviour.",
+      "modified_snippet": "That is, we hypothesise that diagnosticity, a measure of spelling-to-meaning consistency, would impact on tasks that involve the production of spelling, while specificity, a measure of meaning-to-spelling consistency, would impact on tasks involving the mapping of print to meaning (i.e. semantic cat...",
+      "description": "Swapped diagnosticity/specificity task predictions \u2014 diagnosticity should predict reading, specificity should predict spelling; reversed mapping inverts the entire experimental logic"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "mismatch between predicted direction of diagnosticity and specificity effects",
+      "description": "The authors predict that diagnosticity (spelling-to-meaning) should influence tasks involving production of spelling, while specificity (meaning-to-spelling) should influence tasks involving reading/categorization. However, Experiment 1 (categorization from print) is analyzed using diagnosticity, and Experiment 2 (spelling production) uses specificity. This is the opposite of the stated theoretical prediction. The authors acknowledge this in the conclusion section but do not adequately explain why the mapping was reversed in the experimental design.",
+      "quote": "we hypothesise that diagnosticity, a measure of spelling-to-meaning consistency, would impact on tasks that involve the production of spelling, while specificity, a measure of meaning-to-spelling consistency, would impact on tasks involving the mapping of print to meaning (i.e. semantic categorisation, reading).",
+      "location": "computational analysis conclusion",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "analytic_flexibility",
+      "subcategory": "frequency_weighting_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Frequency weighting removed from entropy regression \u2014 must understand rare suffixes dominate unweighted",
+      "original_snippet": "We then examined the slope of the regression equation lm(Hspelling ~ Hphonology, weights = suffix frequency).",
+      "modified_snippet": "We then examined the slope of the regression equation lm(Hspelling ~ Hphonology).",
+      "description": "Removed frequency weighting from entropy regression \u2014 rare suffixes with extreme values now dominate equally; finding that spelling > phonology may not hold unweighted"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "reporting_completeness",
+      "subcategory": "entropy analysis methodology underspecified",
+      "description": "The entropy analysis comparing Hspelling and Hsound is described briefly but key methodological details are missing: how many suffixes were included, whether the same 154 suffixes from the main analysis were used, how phonological forms were obtained for suffixes that have multiple pronunciations, and whether the regression was weighted by suffix frequency. The claim that 'spelling is more predictive of category compared to phonology' rests entirely on this analysis, yet it cannot be replicated from the information provided.",
+      "quote": "We calculated Hspelling to provide an estimate of the prediction precision from the suffix spelling, and we calculated Hsound to provide an estimate of the prediction precision from the most frequent pronunciation of the suffix. We then examined the slope of the regression equation lm(Hspelling ~ Hphonology).",
+      "location": "general discussion",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 10,
+      "category": "attrition_missing_data",
+      "subcategory": "fixation_cutoff_changed",
+      "difficulty": 3,
+      "difficulty_rationale": "800ms vs 1500ms fixation cutoff \u2014 must know this asymmetrically trims the condition with longer fixations",
+      "original_snippet": "as were any remaining fixations of less than 80 ms or more than 1500 ms duration.",
+      "modified_snippet": "as were any remaining fixations of less than 80 ms or more than 800 ms duration.",
+      "description": "Changed upper fixation cutoff from 1500ms to 800ms \u2014 asymmetrically trims long fixations from incongruent condition (which has longer processing); attenuates the congruency effect"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  }
+]

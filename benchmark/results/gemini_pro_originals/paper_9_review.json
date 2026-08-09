@@ -1,0 +1,164 @@
+{
+  "paper_id": 9,
+  "provider_name": "gemini_pro_originals",
+  "issues": [
+    {
+      "category": "methodological_design",
+      "subcategory": "Inappropriate sample pooling",
+      "description": "The study plans to pool a nationally representative sample (n=2,500) with a specific oversample of sports bettors (n=1,500) to create a total sample of 4,000. Analyzing this pooled sample without applying appropriate survey weights will destroy the representativeness of the data, heavily skewing the results toward the characteristics of sports bettors (e.g., likely more male, higher gambling frequency, potentially different substance use patterns).",
+      "quote": "This will provide us with a total sample of over 4,000 American adults.",
+      "location": "Method (Participants and Procedure)",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory measurement descriptions",
+      "description": "The text states that alcohol frequency will be measured generally without specifying quantity, explicitly deviating from the NIDA Quick Screen's focus on binge drinking. However, the supplemental materials include the gender-specific binge drinking questions (4+ or 5+ drinks on one occasion). It is unclear which measure will actually be used as the focal predictor for alcohol.",
+      "quote": "we will look at alcohol frequency more generally (i.e., asking participants how often they have consumed alcohol without specifying the quantity consumed).",
+      "location": "Method (Measures) and Supplemental Materials",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Invalid response scale modification",
+      "description": "The authors plan to modify the ASSIST problem items (e.g., health/social/legal problems, failing to do what was expected) to a scale ranging from 0 (never) to 5 (more than once per day). It is conceptually nonsensical to ask if someone has experienced legal or financial problems 'more than once per day' in the past 3 months. This modification invalidates the established psychometric properties of the ASSIST.",
+      "quote": "Participants will respond to three frequency based questions that assess problematic use... on a scale of 0 (never) to 5 (more than once per day) for each of the above mentioned substances.",
+      "location": "Method (Measures - Substance Use)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inappropriate composite scoring",
+      "description": "The problematic use composite is created by standardizing and averaging three 6-point frequency items and two 3-point categorical items (No; Yes, but not in past 3 months; Yes, in past 3 months). Standardizing does not fix the fact that these items have fundamentally different distributions and conceptual meanings. Averaging them assumes they contribute equally to the construct, which is untested and deviates from standard ASSIST scoring.",
+      "quote": "Responses to each of the above five items will be standardized, and an average will be taken for each substance of interest",
+      "location": "Method (Measures - Substance Use)",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Range restriction attenuating interactions",
+      "description": "The authors aim to compare the interaction of frequency and moral disapproval across different behaviors. However, moral disapproval of illicit drugs or prescription drug misuse will likely be near the ceiling (highly skewed), whereas moral disapproval of pornography is more normally distributed. This severe range restriction for hard drugs will statistically attenuate the interaction effect, leading to a false conclusion that moral incongruence is unique to pornography, when it may just be a statistical artifact of differing variances.",
+      "quote": "we do not expect to find that the interactions of self-reported substance use frequency with moral disapproval of those substances will contribute uniquely to predicting self-reported problems",
+      "location": "Introduction (The Present Study) / Analytic Plan",
+      "severity": "critical"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Undefined thresholds for assumption violations",
+      "description": "The authors state they will use latent variable models if regression assumptions are 'substantially violated,' but they do not define what constitutes a substantial violation (e.g., specific thresholds for skewness, kurtosis, or heteroscedasticity). This introduces researcher degrees of freedom, allowing them to choose the analytic method that yields the most favorable results.",
+      "quote": "in cases where assumptions are substantially violated, we will conduct supplemental analyses to test the robustness of our models, as appropriate.",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Ambiguous primary model selection",
+      "description": "The authors state that if the OLS and latent variable models yield the same sign and significance, they will report OLS. However, they fail to specify which model will be considered the primary, definitive result if the two models diverge. This allows for selective reporting of the model that supports their hypotheses.",
+      "quote": "Should results of moderation analyses remain robust (i.e., sign and significance of interaction effects remain the same across analytic techniques), we will present OLS results and corresponding graphs in text",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incorrect estimator for data type",
+      "description": "The authors propose using diagonally weighted least squares (DWLS) estimation in lavaan if assumptions are violated, noting it does not rely on normally distributed residuals. However, DWLS is specifically designed for ordinal data. Since their dependent variables are standardized averages (continuous), DWLS is inappropriate. Robust maximum likelihood (MLR) would be the correct choice for non-normal continuous data.",
+      "quote": "we will construct latent variable models using the lavaan package (Rosseel, 2012) for R Statistical Software, using diagonally weighted least squares estimation",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Invalid cross-model effect size comparison",
+      "description": "The equivalence bounds are set using a standardized regression coefficient (β = .11) derived from a previous study on pornography. Standardized coefficients are highly sensitive to the sample variances of the predictors. Because the variances of frequency and moral disapproval will differ drastically between pornography, gambling, and various substances, comparing β across these models is statistically invalid. Unstandardized coefficients or semi-partial R-squared would be more appropriate.",
+      "quote": "we elected to set our SESOI (δ) for our equivalence interval equal to the observed standardized estimate (β value) corresponding to the smallest effect listed above (β=.11...)",
+      "location": "Method (Analytic Plan)",
+      "severity": "critical"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Conditional hypothesis testing",
+      "description": "The authors state that if they lack power to test equivalence against their primary SESOI (β = .11), they will change the equivalence bound to a much larger effect (β = .27). This changes the fundamental hypothesis from 'the effect is practically zero' to 'the effect is smaller than .27'. Adjusting the hypothesis and equivalence bounds post-hoc based on achieved sample size is a questionable research practice.",
+      "quote": "Should we lack power to sufficient test equivalence with null effects for the above behaviors, we will adjust analyses accordingly. Specifically, rather than testing whether or not the effect of moral incongruence for these behaviors falls within the region of equivalence for our primary SESOI, we will test an alternative model where our equivalence region is defined by the lower bound of the 95% CI... (β = .27...)",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unrealistic missing data assumption",
+      "description": "The authors state they anticipate no unplanned missingness, which is highly unrealistic for a 4,000-person online survey. They provide no statistical plan (e.g., FIML, multiple imputation) for how they will handle item-level missingness or participant dropout, which is a critical omission for a Registered Report.",
+      "quote": "we anticipate no unplanned missingness of data.",
+      "location": "Method (Data Screening and Inclusion Criteria)",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Discrepant scale anchors",
+      "description": "The text states the modified frequency scale ranges from 0 to 5, but later says 1 to 6. Furthermore, the Brief Pornography Screen is described in the text as having a scale of 0 to 2, but the supplemental materials show it as 0, 2, 4. These inconsistencies make it impossible to know exactly how the variables will be coded and scored.",
+      "quote": "scale of 0 (never) to 5 (more than once per day) ... scale of 1 (never) to 6 (more than once per day) ... three-point scale of 0 (never) to 2 (very often)",
+      "location": "Method (Measures) and Supplemental Materials",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Underestimated sample size for interactions",
+      "description": "The power analysis was conducted using G*Power for a standard linear regression R2 increase. However, power to detect interaction effects in observational research is notoriously low due to collinearity between the product term and main effects, as well as compounded measurement error. Standard G*Power estimates typically severely underestimate the N required for interactions unless the specific reliability and correlation of the predictors are accounted for.",
+      "quote": "using G*Power 3.1 (Faul et al., 2009), we conducted a power analysis to determine the sample size needed to reliably detect our smallest effect of interest (f2 = .015)",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inflated family-wise error rate",
+      "description": "The authors plan to conduct 10 separate moderation analyses and corresponding equivalence tests. While they mention using Holm-adjusted statistics for bivariate correlations, they do not propose any alpha correction for their primary hypothesis tests. This significantly inflates the family-wise Type I error rate.",
+      "quote": "In total, we will conduct 10 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest",
+      "location": "Method (Analytic Plan)",
+      "severity": "major"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Inappropriate causal claims",
+      "description": "Despite acknowledging the cross-sectional nature of the data in the limitations, the authors repeatedly use causal language (e.g., 'driving,' 'influences,' 'predicts') to describe the relationship between moral incongruence and feelings of addiction. The cross-sectional design cannot rule out reverse causality (e.g., feeling addicted causes one to morally disapprove of their behavior).",
+      "quote": "we seek to establish whether moral incongruence... influences self-perceived feelings of addiction to both behaviors",
+      "location": "Introduction (The Present Study)",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Operationalization mismatch",
+      "description": "The authors frame the study around the ICD-11 criteria for Compulsive Sexual Behavior Disorder (CSBD), which explicitly requires actual dysregulation and impairment. However, their dependent variables measure *self-perceived* feelings of addiction. Predicting self-perceptions is not equivalent to predicting actual clinical dysregulation, weakening the theoretical link between their findings and the ICD-11 diagnostic criteria they are critiquing.",
+      "quote": "Ultimately, we aim to demonstrate that—consistent with the ICD-11 decision to include moral distress as a diagnostic consideration when applying a diagnosis of CSBD—the role moral incongruence in predicting feelings of dysregulation is unique to sexual behavior",
+      "location": "Introduction (The Present Study)",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Flawed statistical test",
+      "description": "The authors plan to use the Anderson-Hauck equivalence test. This test has been shown in statistical literature to be overly liberal, sometimes resulting in Type I error rates that exceed the nominal alpha level. The Two One-Sided Tests (TOST) procedure is the widely accepted standard for equivalence testing.",
+      "quote": "We will use the Anderson-Hauck equivalence test for regression (Counsell & Cribbie, 2015)",
+      "location": "Method (Analytic Plan)",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Inappropriate standardization reference group",
+      "description": "Religiousness is calculated by standardizing three items. If this standardization is done on the pooled sample (2,500 representative + 1,500 sports bettors), the resulting z-scores will be relative to a non-representative population. This alters the meaning of a 'zero' score on religiousness, potentially confounding the covariate's effect across the different behavioral models.",
+      "quote": "Religiousness will be measured via the average of standardized responses to three items taken from Pew Research Center",
+      "location": "Method (Covariates)",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Unclear handling of zero-frequency participants",
+      "description": "The authors state that only participants who endorse past-year use will complete further measures of problematic use. However, it is not explicitly stated whether the 'Never' users will be excluded entirely from the regression models or coded as zero on the dependent variables. Excluding them restricts the variance of the predictor and drastically reduces sample size for rare behaviors (e.g., prescription drug misuse), but including them requires imputing zeros for the unasked dependent variables. The exact analytic handling is missing.",
+      "quote": "Only participants who endorse past-year use will complete further measures of problematic use.",
+      "location": "Method (Measures - Substance Use)",
+      "severity": "major"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Inappropriate sample pooling\",\n      \"description\": \"The study plans to pool a nationally representative sample (n=2,500) with a specific oversample of sports bettors (n=1,500) to create a total sample of 4,000. Analyzing this pooled sample without applying appropriate survey weights will destroy the representativeness of the data, heavily skewing the results toward the characteristics of sports bettors (e.g., likely more male, higher gambling frequency, potentially different substance use patterns).\",\n      \"quote\": \"This will provide us with a total sample of over 4,000 American adults.\",\n      \"location\": \"Method (Participants and Procedure)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Contradictory measurement descriptions\",\n      \"description\": \"The text states that alcohol frequency will be measured generally without specifying quantity, explicitly deviating from the NIDA Quick Screen's focus on binge drinking. However, the supplemental materials include the gender-specific binge drinking questions (4+ or 5+ drinks on one occasion). It is unclear which measure will actually be used as the focal predictor for alcohol.\",\n      \"quote\": \"we will look at alcohol frequency more generally (i.e., asking participants how often they have consumed alcohol without specifying the quantity consumed).\",\n      \"location\": \"Method (Measures) and Supplemental Materials\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Invalid response scale modification\",\n      \"description\": \"The authors plan to modify the ASSIST problem items (e.g., health/social/legal problems, failing to do what was expected) to a scale ranging from 0 (never) to 5 (more than once per day). It is conceptually nonsensical to ask if someone has experienced legal or financial problems 'more than once per day' in the past 3 months. This modification invalidates the established psychometric properties of the ASSIST.\",\n      \"quote\": \"Participants will respond to three frequency based questions that assess problematic use... on a scale of 0 (never) to 5 (more than once per day) for each of the above mentioned substances.\",\n      \"location\": \"Method (Measures - Substance Use)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inappropriate composite scoring\",\n      \"description\": \"The problematic use composite is created by standardizing and averaging three 6-point frequency items and two 3-point categorical items (No; Yes, but not in past 3 months; Yes, in past 3 months). Standardizing does not fix the fact that these items have fundamentally different distributions and conceptual meanings. Averaging them assumes they contribute equally to the construct, which is untested and deviates from standard ASSIST scoring.\",\n      \"quote\": \"Responses to each of the above five items will be standardized, and an average will be taken for each substance of interest\",\n      \"location\": \"Method (Measures - Substance Use)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Range restriction attenuating interactions\",\n      \"description\": \"The authors aim to compare the interaction of frequency and moral disapproval across different behaviors. However, moral disapproval of illicit drugs or prescription drug misuse will likely be near the ceiling (highly skewed), whereas moral disapproval of pornography is more normally distributed. This severe range restriction for hard drugs will statistically attenuate the interaction effect, leading to a false conclusion that moral incongruence is unique to pornography, when it may just be a statistical artifact of differing variances.\",\n      \"quote\": \"we do not expect to find that the interactions of self-reported substance use frequency with moral disapproval of those substances will contribute uniquely to predicting self-reported problems\",\n      \"location\": \"Introduction (The Present Study) / Analytic Plan\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Undefined thresholds for assumption violations\",\n      \"description\": \"The authors state they will use latent variable models if regression assumptions are 'substantially violated,' but they do not define what constitutes a substantial violation (e.g., specific thresholds for skewness, kurtosis, or heteroscedasticity). This introduces researcher degrees of freedom, allowing them to choose the analytic method that yields the most favorable results.\",\n      \"quote\": \"in cases where assumptions are substantially violated, we will conduct supplemental analyses to test the robustness of our models, as appropriate.\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Ambiguous primary model selection\",\n      \"description\": \"The authors state that if the OLS and latent variable models yield the same sign and significance, they will report OLS. However, they fail to specify which model will be considered the primary, definitive result if the two models diverge. This allows for selective reporting of the model that supports their hypotheses.\",\n      \"quote\": \"Should results of moderation analyses remain robust (i.e., sign and significance of interaction effects remain the same across analytic techniques), we will present OLS results and corresponding graphs in text\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incorrect estimator for data type\",\n      \"description\": \"The authors propose using diagonally weighted least squares (DWLS) estimation in lavaan if assumptions are violated, noting it does not rely on normally distributed residuals. However, DWLS is specifically designed for ordinal data. Since their dependent variables are standardized averages (continuous), DWLS is inappropriate. Robust maximum likelihood (MLR) would be the correct choice for non-normal continuous data.\",\n      \"quote\": \"we will construct latent variable models using the lavaan package (Rosseel, 2012) for R Statistical Software, using diagonally weighted least squares estimation\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Invalid cross-model effect size comparison\",\n      \"description\": \"The equivalence bounds are set using a standardized regression coefficient (β = .11) derived from a previous study on pornography. Standardized coefficients are highly sensitive to the sample variances of the predictors. Because the variances of frequency and moral disapproval will differ drastically between pornography, gambling, and various substances, comparing β across these models is statistically invalid. Unstandardized coefficients or semi-partial R-squared would be more appropriate.\",\n      \"quote\": \"we elected to set our SESOI (δ) for our equivalence interval equal to the observed standardized estimate (β value) corresponding to the smallest effect listed above (β=.11...)\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Conditional hypothesis testing\",\n      \"description\": \"The authors state that if they lack power to test equivalence against their primary SESOI (β = .11), they will change the equivalence bound to a much larger effect (β = .27). This changes the fundamental hypothesis from 'the effect is practically zero' to 'the effect is smaller than .27'. Adjusting the hypothesis and equivalence bounds post-hoc based on achieved sample size is a questionable research practice.\",\n      \"quote\": \"Should we lack power to sufficient test equivalence with null effects for the above behaviors, we will adjust analyses accordingly. Specifically, rather than testing whether or not the effect of moral incongruence for these behaviors falls within the region of equivalence for our primary SESOI, we will test an alternative model where our equivalence region is defined by the lower bound of the 95% CI... (β = .27...)\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"Unrealistic missing data assumption\",\n      \"description\": \"The authors state they anticipate no unplanned missingness, which is highly unrealistic for a 4,000-person online survey. They provide no statistical plan (e.g., FIML, multiple imputation) for how they will handle item-level missingness or participant dropout, which is a critical omission for a Registered Report.\",\n      \"quote\": \"we anticipate no unplanned missingness of data.\",\n      \"location\": \"Method (Data Screening and Inclusion Criteria)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Discrepant scale anchors\",\n      \"description\": \"The text states the modified frequency scale ranges from 0 to 5, but later says 1 to 6. Furthermore, the Brief Pornography Screen is described in the text as having a scale of 0 to 2, but the supplemental materials show it as 0, 2, 4. These inconsistencies make it impossible to know exactly how the variables will be coded and scored.\",\n      \"quote\": \"scale of 0 (never) to 5 (more than once per day) ... scale of 1 (never) to 6 (more than once per day) ... three-point scale of 0 (never) to 2 (very often)\",\n      \"location\": \"Method (Measures) and Supplemental Materials\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Underestimated sample size for interactions\",\n      \"description\": \"The power analysis was conducted using G*Power for a standard linear regression R2 increase. However, power to detect interaction effects in observational research is notoriously low due to collinearity between the product term and main effects, as well as compounded measurement error. Standard G*Power estimates typically severely underestimate the N required for interactions unless the specific reliability and correlation of the predictors are accounted for.\",\n      \"quote\": \"using G*Power 3.1 (Faul et al., 2009), we conducted a power analysis to determine the sample size needed to reliably detect our smallest effect of interest (f2 = .015)\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inflated family-wise error rate\",\n      \"description\": \"The authors plan to conduct 10 separate moderation analyses and corresponding equivalence tests. While they mention using Holm-adjusted statistics for bivariate correlations, they do not propose any alpha correction for their primary hypothesis tests. This significantly inflates the family-wise Type I error rate.\",\n      \"quote\": \"In total, we will conduct 10 moderation analyses for moral disapproval and frequency, corresponding to the 8 target behaviors/variables of interest\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Inappropriate causal claims\",\n      \"description\": \"Despite acknowledging the cross-sectional nature of the data in the limitations, the authors repeatedly use causal language (e.g., 'driving,' 'influences,' 'predicts') to describe the relationship between moral incongruence and feelings of addiction. The cross-sectional design cannot rule out reverse causality (e.g., feeling addicted causes one to morally disapprove of their behavior).\",\n      \"quote\": \"we seek to establish whether moral incongruence... influences self-perceived feelings of addiction to both behaviors\",\n      \"location\": \"Introduction (The Present Study)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Operationalization mismatch\",\n      \"description\": \"The authors frame the study around the ICD-11 criteria for Compulsive Sexual Behavior Disorder (CSBD), which explicitly requires actual dysregulation and impairment. However, their dependent variables measure *self-perceived* feelings of addiction. Predicting self-perceptions is not equivalent to predicting actual clinical dysregulation, weakening the theoretical link between their findings and the ICD-11 diagnostic criteria they are critiquing.\",\n      \"quote\": \"Ultimately, we aim to demonstrate that—consistent with the ICD-11 decision to include moral distress as a diagnostic consideration when applying a diagnosis of CSBD—the role moral incongruence in predicting feelings of dysregulation is unique to sexual behavior\",\n      \"location\": \"Introduction (The Present Study)\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Flawed statistical test\",\n      \"description\": \"The authors plan to use the Anderson-Hauck equivalence test. This test has been shown in statistical literature to be overly liberal, sometimes resulting in Type I error rates that exceed the nominal alpha level. The Two One-Sided Tests (TOST) procedure is the widely accepted standard for equivalence testing.\",\n      \"quote\": \"We will use the Anderson-Hauck equivalence test for regression (Counsell & Cribbie, 2015)\",\n      \"location\": \"Method (Analytic Plan)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Inappropriate standardization reference group\",\n      \"description\": \"Religiousness is calculated by standardizing three items. If this standardization is done on the pooled sample (2,500 representative + 1,500 sports bettors), the resulting z-scores will be relative to a non-representative population. This alters the meaning of a 'zero' score on religiousness, potentially confounding the covariate's effect across the different behavioral models.\",\n      \"quote\": \"Religiousness will be measured via the average of standardized responses to three items taken from Pew Research Center\",\n      \"location\": \"Method (Covariates)\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Unclear handling of zero-frequency participants\",\n      \"description\": \"The authors state that only participants who endorse past-year use will complete further measures of problematic use. However, it is not explicitly stated whether the 'Never' users will be excluded entirely from the regression models or coded as zero on the dependent variables. Excluding them restricts the variance of the predictor and drastically reduces sample size for rare behaviors (e.g., prescription drug misuse), but including them requires imputing zeros for the unasked dependent variables. The exact analytic handling is missing.\",\n      \"quote\": \"Only participants who endorse past-year use will complete further measures of problematic use.\",\n      \"location\": \"Method (Measures - Substance Use)\",\n      \"severity\": \"major\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 21388,
+    "output_tokens": 3297
+  }
+}

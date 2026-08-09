@@ -1,0 +1,196 @@
+{
+  "paper_id": 5,
+  "provider_name": "openai_gpt54_high_reasoning",
+  "issues": [
+    {
+      "category": "statistical_errors",
+      "subcategory": "raw_r_meta_analysis",
+      "description": "The analysis description implies that the meta-analysis was conducted directly on raw correlation coefficients using only r and N. For correlations, standard meta-analytic practice is to transform r to Fisher's z and use the corresponding sampling variance before fitting the model. The manuscript does not report that transformation. If the authors really supplied raw r values directly to `rma`, the pooled effect sizes, standard errors, heterogeneity estimates, confidence intervals, and prediction intervals are not guaranteed to be valid. At minimum, the reporting is insufficient to verify a correct analysis.",
+      "quote": "The rma function was used, which accepts the effect size r and N parameters",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "post_hoc_model_selection",
+      "description": "The estimator for between-study variance was chosen after comparing outputs and selecting the one that seemed 'more interpretable.' That is a post hoc analytic decision based on the observed data rather than a prespecified rule or principled methodological justification. Such flexibility can alter heterogeneity estimates, intervals, and inferential conclusions.",
+      "quote": "We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "minimum_sample_size_contradiction",
+      "description": "The manuscript states that all included studies reached a CREP minimum of 120 participants, but later reports several included studies with N below 120 (e.g., 80, 81, 90, 94, 116). This is a direct contradiction about adherence to the stated sampling rule and raises questions about inclusion criteria and power.",
+      "quote": "All studies in this meta-analysis received this approval by the CREP team, collected the minimum number of participants specified by the CREP (120 for the present study to ensure adequate statistical power) ... Sample sizes ranged from 80 to 374.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "underpowered_individual_replications",
+      "description": "Several replication samples were quite small, yet the Results repeatedly interpret individual non-significant replications as evidence against effects. With Ns as low as 80-94, these studies are underpowered for small effects and only modestly powered even for moderate effects. Counting non-significant studies is therefore a weak basis for judging replication success or failure.",
+      "quote": "Sample sizes ranged from 80 to 374. ... Contrary to the results of the original study, six of the seven replication studies did not find self-esteem to be a significant predictor of opportunity to connect.",
+      "location": "methods/results",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "study_level_attrition_from_started_projects",
+      "description": "There is substantial study-level attrition: 17 teams started the replication process, but only 7 studies were included. The manuscript does not explain what happened to the other 10 forks, whether data were collected, or whether noncompletion was related to feasibility, results, or data quality. This creates potential selection bias in the meta-analysis.",
+      "quote": "The Forest and Wood (2012) CREP replication project page on the OSF has 17 “forks” representing research teams or institutions that have started the replication process ... These teams generated seven studies that met the minimum sample size, and posted data and results for the study in the OSF repository. All seven studies were included in this meta-analysis.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "missing_data_and_exclusions_unknown",
+      "description": "The authors explicitly acknowledge that they could not determine how missing data and exclusions were handled in all studies. This is a major threat to comparability across replications and undermines confidence in the extracted effect sizes, because outcome-specific sample sizes, exclusion rules, and missingness mechanisms may differ across sites.",
+      "quote": "not all studies posted analysis scripts or narratives to help us determine such things as missing data handling, composite score calculations, data exclusions, etc.",
+      "location": "discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "unclear_composite_scoring",
+      "description": "The scoring of the scales was not consistently documented, and the authors infer scoring methods from descriptive statistics. Even if correlations are invariant to linear rescaling, this lack of harmonized scoring documentation undermines reproducibility and may matter if missing-item handling differed between summed and averaged composites.",
+      "quote": "Two studies included analysis scripts that showed scores for all scales were mean averaged. The means for scores in most studies implied that the items were mean averaged, but the Gordon study’s mean implied items were summed.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "direct_replication_fidelity_compromised",
+      "description": "The paper labels all studies as direct replications, but the procedures differed on several nontrivial dimensions: online versus lab administration, group versus individual testing, different item wording/order, and different response scales for self-esteem. These are more than 'slight' deviations and could change measurement properties or effect sizes. Because these differences were not standardized or modeled, they weaken the claim of close/direct replication.",
+      "quote": "The teams of 2–9 undergraduate students and faculty mentors followed the same methodology, with slight deviations. ... researchers employed both methods (three replications had participants complete in lab only, two used online only, and two used both methods). ... one study (IIT-Sp16) had slight differences in item order and in wording on four out of ten items ... most replications used the original four-point scale, while two replications (IIT-Sp16 and IIT-Sp17) used a five-point scale.",
+      "location": "introduction/methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "group_administration_nonindependence",
+      "description": "One site administered the survey in groups rather than individually. Group administration can create non-independence, demand effects, or social-comparison influences, especially for self-esteem and disclosure-related judgments. This procedural difference is not accounted for analytically.",
+      "quote": "Participants completing questionnaires in the lab did so alone, except for the SAU replication, which ran participants in groups of two to six.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "facebook_use_eligibility_not_reported",
+      "description": "The study concerns perceptions of Facebook, but the manuscript does not report whether participants were required to have a Facebook account, to use Facebook regularly, or to have used it recently. Without that information, it is unclear whether all respondents could validly answer the Facebook-specific measures, and comparability to the original study cannot be evaluated.",
+      "quote": "Participants in all studies were undergraduate students at the five universities and colleges in the US where the replications were conducted from February, 2016 to June, 2017 ... After informed consent, participants completed the 10-item Rosenberg Self-Esteem Scale ... Next, participants completed a measure of Facebook use perceptions",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "unvalidated_custom_outcome_measure",
+      "description": "The main outcome measure was an instrument 'created by the original researchers,' and the manuscript reports only internal consistency. Reliability alone does not establish construct validity. There is no evidence presented on factor structure, convergent/discriminant validity, or measurement invariance across sites and years, which is particularly important when interpreting nuanced constructs such as expression, connection, safety, and advantages.",
+      "quote": "Next, participants completed a measure of Facebook use perceptions created by the original researchers (Forest & Wood, 2012). ... Subscale scores showed adequate to good internal consistency",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "connect_significance_contradiction",
+      "description": "The Results correctly report a non-significant meta-analytic effect for connection (CI includes zero; p = .065), but the Discussion later states that the same meta-analytic effect was 'significantly different from zero.' This is a direct contradiction affecting interpretation of one of the core findings.",
+      "quote": "The point-estimate of the meta-analytic effect size was .09, 95% CI [-.01, .18], 95% PI [-.09, .26], p = .065. ... However, the meta-analytic effect size was .09, and significantly different from zero.",
+      "location": "results/discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "equating_non_significance_with_no_effect",
+      "description": "The manuscript treats the self-expression result as supporting 'no effect' because all individual replications were non-significant, even though the meta-analysis found a statistically significant positive effect and a prediction interval entirely above zero. This conflates lack of significance in underpowered individual studies with evidence for a null effect, and it contradicts the pooled estimate.",
+      "quote": "The replications supported the original study’s finding that self-esteem was not a significant predictor of perceptions that Facebook provided opportunities to express the self ... Even though the effect size meta-analysis revealed that the point-estimate meta-analytic effect size of the seven replication studies, r = .08, p = .021, was statistically different from zero, and the 95% CI and prediction interval (PI) indicated future studies would show an effect size between .01 and .14",
+      "location": "results/discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "misuse_of_fail_safe_n",
+      "description": "Fail-safe N is used here as if it indicates robustness and predicts what future replications will show. That is not what FSN measures: it is a file-drawer sensitivity metric under strong assumptions about hypothetical unpublished null studies. It does not establish robustness of the observed effect, does not validate replication success, and is especially ill-suited for a corpus of preregistered/open replications.",
+      "quote": "The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect as our replications. ... These results also seemed to be somewhat robust, as indicated by a high FSN (133).",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "fail_safe_n_values_inconsistent",
+      "description": "The reported fail-safe N values change between sections. For self-expression, the Results say FSN = 3 but the Discussion refers to 5. For connection, the Results say FSN = 5 but the Discussion refers to 11. These discrepancies undermine confidence in the reporting of the meta-analytic diagnostics.",
+      "quote": "The FSN was 3 studies. ... only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant ... The FSN was 5 studies. ... low FSN (11 studies).",
+      "location": "results/discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "prediction_interval_inconsistency",
+      "description": "The prediction interval for the safety outcome is reported differently across sections. Because the Discussion uses the prediction interval to justify substantive conclusions about future studies, this discrepancy matters for interpretation.",
+      "quote": "The point-estimate of the meta-analytic effect size was -.28, 95% CI [-.40, -.15], 95% PI [-.54, -.03] ... The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.",
+      "location": "results/discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "original_effect_size_inconsistency",
+      "description": "The original effect size for the advantageous self-disclosure outcome is reported inconsistently across sections and tables as -.30 and -.33. This matters because the paper repeatedly compares replication estimates against the original and frames conclusions in terms of effect-size differences from that value.",
+      "quote": "meta analytic effect size = -.16, original effect size = -.30 ... Original r | -0.33 ... (-.02 to -.30 vs. -.33)",
+      "location": "abstract/table 3/discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unsupported_publication_bias_claim",
+      "description": "The manuscript infers publication bias in the original study from the fact that the replications were smaller and because the prediction interval was below the original estimate. That is not a valid demonstration of publication bias. With one original study and seven replications, many alternative explanations exist (sampling error, procedural drift, temporal change, measurement differences). No formal bias analysis of the original literature is possible here.",
+      "quote": "The effect sizes were mostly smaller than the original, the summary effect size was about half of the original’s effect size, and the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study’s, all factors indicating the presence of publication bias in the original study.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "overgeneralization_from_narrow_samples",
+      "description": "All replication samples were U.S. undergraduates from five institutions, mostly female, with limited demographic information. Yet the discussion generalizes to 'individuals' broadly and to Facebook users in general. Such claims exceed the sampling frame.",
+      "quote": "Participants in all studies were undergraduate students at the five universities and colleges in the US ... We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions",
+      "location": "methods/discussion",
+      "severity": "major"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "causal_theoretical_overreach_from_correlational_perceptions",
+      "description": "The data are cross-sectional associations between self-esteem and self-reported perceptions of Facebook's affordances. They do not test whether Facebook actually mitigates anxiety, improves social relations, or produces social compensation. Interpreting these correlations as support for a causal process is overstated.",
+      "quote": "The present research also provides some support for social compensation theory (McKenna & Bargh, 2000; Wilson et al., 2012). This theory suggests that for those with lower self-esteem, the anxiety provoked by FTF interactions can be somewhat mitigated in online interactions.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "meta_analysis_preregistration_unclear",
+      "description": "The paper emphasizes preregistration, but the quoted text only documents preregistration at the level of the individual replication studies. The manuscript does not state that the meta-analysis protocol itself—its inclusion rules, effect-size computation choices, heterogeneity estimator, FSN use, and decision rules—was preregistered. That leaves substantial room for post hoc analytic decisions in the synthesis stage.",
+      "quote": "This manuscript qualifies for a Preregistration badge; the data collection and data analysis methods were preregistered at each individual study’s OSF page ... This meta-analysis synthesized seven direct pre-registered replications",
+      "location": "author note/methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "incomplete_demographic_characterization",
+      "description": "The manuscript reports that race was collected in only three replications and that otherwise no additional demographic information was collected. This severely limits assessment of sample comparability and external validity, and it prevents evaluation of whether demographic differences could explain heterogeneity across sites.",
+      "quote": "In three replications (BYU-Wi17, IIT-Sp16, and IIT-Sp17), race data was collected, but in all other studies no other demographic information was collected because the original Forest and Wood (2012) research did not indicate any other demographic information was collected",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "unidentified_reanalysis_of_one_site",
+      "description": "The paper states that one replication did not report regression results and that the authors recomputed them from the raw data, but it does not identify which study this was, what exact code was used in the manuscript, or how missing data and scoring were handled in that reanalysis. This impairs reproducibility and independent verification.",
+      "quote": "One replication study failed to report regression results, so we calculated the regression statistics from the study’s dataset which was made openly available on OSF.",
+      "location": "methods",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"statistical_errors\",\"subcategory\":\"raw_r_meta_analysis\",\"description\":\"The analysis description implies that the meta-analysis was conducted directly on raw correlation coefficients using only r and N. For correlations, standard meta-analytic practice is to transform r to Fisher's z and use the corresponding sampling variance before fitting the model. The manuscript does not report that transformation. If the authors really supplied raw r values directly to `rma`, the pooled effect sizes, standard errors, heterogeneity estimates, confidence intervals, and prediction intervals are not guaranteed to be valid. At minimum, the reporting is insufficient to verify a correct analysis.\",\"quote\":\"The rma function was used, which accepts the effect size r and N parameters\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"post_hoc_model_selection\",\"description\":\"The estimator for between-study variance was chosen after comparing outputs and selecting the one that seemed 'more interpretable.' That is a post hoc analytic decision based on the observed data rather than a prespecified rule or principled methodological justification. Such flexibility can alter heterogeneity estimates, intervals, and inferential conclusions.\",\"quote\":\"We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"minimum_sample_size_contradiction\",\"description\":\"The manuscript states that all included studies reached a CREP minimum of 120 participants, but later reports several included studies with N below 120 (e.g., 80, 81, 90, 94, 116). This is a direct contradiction about adherence to the stated sampling rule and raises questions about inclusion criteria and power.\",\"quote\":\"All studies in this meta-analysis received this approval by the CREP team, collected the minimum number of participants specified by the CREP (120 for the present study to ensure adequate statistical power) ... Sample sizes ranged from 80 to 374.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"underpowered_individual_replications\",\"description\":\"Several replication samples were quite small, yet the Results repeatedly interpret individual non-significant replications as evidence against effects. With Ns as low as 80-94, these studies are underpowered for small effects and only modestly powered even for moderate effects. Counting non-significant studies is therefore a weak basis for judging replication success or failure.\",\"quote\":\"Sample sizes ranged from 80 to 374. ... Contrary to the results of the original study, six of the seven replication studies did not find self-esteem to be a significant predictor of opportunity to connect.\",\"location\":\"methods/results\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"study_level_attrition_from_started_projects\",\"description\":\"There is substantial study-level attrition: 17 teams started the replication process, but only 7 studies were included. The manuscript does not explain what happened to the other 10 forks, whether data were collected, or whether noncompletion was related to feasibility, results, or data quality. This creates potential selection bias in the meta-analysis.\",\"quote\":\"The Forest and Wood (2012) CREP replication project page on the OSF has 17 “forks” representing research teams or institutions that have started the replication process ... These teams generated seven studies that met the minimum sample size, and posted data and results for the study in the OSF repository. All seven studies were included in this meta-analysis.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"missing_data_and_exclusions_unknown\",\"description\":\"The authors explicitly acknowledge that they could not determine how missing data and exclusions were handled in all studies. This is a major threat to comparability across replications and undermines confidence in the extracted effect sizes, because outcome-specific sample sizes, exclusion rules, and missingness mechanisms may differ across sites.\",\"quote\":\"not all studies posted analysis scripts or narratives to help us determine such things as missing data handling, composite score calculations, data exclusions, etc.\",\"location\":\"discussion\",\"severity\":\"critical\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"unclear_composite_scoring\",\"description\":\"The scoring of the scales was not consistently documented, and the authors infer scoring methods from descriptive statistics. Even if correlations are invariant to linear rescaling, this lack of harmonized scoring documentation undermines reproducibility and may matter if missing-item handling differed between summed and averaged composites.\",\"quote\":\"Two studies included analysis scripts that showed scores for all scales were mean averaged. The means for scores in most studies implied that the items were mean averaged, but the Gordon study’s mean implied items were summed.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"direct_replication_fidelity_compromised\",\"description\":\"The paper labels all studies as direct replications, but the procedures differed on several nontrivial dimensions: online versus lab administration, group versus individual testing, different item wording/order, and different response scales for self-esteem. These are more than 'slight' deviations and could change measurement properties or effect sizes. Because these differences were not standardized or modeled, they weaken the claim of close/direct replication.\",\"quote\":\"The teams of 2–9 undergraduate students and faculty mentors followed the same methodology, with slight deviations. ... researchers employed both methods (three replications had participants complete in lab only, two used online only, and two used both methods). ... one study (IIT-Sp16) had slight differences in item order and in wording on four out of ten items ... most replications used the original four-point scale, while two replications (IIT-Sp16 and IIT-Sp17) used a five-point scale.\",\"location\":\"introduction/methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"group_administration_nonindependence\",\"description\":\"One site administered the survey in groups rather than individually. Group administration can create non-independence, demand effects, or social-comparison influences, especially for self-esteem and disclosure-related judgments. This procedural difference is not accounted for analytically.\",\"quote\":\"Participants completing questionnaires in the lab did so alone, except for the SAU replication, which ran participants in groups of two to six.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"facebook_use_eligibility_not_reported\",\"description\":\"The study concerns perceptions of Facebook, but the manuscript does not report whether participants were required to have a Facebook account, to use Facebook regularly, or to have used it recently. Without that information, it is unclear whether all respondents could validly answer the Facebook-specific measures, and comparability to the original study cannot be evaluated.\",\"quote\":\"Participants in all studies were undergraduate students at the five universities and colleges in the US where the replications were conducted from February, 2016 to June, 2017 ... After informed consent, participants completed the 10-item Rosenberg Self-Esteem Scale ... Next, participants completed a measure of Facebook use perceptions\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"unvalidated_custom_outcome_measure\",\"description\":\"The main outcome measure was an instrument 'created by the original researchers,' and the manuscript reports only internal consistency. Reliability alone does not establish construct validity. There is no evidence presented on factor structure, convergent/discriminant validity, or measurement invariance across sites and years, which is particularly important when interpreting nuanced constructs such as expression, connection, safety, and advantages.\",\"quote\":\"Next, participants completed a measure of Facebook use perceptions created by the original researchers (Forest & Wood, 2012). ... Subscale scores showed adequate to good internal consistency\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"connect_significance_contradiction\",\"description\":\"The Results correctly report a non-significant meta-analytic effect for connection (CI includes zero; p = .065), but the Discussion later states that the same meta-analytic effect was 'significantly different from zero.' This is a direct contradiction affecting interpretation of one of the core findings.\",\"quote\":\"The point-estimate of the meta-analytic effect size was .09, 95% CI [-.01, .18], 95% PI [-.09, .26], p = .065. ... However, the meta-analytic effect size was .09, and significantly different from zero.\",\"location\":\"results/discussion\",\"severity\":\"critical\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"equating_non_significance_with_no_effect\",\"description\":\"The manuscript treats the self-expression result as supporting 'no effect' because all individual replications were non-significant, even though the meta-analysis found a statistically significant positive effect and a prediction interval entirely above zero. This conflates lack of significance in underpowered individual studies with evidence for a null effect, and it contradicts the pooled estimate.\",\"quote\":\"The replications supported the original study’s finding that self-esteem was not a significant predictor of perceptions that Facebook provided opportunities to express the self ... Even though the effect size meta-analysis revealed that the point-estimate meta-analytic effect size of the seven replication studies, r = .08, p = .021, was statistically different from zero, and the 95% CI and prediction interval (PI) indicated future studies would show an effect size between .01 and .14\",\"location\":\"results/discussion\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"misuse_of_fail_safe_n\",\"description\":\"Fail-safe N is used here as if it indicates robustness and predicts what future replications will show. That is not what FSN measures: it is a file-drawer sensitivity metric under strong assumptions about hypothetical unpublished null studies. It does not establish robustness of the observed effect, does not validate replication success, and is especially ill-suited for a corpus of preregistered/open replications.\",\"quote\":\"The FSN analysis, which indicated that only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant, led us to be confident that future replications would find the same lack of an effect as our replications. ... These results also seemed to be somewhat robust, as indicated by a high FSN (133).\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"fail_safe_n_values_inconsistent\",\"description\":\"The reported fail-safe N values change between sections. For self-expression, the Results say FSN = 3 but the Discussion refers to 5. For connection, the Results say FSN = 5 but the Discussion refers to 11. These discrepancies undermine confidence in the reporting of the meta-analytic diagnostics.\",\"quote\":\"The FSN was 3 studies. ... only five unreported studies could reduce the results of the meta-analytic effect size p-value to nonsignificant ... The FSN was 5 studies. ... low FSN (11 studies).\",\"location\":\"results/discussion\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"prediction_interval_inconsistency\",\"description\":\"The prediction interval for the safety outcome is reported differently across sections. Because the Discussion uses the prediction interval to justify substantive conclusions about future studies, this discrepancy matters for interpretation.\",\"quote\":\"The point-estimate of the meta-analytic effect size was -.28, 95% CI [-.40, -.15], 95% PI [-.54, -.03] ... The 95% PI [-.40, -.15] indicated that future studies would be likely to find such an effect as well.\",\"location\":\"results/discussion\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"original_effect_size_inconsistency\",\"description\":\"The original effect size for the advantageous self-disclosure outcome is reported inconsistently across sections and tables as -.30 and -.33. This matters because the paper repeatedly compares replication estimates against the original and frames conclusions in terms of effect-size differences from that value.\",\"quote\":\"meta analytic effect size = -.16, original effect size = -.30 ... Original r | -0.33 ... (-.02 to -.30 vs. -.33)\",\"location\":\"abstract/table 3/discussion\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unsupported_publication_bias_claim\",\"description\":\"The manuscript infers publication bias in the original study from the fact that the replications were smaller and because the prediction interval was below the original estimate. That is not a valid demonstration of publication bias. With one original study and seven replications, many alternative explanations exist (sampling error, procedural drift, temporal change, measurement differences). No formal bias analysis of the original literature is possible here.\",\"quote\":\"The effect sizes were mostly smaller than the original, the summary effect size was about half of the original’s effect size, and the PI [.01, .14] showed that 95% of future studies would find an effect size smaller than the original study’s, all factors indicating the presence of publication bias in the original study.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"generalizability\",\"subcategory\":\"overgeneralization_from_narrow_samples\",\"description\":\"All replication samples were U.S. undergraduates from five institutions, mostly female, with limited demographic information. Yet the discussion generalizes to 'individuals' broadly and to Facebook users in general. Such claims exceed the sampling frame.\",\"quote\":\"Participants in all studies were undergraduate students at the five universities and colleges in the US ... We can conclude with some confidence that individuals with low self-esteem will feel safer self-disclosing on Facebook than in FTF interactions\",\"location\":\"methods/discussion\",\"severity\":\"major\"},{\"category\":\"causal_inference\",\"subcategory\":\"causal_theoretical_overreach_from_correlational_perceptions\",\"description\":\"The data are cross-sectional associations between self-esteem and self-reported perceptions of Facebook's affordances. They do not test whether Facebook actually mitigates anxiety, improves social relations, or produces social compensation. Interpreting these correlations as support for a causal process is overstated.\",\"quote\":\"The present research also provides some support for social compensation theory (McKenna & Bargh, 2000; Wilson et al., 2012). This theory suggests that for those with lower self-esteem, the anxiety provoked by FTF interactions can be somewhat mitigated in online interactions.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"meta_analysis_preregistration_unclear\",\"description\":\"The paper emphasizes preregistration, but the quoted text only documents preregistration at the level of the individual replication studies. The manuscript does not state that the meta-analysis protocol itself—its inclusion rules, effect-size computation choices, heterogeneity estimator, FSN use, and decision rules—was preregistered. That leaves substantial room for post hoc analytic decisions in the synthesis stage.\",\"quote\":\"This manuscript qualifies for a Preregistration badge; the data collection and data analysis methods were preregistered at each individual study’s OSF page ... This meta-analysis synthesized seven direct pre-registered replications\",\"location\":\"author note/methods\",\"severity\":\"moderate\"},{\"category\":\"generalizability\",\"subcategory\":\"incomplete_demographic_characterization\",\"description\":\"The manuscript reports that race was collected in only three replications and that otherwise no additional demographic information was collected. This severely limits assessment of sample comparability and external validity, and it prevents evaluation of whether demographic differences could explain heterogeneity across sites.\",\"quote\":\"In three replications (BYU-Wi17, IIT-Sp16, and IIT-Sp17), race data was collected, but in all other studies no other demographic information was collected because the original Forest and Wood (2012) research did not indicate any other demographic information was collected\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"unidentified_reanalysis_of_one_site\",\"description\":\"The paper states that one replication did not report regression results and that the authors recomputed them from the raw data, but it does not identify which study this was, what exact code was used in the manuscript, or how missing data and scoring were handled in that reanalysis. This impairs reproducibility and independent verification.\",\"quote\":\"One replication study failed to report regression results, so we calculated the regression statistics from the study’s dataset which was made openly available on OSF.\",\"location\":\"methods\",\"severity\":\"moderate\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 13767,
+    "output_tokens": 16947
+  }
+}

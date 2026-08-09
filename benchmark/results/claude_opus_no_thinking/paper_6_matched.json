@@ -1,0 +1,211 @@
+[
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "statistical_errors",
+      "subcategory": "indirect_effect_formula_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "a\u00d7d instead of a\u00d7b\u00d7d \u2014 must know serial mediation algebra",
+      "original_snippet": "Here, the indirect effect was estimated by multiplying each stage in the serial mediation process (a \u00d7 b \u00d7 d).",
+      "modified_snippet": "Here, the indirect effect was estimated by multiplying the first and last stages in the serial mediation process (a \u00d7 d).",
+      "description": "Changed serial mediation formula from a*b*d (three paths) to a*d (two paths) \u2014 skips middle mediator link; estimate is wrong for serial mediation"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "Indirect effect computation inconsistency",
+      "description": "Hypothesis 4 predicts serial mediation through negative emotions AND compassion fatigue (path a \u00d7 d \u00d7 final path to enacted incivility). The authors state 'the indirect effect was estimated by multiplying the first and last stages in the serial mediation process (a \u00d7 d).' However, for serial mediation through two mediators, the indirect effect should be the product of three paths (experienced incivility \u2192 negative emotions \u00d7 negative emotions \u2192 compassion fatigue \u00d7 compassion fatigue \u2192 enacted incivility), not two. The notation 'a \u00d7 d' appears to describe only the first two paths, omitting the final path to enacted incivility. This is either a computational error or a reporting error that makes it impossible to verify the indirect effect.",
+      "quote": "Here, the indirect effect was estimated by multiplying the first and last stages in the serial mediation process (a \u00d7 d). As expected, Time 2 experienced patient incivility was indirectly related to Time 4 enacted incivility toward patients (B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10]).",
+      "location": "results",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "methodological_design",
+      "subcategory": "autoregressive_control_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Autoregressive controls removed \u2014 must know these are essential for longitudinal mediation",
+      "original_snippet": "This allowed us to assess stability over time by modeling the autocorrelations (AR1) between each variable and its prior occasions and the covariances between all variables (including controls) within each wave (Liu et al., 2016). Because it was impossible to account for same or other variable effec...",
+      "modified_snippet": "This allowed us to assess the covariances between all variables (including controls) within each wave (Liu et al., 2016). The subsequent waves were included for hypothesis testing (see Figure 1 for information what measurement period each variable in the model was taken from). This mediation approac...",
+      "description": "Removed autoregressive modeling \u2014 AR controls are backbone of longitudinal mediation; without them, effects are confounded by stable between-person differences"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "causal_inference",
+      "subcategory": "Causal language inappropriate for design",
+      "description": "Despite using a longitudinal panel design, the study cannot establish causation. The temporal separation of measures across waves is a strength, but the authors do not control for autoregressive effects (prior levels of the outcome variables). Without controlling for T1 levels of negative emotions, compassion fatigue, and enacted incivility in the respective models, the observed relationships could simply reflect stable individual differences rather than change processes. The authors make causal-sounding claims throughout (e.g., 'experiencing incivility from patients was related to increased future incivility enactment') and the title itself ('Incivility begets incivility') implies causation.",
+      "quote": "allows for stronger causal inferences by modeling the longitudinal effects of predictors across multiple points in time",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "construct_validity",
+      "subcategory": "scale_items_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Different negative emotions change theoretical mechanism \u2014 must know discrete emotion theory",
+      "original_snippet": "The scale items consisted of four negative emotions: (a) aversion, (b) disgust, (c) anger, (d) fear.",
+      "modified_snippet": "The scale items consisted of four negative emotions: (a) frustration, (b) irritability, (c) anger, (d) resentment.",
+      "description": "Replaced discrete emotions (aversion, disgust, fear \u2014 high-arousal with specific appraisals) with irritation states (frustration, resentment) \u2014 different action tendencies and theoretical implications for incivility mechanism"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "causal_inference",
+      "subcategory": "retribution_defense_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Retribution defense removed \u2014 must recognize dyadic retaliation as competing explanation",
+      "original_snippet": "However, although we are not able to directly assess this for the current sample, we do not believe this is very likely due to the nature of the profession. Nurses frequently engage with patient handoffs (i.e., \"transfer of essential information and the responsibility for care of the patient from on...",
+      "modified_snippet": "",
+      "description": "Deleted entire retribution/reciprocity defense \u2014 patient handoff evidence, daily turnover rates, hospital stay data. Without this, simple dyadic retaliation explains findings without the proposed emotion/fatigue mechanism"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "internal_consistency",
+      "subcategory": "exclusion_criterion_removed",
+      "difficulty": 1,
+      "difficulty_rationale": "Exclusion subcategories sum to 57 not 78 \u2014 arithmetic check",
+      "original_snippet": "Responses were considered failed data quality checks if they had any of the following characteristics: (a) demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age); (b) missing values exceede...",
+      "modified_snippet": "Responses were considered failed data quality checks if they had any of the following characteristics: (a) demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age); or (b) missing values exce...",
+      "description": "Removed collusion/duplicate exclusion criterion (n=21) \u2014 subcategory counts now sum to 57 not 78, contradicting reported n=78 excluded; also removes safeguard against repeat survey-takers"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "Exclusion numbers do not add up",
+      "description": "Starting with 468 at T1, 16 were excluded for missing time points and 78 for poor data quality. However, the data quality exclusions include n = 56 for inconsistent demographics and n = 1 for >50% missing values, totaling only 57, not 78. The remaining 21 exclusions are unaccounted for. The authors mention categories (a) and (b) but the numbers within these categories (56 + 1 = 57) do not sum to 78.",
+      "quote": "(n = 78 people excluded for poor data quality) were included in the final sample. Responses were considered failed data quality checks if they had any of the following characteristics: (a) demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age); or (b) missing values exceeded 50% of the questions (n = 1).",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "reporting_completeness",
+      "subcategory": "cfa_comparisons_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "CFA comparisons replaced with vague 'alternative models' \u2014 must know discriminant validity needs specifics given r>.80",
+      "original_snippet": "and fit the data better than a three-factor model wherein both incivility measures were set to load onto the same factor (3) = 82.52, RMSEA = .09, CFI = .98, TLI = .98), a two-factor model wherein both incivility measures were loaded onto one factor and negative emotions towards patients and compass...",
+      "modified_snippet": "and fit the data better than alternative models with fewer factors.",
+      "description": "Removed specific CFA model comparisons \u2014 with correlations >.80 between key constructs, specific discriminant validity evidence is essential, not a formality"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "Extremely high intercorrelations suggesting multicollinearity or construct overlap",
+      "description": "The correlations between key study variables are extraordinarily high, many exceeding .80 and some reaching .94. For example, T4 Compassion Fatigue and T4 Enacted Incivility correlate at r = .94, T2 Customer Incivility and T4 Compassion Fatigue at r = .85, and T1 Compassion Fatigue and T1 Enacted Incivility at r = .85. Correlations of this magnitude raise serious concerns about discriminant validity\u2014these constructs may not be empirically distinguishable. The CFA showing acceptable fit does not adequately address this given the magnitude of these correlations. Additionally, such extreme multicollinearity would severely compromise the regression estimates and their interpretability.",
+      "quote": "T4 Compassion Fatigue correlates with T4 Enacted Incivility at .94; T1 Compassion Fatigue correlates with T1 Enacted Incivility at .85; T2 Customer Incivility correlates with T4 Compassion Fatigue at .85",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "generalizability",
+      "subcategory": "sample_verification_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Multi-layered verification removed \u2014 must know high-stakes care is theoretically essential",
+      "original_snippet": "To help ensure that the participants were from high stakes and/or critical care contexts, we engaged in the following strategies: highlighted the high stakes/critical care focus in the recruitment and consent information; directly asked participants if they met the inclusion criteria; and included a...",
+      "modified_snippet": "To help ensure that the participants were from healthcare contexts, we highlighted the nursing focus in the recruitment and consent information and directly asked participants if they met the inclusion criteria.",
+      "description": "Removed multi-layered sample verification (survey item, job title review, O*Net cross-validation) \u2014 changes from verified critical-care nurses to self-identified healthcare workers; theoretical framework depends on high-stakes care"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "methodological_design",
+      "subcategory": "No verification of inclusion criteria",
+      "description": "The authors relied on self-selection and self-report to verify that participants met inclusion criteria (working full time in a high-stakes/critical care setting as a nurse). Given the online recruitment strategy including social media, there is no independent verification that participants were actually nurses working in critical care settings. The high rate of data quality exclusions (17.3%) further raises concerns about sample authenticity.",
+      "quote": "To help ensure that the participants were from healthcare contexts, we highlighted the nursing focus in the recruitment and consent information and directly asked participants if they met the inclusion criteria.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "theoretical_conceptual",
+      "subcategory": "wrong_theoretical_framework",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "the stressor-emotion model of counterproductive work behavior (Spector & Fox, 2005). This model considers how environmental stressors and an individual\u2019s perception of them are related to negative emotions and, ultimately, counterproductive work behaviors (CWB), such as enacted incivility.",
+      "modified_snippet": "social learning theory (Bandura, 1977). This model considers how individuals learn behaviors through observation and modeling of others\u2019 actions and their consequences, ultimately shaping counterproductive work behaviors (CWB), such as enacted incivility.",
+      "description": "Replaced stressor-emotion model (emotional mediators) with social learning theory (observational learning) \u2014 but paper's mediators are negative emotions and compassion fatigue, not modeling/imitation"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "theoretical_conceptual",
+      "subcategory": "Theoretical framework mismatch",
+      "description": "The authors state they 'utilize social learning theory (Bandura, 1977)' to understand how incivility experiences impact employee affect and behavior. However, the actual theoretical framework used throughout the paper is the stressor-emotion model of CWB (Spector & Fox, 2005), which is a fundamentally different framework. Social learning theory emphasizes observational learning and modeling, whereas the stressor-emotion model emphasizes appraisal and emotional reactions to stressors. The authors introduce social learning theory but then immediately pivot to describing the stressor-emotion model, never returning to social learning theory. This represents a misapplication or at minimum a confusing conflation of two distinct theoretical frameworks.",
+      "quote": "To understand how incivility experiences from customers may be impacting employee affect and behavior over time, we utilize social learning theory (Bandura, 1977). This model considers how individuals learn behaviors through observation and modeling of others' actions and their consequences, ultimately shaping counterproductive work behaviors (CWB), such as enacted incivility. Applied to enacted incivility, the general premise of the model suggests that enacted incivility occurs due to a sequence of events where environmental stressors at work lead to enacted incivility through appraisal, perceptions of the stressor, and negative emotions (Spector & Fox, 2005).",
+      "location": "introduction",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "analytic_flexibility",
+      "subcategory": "centering_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Grand-mean centering removed \u2014 must know this affects moderated mediation interpretation",
+      "original_snippet": "Predictors in the moderated mediation model were centered at their respective grand means.",
+      "modified_snippet": "",
+      "description": "Deleted grand-mean centering \u2014 affects interpretability of conditional effects, multicollinearity of interaction terms, and meaning of simple slopes in moderated mediation"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 6,
+      "category": "attrition_missing_data",
+      "subcategory": "missing_comparison_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Completer vs non-completer comparison removed \u2014 must expect this when moderator has 24% missing",
+      "original_snippet": "However, a comparison of personal demographics and workplace characteristics did not find any significant differences between participants with and without missing values for perceived patient acuity.",
+      "modified_snippet": "",
+      "description": "Deleted the comparison of completers vs non-completers on patient acuity \u2014 this is the only evidence that 24% missingness on the moderator is non-systematic; without it, moderation results may be biased"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "attrition_missing_data",
+      "subcategory": "Large unexplained missing data on moderator",
+      "description": "The moderation analysis (Table 3) uses N = 244, a reduction of 77 participants from the N = 321 used in the main analyses. This means approximately 24% of the analytic sample had missing data on the patient acuity moderator. The authors note this was due to 'missingness on the moderator variable' but do not adequately explain why so many participants failed to provide this data, whether missingness was systematic, or how this might bias the moderation results. No missing data analysis comparing those with and without patient acuity data is reported.",
+      "quote": "N = 244. The sample size was reduced due to missingness on the moderator variable.",
+      "location": "results",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  }
+]

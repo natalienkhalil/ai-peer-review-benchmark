@@ -1,0 +1,428 @@
+{
+  "paper_id": 6,
+  "provider_name": "openai_gpt54_no_reasoning_open",
+  "issues": [
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent sample size",
+      "description": "The manuscript reports multiple conflicting final sample sizes, making it unclear how many participants were analyzed in each model. This undermines confidence in the reported estimates, power, and attrition handling. The discrepancy is substantial: the text states a final sample of 372, while Table 1 and Table 2 use N = 321 and Table 3 uses N = 244.",
+      "quote": "This resulted in a final sample size of N = 372.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent sample size",
+      "description": "Tables report a different analytic sample than the one described in Methods. Without an explanation of additional exclusions, missing data handling, or model-specific sample derivation, the analyses are not reproducible and the results are difficult to interpret.",
+      "quote": "Note. N = 321.",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "inconsistent sample size",
+      "description": "The moderated analyses use yet another sample size, attributed to missingness on the moderator, but the amount of missingness and resulting attrition are not reconciled with the stated final sample. This indicates incomplete reporting of the analytic sample construction.",
+      "quote": "Note. N = 244. The sample size was reduced due to missingness on the moderator variable.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "incorrect indirect effect specification",
+      "description": "For the serial mediation hypothesis, the manuscript states that the indirect effect from experienced incivility to enacted incivility through negative emotions and compassion fatigue was estimated by multiplying only 'the first and last stages' and labels it as 'a × d'. In a serial mediation, the indirect effect should include all constituent paths (e.g., incivility -> negative emotions, negative emotions -> compassion fatigue, compassion fatigue -> enacted incivility, and possibly any direct path from negative emotions to enacted incivility if modeled). Multiplying only two paths is mathematically incorrect and invalidates the reported indirect effect for Hypothesis 4.",
+      "quote": "Here, the indirect effect was estimated by multiplying the first and last stages in the serial mediation process (a × d).",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "omitted autoregressive controls",
+      "description": "The longitudinal mediation analysis does not appear to control for prior levels of the mediator(s) and outcome(s) at the immediately preceding time points (e.g., T2 negative emotions when predicting T3 negative emotions; T3 compassion fatigue when predicting T4 compassion fatigue; prior enacted incivility when predicting T4 enacted incivility). Without autoregressive controls, the models largely reflect between-person stability and contemporaneous associations rather than change over time, severely weakening any temporal or causal interpretation.",
+      "quote": "We tested this hypothesis by regressing negative emotions toward patients (T3) onto experienced patient incivility (T2).",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "baseline confounding not addressed",
+      "description": "Although the authors state that covariances between variables within each wave were assessed, the reported regressions and tables do not include baseline controls for the same constructs. Given the extremely high cross-wave correlations, failure to model prior levels can inflate apparent lagged effects. This is especially problematic in mediation claims about 'future' increases.",
+      "quote": "To better understand the effect of the predictor variables on the criterion variable at the subsequent time point, we assessed each variable during each wave. This allowed us to assess the covariances between all variables (including controls) within each wave (Liu et al., 2016).",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "causal inference overstatement",
+      "description": "The authors repeatedly claim that the design allows 'stronger causal inferences.' However, this is an observational self-report panel study with nonrandom recruitment, no manipulation, no strong control for stable confounds, and incomplete adjustment for prior levels. Temporal ordering alone does not justify causal inference.",
+      "quote": "This method also supports a lower likelihood of third variable effects (Bliese et al., 2020; Cole & Maxwell, 2003; Duncan et al., 2004) and allows for stronger causal inferences by modeling the longitudinal effects of predictors across multiple points in time.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "attrition-by-design bias",
+      "description": "Participants who missed one wave were not invited to later waves. This design induces nonrandom attrition and conditions inclusion on perfect participation, which can bias longitudinal estimates and distort generalizability. It also prevents the use of modern missing-data methods that assume intermittent missingness is permissible.",
+      "quote": "Due to budgetary constraints, participants who did not respond to a measurement period were not invited for subsequent surveys (i.e., a participant who did not complete T2 survey was not sent the link for the T3 or T4 surveys).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "complete-case analysis",
+      "description": "The study excludes anyone with missing time points and analyzes only complete cases. In longitudinal data, complete-case analysis can produce biased estimates unless data are missing completely at random, which is neither tested nor plausible here, especially given the study's intentional dropout rule.",
+      "quote": "Only participants who completed all four surveys (n = 16 people excluded due to missing time points) and whose responses passed a priori determined data quality checks... were included in the final sample.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "attrition accounting impossible",
+      "description": "The reported attrition numbers do not add up cleanly. Starting from 468 at T1 and ending with a final sample of 372 implies 96 exclusions, but the text specifies only 16 excluded for missing time points and 78 for data quality, totaling 94. This mismatch suggests either arithmetic error or unreported exclusions.",
+      "quote": "n = 468 nurses responded at time 1... This resulted in a final sample size of N = 372.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "single-item moderator",
+      "description": "Patient acuity, a central moderator, is measured with a single, ad hoc self-report item. Single-item measures provide no internal consistency evidence and are especially problematic for interaction tests, which are already low-powered and sensitive to measurement error. This substantially weakens Hypothesis 3.",
+      "quote": "we measure the respondents’ perceptions of patient acuity across all patients they attended to within the last work week by asking them to estimate a percentage of their patients that were “severe.”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "invalid operationalization of patient acuity",
+      "description": "The operationalization of patient acuity is conceptually heterogeneous and likely invalid. The item invites respondents across disparate units to rely on different local scales or tools, including examples that are not comparable across settings and even include patient-reported outcome tools, which are not standard acuity indices. This destroys measurement equivalence across respondents.",
+      "quote": "Some example scales include: the Emergency Severity Index (ESI), the Clinical Risk Index for Babies (CRIB), the Severity of Illness Scale (SOIS), or other patient-reported outcome (PRO) assessment tools",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "cross-context measurement non-equivalence",
+      "description": "Because respondents come from various hospitals and departments, and the measure asks them to use their department's own acuity scale, the same numeric response may reflect very different underlying constructs. This threatens construct validity and makes moderation results uninterpretable across the pooled sample.",
+      "quote": "Based on your department's patient acuity scale (i.e., the measure you use to determine the severity of your patient's condition), what percentage of patients under your care in the past week would be considered \"severe\"?",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "unhandled missing moderator data",
+      "description": "The moderator had substantial missing/invalid data, reducing the sample from 321 to 244 in moderated analyses. The manuscript notes this missingness but does not explain how it was handled analytically, whether it was associated with key variables, or whether any sensitivity analyses were performed. Loss of ~24% of the analytic sample can materially bias interaction estimates.",
+      "quote": "Finally, our perceived patient acuity measure had missing data. For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range (45% of missing values were due to an incorrect response).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "missingness extent not reported",
+      "description": "The manuscript reports reasons for missing acuity values but not the number or proportion missing at each wave or overall. Since moderation analyses depend on this measure and show a much smaller N, complete reporting of missingness is essential for evaluating bias and precision.",
+      "quote": "our perceived patient acuity measure had missing data",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "criterion contamination/social desirability",
+      "description": "Enacted incivility toward patients is assessed entirely by self-report, asking nurses to admit rude or demeaning behavior toward patients and families. Such reports are highly vulnerable to social desirability and underreporting, particularly in healthcare where such behavior may violate professional norms and policy. This threatens validity of the main outcome.",
+      "quote": "Participants were asked, “Thinking about your interactions with patients during the past week, how often have you…?”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "problematic item applicability",
+      "description": "One enacted incivility item asks nurses whether they doubted a patient's or family member's judgment on matters 'over which they had responsibility.' In healthcare, patients and families often have limited responsibility for clinical matters, making item meaning ambiguous and potentially inappropriate. This threatens content validity of the enacted incivility measure in this context.",
+      "quote": "“Doubted one or more patient’s/patient family members’ judgment on a matter over which they had responsibility”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "scale adaptation insufficiently validated",
+      "description": "The study uses shortened versions of scales chosen by item loading and pilot correlations, but does not provide formal validation in the main sample (e.g., CFA for the shortened patient-specific forms, invariance across waves, convergent/discriminant evidence for adapted enacted incivility). Item selection based on loadings can narrow construct coverage and inflate reliability.",
+      "quote": "For each scale, the highest loading items were chosen from reported factor analytic data to maintain a reasonable survey length and achieve internal consistency reliability",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "lack of longitudinal measurement invariance",
+      "description": "Because identical constructs are compared across four waves and lagged paths are interpreted longitudinally, measurement invariance across time should be tested. The manuscript only reports a cross-sectional factor model and does not assess whether the constructs are measured equivalently across waves. Without invariance, change and lagged relations are not interpretable.",
+      "quote": "Before evaluating our hypotheses, we investigated the discriminant validity of our measures by employing a series of confirmatory factor analyses. First, we assessed our hypothesized four-factor model absent of the temporal control measures.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "CFA reporting incomplete/incorrect",
+      "description": "The CFA results are reported incompletely and appear malformed, with the chi-square statistic lacking its symbol and opening parenthesis only. Degrees of freedom and exact model specification are unclear. This prevents evaluation of model fit and replicability.",
+      "quote": "The fit of the four-factor model was acceptable (269) = 862.05, RMSEA = .08, CFI = .99, TLI = .99)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "discriminant validity concern",
+      "description": "The correlations among key constructs are extremely high, especially across adjacent waves and between conceptually distinct constructs (e.g., T3 negative emotions with T4 enacted incivility = .94; T3 negative emotions with T4 compassion fatigue = .96). Such magnitudes raise serious questions about discriminant validity, common method inflation, or model misspecification.",
+      "quote": "T3 Negative Emotions ... T4 Compassion Fatigue .96 ... T4 Enacted Incivility .94",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "multicollinearity",
+      "description": "The very high intercorrelations among predictors and mediators imply substantial multicollinearity in regression models, which can make coefficients unstable, inflate standard errors, and distort mediation/path estimates. Yet no multicollinearity diagnostics or remedial steps are reported.",
+      "quote": "T3 Negative Emotions ... T4 Compassion Fatigue .96",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "common method bias underestimated",
+      "description": "Although the authors acknowledge self-report limitations, they overstate the ability of temporal separation to address common method variance. All substantive variables, including predictor, mediators, moderator, and outcome, are from the same source and similarly framed weekly reports. This is especially concerning given the extremely high correlations.",
+      "quote": "our multiwave approach allows for temporal separation of each measure in our hypothesized model, thus reducing the likelihood of bias commonly ascribed to survey data",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "use of p-values for Monte Carlo indirect effects",
+      "description": "The manuscript reports p-values for indirect effects estimated via Monte Carlo simulation. Indirect effects are typically evaluated via confidence intervals rather than normal-theory p-values because their sampling distributions are non-normal. Reporting p-values here is at best unconventional and may reflect inappropriate inference.",
+      "quote": "the positive indirect relationship between experienced patient incivility and compassion fatigue through negative emotions was significant (B = .07, SE = .03, p < .05, 95% CI [0.02, 0.14])",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "lag rationale insufficient",
+      "description": "The paper asserts that one-week lags are sufficient and that effects would not differ meaningfully from longer lags, but offers no theory for why the chosen lag fits each process in the proposed serial mediation (incivility -> emotion -> compassion fatigue -> enacted incivility). Different processes likely operate on different timescales, especially compassion fatigue, which is usually conceptualized as cumulative and longer-term.",
+      "quote": "Previous studies have shown that lags spanning this length of time are sufficient for observing emergence of such counterproductive behaviors as incivility and that the observed effects will not meaningfully differ from studies featuring longer periods of time between waves",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "construct-timescale mismatch",
+      "description": "Compassion fatigue is theorized as progressive, cumulative, and related to prolonged exposure to suffering and trauma, yet it is measured weekly and modeled as changing from T3 to T4 over a single week. This may not match the construct's temporal dynamics and challenges interpretation of short-lag mediation.",
+      "quote": "Combined, both components of compassion fatigue are progressive and cumulative",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "nonprobability convenience sampling",
+      "description": "The sample was recruited through flyers, personal networks, and social media/forums. This convenience/self-selection strategy can produce substantial selection bias, especially for a topic like incivility and wellbeing. The manuscript does not discuss how this may affect prevalence estimates or associations.",
+      "quote": "Participants were recruited from various hospitals across the U.S. using three recruitment strategies.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "inclusion criteria inconsistency",
+      "description": "Recruitment materials stated that participants must be full-time nurses in high-stakes/critical care settings, but the final sample description says all participants were employed as a nurse 'part- or full-time.' This inconsistency raises concern about protocol adherence and sample definition.",
+      "quote": "Information about inclusion criteria (working full time in a high-stakes/critical care setting as a nurse) ... All participants were currently employed as a nurse (part- or full-time)",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "eligibility verification weak",
+      "description": "The study relies largely on self-attestation to verify that respondents were nurses in relevant settings. Given online/open recruitment and incentives, stronger verification procedures would be needed to ensure sample authenticity.",
+      "quote": "To help ensure that the participants were from healthcare contexts, we highlighted the nursing focus in the recruitment and consent information and directly asked participants if they met the inclusion criteria.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "online sample authenticity concerns",
+      "description": "The study's broad online recruitment, lack of institutional sampling frame, and exclusion of 56 respondents for inconsistent demographics suggest notable data authenticity/quality risks. These concerns are amplified by the low compensation and repeated surveys. More robust fraud-prevention procedures should have been described.",
+      "quote": "demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age)",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "pilot sample inappropriate",
+      "description": "The quantitative pilot used MTurk-recruited 'nurses who worked in high-stakes settings,' but no verification is described. MTurk is not an obvious source for validated high-stakes nurse samples, so claims that the pilot established clarity/validity of adapted scales are weak.",
+      "quote": "The quantitative pilot consisted of n = 50 nurses who worked in high-stakes settings and were recruited from MTurk.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "relative importance analysis inappropriate interpretation",
+      "description": "The supplemental relative importance analysis is based on highly collinear predictors and appears to decompose explained variance among variables measured at different waves but likely with shared method and substantial overlap. Interpreting these percentages as showing compassion fatigue is a 'stronger driver' of enacted incivility is not warranted from this exploratory decomposition.",
+      "quote": "The results revealed compassion fatigue, negative emotion, and experienced incivility accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility, respectively.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "model specification unclear",
+      "description": "The manuscript does not clearly specify the full regression equations, whether variables were centered for interactions, whether all lower-order terms and controls were entered in all equations, or how within-wave covariances were implemented alongside regression-based mediation. This hinders reproducibility.",
+      "quote": "we followed procedures described by Edwards and Lambert (2007), Hayes (2015, 2017), Preacher et al. (2007), and Selig and Preacher (2009) to estimate direct and indirect effects",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "interaction scaling unclear",
+      "description": "For the moderation model, it is not stated whether patient acuity and incivility were mean-centered or standardized before creating the interaction term. This omission affects coefficient interpretation and can exacerbate multicollinearity.",
+      "quote": "Results revealed that the Time 2 experienced incivility × Time 2 perceived patient acuity interaction term was significant",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "control strategy unclear/inadequate",
+      "description": "The tables include only work hours as controls, despite demographic and other variables being collected. The rationale for selecting only work hours is not explained, nor is it clear why T1 controls mentioned in Table 1 are not consistently incorporated in the hypothesis tests. Selective control inclusion can bias estimates and appears ad hoc.",
+      "quote": "Correlation and Descriptive Information for Hypothesized Model with Time 1 Controls",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "improbable scale means for enacted incivility",
+      "description": "Mean levels of self-reported enacted incivility are surprisingly high (around 2.6 to 2.8 on a 1-5 frequency scale over the past week), implying nurses often engaged in behaviors like making demeaning remarks to patients/families. These values raise concerns about item interpretation, response quality, or construct contamination because such prevalence seems implausibly high for severe patient-directed misconduct.",
+      "quote": "T4 Enacted Incivility | 2.77 | 1.21",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "customer framing may be inappropriate",
+      "description": "The manuscript repeatedly reframes patients and families as 'customers,' but healthcare relationships involve ethical duties, power asymmetries, and care obligations that differ from ordinary service transactions. This may limit applicability of customer-incivility theory and affect measure validity, especially for enacted incivility items and social learning assumptions.",
+      "quote": "We view the patient-nurse relationship as a specialized form of customer-employee relationship.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "theoretical inconsistency",
+      "description": "The manuscript states it uses social learning theory, but the described mechanism is actually the stressor-emotion model of CWB. Social learning theory emphasizes observing/modeling behavior, not stressor appraisal and emotional strain. The theoretical integration is muddled and may not justify the hypothesized mediation pathway.",
+      "quote": "To understand how incivility experiences from customers may be impacting employee affect and behavior over time, we utilize social learning theory (Bandura, 1977). ... Applied to enacted incivility, the general premise of the model suggests that enacted incivility occurs due to a sequence of events where environmental stressors at work lead to enacted incivility through appraisal, perceptions of the stressor, and negative emotions (Spector & Fox, 2005).",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "misstatement of compassion fatigue source",
+      "description": "One paragraph incorrectly states that the study examines compassion fatigue in relation to 'experiencing coworker incivility,' despite the entire study being about patient incivility. This suggests conceptual imprecision and possible text carryover from another context.",
+      "quote": "Within the current study, we look specifically at the relationship between experiencing coworker incivility and experiencing a caregiving specific form of job burnout, compassion fatigue.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "key figures/tables not self-consistent",
+      "description": "The narrative description of the serial mediation conflicts with Table 2. In Table 2, both T3 negative emotions and T4 compassion fatigue predict T4 enacted incivility, yet the text describes the serial indirect effect using only 'a × d'. This inconsistency makes it unclear what model was actually fit and reported.",
+      "quote": "As seen in Table 2, the last step of the simple mediation reflects a parameter estimate for compassion fatigue that is nearly six times that of negative emotions.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "possible endogeneity/reverse causation not tested",
+      "description": "Given strong stability and plausible reciprocal dynamics (e.g., enacted incivility provoking future patient incivility), the study should test alternative or reciprocal paths. The paper cites reciprocal stressor-CWB literature but does not model reverse effects. Omitting plausible reverse causation weakens directional claims.",
+      "quote": "Although the stressor-emotion model of CWB and most incivility research assumes longitudinal relationships, assessment of the relationship and processes for experienced-enacted incivility are not often tested that way.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "family members mixed with patients",
+      "description": "The exposure and outcome measures combine patients with 'patient family members/friends' as if they were a single customer category. These actors differ in role, interaction frequency, emotional state, and responsibility, so pooling them may obscure distinct processes and reduce construct precision.",
+      "quote": "the word “customer” was replaced with “patient” or “patient or patient family members/friends”",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "insufficient ethics information",
+      "description": "The manuscript does not report institutional review board approval, informed consent procedures beyond recruitment language, or protections for participants reporting potentially sanctionable behavior toward patients. This omission is important for a study involving healthcare personnel and self-reported mistreatment of patients.",
+      "quote": "The study information included in the recruitment fliers stated: “The purpose of the study is to investigate the influence of work experiences on employee wellbeing and success...",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "reliability reporting incomplete",
+      "description": "The manuscript relies heavily on Cronbach's alpha in Table 1 but does not report reliability for the moderated-analysis subsample, does not provide wave-specific reliabilities in text, and cannot report reliability for the single-item patient acuity measure. Given the use of abbreviated scales and high-stakes conclusions, fuller reliability evidence is needed.",
+      "quote": "Cronbach’s α presented on the diagonal.",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "fit indices suspiciously high given high overlap",
+      "description": "The reported CFA fit (CFI/TLI = .99) alongside extreme intercorrelations among constructs suggests either item-level redundancy, model overfit, or reporting problems. Without alternative model fit statistics and factor correlations, the discriminant validity claim is unconvincing.",
+      "quote": "The fit of the four-factor model was acceptable ... RMSEA = .08, CFI = .99, TLI = .99) and fit the data better than alternative models with fewer factors.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "alternative models not reported",
+      "description": "The authors state that the hypothesized CFA fit better than alternative models with fewer factors, but they do not report any of those models, fit indices, chi-square differences, or factor correlations. This omission prevents evaluation of discriminant validity claims.",
+      "quote": "fit the data better than alternative models with fewer factors.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "range/format errors in table suggest poor quality control",
+      "description": "The tables contain formatting and labeling errors (e.g., repeated headers, malformed arrows, missing symbols, inconsistent labels 'customer' vs 'patient', blank or stray entries), raising concerns about the care taken in analysis reporting and the possibility of underlying transcription mistakes in coefficients.",
+      "quote": "Incivility  Negative Emotions  Compassion Fatigue | .07* | .03 | 2.43",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "overgeneralization from specific context",
+      "description": "The discussion claims generalizability to other service sectors despite the sample being almost entirely female nurses in high-stakes settings and using healthcare-specific constructs like compassion fatigue and patient acuity. Such generalization is not warranted from these data.",
+      "quote": "This adds to the generalizability of prior customer incivility research to further support that experiencing incivility from customers – even when the customers are patients",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "no sensitivity analyses for excluded cases",
+      "description": "The manuscript provides only a cursory comparison of T1-only respondents to completers and does not evaluate whether excluded participants due to data quality or missing acuity responses differed on key variables. Sensitivity analyses are needed because exclusions are substantial and potentially systematic.",
+      "quote": "Participants who responded only to the T1 survey reported similar demographic information compared to those who completed all four time periods",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "measurement",
+      "subcategory": "pilot validity evidence overstated",
+      "description": "The pilot is said to 'provide validity evidence for the shortened scales,' but the evidence reported is mostly understandability, applicability, and part-whole correlations. These do not establish construct validity, especially after adapting items to a new patient/family context and using them longitudinally.",
+      "quote": "to provide validity evidence for the shortened scales",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "interpretation ignores non-significant conditional indirect effect",
+      "description": "The discussion and practical implications emphasize employees with both high patient incivility and high patient acuity as at 'highest risk' of the full cascade to incivility, but the supplemental analysis found the conditional indirect effect and IMM were non-significant. Thus, claims about the full indirect process being stronger under high acuity are not supported.",
+      "quote": "Together, our results suggest that employees experiencing incivility from patients and who have a high perceived patient acuity load are at the highest risk of experiencing increased negative affect and fatigue and, ultimately, engaging in incivility.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistics",
+      "subcategory": "non-significant direct path overlooked in interpretation",
+      "description": "In Table 2, the direct effect of T2 customer incivility on T4 enacted incivility is non-significant (B = -.07, p not significant), yet the manuscript repeatedly discusses a positive experienced-enacted relationship over time as if directly established. The evidence supports only a reported indirect effect, and even that is compromised by incorrect calculation/specification.",
+      "quote": "T2 Customer Incivility ... Enacted Incivility (T4) ... B = -.07 | .05 | -1.14",
+      "location": "results",
+      "severity": "major"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"reporting\",\"subcategory\":\"inconsistent sample size\",\"description\":\"The manuscript reports multiple conflicting final sample sizes, making it unclear how many participants were analyzed in each model. This undermines confidence in the reported estimates, power, and attrition handling. The discrepancy is substantial: the text states a final sample of 372, while Table 1 and Table 2 use N = 321 and Table 3 uses N = 244.\",\"quote\":\"This resulted in a final sample size of N = 372.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"inconsistent sample size\",\"description\":\"Tables report a different analytic sample than the one described in Methods. Without an explanation of additional exclusions, missing data handling, or model-specific sample derivation, the analyses are not reproducible and the results are difficult to interpret.\",\"quote\":\"Note. N = 321.\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"inconsistent sample size\",\"description\":\"The moderated analyses use yet another sample size, attributed to missingness on the moderator, but the amount of missingness and resulting attrition are not reconciled with the stated final sample. This indicates incomplete reporting of the analytic sample construction.\",\"quote\":\"Note. N = 244. The sample size was reduced due to missingness on the moderator variable.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"incorrect indirect effect specification\",\"description\":\"For the serial mediation hypothesis, the manuscript states that the indirect effect from experienced incivility to enacted incivility through negative emotions and compassion fatigue was estimated by multiplying only 'the first and last stages' and labels it as 'a × d'. In a serial mediation, the indirect effect should include all constituent paths (e.g., incivility -> negative emotions, negative emotions -> compassion fatigue, compassion fatigue -> enacted incivility, and possibly any direct path from negative emotions to enacted incivility if modeled). Multiplying only two paths is mathematically incorrect and invalidates the reported indirect effect for Hypothesis 4.\",\"quote\":\"Here, the indirect effect was estimated by multiplying the first and last stages in the serial mediation process (a × d).\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"omitted autoregressive controls\",\"description\":\"The longitudinal mediation analysis does not appear to control for prior levels of the mediator(s) and outcome(s) at the immediately preceding time points (e.g., T2 negative emotions when predicting T3 negative emotions; T3 compassion fatigue when predicting T4 compassion fatigue; prior enacted incivility when predicting T4 enacted incivility). Without autoregressive controls, the models largely reflect between-person stability and contemporaneous associations rather than change over time, severely weakening any temporal or causal interpretation.\",\"quote\":\"We tested this hypothesis by regressing negative emotions toward patients (T3) onto experienced patient incivility (T2).\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"baseline confounding not addressed\",\"description\":\"Although the authors state that covariances between variables within each wave were assessed, the reported regressions and tables do not include baseline controls for the same constructs. Given the extremely high cross-wave correlations, failure to model prior levels can inflate apparent lagged effects. This is especially problematic in mediation claims about 'future' increases.\",\"quote\":\"To better understand the effect of the predictor variables on the criterion variable at the subsequent time point, we assessed each variable during each wave. This allowed us to assess the covariances between all variables (including controls) within each wave (Liu et al., 2016).\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"causal inference overstatement\",\"description\":\"The authors repeatedly claim that the design allows 'stronger causal inferences.' However, this is an observational self-report panel study with nonrandom recruitment, no manipulation, no strong control for stable confounds, and incomplete adjustment for prior levels. Temporal ordering alone does not justify causal inference.\",\"quote\":\"This method also supports a lower likelihood of third variable effects (Bliese et al., 2020; Cole & Maxwell, 2003; Duncan et al., 2004) and allows for stronger causal inferences by modeling the longitudinal effects of predictors across multiple points in time.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"attrition-by-design bias\",\"description\":\"Participants who missed one wave were not invited to later waves. This design induces nonrandom attrition and conditions inclusion on perfect participation, which can bias longitudinal estimates and distort generalizability. It also prevents the use of modern missing-data methods that assume intermittent missingness is permissible.\",\"quote\":\"Due to budgetary constraints, participants who did not respond to a measurement period were not invited for subsequent surveys (i.e., a participant who did not complete T2 survey was not sent the link for the T3 or T4 surveys).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"complete-case analysis\",\"description\":\"The study excludes anyone with missing time points and analyzes only complete cases. In longitudinal data, complete-case analysis can produce biased estimates unless data are missing completely at random, which is neither tested nor plausible here, especially given the study's intentional dropout rule.\",\"quote\":\"Only participants who completed all four surveys (n = 16 people excluded due to missing time points) and whose responses passed a priori determined data quality checks... were included in the final sample.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"attrition accounting impossible\",\"description\":\"The reported attrition numbers do not add up cleanly. Starting from 468 at T1 and ending with a final sample of 372 implies 96 exclusions, but the text specifies only 16 excluded for missing time points and 78 for data quality, totaling 94. This mismatch suggests either arithmetic error or unreported exclusions.\",\"quote\":\"n = 468 nurses responded at time 1... This resulted in a final sample size of N = 372.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"single-item moderator\",\"description\":\"Patient acuity, a central moderator, is measured with a single, ad hoc self-report item. Single-item measures provide no internal consistency evidence and are especially problematic for interaction tests, which are already low-powered and sensitive to measurement error. This substantially weakens Hypothesis 3.\",\"quote\":\"we measure the respondents’ perceptions of patient acuity across all patients they attended to within the last work week by asking them to estimate a percentage of their patients that were “severe.”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"invalid operationalization of patient acuity\",\"description\":\"The operationalization of patient acuity is conceptually heterogeneous and likely invalid. The item invites respondents across disparate units to rely on different local scales or tools, including examples that are not comparable across settings and even include patient-reported outcome tools, which are not standard acuity indices. This destroys measurement equivalence across respondents.\",\"quote\":\"Some example scales include: the Emergency Severity Index (ESI), the Clinical Risk Index for Babies (CRIB), the Severity of Illness Scale (SOIS), or other patient-reported outcome (PRO) assessment tools\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"measurement\",\"subcategory\":\"cross-context measurement non-equivalence\",\"description\":\"Because respondents come from various hospitals and departments, and the measure asks them to use their department's own acuity scale, the same numeric response may reflect very different underlying constructs. This threatens construct validity and makes moderation results uninterpretable across the pooled sample.\",\"quote\":\"Based on your department's patient acuity scale (i.e., the measure you use to determine the severity of your patient's condition), what percentage of patients under your care in the past week would be considered \\\"severe\\\"?\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"unhandled missing moderator data\",\"description\":\"The moderator had substantial missing/invalid data, reducing the sample from 321 to 244 in moderated analyses. The manuscript notes this missingness but does not explain how it was handled analytically, whether it was associated with key variables, or whether any sensitivity analyses were performed. Loss of ~24% of the analytic sample can materially bias interaction estimates.\",\"quote\":\"Finally, our perceived patient acuity measure had missing data. For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range (45% of missing values were due to an incorrect response).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"missingness extent not reported\",\"description\":\"The manuscript reports reasons for missing acuity values but not the number or proportion missing at each wave or overall. Since moderation analyses depend on this measure and show a much smaller N, complete reporting of missingness is essential for evaluating bias and precision.\",\"quote\":\"our perceived patient acuity measure had missing data\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"criterion contamination/social desirability\",\"description\":\"Enacted incivility toward patients is assessed entirely by self-report, asking nurses to admit rude or demeaning behavior toward patients and families. Such reports are highly vulnerable to social desirability and underreporting, particularly in healthcare where such behavior may violate professional norms and policy. This threatens validity of the main outcome.\",\"quote\":\"Participants were asked, “Thinking about your interactions with patients during the past week, how often have you…?”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"problematic item applicability\",\"description\":\"One enacted incivility item asks nurses whether they doubted a patient's or family member's judgment on matters 'over which they had responsibility.' In healthcare, patients and families often have limited responsibility for clinical matters, making item meaning ambiguous and potentially inappropriate. This threatens content validity of the enacted incivility measure in this context.\",\"quote\":\"“Doubted one or more patient’s/patient family members’ judgment on a matter over which they had responsibility”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"scale adaptation insufficiently validated\",\"description\":\"The study uses shortened versions of scales chosen by item loading and pilot correlations, but does not provide formal validation in the main sample (e.g., CFA for the shortened patient-specific forms, invariance across waves, convergent/discriminant evidence for adapted enacted incivility). Item selection based on loadings can narrow construct coverage and inflate reliability.\",\"quote\":\"For each scale, the highest loading items were chosen from reported factor analytic data to maintain a reasonable survey length and achieve internal consistency reliability\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"lack of longitudinal measurement invariance\",\"description\":\"Because identical constructs are compared across four waves and lagged paths are interpreted longitudinally, measurement invariance across time should be tested. The manuscript only reports a cross-sectional factor model and does not assess whether the constructs are measured equivalently across waves. Without invariance, change and lagged relations are not interpretable.\",\"quote\":\"Before evaluating our hypotheses, we investigated the discriminant validity of our measures by employing a series of confirmatory factor analyses. First, we assessed our hypothesized four-factor model absent of the temporal control measures.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"CFA reporting incomplete/incorrect\",\"description\":\"The CFA results are reported incompletely and appear malformed, with the chi-square statistic lacking its symbol and opening parenthesis only. Degrees of freedom and exact model specification are unclear. This prevents evaluation of model fit and replicability.\",\"quote\":\"The fit of the four-factor model was acceptable (269) = 862.05, RMSEA = .08, CFI = .99, TLI = .99)\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"discriminant validity concern\",\"description\":\"The correlations among key constructs are extremely high, especially across adjacent waves and between conceptually distinct constructs (e.g., T3 negative emotions with T4 enacted incivility = .94; T3 negative emotions with T4 compassion fatigue = .96). Such magnitudes raise serious questions about discriminant validity, common method inflation, or model misspecification.\",\"quote\":\"T3 Negative Emotions ... T4 Compassion Fatigue .96 ... T4 Enacted Incivility .94\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"statistics\",\"subcategory\":\"multicollinearity\",\"description\":\"The very high intercorrelations among predictors and mediators imply substantial multicollinearity in regression models, which can make coefficients unstable, inflate standard errors, and distort mediation/path estimates. Yet no multicollinearity diagnostics or remedial steps are reported.\",\"quote\":\"T3 Negative Emotions ... T4 Compassion Fatigue .96\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"common method bias underestimated\",\"description\":\"Although the authors acknowledge self-report limitations, they overstate the ability of temporal separation to address common method variance. All substantive variables, including predictor, mediators, moderator, and outcome, are from the same source and similarly framed weekly reports. This is especially concerning given the extremely high correlations.\",\"quote\":\"our multiwave approach allows for temporal separation of each measure in our hypothesized model, thus reducing the likelihood of bias commonly ascribed to survey data\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"use of p-values for Monte Carlo indirect effects\",\"description\":\"The manuscript reports p-values for indirect effects estimated via Monte Carlo simulation. Indirect effects are typically evaluated via confidence intervals rather than normal-theory p-values because their sampling distributions are non-normal. Reporting p-values here is at best unconventional and may reflect inappropriate inference.\",\"quote\":\"the positive indirect relationship between experienced patient incivility and compassion fatigue through negative emotions was significant (B = .07, SE = .03, p < .05, 95% CI [0.02, 0.14])\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"lag rationale insufficient\",\"description\":\"The paper asserts that one-week lags are sufficient and that effects would not differ meaningfully from longer lags, but offers no theory for why the chosen lag fits each process in the proposed serial mediation (incivility -> emotion -> compassion fatigue -> enacted incivility). Different processes likely operate on different timescales, especially compassion fatigue, which is usually conceptualized as cumulative and longer-term.\",\"quote\":\"Previous studies have shown that lags spanning this length of time are sufficient for observing emergence of such counterproductive behaviors as incivility and that the observed effects will not meaningfully differ from studies featuring longer periods of time between waves\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"construct-timescale mismatch\",\"description\":\"Compassion fatigue is theorized as progressive, cumulative, and related to prolonged exposure to suffering and trauma, yet it is measured weekly and modeled as changing from T3 to T4 over a single week. This may not match the construct's temporal dynamics and challenges interpretation of short-lag mediation.\",\"quote\":\"Combined, both components of compassion fatigue are progressive and cumulative\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"nonprobability convenience sampling\",\"description\":\"The sample was recruited through flyers, personal networks, and social media/forums. This convenience/self-selection strategy can produce substantial selection bias, especially for a topic like incivility and wellbeing. The manuscript does not discuss how this may affect prevalence estimates or associations.\",\"quote\":\"Participants were recruited from various hospitals across the U.S. using three recruitment strategies.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"inclusion criteria inconsistency\",\"description\":\"Recruitment materials stated that participants must be full-time nurses in high-stakes/critical care settings, but the final sample description says all participants were employed as a nurse 'part- or full-time.' This inconsistency raises concern about protocol adherence and sample definition.\",\"quote\":\"Information about inclusion criteria (working full time in a high-stakes/critical care setting as a nurse) ... All participants were currently employed as a nurse (part- or full-time)\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"eligibility verification weak\",\"description\":\"The study relies largely on self-attestation to verify that respondents were nurses in relevant settings. Given online/open recruitment and incentives, stronger verification procedures would be needed to ensure sample authenticity.\",\"quote\":\"To help ensure that the participants were from healthcare contexts, we highlighted the nursing focus in the recruitment and consent information and directly asked participants if they met the inclusion criteria.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"online sample authenticity concerns\",\"description\":\"The study's broad online recruitment, lack of institutional sampling frame, and exclusion of 56 respondents for inconsistent demographics suggest notable data authenticity/quality risks. These concerns are amplified by the low compensation and repeated surveys. More robust fraud-prevention procedures should have been described.\",\"quote\":\"demographic information was not consistent across measurement periods (n = 56 people failed to provide reasonably consistent responses to tenure, gender, and/or age)\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"measurement\",\"subcategory\":\"pilot sample inappropriate\",\"description\":\"The quantitative pilot used MTurk-recruited 'nurses who worked in high-stakes settings,' but no verification is described. MTurk is not an obvious source for validated high-stakes nurse samples, so claims that the pilot established clarity/validity of adapted scales are weak.\",\"quote\":\"The quantitative pilot consisted of n = 50 nurses who worked in high-stakes settings and were recruited from MTurk.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"relative importance analysis inappropriate interpretation\",\"description\":\"The supplemental relative importance analysis is based on highly collinear predictors and appears to decompose explained variance among variables measured at different waves but likely with shared method and substantial overlap. Interpreting these percentages as showing compassion fatigue is a 'stronger driver' of enacted incivility is not warranted from this exploratory decomposition.\",\"quote\":\"The results revealed compassion fatigue, negative emotion, and experienced incivility accounted for 45.1%, 30.8%, and 24.1% of the variance in enacted incivility, respectively.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"model specification unclear\",\"description\":\"The manuscript does not clearly specify the full regression equations, whether variables were centered for interactions, whether all lower-order terms and controls were entered in all equations, or how within-wave covariances were implemented alongside regression-based mediation. This hinders reproducibility.\",\"quote\":\"we followed procedures described by Edwards and Lambert (2007), Hayes (2015, 2017), Preacher et al. (2007), and Selig and Preacher (2009) to estimate direct and indirect effects\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"interaction scaling unclear\",\"description\":\"For the moderation model, it is not stated whether patient acuity and incivility were mean-centered or standardized before creating the interaction term. This omission affects coefficient interpretation and can exacerbate multicollinearity.\",\"quote\":\"Results revealed that the Time 2 experienced incivility × Time 2 perceived patient acuity interaction term was significant\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"control strategy unclear/inadequate\",\"description\":\"The tables include only work hours as controls, despite demographic and other variables being collected. The rationale for selecting only work hours is not explained, nor is it clear why T1 controls mentioned in Table 1 are not consistently incorporated in the hypothesis tests. Selective control inclusion can bias estimates and appears ad hoc.\",\"quote\":\"Correlation and Descriptive Information for Hypothesized Model with Time 1 Controls\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"improbable scale means for enacted incivility\",\"description\":\"Mean levels of self-reported enacted incivility are surprisingly high (around 2.6 to 2.8 on a 1-5 frequency scale over the past week), implying nurses often engaged in behaviors like making demeaning remarks to patients/families. These values raise concerns about item interpretation, response quality, or construct contamination because such prevalence seems implausibly high for severe patient-directed misconduct.\",\"quote\":\"T4 Enacted Incivility | 2.77 | 1.21\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"customer framing may be inappropriate\",\"description\":\"The manuscript repeatedly reframes patients and families as 'customers,' but healthcare relationships involve ethical duties, power asymmetries, and care obligations that differ from ordinary service transactions. This may limit applicability of customer-incivility theory and affect measure validity, especially for enacted incivility items and social learning assumptions.\",\"quote\":\"We view the patient-nurse relationship as a specialized form of customer-employee relationship.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"theoretical inconsistency\",\"description\":\"The manuscript states it uses social learning theory, but the described mechanism is actually the stressor-emotion model of CWB. Social learning theory emphasizes observing/modeling behavior, not stressor appraisal and emotional strain. The theoretical integration is muddled and may not justify the hypothesized mediation pathway.\",\"quote\":\"To understand how incivility experiences from customers may be impacting employee affect and behavior over time, we utilize social learning theory (Bandura, 1977). ... Applied to enacted incivility, the general premise of the model suggests that enacted incivility occurs due to a sequence of events where environmental stressors at work lead to enacted incivility through appraisal, perceptions of the stressor, and negative emotions (Spector & Fox, 2005).\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"misstatement of compassion fatigue source\",\"description\":\"One paragraph incorrectly states that the study examines compassion fatigue in relation to 'experiencing coworker incivility,' despite the entire study being about patient incivility. This suggests conceptual imprecision and possible text carryover from another context.\",\"quote\":\"Within the current study, we look specifically at the relationship between experiencing coworker incivility and experiencing a caregiving specific form of job burnout, compassion fatigue.\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"key figures/tables not self-consistent\",\"description\":\"The narrative description of the serial mediation conflicts with Table 2. In Table 2, both T3 negative emotions and T4 compassion fatigue predict T4 enacted incivility, yet the text describes the serial indirect effect using only 'a × d'. This inconsistency makes it unclear what model was actually fit and reported.\",\"quote\":\"As seen in Table 2, the last step of the simple mediation reflects a parameter estimate for compassion fatigue that is nearly six times that of negative emotions.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"possible endogeneity/reverse causation not tested\",\"description\":\"Given strong stability and plausible reciprocal dynamics (e.g., enacted incivility provoking future patient incivility), the study should test alternative or reciprocal paths. The paper cites reciprocal stressor-CWB literature but does not model reverse effects. Omitting plausible reverse causation weakens directional claims.\",\"quote\":\"Although the stressor-emotion model of CWB and most incivility research assumes longitudinal relationships, assessment of the relationship and processes for experienced-enacted incivility are not often tested that way.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"family members mixed with patients\",\"description\":\"The exposure and outcome measures combine patients with 'patient family members/friends' as if they were a single customer category. These actors differ in role, interaction frequency, emotional state, and responsibility, so pooling them may obscure distinct processes and reduce construct precision.\",\"quote\":\"the word “customer” was replaced with “patient” or “patient or patient family members/friends”\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"insufficient ethics information\",\"description\":\"The manuscript does not report institutional review board approval, informed consent procedures beyond recruitment language, or protections for participants reporting potentially sanctionable behavior toward patients. This omission is important for a study involving healthcare personnel and self-reported mistreatment of patients.\",\"quote\":\"The study information included in the recruitment fliers stated: “The purpose of the study is to investigate the influence of work experiences on employee wellbeing and success...\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"reliability reporting incomplete\",\"description\":\"The manuscript relies heavily on Cronbach's alpha in Table 1 but does not report reliability for the moderated-analysis subsample, does not provide wave-specific reliabilities in text, and cannot report reliability for the single-item patient acuity measure. Given the use of abbreviated scales and high-stakes conclusions, fuller reliability evidence is needed.\",\"quote\":\"Cronbach’s α presented on the diagonal.\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"statistics\",\"subcategory\":\"fit indices suspiciously high given high overlap\",\"description\":\"The reported CFA fit (CFI/TLI = .99) alongside extreme intercorrelations among constructs suggests either item-level redundancy, model overfit, or reporting problems. Without alternative model fit statistics and factor correlations, the discriminant validity claim is unconvincing.\",\"quote\":\"The fit of the four-factor model was acceptable ... RMSEA = .08, CFI = .99, TLI = .99) and fit the data better than alternative models with fewer factors.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"alternative models not reported\",\"description\":\"The authors state that the hypothesized CFA fit better than alternative models with fewer factors, but they do not report any of those models, fit indices, chi-square differences, or factor correlations. This omission prevents evaluation of discriminant validity claims.\",\"quote\":\"fit the data better than alternative models with fewer factors.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"range/format errors in table suggest poor quality control\",\"description\":\"The tables contain formatting and labeling errors (e.g., repeated headers, malformed arrows, missing symbols, inconsistent labels 'customer' vs 'patient', blank or stray entries), raising concerns about the care taken in analysis reporting and the possibility of underlying transcription mistakes in coefficients.\",\"quote\":\"Incivility  Negative Emotions  Compassion Fatigue | .07* | .03 | 2.43\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"overgeneralization from specific context\",\"description\":\"The discussion claims generalizability to other service sectors despite the sample being almost entirely female nurses in high-stakes settings and using healthcare-specific constructs like compassion fatigue and patient acuity. Such generalization is not warranted from these data.\",\"quote\":\"This adds to the generalizability of prior customer incivility research to further support that experiencing incivility from customers – even when the customers are patients\",\"location\":\"discussion\",\"severity\":\"moderate\"},{\"category\":\"statistics\",\"subcategory\":\"no sensitivity analyses for excluded cases\",\"description\":\"The manuscript provides only a cursory comparison of T1-only respondents to completers and does not evaluate whether excluded participants due to data quality or missing acuity responses differed on key variables. Sensitivity analyses are needed because exclusions are substantial and potentially systematic.\",\"quote\":\"Participants who responded only to the T1 survey reported similar demographic information compared to those who completed all four time periods\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"measurement\",\"subcategory\":\"pilot validity evidence overstated\",\"description\":\"The pilot is said to 'provide validity evidence for the shortened scales,' but the evidence reported is mostly understandability, applicability, and part-whole correlations. These do not establish construct validity, especially after adapting items to a new patient/family context and using them longitudinally.\",\"quote\":\"to provide validity evidence for the shortened scales\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"interpretation ignores non-significant conditional indirect effect\",\"description\":\"The discussion and practical implications emphasize employees with both high patient incivility and high patient acuity as at 'highest risk' of the full cascade to incivility, but the supplemental analysis found the conditional indirect effect and IMM were non-significant. Thus, claims about the full indirect process being stronger under high acuity are not supported.\",\"quote\":\"Together, our results suggest that employees experiencing incivility from patients and who have a high perceived patient acuity load are at the highest risk of experiencing increased negative affect and fatigue and, ultimately, engaging in incivility.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"statistics\",\"subcategory\":\"non-significant direct path overlooked in interpretation\",\"description\":\"In Table 2, the direct effect of T2 customer incivility on T4 enacted incivility is non-significant (B = -.07, p not significant), yet the manuscript repeatedly discusses a positive experienced-enacted relationship over time as if directly established. The evidence supports only a reported indirect effect, and even that is compromised by incorrect calculation/specification.\",\"quote\":\"T2 Customer Incivility ... Enacted Incivility (T4) ... B = -.07 | .05 | -1.14\",\"location\":\"results\",\"severity\":\"major\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 24961,
+    "output_tokens": 6039
+  }
+}

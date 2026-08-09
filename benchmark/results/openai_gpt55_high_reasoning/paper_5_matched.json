@@ -1,0 +1,211 @@
+[
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "statistical_errors",
+      "subcategory": "fisher_z_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Fisher z-transformation absent \u2014 must know this is required for meta-analytic pooling of r",
+      "original_snippet": "The rma function converted effect size r to Fisher\u2019s z for the calculations, and we converted z back to effect size r for reporting of results (Borenstein, et al., 2009).",
+      "modified_snippet": "",
+      "description": "Deleted Fisher z-transformation step \u2014 meta-analysis on raw r is biased due to non-normal sampling distribution; reader can't verify computation was correct"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "questionable meta-analysis of correlations",
+      "description": "The manuscript appears to meta-analyze raw correlations directly and states that rma accepts effect size r and N parameters. Correlations should generally be Fisher-z transformed and analyzed with appropriate sampling variances before back-transformation. The reporting does not specify such transformation or variance calculation, making the meta-analytic estimates and intervals difficult to evaluate.",
+      "quote": "\"The rma function was used, which accepts the effect size r and N parameters\"; \"Effect size r represented the size and direction of the relationship of self-esteem scores to the four outcome variables\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "methodological_design",
+      "subcategory": "sample_size_requirement_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "80 for the present study as this was the sample size in the original study",
+      "modified_snippet": "120 for the present study to ensure adequate statistical power",
+      "description": "Changed minimum N from 80 to 120, but Table 1 shows sites collected 80-90 participants \u2014 stated requirement not met"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "sample size contradictions",
+      "description": "The manuscript states that CREP required and all included studies collected a minimum N of 120, yet the reported replication sample sizes include 80, 81, 90, 90, 94, and 116. This contradiction affects evaluation of inclusion criteria, power, and whether studies actually met the stated CREP requirements.",
+      "quote": "\"All studies in this meta-analysis received this approval by the CREP team, collected the minimum number of participants specified by the CREP (120 for the present study to ensure adequate statistical power)\"; \"Sample sizes ranged from 80 to 374.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "construct_validity",
+      "subcategory": "centering_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Mean centering absent \u2014 must know this is needed for cross-study effect size comparison",
+      "original_snippet": "The composite self-esteem score was mean centered in accord with the Forest and Wood (2012) analysis.",
+      "modified_snippet": "",
+      "description": "Deleted mean-centering step \u2014 essential for matching original analysis and comparing effect sizes across replications; without centering, beta coefficients are non-comparable"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "causal_inference",
+      "subcategory": "temporal_context_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Temporal context (2012 vs 2016) removed \u2014 must recognize historical change as alternative explanation",
+      "original_snippet": "differences between the original and replication results might be related to changes in social media usage patterns from 2012 to 2016. By the time the replications occurred in 2016\u201317,",
+      "modified_snippet": "differences between the original and replication results might be related to variations in social media usage patterns across populations.",
+      "description": "Removed temporal framing (2012 vs 2016-17) \u2014 eliminates key alternative explanation that Facebook's social role changed historically, obscuring whether non-replication reflects fragile finding or genuine historical change"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "platform change confounded with replication",
+      "description": "The original study and replications occurred in different social-media eras. Facebook\u2019s meaning and use among college students likely changed between the original and 2016\u20132017 replications. This threatens construct equivalence: a 'direct' Facebook replication may not measure the same social context or affordance perceptions.",
+      "quote": "\"Participants in our replication studies may have been implicitly comparing Facebook usage to Snapchat and Instagram when rating its usefulness for self-expression and connection with others, whereas these platforms would not have been a consideration for participants in Forest and Wood\u2019s (2012) study.\"",
+      "location": "discussion",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "internal_consistency",
+      "subcategory": "institutional_diversity_reduced",
+      "difficulty": 2,
+      "difficulty_rationale": "Claims urban/suburban only but Table 1 shows rural institutions \u2014 cross-reference needed",
+      "original_snippet": "in urban, suburban, and rural settings in the eastern, Midwest, and western U.S.,",
+      "modified_snippet": "in urban and suburban settings in the eastern and western U.S.,",
+      "description": "Removed 'rural' and 'Midwest' \u2014 contradicts actual institutional data in Table 1 (BYU-Idaho is rural); undermines generalizability argument"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "reporting_completeness",
+      "subcategory": "adaptation_detail_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Anderson & Maxwell adaptation detail removed \u2014 must know their method was for d not r",
+      "original_snippet": "We adapted the method to use effect size r to estimate 95% CIs for the difference in effect sizes for each of the replications compared with the original study (Anderson & Maxwe",
+      "modified_snippet": "We used the method to estimate 95% CIs for the difference in effect sizes for each of the replications compared with the original study (Anderson & Maxwe",
+      "description": "Changed 'adapted the method to use effect size r' to 'used the method' \u2014 hides non-trivial adaptation of d-based method to r-family; reader can't evaluate validity"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "generalizability",
+      "subcategory": "exclusion_criterion_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Non-Facebook users included \u2014 must recognize this invalidates construct measurement",
+      "original_snippet": "Five participants who were not Facebook users were excluded from analyses.",
+      "modified_snippet": "",
+      "description": "Deleted non-Facebook-user exclusion \u2014 including non-users invalidates construct measurement (rating a platform they don't use); biases effects toward zero"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "Facebook-user status not established",
+      "description": "The manuscript does not report whether participants were active Facebook users, had Facebook accounts, or how often they used Facebook. Asking nonusers or infrequent users to judge Facebook\u2019s affordances would undermine construct validity of perceived Facebook expression, connection, disclosure safety, and disclosure advantages.",
+      "quote": "\"Participants in all studies were undergraduate students at the five universities and colleges in the US\"; \"Next, participants completed a measure of Facebook use perceptions created by the original researchers\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "theoretical_conceptual",
+      "subcategory": "mechanism_caveat_removed",
+      "difficulty": 2,
+      "difficulty_rationale": "Mechanism measurement caveat removed \u2014 must distinguish pattern consistency from mechanism testing",
+      "original_snippet": "However, the CREP studies did not include a measure of FTF vs. online anxiety, making this an interesting direction for future research.",
+      "modified_snippet": "",
+      "description": "Deleted caveat that anxiety mechanism was not measured \u2014 paper now overclaims support for social compensation theory when it only found a consistent pattern, not the proposed mechanism"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "theoretical_conceptual",
+      "subcategory": "social compensation theory overclaimed",
+      "description": "The study does not measure compensation motives, anxiety in face-to-face interaction, actual online interaction, or social outcomes. Therefore the results provide at most indirect evidence relevant to social compensation theory, yet the manuscript claims support for the theory.",
+      "quote": "\"The present research also provides some support for social compensation theory\"",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "analytic_flexibility",
+      "subcategory": "model_selection_based_on_results",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "We chose to use the restricted maximum likelihood (REML) model because it has been shown to exhibit less bias than the more commonly used DerSimonian and Laird (DL) model with small numbers of studies (Veroniki et al., 2016).",
+      "modified_snippet": "We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data (Veroniki et al., 2016).",
+      "description": "Changed principled REML selection (less bias with small k) to post-hoc model selection based on 'more interpretable' results \u2014 explicit analytic flexibility"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "analytic_flexibility",
+      "subcategory": "post hoc model estimator selection",
+      "description": "The authors compared REML and DerSimonian-Laird and selected REML because it produced more interpretable estimates. Without a preregistered meta-analytic plan, choosing the estimator after inspecting the data introduces analytic flexibility.",
+      "quote": "\"We compared restricted maximum likelihood (REML) and DerSimonian and Laird (DL) models and selected REML as it produced more interpretable heterogeneity estimates for our data\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 5,
+      "category": "attrition_missing_data",
+      "subcategory": "missing_data_transparency_removed",
+      "difficulty": 3,
+      "difficulty_rationale": "Unknown missing data procedures acknowledged \u2014 must expect this transparency in multi-site studies",
+      "original_snippet": "Contributors did not always post analysis scripts, so procedures to account for missing data are not known for all studies.",
+      "modified_snippet": "",
+      "description": "Deleted acknowledgment that missing data procedures are unknown for some studies \u2014 reader assumes uniform data handling when it actually varied"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "attrition_missing_data",
+      "subcategory": "missing-data handling not reported",
+      "description": "The manuscript explicitly states that missing-data handling, exclusions, composite calculations, and item-level data were not consistently documented. This prevents verification of analyses and could materially affect correlations, reliability estimates, and meta-analytic inputs.",
+      "quote": "\"not all studies posted analysis scripts or narratives to help us determine such things as missing data handling, composite score calculations, data exclusions, etc. Data were not always collected or stored consistently\"",
+      "location": "discussion",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  }
+]

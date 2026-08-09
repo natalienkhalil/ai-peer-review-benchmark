@@ -1,0 +1,211 @@
+[
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "statistical_errors",
+      "subcategory": "p_value_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Chi-square(3)=8.74 gives p\u2248.033 not .003 \u2014 requires mental computation or lookup",
+      "original_snippet": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.033.",
+      "modified_snippet": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.",
+      "description": "Changed p from .033 to .003 \u2014 chi-square(3)=8.74 yields p~.033 not .003; makes marginal finding appear robust"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent p-value for sad words between text and table",
+      "description": "The text reports the omnibus effect for sad words as p=.003, but Table 2 reports p=.033 (and \u03c7\u00b2=8.74 with df=3 yields p\u2248.033, so the table is correct). The text value is a tenfold error in the reported significance of one of the only significant mean-difference results.",
+      "quote": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "methodological_design",
+      "subcategory": "comparison_condition_altered",
+      "difficulty": 2,
+      "difficulty_rationale": "Typical vs positive mood changes comparison gradient \u2014 must understand risk-level anchoring",
+      "original_snippet": "two-week episode of positive mood (i.e., more positive mood than usual and no ideation or attempt).",
+      "modified_snippet": "two-week episode of typical mood (i.e., neither particularly positive nor negative mood and no ideation or attempt).",
+      "description": "Changed positive mood to typical/neutral mood \u2014 compresses risk gradient, eliminates theoretical contrast between suicidal states and genuinely positive states"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "Neutral/typical mood mislabeled as 'positive mood'",
+      "description": "Episode type 4 is operationally defined as 'typical mood (i.e., neither particularly positive nor negative mood),' yet it is labeled 'positive mood'/'positive episode' throughout and used as a low-risk anchor. Treating a neutral baseline as a positive condition undermines interpretation of comparisons (e.g., the claim that self-focus resembled 'positive' episodes, and positive-emotion slope contrasts).",
+      "quote": "4) two-week episode of typical mood (i.e., neither particularly positive nor negative mood and no ideation or attempt).",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "construct_validity",
+      "subcategory": "construct_label_changed",
+      "difficulty": 2,
+      "difficulty_rationale": "Self-focus vs rumination \u2014 must know these are distinct constructs in suicidology",
+      "original_snippet": "we tested whether use of first-person pronouns (as an indicator of self-focus) was greater prior to suicide attempts",
+      "modified_snippet": "we tested whether use of first-person pronouns (as an indicator of rumination) was greater prior to suicide attempts",
+      "description": "Changed 'self-focus' to 'rumination' \u2014 different constructs (Baumeister escape theory vs Nolen-Hoeksema response styles); first-person pronouns index self-referential attention, not repetitive negative thinking"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "construct_validity",
+      "subcategory": "First-person pronoun count as 'rumination'/self-focus",
+      "description": "Single first-person singular pronoun frequency is used to operationalize both 'self-focus' and 'rumination,' which are distinct constructs not validly captured by isolated word counts in SMS. Equating a LIWC count with rumination is a construct-operationalization mismatch that weakens the test of the escape-from-self theory.",
+      "quote": "we tested whether use of first-person pronouns (as an indicator of rumination) was greater prior to suicide attempts",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "causal_inference",
+      "subcategory": "temporal_logic_altered",
+      "difficulty": 2,
+      "difficulty_rationale": "Comparison conditions should have no temporal change expectation \u2014 must understand slope logic",
+      "original_snippet": "for episode types of lower suicide risk (for which there is no theoretical expectation of temporal change).",
+      "modified_snippet": "for episode types of lower suicide risk (for which there is also a theoretical expectation of temporal change).",
+      "description": "Changed 'no expectation of temporal change' to 'also an expectation' \u2014 undermines the slope comparison logic; comparison conditions should be flat baselines"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "internal_consistency",
+      "subcategory": "iatrogenic_means_reversed",
+      "difficulty": 1,
+      "difficulty_rationale": "Means show increase (0.82\u21921.03) but text says 'decreased' \u2014 arithmetic contradiction",
+      "original_snippet": "and desire to die from pre (M=0.82, SD=1.10) to post (M=0.61, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "modified_snippet": "and desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "description": "Changed post desire-to-die from 0.61 to 1.03 \u2014 means now show INCREASE while text says 'decreased'; safety-critical inconsistency in iatrogenic check"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "Direction of effect contradicts reported numbers (iatrogenic harm)",
+      "description": "The text states desire to die 'significantly decreased slightly,' but the reported means show an INCREASE from 0.82 to 1.03 (a +0.21 change), and Table 1 lists the change as +0.20. A significant increase in desire to die is an iatrogenic effect, yet it is mislabeled as a decrease, contradicting both the numbers and the manuscript's framing that the study caused no harm. This is a safety-relevant directional error.",
+      "quote": "desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "location": "results",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "reporting_completeness",
+      "subcategory": "episode_window_inconsistent",
+      "difficulty": 2,
+      "difficulty_rationale": "Creates internal contradiction detectable within the paper",
+      "original_snippet": "using the two-week period prior to the attempt as a \u201csuicide attempt episode\u201d",
+      "modified_snippet": "using the one-week period prior to the attempt as a \u201csuicide attempt episode\u201d",
+      "description": "Changed 'two-week' to 'one-week' in episode definition but all other references say 'two weeks' / '14 days' \u2014 cross-section inconsistency"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "One-week vs two-week attempt episode definition",
+      "description": "The attempt episode is defined as 'the one-week period prior to the attempt,' but the abstract, overview, and Analysis 2 (day ranging -14 to 0) all treat the attempt window as two weeks/14 days. This inconsistency in the operational definition of the core predictor affects which messages are assigned to attempt episodes and how comparisons are made.",
+      "quote": "past actual, interrupted, or aborted suicide attempts, using the one-week period prior to the attempt as a \u201csuicide attempt episode\u201d",
+      "location": "methods",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "generalizability",
+      "subcategory": "recruitment_source_hidden",
+      "difficulty": 3,
+      "difficulty_rationale": "University pool removed \u2014 must cross-reference with Table 1 demographics to notice",
+      "original_snippet": "A sample of 33 participants with at least one reported past suicide attempt were recruited from the University of Virginia Psychology Department\u2019s participant pool and from the Charlottesville community.",
+      "modified_snippet": "A sample of 33 participants with at least one reported past suicide attempt were recruited from the Charlottesville community.",
+      "description": "Removed university participant pool source \u2014 hides that sample is mostly college students (94% 'some college', mean age 20.4), making findings appear more generalizable"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "theoretical_conceptual",
+      "subcategory": "theory_mechanism_changed",
+      "difficulty": 3,
+      "difficulty_rationale": "Social support vs social engagement \u2014 subtle construct distinction",
+      "original_snippet": "In theory, social support should combat such feelings and increase feelings of connectedness.",
+      "modified_snippet": "In theory, social engagement should combat such feelings and increase feelings of connectedness.",
+      "description": "Changed 'social support' (perceived caring) to 'social engagement' (behavioral frequency) \u2014 collapses theory-operationalization gap that's a real limitation; message volume is weak proxy for perceived support"
+    },
+    "matched": false,
+    "match_confidence": 0.0,
+    "matched_finding": null,
+    "match_method": null
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "analytic_flexibility",
+      "subcategory": "random_effects_simplified",
+      "difficulty": 2,
+      "difficulty_rationale": "No random slopes with marginal p-values \u2014 must know Barr et al recommendations",
+      "original_snippet": "Models with the full set of random slopes did not converge; therefore, only a by-participant slope of episode type was included in the final model.",
+      "modified_snippet": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "description": "Removed all random slopes (kept only intercepts) \u2014 fails to account for participant variability in episode effects; inflates Type I error per Barr et al (2013); key p-values near .05 may become false positives"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "statistical_errors",
+      "subcategory": "Removal of all random slopes inflates Type I error for headline results",
+      "description": "The primary temporal findings (the study's main positive results) come from models in which all random slopes were dropped because the maximal model failed to converge. Testing within-subject episode-by-time interactions without by-participant random slopes is known to inflate Type I error rates\u2014directly contradicting the authors' stated rationale that maximal random effects 'protect against inflated Type I error.' The significant interactions for positive emotion, anger, etc. may therefore be anticonservative.",
+      "quote": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    "match_method": "llm_judge_cached"
+  },
+  {
+    "ground_truth": {
+      "paper": 4,
+      "category": "attrition_missing_data",
+      "subcategory": "missing_data_pattern_concealed",
+      "difficulty": 2,
+      "difficulty_rationale": "Claims all 27 had attempt data but only 15 did \u2014 must check if 27=27 makes sense given design",
+      "original_snippet": "Among these 27 participants, 15 had data from at least one reported suicide attempt; the other 12 participants contributed data from non-suicide attempt episodes and were still included in the analyses.",
+      "modified_snippet": "Among these 27 participants, all had data from at least one reported suicide attempt.",
+      "description": "Concealed that only 15/27 (56%) had attempt SMS data \u2014 hides selection bias in who contributes to the critical attempt vs non-attempt comparisons"
+    },
+    "matched": true,
+    "match_confidence": 1.0,
+    "matched_finding": {
+      "category": "internal_consistency",
+      "subcategory": "Contradictory counts of attempts with usable SMS data",
+      "description": "The manuscript states all 27 analyzed participants had SMS data from at least one suicide attempt, which implies at least 27 attempt episodes with data. Yet elsewhere it reports only 21 attempts (and the power section says 20) had corresponding SMS data. These numbers (20 vs 21 vs \u226527) cannot all be correct and undermine confidence in the dataset description and the effective sample for the key attempt analyses.",
+      "quote": "Among these 27 participants, all had data from at least one reported suicide attempt.",
+      "location": "results",
+      "severity": "major"
+    },
+    "match_method": "llm_judge_cached"
+  }
+]

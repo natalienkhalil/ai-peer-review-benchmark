@@ -1,0 +1,172 @@
+{
+  "paper_id": 4,
+  "provider_name": "gemini_flash_run2",
+  "issues": [
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "mislabeling_study_design",
+      "description": "The authors claim to have utilized a 'prospective research design' despite the study being entirely retrospective. Participants recalled past events and provided historical data. Retrospective reconstruction of timelines does not constitute a prospective design, which requires data collection to occur before the outcome of interest.",
+      "quote": "By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design to understand which features in text communications predicted suicide attempt",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "inconsistent_episode_windows",
+      "description": "The study uses a 1-week window for suicide attempt episodes but a 2-week window for all other episode types (ideation, depressed, positive). This inconsistency invalidates direct comparisons of means and, more importantly, slopes (rates of change) across episode types, as the temporal density and duration of data points are not equivalent.",
+      "quote": "using the one-week period prior to the attempt as a “suicide attempt episode”; 2) two-week episodes of suicide ideation... 3) two-week episodes of depressed mood... 4) two-week episode of typical mood",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "data_driven_window_selection",
+      "description": "The authors admit to selecting the 7-day window for suicide attempts based on visual inspection of the data ('visual inspection of descriptive figures'). This is a form of post-hoc data snooping (p-hacking) that increases the likelihood of finding a significant effect by tailoring the analysis window to the observed data patterns.",
+      "quote": "The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "inconsistent_p_values",
+      "description": "There is a discrepancy between the p-value reported for the 'sad' variable in the text (p=.003) and the value reported in Table 2 (p=.033). This raises concerns about the accuracy of the reported statistics.",
+      "quote": "Regarding sentiment, there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "random_slope_removal",
+      "description": "The authors removed random slopes from the interaction models because they did not converge. Removing random slopes in the presence of within-subject factors significantly inflates Type I error rates, making the resulting p-values for the interaction effects (Table 3) unreliable.",
+      "quote": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "multiple_comparisons_correction",
+      "description": "The authors explicitly state they did not correct for multiple comparisons despite running a large number of mixed-effects models and pairwise tests. Given the pilot nature and small sample size, this greatly increases the risk of false positive findings.",
+      "quote": "we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction) but rather view any significant results in light of these caveats",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "recall_bias",
+      "description": "The study relies on participants' ability to recall exact calendar dates for suicide attempts and mood episodes that occurred in the past. This is highly susceptible to recall bias and memory decay, which could lead to the analysis of text messages from incorrect time periods.",
+      "quote": "Participants were then asked to describe specific details of and context surrounding each time period... Participants were generally confident about the accuracy of the dates they selected",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "sample_size_discrepancy",
+      "description": "The abstract and Table 1 report N=33, but the results section notes that only 27 participants provided SMS data, and only 21 suicide attempts were actually analyzed. The effective sample size for the primary analyses is much lower than the reported N.",
+      "quote": "Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants. Among these 27 participants, all had data from at least one reported suicide attempt.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "operationalization_mismatch",
+      "description": "The use of 'ratio of sent vs. received messages' as a proxy for 'thwarted belongingness' and 'perceived burdensomeness' is theoretically weak. These constructs are deeply psychological and interpersonal; simple message counts do not capture the quality or emotional weight of social interactions.",
+      "quote": "we tested whether suicide attempters demonstrated greater signs of disengagement from and burdensomeness on their social support networks... by examining patterns in outgoing vs. incoming messages.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "demographic_skew",
+      "description": "The sample is 84.8% female and primarily college-aged (M=20.4). Suicide completion rates are significantly higher in males and older adults. The findings from this specific demographic may not generalize to the populations at highest risk for lethal suicide.",
+      "quote": "Most of the participants were female, White, and college-aged.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "missing_visual_data",
+      "description": "Figure 1 is referenced extensively in the results and discussion to explain the interaction effects, but the figure itself is missing from the manuscript (only placeholders exist). This makes it impossible to verify the 'steeper' slopes claimed by the authors.",
+      "quote": "As shown in Figure 1A, self-focus tended to increase preceding an attempt... (Figure 1B)... (Figure 1C)",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "underpowered_subgroups",
+      "description": "The power analysis was based on N=30, but the actual analysis of suicide attempts included only 21 events. The authors admit the study is underpowered for small/medium effects, but with N=21, even large effects may be difficult to estimate reliably in a mixed-effects framework.",
+      "quote": "We determined that a sample size of 30 suicide attempters... would provide enough power to detect only large effect sizes... the study was underpowered to detect small- or medium-sized effects",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "suicide_attempt_definition",
+      "description": "71% of the 'suicide attempt' episodes involved no physical harm (aborted or interrupted attempts). While clinically relevant, grouping these with actual enacted attempts may dilute the signal of 'imminent risk' and creates a construct that differs from medical definitions of suicide attempts.",
+      "quote": "71% of incidents did not result in any physical harm (e.g., driving to high place, such as a bridge, but deciding not to jump).",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "missing_temporal_metadata",
+      "description": "The manuscript does not report the average time elapsed between the suicide attempt and the laboratory interview. If attempts occurred years prior, the likelihood of participants accurately identifying the 7-day window is significantly diminished.",
+      "quote": "Participants were asked to identify a number of specific events or episodes in the past and the calendar dates during which the episodes took place.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "selection_bias_technology",
+      "description": "Participants were excluded if they had encryption settings that prevented data extraction. This creates a systematic bias where the sample only includes individuals with lower digital privacy settings or less technical knowledge, which may correlate with other psychological traits.",
+      "quote": "a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "table_header_error",
+      "description": "Table 2 contains a duplicate 'df' column in the header for the 'Self-Focus' and 'Sentiment' sections, which appears to be a formatting error.",
+      "quote": "Test | df | df | p",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "liwc_dictionary_details",
+      "description": "The authors do not specify which LIWC2015 categories were mapped to their constructs (e.g., which specific categories constitute 'Social Engagement'). This prevents replication.",
+      "quote": "see Table S3 for the specific LIWC variables calculated for the three psychological constructs.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "unaddressed_overlapping_episodes",
+      "description": "The manuscript does not explain how it handled cases where a 'depressed mood' episode might overlap with the two weeks preceding a 'suicide attempt'. If episodes are not mutually exclusive, the independence of observations in the mixed model is compromised.",
+      "quote": "A total of 3 to 12 episodes were collected for each participant depending on the presence and number of reported events.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "marginal_significance_claims",
+      "description": "The interaction for 'Anger' has a p-value of .049, which is extremely close to the alpha threshold. Given the lack of multiple comparison correction and the removal of random slopes, this result is likely a false positive.",
+      "quote": "Anger (anger) 2=7.83, p=.049",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "extrapolation_to_completers",
+      "description": "The authors extrapolate findings from non-lethal attempters to 'suicide completers' in the discussion, despite acknowledging that these groups differ significantly in demographics and risk factors.",
+      "quote": "the subjects of greatest interest – suicide completers – cannot be directly studied... By recruiting only individuals with a history of acting on their suicidal thoughts... this study focused on those behaviors most strongly associated with and predictive of suicide completion.",
+      "location": "introduction",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"theoretical_conceptual\",\n      \"subcategory\": \"mislabeling_study_design\",\n      \"description\": \"The authors claim to have utilized a 'prospective research design' despite the study being entirely retrospective. Participants recalled past events and provided historical data. Retrospective reconstruction of timelines does not constitute a prospective design, which requires data collection to occur before the outcome of interest.\",\n      \"quote\": \"By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design to understand which features in text communications predicted suicide attempt\",\n      \"location\": \"introduction\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"inconsistent_episode_windows\",\n      \"description\": \"The study uses a 1-week window for suicide attempt episodes but a 2-week window for all other episode types (ideation, depressed, positive). This inconsistency invalidates direct comparisons of means and, more importantly, slopes (rates of change) across episode types, as the temporal density and duration of data points are not equivalent.\",\n      \"quote\": \"using the one-week period prior to the attempt as a \\u201csuicide attempt episode\\u201d; 2) two-week episodes of suicide ideation... 3) two-week episodes of depressed mood... 4) two-week episode of typical mood\",\n      \"location\": \"methods\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"data_driven_window_selection\",\n      \"description\": \"The authors admit to selecting the 7-day window for suicide attempts based on visual inspection of the data ('visual inspection of descriptive figures'). This is a form of post-hoc data snooping (p-hacking) that increases the likelihood of finding a significant effect by tailoring the analysis window to the observed data patterns.\",\n      \"quote\": \"The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"inconsistent_p_values\",\n      \"description\": \"There is a discrepancy between the p-value reported for the 'sad' variable in the text (p=.003) and the value reported in Table 2 (p=.033). This raises concerns about the accuracy of the reported statistics.\",\n      \"quote\": \"Regarding sentiment, there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"random_slope_removal\",\n      \"description\": \"The authors removed random slopes from the interaction models because they did not converge. Removing random slopes in the presence of within-subject factors significantly inflates Type I error rates, making the resulting p-values for the interaction effects (Table 3) unreliable.\",\n      \"quote\": \"Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"multiple_comparisons_correction\",\n      \"description\": \"The authors explicitly state they did not correct for multiple comparisons despite running a large number of mixed-effects models and pairwise tests. Given the pilot nature and small sample size, this greatly increases the risk of false positive findings.\",\n      \"quote\": \"we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction) but rather view any significant results in light of these caveats\",\n      \"location\": \"discussion\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"recall_bias\",\n      \"description\": \"The study relies on participants' ability to recall exact calendar dates for suicide attempts and mood episodes that occurred in the past. This is highly susceptible to recall bias and memory decay, which could lead to the analysis of text messages from incorrect time periods.\",\n      \"quote\": \"Participants were then asked to describe specific details of and context surrounding each time period... Participants were generally confident about the accuracy of the dates they selected\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"sample_size_discrepancy\",\n      \"description\": \"The abstract and Table 1 report N=33, but the results section notes that only 27 participants provided SMS data, and only 21 suicide attempts were actually analyzed. The effective sample size for the primary analyses is much lower than the reported N.\",\n      \"quote\": \"Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants. Among these 27 participants, all had data from at least one reported suicide attempt.\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"operationalization_mismatch\",\n      \"description\": \"The use of 'ratio of sent vs. received messages' as a proxy for 'thwarted belongingness' and 'perceived burdensomeness' is theoretically weak. These constructs are deeply psychological and interpersonal; simple message counts do not capture the quality or emotional weight of social interactions.\",\n      \"quote\": \"we tested whether suicide attempters demonstrated greater signs of disengagement from and burdensomeness on their social support networks... by examining patterns in outgoing vs. incoming messages.\",\n      \"location\": \"introduction\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"demographic_skew\",\n      \"description\": \"The sample is 84.8% female and primarily college-aged (M=20.4). Suicide completion rates are significantly higher in males and older adults. The findings from this specific demographic may not generalize to the populations at highest risk for lethal suicide.\",\n      \"quote\": \"Most of the participants were female, White, and college-aged.\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"missing_visual_data\",\n      \"description\": \"Figure 1 is referenced extensively in the results and discussion to explain the interaction effects, but the figure itself is missing from the manuscript (only placeholders exist). This makes it impossible to verify the 'steeper' slopes claimed by the authors.\",\n      \"quote\": \"As shown in Figure 1A, self-focus tended to increase preceding an attempt... (Figure 1B)... (Figure 1C)\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"underpowered_subgroups\",\n      \"description\": \"The power analysis was based on N=30, but the actual analysis of suicide attempts included only 21 events. The authors admit the study is underpowered for small/medium effects, but with N=21, even large effects may be difficult to estimate reliably in a mixed-effects framework.\",\n      \"quote\": \"We determined that a sample size of 30 suicide attempters... would provide enough power to detect only large effect sizes... the study was underpowered to detect small- or medium-sized effects\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"suicide_attempt_definition\",\n      \"description\": \"71% of the 'suicide attempt' episodes involved no physical harm (aborted or interrupted attempts). While clinically relevant, grouping these with actual enacted attempts may dilute the signal of 'imminent risk' and creates a construct that differs from medical definitions of suicide attempts.\",\n      \"quote\": \"71% of incidents did not result in any physical harm (e.g., driving to high place, such as a bridge, but deciding not to jump).\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"missing_temporal_metadata\",\n      \"description\": \"The manuscript does not report the average time elapsed between the suicide attempt and the laboratory interview. If attempts occurred years prior, the likelihood of participants accurately identifying the 7-day window is significantly diminished.\",\n      \"quote\": \"Participants were asked to identify a number of specific events or episodes in the past and the calendar dates during which the episodes took place.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"selection_bias_technology\",\n      \"description\": \"Participants were excluded if they had encryption settings that prevented data extraction. This creates a systematic bias where the sample only includes individuals with lower digital privacy settings or less technical knowledge, which may correlate with other psychological traits.\",\n      \"quote\": \"a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.\",\n      \"location\": \"methods\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"table_header_error\",\n      \"description\": \"Table 2 contains a duplicate 'df' column in the header for the 'Self-Focus' and 'Sentiment' sections, which appears to be a formatting error.\",\n      \"quote\": \"Test | df | df | p\",\n      \"location\": \"results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"liwc_dictionary_details\",\n      \"description\": \"The authors do not specify which LIWC2015 categories were mapped to their constructs (e.g., which specific categories constitute 'Social Engagement'). This prevents replication.\",\n      \"quote\": \"see Table S3 for the specific LIWC variables calculated for the three psychological constructs.\",\n      \"location\": \"methods\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"unaddressed_overlapping_episodes\",\n      \"description\": \"The manuscript does not explain how it handled cases where a 'depressed mood' episode might overlap with the two weeks preceding a 'suicide attempt'. If episodes are not mutually exclusive, the independence of observations in the mixed model is compromised.\",\n      \"quote\": \"A total of 3 to 12 episodes were collected for each participant depending on the presence and number of reported events.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"marginal_significance_claims\",\n      \"description\": \"The interaction for 'Anger' has a p-value of .049, which is extremely close to the alpha threshold. Given the lack of multiple comparison correction and the removal of random slopes, this result is likely a false positive.\",\n      \"quote\": \"Anger (anger) 2=7.83, p=.049\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"extrapolation_to_completers\",\n      \"description\": \"The authors extrapolate findings from non-lethal attempters to 'suicide completers' in the discussion, despite acknowledging that these groups differ significantly in demographics and risk factors.\",\n      \"quote\": \"the subjects of greatest interest \\u2013 suicide completers \\u2013 cannot be directly studied... By recruiting only individuals with a history of acting on their suicidal thoughts... this study focused on those behaviors most strongly associated with and predictive of suicide completion.\",\n      \"location\": \"introduction\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3-flash-preview",
+  "token_usage": {
+    "input_tokens": 20405,
+    "output_tokens": 2770
+  }
+}

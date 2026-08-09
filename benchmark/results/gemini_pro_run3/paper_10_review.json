@@ -1,0 +1,156 @@
+{
+  "paper_id": 10,
+  "provider_name": "gemini_pro_run3",
+  "issues": [
+    {
+      "category": "construct_validity",
+      "subcategory": "Incorrect operationalization formula",
+      "description": "The text defines diagnosticity mathematically as the number of words with the suffix in the category divided by the total number of words in the category. This calculates P(Suffix | Category). However, the conceptual definition and the actual values reported in Table 2 reflect P(Category | Suffix), which is the number of words with the suffix in the category divided by the total number of words with the suffix. This is a critical error in the description of the primary metric.",
+      "quote": "type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.",
+      "location": "Computational Analysis / Method",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent statistical reporting",
+      "description": "There is a major discrepancy between the text and Table 5 regarding the effect of congruency on go-past time. The text reports B = 41 and t = 3.837, whereas Table 5 reports B = 43 and t = 3.76.",
+      "quote": "There was an effect of congruency on go-past time (B = 41, t = 3.837, p < 0.001)",
+      "location": "Experiment 3 / Results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent statistical reporting",
+      "description": "There is a major discrepancy between the text and Table 5 regarding the effect of congruency on regressions-out. The text reports B = 0.3 and z = 3.12, whereas Table 5 reports B = 0.25 and z = 2.65.",
+      "quote": "incongruent targets were more likely to elicit regressions to earlier regions of the sentence (B = 0.3, z = 3.12, p < 0.01).",
+      "location": "Experiment 3 / Results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Incorrect test statistic",
+      "description": "The authors report a z-value of 0.60 with a p-value of < 0.01 for the token analyses. A z-value of 0.60 corresponds to a p-value of approximately 0.55, making this statistically impossible.",
+      "quote": "for the token analyses - z = 0.60, p < 0.01",
+      "location": "Experiment 2 / Results",
+      "severity": "critical"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Language-as-fixed-effect fallacy",
+      "description": "The mixed-effects models only include random intercepts for subjects, ignoring random intercepts (and slopes) for items (stems, suffixes, or sentences). This violates standard practices in psycholinguistics and severely inflates Type I error rates, limiting the generalizability of the findings to other linguistic stimuli.",
+      "quote": "This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "location": "Experiment 1 / Results",
+      "severity": "critical"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Stimulus matching confound",
+      "description": "In Experiment 3, the number of words preceding the target nonword differs significantly between the congruent and incongruent conditions. Because reading times and eye movements are highly sensitive to word position within a sentence, this difference introduces a confound that could explain the observed effects on go-past times and regressions.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "Experiment 3 / Method / Stimuli",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Unjustified data transformation",
+      "description": "The authors multiplied noun diagnosticity by -1 to create a single bipolar scale for the model. This assumes that noun and adjective diagnosticity lie on a single linear continuum, which is mathematically flawed because a diagnosticity of 0 for a noun does not imply a diagnosticity of 1 for an adjective (it could be a verb). This transformation distorts the probability metric.",
+      "quote": "we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.",
+      "location": "Experiment 1 / Results",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Typographical error in descriptive statistics",
+      "description": "The average accuracy on comprehension trials is reported as 0.86%, but the range is 0.66% to 0.98%. This is clearly a typo for 86% (or a proportion of 0.86), as an accuracy of less than 1% would mean participants completely failed the task.",
+      "quote": "Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).",
+      "location": "Experiment 3 / Results",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Inconsistent degrees of freedom",
+      "description": "The authors report a Chi-square test with 2 degrees of freedom for adding an interaction term. If only the interaction was added to a model already containing the main effects, the df should be 1. If both the main effect and interaction were added, the text should state this clearly, but it currently says 'when the interaction was added'.",
+      "quote": "The fit of regressions-out model improved significantly when the interaction was added: Chi (2) = 14.37, p < 0.001.",
+      "location": "Experiment 3 / Results",
+      "severity": "moderate"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Unaddressed missing data mechanism",
+      "description": "Experiment 1 had an 11.7% missing data rate due to timeouts or invalid button presses. The authors do not report whether this missingness was distributed evenly across conditions. If participants timed out more frequently on incongruent or ambiguous items, the complete-case analysis could be biased.",
+      "quote": "11.7% of data points were missing due to timeouts or button presses that did not correspond to a response",
+      "location": "Experiment 1 / Results",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Operationalization mismatch",
+      "description": "The authors claim to study morphological regularities and derivational suffixation, but they include pseudoaffixed words (e.g., 'vanish' for -ISH) in their calculation of diagnosticity. This means their metric captures general orthographic ending regularities rather than strictly morphological ones, blurring the theoretical construct they aim to measure.",
+      "quote": "We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).",
+      "location": "Computational Analysis / Method",
+      "severity": "major"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Inconsistent terminology",
+      "description": "The authors use the term 'adjective-specific suffixes' when referring to the results of the diagnosticity analysis. Since they explicitly defined specificity and diagnosticity as two distinct theoretical constructs, mixing these terms causes conceptual confusion.",
+      "quote": "observed the effect of diagnosticity on both adjective-specific suffixes (B = 4.5, z = 2.9, p < 0.01",
+      "location": "Experiment 1 / Results",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent test statistics",
+      "description": "The authors report a regression slope of 0.9 with an SE of 0.04, and test if it is significantly different from 1. The implied t-value is (0.9 - 1) / 0.04 = -2.5, which corresponds to an F(1) of 6.25. However, they report an F(1) of 7.44. These numbers are mathematically inconsistent.",
+      "quote": "We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).",
+      "location": "General Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Incomplete statistical reporting",
+      "description": "The authors state that adding the main effect and interaction of diagnosticity improved the go-past model fit, but they only report the statistics for the interaction and the simple slopes, omitting the main effect of diagnosticity.",
+      "quote": "The fit of go-past model improved significantly when the interaction and the main effect of diagnosticity were added: Chi (2) = 8.58, p < 0.05. The interaction between diagnosticity and condition was significant",
+      "location": "Experiment 3 / Results",
+      "severity": "minor"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Overinterpretation of null effects",
+      "description": "The authors claim that category information only becomes important *following* initial lexical processing because they found null effects on early eye-tracking measures (skipping, first fixation). A null effect on early measures does not prove the absence of early processing; it may simply reflect a lack of statistical power or measure sensitivity.",
+      "quote": "These results therefore indicate that the category information becomes important following initial lexical processing, when the reader has enough contextual information to understand the sentence and detect any incongruences.",
+      "location": "Experiment 3 / Discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Uncontrolled auditory cues",
+      "description": "In Experiment 2, nonwords were recorded by a human speaker from IPA transcriptions. The manuscript does not state how stress was assigned. Since stress is a strong cue to lexical category in English, uncontrolled variations in stress placement by the speaker could confound the spelling results.",
+      "quote": "Items were presented to her in the IPA transcription format, i.e. one transcription was used for one phonological sequence, regardless of the condition the nonword was assigned to.",
+      "location": "Experiment 2 / Method / Stimuli",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Inappropriate extrapolation",
+      "description": "The authors conclude that 'the average reader learns and subsequently relies on morphological cues', but their sample consists entirely of undergraduate students at a UK university. This is a highly educated, skilled reading population, not necessarily representative of the 'average reader.'",
+      "quote": "We have shown that the average reader learns and subsequently relies on morphological cues to class even without explicit instruction to do so",
+      "location": "General Discussion",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing reference levels",
+      "description": "In Experiment 1, the authors report the effect of suffix condition on the binomial response (adjective or noun) with a B estimate of -1.57, but they do not explicitly state which category was coded as 1 and which as 0. This makes the raw coefficient uninterpretable without reverse-engineering it from the text description.",
+      "quote": "The analysis considered the impact of suffix condition (adjective or noun suffix) on the binomial response (adjective or noun).",
+      "location": "Experiment 1 / Results",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Incorrect operationalization formula\",\n      \"description\": \"The text defines diagnosticity mathematically as the number of words with the suffix in the category divided by the total number of words in the category. This calculates P(Suffix | Category). However, the conceptual definition and the actual values reported in Table 2 reflect P(Category | Suffix), which is the number of words with the suffix in the category divided by the total number of words with the suffix. This is a critical error in the description of the primary metric.\",\n      \"quote\": \"type diagnosticity is calculated by dividing the number of words ending in this suffix and falling into this category by the total number of words falling into this category.\",\n      \"location\": \"Computational Analysis / Method\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inconsistent statistical reporting\",\n      \"description\": \"There is a major discrepancy between the text and Table 5 regarding the effect of congruency on go-past time. The text reports B = 41 and t = 3.837, whereas Table 5 reports B = 43 and t = 3.76.\",\n      \"quote\": \"There was an effect of congruency on go-past time (B = 41, t = 3.837, p < 0.001)\",\n      \"location\": \"Experiment 3 / Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inconsistent statistical reporting\",\n      \"description\": \"There is a major discrepancy between the text and Table 5 regarding the effect of congruency on regressions-out. The text reports B = 0.3 and z = 3.12, whereas Table 5 reports B = 0.25 and z = 2.65.\",\n      \"quote\": \"incongruent targets were more likely to elicit regressions to earlier regions of the sentence (B = 0.3, z = 3.12, p < 0.01).\",\n      \"location\": \"Experiment 3 / Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Incorrect test statistic\",\n      \"description\": \"The authors report a z-value of 0.60 with a p-value of < 0.01 for the token analyses. A z-value of 0.60 corresponds to a p-value of approximately 0.55, making this statistically impossible.\",\n      \"quote\": \"for the token analyses - z = 0.60, p < 0.01\",\n      \"location\": \"Experiment 2 / Results\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Language-as-fixed-effect fallacy\",\n      \"description\": \"The mixed-effects models only include random intercepts for subjects, ignoring random intercepts (and slopes) for items (stems, suffixes, or sentences). This violates standard practices in psycholinguistics and severely inflates Type I error rates, limiting the generalizability of the findings to other linguistic stimuli.\",\n      \"quote\": \"This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \\\"binomial\\\").\",\n      \"location\": \"Experiment 1 / Results\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Stimulus matching confound\",\n      \"description\": \"In Experiment 3, the number of words preceding the target nonword differs significantly between the congruent and incongruent conditions. Because reading times and eye movements are highly sensitive to word position within a sentence, this difference introduces a confound that could explain the observed effects on go-past times and regressions.\",\n      \"quote\": \"Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).\",\n      \"location\": \"Experiment 3 / Method / Stimuli\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"analytic_flexibility\",\n      \"subcategory\": \"Unjustified data transformation\",\n      \"description\": \"The authors multiplied noun diagnosticity by -1 to create a single bipolar scale for the model. This assumes that noun and adjective diagnosticity lie on a single linear continuum, which is mathematically flawed because a diagnosticity of 0 for a noun does not imply a diagnosticity of 1 for an adjective (it could be a verb). This transformation distorts the probability metric.\",\n      \"quote\": \"we multiplied our diagnosticity measure by -1 for noun-diagnostic suffixes and substituted this measure in our model, in place of the condition variable.\",\n      \"location\": \"Experiment 1 / Results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Typographical error in descriptive statistics\",\n      \"description\": \"The average accuracy on comprehension trials is reported as 0.86%, but the range is 0.66% to 0.98%. This is clearly a typo for 86% (or a proportion of 0.86), as an accuracy of less than 1% would mean participants completely failed the task.\",\n      \"quote\": \"Average accuracy on comprehension trials was 0.86% (ranging from 0.66% to 0.98%).\",\n      \"location\": \"Experiment 3 / Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"internal_consistency\",\n      \"subcategory\": \"Inconsistent degrees of freedom\",\n      \"description\": \"The authors report a Chi-square test with 2 degrees of freedom for adding an interaction term. If only the interaction was added to a model already containing the main effects, the df should be 1. If both the main effect and interaction were added, the text should state this clearly, but it currently says 'when the interaction was added'.\",\n      \"quote\": \"The fit of regressions-out model improved significantly when the interaction was added: Chi (2) = 14.37, p < 0.001.\",\n      \"location\": \"Experiment 3 / Results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"attrition_missing_data\",\n      \"subcategory\": \"Unaddressed missing data mechanism\",\n      \"description\": \"Experiment 1 had an 11.7% missing data rate due to timeouts or invalid button presses. The authors do not report whether this missingness was distributed evenly across conditions. If participants timed out more frequently on incongruent or ambiguous items, the complete-case analysis could be biased.\",\n      \"quote\": \"11.7% of data points were missing due to timeouts or button presses that did not correspond to a response\",\n      \"location\": \"Experiment 1 / Results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"construct_validity\",\n      \"subcategory\": \"Operationalization mismatch\",\n      \"description\": \"The authors claim to study morphological regularities and derivational suffixation, but they include pseudoaffixed words (e.g., 'vanish' for -ISH) in their calculation of diagnosticity. This means their metric captures general orthographic ending regularities rather than strictly morphological ones, blurring the theoretical construct they aim to measure.\",\n      \"quote\": \"We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).\",\n      \"location\": \"Computational Analysis / Method\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"theoretical_conceptual\",\n      \"subcategory\": \"Inconsistent terminology\",\n      \"description\": \"The authors use the term 'adjective-specific suffixes' when referring to the results of the diagnosticity analysis. Since they explicitly defined specificity and diagnosticity as two distinct theoretical constructs, mixing these terms causes conceptual confusion.\",\n      \"quote\": \"observed the effect of diagnosticity on both adjective-specific suffixes (B = 4.5, z = 2.9, p < 0.01\",\n      \"location\": \"Experiment 1 / Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical_errors\",\n      \"subcategory\": \"Inconsistent test statistics\",\n      \"description\": \"The authors report a regression slope of 0.9 with an SE of 0.04, and test if it is significantly different from 1. The implied t-value is (0.9 - 1) / 0.04 = -2.5, which corresponds to an F(1) of 6.25. However, they report an F(1) of 7.44. These numbers are mathematically inconsistent.\",\n      \"quote\": \"We found that the regression line has a slope of 0.9 (SE = 0.04, t = 25.32, p < 0.0001), and that this slope is significantly different from 1 (F (1) = 7.44, p < 0.01).\",\n      \"location\": \"General Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Incomplete statistical reporting\",\n      \"description\": \"The authors state that adding the main effect and interaction of diagnosticity improved the go-past model fit, but they only report the statistics for the interaction and the simple slopes, omitting the main effect of diagnosticity.\",\n      \"quote\": \"The fit of go-past model improved significantly when the interaction and the main effect of diagnosticity were added: Chi (2) = 8.58, p < 0.05. The interaction between diagnosticity and condition was significant\",\n      \"location\": \"Experiment 3 / Results\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"causal_inference\",\n      \"subcategory\": \"Overinterpretation of null effects\",\n      \"description\": \"The authors claim that category information only becomes important *following* initial lexical processing because they found null effects on early eye-tracking measures (skipping, first fixation). A null effect on early measures does not prove the absence of early processing; it may simply reflect a lack of statistical power or measure sensitivity.\",\n      \"quote\": \"These results therefore indicate that the category information becomes important following initial lexical processing, when the reader has enough contextual information to understand the sentence and detect any incongruences.\",\n      \"location\": \"Experiment 3 / Discussion\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological_design\",\n      \"subcategory\": \"Uncontrolled auditory cues\",\n      \"description\": \"In Experiment 2, nonwords were recorded by a human speaker from IPA transcriptions. The manuscript does not state how stress was assigned. Since stress is a strong cue to lexical category in English, uncontrolled variations in stress placement by the speaker could confound the spelling results.\",\n      \"quote\": \"Items were presented to her in the IPA transcription format, i.e. one transcription was used for one phonological sequence, regardless of the condition the nonword was assigned to.\",\n      \"location\": \"Experiment 2 / Method / Stimuli\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"generalizability\",\n      \"subcategory\": \"Inappropriate extrapolation\",\n      \"description\": \"The authors conclude that 'the average reader learns and subsequently relies on morphological cues', but their sample consists entirely of undergraduate students at a UK university. This is a highly educated, skilled reading population, not necessarily representative of the 'average reader.'\",\n      \"quote\": \"We have shown that the average reader learns and subsequently relies on morphological cues to class even without explicit instruction to do so\",\n      \"location\": \"General Discussion\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"reporting_completeness\",\n      \"subcategory\": \"Missing reference levels\",\n      \"description\": \"In Experiment 1, the authors report the effect of suffix condition on the binomial response (adjective or noun) with a B estimate of -1.57, but they do not explicitly state which category was coded as 1 and which as 0. This makes the raw coefficient uninterpretable without reverse-engineering it from the text description.\",\n      \"quote\": \"The analysis considered the impact of suffix condition (adjective or noun suffix) on the binomial response (adjective or noun).\",\n      \"location\": \"Experiment 1 / Results\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3.1-pro-preview",
+  "token_usage": {
+    "input_tokens": 36587,
+    "output_tokens": 2887
+  }
+}

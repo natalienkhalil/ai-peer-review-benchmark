@@ -1,0 +1,172 @@
+{
+  "paper_id": 10,
+  "provider_name": "gemini_flash_open",
+  "issues": [
+    {
+      "category": "design",
+      "subcategory": "confounding_variable",
+      "description": "In Experiment 3, there is a statistically significant difference in the number of words preceding the target nonword between the congruent (4.75) and incongruent (5.23) conditions. In eye-tracking research, the position of a word in a sentence and the amount of preceding text significantly influence reading times and regression probabilities. This confound undermines the validity of the 'congruency effect' found in go-past times and regressions.",
+      "quote": "Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "sample_size",
+      "description": "Experiment 2 utilizes a sample size of only 29 participants. Given the high variability in spelling behavior and the subtle nature of the statistical regularities being tested, this sample is likely underpowered to detect the interaction between specificity and condition reliably, increasing the risk of Type I or Type II errors.",
+      "quote": "Participants. Participants were 29 undergraduate students from Royal Holloway University of London.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "construct_validity",
+      "description": "The authors equate 'meaning' almost exclusively with 'lexical category' (noun, verb, adjective). While lexical category is a component of meaning, it is primarily a syntactic property. This reductionist definition ignores semantic nuances (e.g., agency, abstractness) that are also carried by suffixes, potentially oversimplifying the 'spelling-to-meaning' relationship.",
+      "quote": "This paper focuses on one aspect of word meaning, specifically, lexical category (e.g., noun, adjective, verb; see Baayen et al., 2011, for a similar conceptualisation of “meaning”).",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "database_obsolescence",
+      "description": "The computational analysis relies on the CELEX database from 1993. Language use, particularly the frequency of specific words and the emergence of new derivations (e.g., tech-related terms), has shifted significantly in the last 30 years. This may result in diagnosticity and specificity values that do not accurately reflect the current linguistic environment of the 'skilled readers' tested.",
+      "quote": "We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "stimulus_selection",
+      "description": "The inclusion of 'pseudoaffixed' words (e.g., 'vanish' for the -ish suffix) in the computational analysis introduces noise. While readers may perform morpho-orthographic segmentation on these words, the 'meaning' (lexical category) of a pseudo-suffixed word is not derived from the suffix in the same way as a genuine derivation. This conflates structural regularity with functional morphology.",
+      "quote": "We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "missing_data",
+      "description": "Experiment 1 reports a high rate of missing data (11.7%) due to timeouts or invalid button presses. In a simple binary classification task with no speed pressure, this suggests either a flaw in the experimental interface, poor participant engagement, or that the stimuli were too ambiguous for the 'skilled readers' to process within the 2-second window.",
+      "quote": "11.7% of data points were missing due to timeouts or button presses that did not correspond to a response",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "model_specification",
+      "description": "The authors use mixed-effects models but only specify random intercepts for subjects (and sometimes suffixes). They do not mention random slopes for the fixed effects (e.g., congruency or diagnosticity). Failing to include maximal random effects structures often leads to anti-conservative p-values and inflated Type I error rates.",
+      "quote": "We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \"binomial\").",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "multiple_comparisons",
+      "description": "In Experiment 3, the authors test six different eye-tracking measures (skipping, first fixation, dwell time, go-past, regressions-in, regressions-out). Testing multiple dependent variables increases the family-wise error rate, yet no Bonferroni or similar correction is mentioned. The significant effects found only in 'late' measures (go-past and regressions-out) might be spurious.",
+      "quote": "We considered word-skipping, first fixation durations, first run dwell time (sums of all fixation durations during first pass), go-past times, regressions to the target from later parts of the sentence, regressions from the target to earlier regions of the sentence.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "phonological_simplification",
+      "description": "The specificity calculation only considers the 'most frequent pronunciation' for each suffix. English suffixes often have multiple phonological realizations (e.g., the vowel in -ate varies between verbs and nouns/adjectives). By ignoring this variation, the authors may be overestimating the 'orthographic' advantage for meaning transmission.",
+      "quote": "Only the most frequent pronunciation was considered for each suffix.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "stimulus_bias",
+      "description": "In Experiment 1, the use of CVC stems (e.g., 'hil-', 'guf-') is intended to create nonwords, but many of these stems have high orthographic overlap with real words (e.g., 'hill', 'guff'). This could trigger lexical competition or semantic priming that is unrelated to the suffix diagnosticity, confounding the classification results.",
+      "quote": "Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "discrepancy_in_results",
+      "description": "The authors note that token-based measures of diagnosticity failed to show an effect for adjective-specific suffixes in Experiment 1, whereas type-based measures did. This discrepancy is dismissed in the discussion but suggests that the 'regularity' readers are sensitive to is based on vocabulary breadth rather than frequency of exposure, which contradicts some models of statistical learning.",
+      "quote": "The results based on token measures were similar... but adjective-specific suffixes did not show an effect of diagnosticity (p > 0.8).",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "task_demand_characteristics",
+      "description": "In Experiment 2, the sentence templates are highly predictable. For example, the adjective template always uses a specific set of linking verbs (e.g., 'prove', 'stay', 'smell'). Participants may have quickly deduced the purpose of the experiment, leading to strategic rather than implicit spelling choices.",
+      "quote": "Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain, that maximised the probability that they would be perceived as adjectives.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "missing_information",
+      "description": "The authors do not provide the results of a power analysis for any of the three experiments. Given the complexity of the interactions being tested (e.g., Diagnosticity x Congruency), it is unclear if the null effects in early eye-tracking measures are due to a lack of effect or a lack of power.",
+      "quote": "Three psychological experiments tested skilled readers’ knowledge...",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "ecological_validity",
+      "description": "The 'vorpal' example from Lewis Carroll is used to frame the paper, but 'vorpal' is a unique literary invention. Generalizing from a poet's creative use of a suffix to the cognitive architecture of everyday reading is a stretch, especially since Carroll's choice might have been guided by phonoaesthetics rather than statistical diagnosticity.",
+      "quote": "Might these observations help us to understand why Lewis Carroll (1871/1983) chose the spelling “vorpal” as opposed to “vorple”...",
+      "location": "introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "exclusion_criteria",
+      "description": "The authors excluded suffixes occurring in fewer than 3 words. This is an extremely low threshold. A 'regularity' based on only 3 words is unlikely to be statistically robust or learnable by a reader, yet these suffixes contribute to the 'high mean diagnosticity' reported for the system.",
+      "quote": "we extracted all spellings annotated as derivational suffixes in CELEX that occur in at least three different words.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "interpretation_of_null_results",
+      "description": "In Experiment 3, the authors find no effect on first fixation duration or first run dwell time. They interpret this as category information only becoming important 'following initial lexical processing.' However, this could also be interpreted as the orthographic cues being too weak to influence the initial stages of word recognition, which challenges the 'skilled reading' facilitation hypothesis.",
+      "quote": "These results therefore indicate that the category information becomes important following initial lexical processing...",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "data_handling",
+      "description": "Appendix A contains several 'NA' values for specificity. The manuscript does not explain how these 'NA' values were handled in the regression models or the entropy analysis. If they were treated as zero or excluded, it could bias the results toward higher mean specificity.",
+      "quote": "NA – specificity value is not defined because the spelling never occurs as a potential suffix with words of a given category.",
+      "location": "appendix",
+      "severity": "minor"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "circular_reasoning",
+      "description": "The argument that English spelling 'evolved' to maximize meaning transmission is based on the observation that it currently does so. This is potentially circular. The diachronic data cited (Berg & Aronoff) is limited to a few suffixes, and the 'fractionation' could be a byproduct of etymological history (Latinate vs. Germanic roots) rather than a functional evolution for reading efficiency.",
+      "quote": "English spelling may have evolved in such a way as to maximise the transmission of meaningful information through suffixation.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological",
+      "subcategory": "auditory_ambiguity",
+      "description": "In Experiment 2, nonwords were presented auditorily. The spelling of a nonword is highly dependent on the participant's phonological perception. If a participant misperceived a phoneme in the 'female native speaker's' recording, their spelling choice would be confounded by perceptual error rather than sensitivity to lexical category.",
+      "quote": "The nonwords were pronounced by an adult female native speaker of British English and recorded in stereo...",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "effect_size_reporting",
+      "description": "The authors report B-estimates and z/t values but do not provide standardized effect sizes (e.g., Cohen's d or R-squared for the models). This makes it difficult to assess the practical significance of the 'sensitivity' readers have to these regularities.",
+      "quote": "Results showed a main effect of suffix condition such that noun-diagnostic suffixes elicited more “noun” responses (B = -1.57, z = -4.224, p < 0.0001)",
+      "location": "results",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\n  \"issues\": [\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"confounding_variable\",\n      \"description\": \"In Experiment 3, there is a statistically significant difference in the number of words preceding the target nonword between the congruent (4.75) and incongruent (5.23) conditions. In eye-tracking research, the position of a word in a sentence and the amount of preceding text significantly influence reading times and regression probabilities. This confound undermines the validity of the 'congruency effect' found in go-past times and regressions.\",\n      \"quote\": \"Note that the number of words pre-target was slightly different across conditions (congruent: 4.75, incongruent: 5.23, t(64) = 2.07, p < 0.05).\",\n      \"location\": \"methods\",\n      \"severity\": \"critical\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"sample_size\",\n      \"description\": \"Experiment 2 utilizes a sample size of only 29 participants. Given the high variability in spelling behavior and the subtle nature of the statistical regularities being tested, this sample is likely underpowered to detect the interaction between specificity and condition reliably, increasing the risk of Type I or Type II errors.\",\n      \"quote\": \"Participants. Participants were 29 undergraduate students from Royal Holloway University of London.\",\n      \"location\": \"methods\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"construct_validity\",\n      \"description\": \"The authors equate 'meaning' almost exclusively with 'lexical category' (noun, verb, adjective). While lexical category is a component of meaning, it is primarily a syntactic property. This reductionist definition ignores semantic nuances (e.g., agency, abstractness) that are also carried by suffixes, potentially oversimplifying the 'spelling-to-meaning' relationship.\",\n      \"quote\": \"This paper focuses on one aspect of word meaning, specifically, lexical category (e.g., noun, adjective, verb; see Baayen et al., 2011, for a similar conceptualisation of “meaning”).\",\n      \"location\": \"introduction\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"database_obsolescence\",\n      \"description\": \"The computational analysis relies on the CELEX database from 1993. Language use, particularly the frequency of specific words and the emergence of new derivations (e.g., tech-related terms), has shifted significantly in the last 30 years. This may result in diagnosticity and specificity values that do not accurately reflect the current linguistic environment of the 'skilled readers' tested.\",\n      \"quote\": \"We extracted all single-word entries from the CELEX database (Baayen, Piepenbrock & van Rijn, 1993)\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"stimulus_selection\",\n      \"description\": \"The inclusion of 'pseudoaffixed' words (e.g., 'vanish' for the -ish suffix) in the computational analysis introduces noise. While readers may perform morpho-orthographic segmentation on these words, the 'meaning' (lexical category) of a pseudo-suffixed word is not derived from the suffix in the same way as a genuine derivation. This conflates structural regularity with functional morphology.\",\n      \"quote\": \"We included pseudoaffixed words because there is evidence that people identify morphemes within these (Rastle, Davis, & New, 2004).\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"missing_data\",\n      \"description\": \"Experiment 1 reports a high rate of missing data (11.7%) due to timeouts or invalid button presses. In a simple binary classification task with no speed pressure, this suggests either a flaw in the experimental interface, poor participant engagement, or that the stimuli were too ambiguous for the 'skilled readers' to process within the 2-second window.\",\n      \"quote\": \"11.7% of data points were missing due to timeouts or button presses that did not correspond to a response\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"model_specification\",\n      \"description\": \"The authors use mixed-effects models but only specify random intercepts for subjects (and sometimes suffixes). They do not mention random slopes for the fixed effects (e.g., congruency or diagnosticity). Failing to include maximal random effects structures often leads to anti-conservative p-values and inflated Type I error rates.\",\n      \"quote\": \"We included a random intercept for subjects. This analysis was expressed in the model glmer (response ~ condition + (1|subject), data, family = \\\"binomial\\\").\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"multiple_comparisons\",\n      \"description\": \"In Experiment 3, the authors test six different eye-tracking measures (skipping, first fixation, dwell time, go-past, regressions-in, regressions-out). Testing multiple dependent variables increases the family-wise error rate, yet no Bonferroni or similar correction is mentioned. The significant effects found only in 'late' measures (go-past and regressions-out) might be spurious.\",\n      \"quote\": \"We considered word-skipping, first fixation durations, first run dwell time (sums of all fixation durations during first pass), go-past times, regressions to the target from later parts of the sentence, regressions from the target to earlier regions of the sentence.\",\n      \"location\": \"results\",\n      \"severity\": \"major\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"phonological_simplification\",\n      \"description\": \"The specificity calculation only considers the 'most frequent pronunciation' for each suffix. English suffixes often have multiple phonological realizations (e.g., the vowel in -ate varies between verbs and nouns/adjectives). By ignoring this variation, the authors may be overestimating the 'orthographic' advantage for meaning transmission.\",\n      \"quote\": \"Only the most frequent pronunciation was considered for each suffix.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"stimulus_bias\",\n      \"description\": \"In Experiment 1, the use of CVC stems (e.g., 'hil-', 'guf-') is intended to create nonwords, but many of these stems have high orthographic overlap with real words (e.g., 'hill', 'guff'). This could trigger lexical competition or semantic priming that is unrelated to the suffix diagnosticity, confounding the classification results.\",\n      \"quote\": \"Eighty non-existing stems with a CVC structure were constructed using the Wuggy pseudoword generator\",\n      \"location\": \"methods\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"discrepancy_in_results\",\n      \"description\": \"The authors note that token-based measures of diagnosticity failed to show an effect for adjective-specific suffixes in Experiment 1, whereas type-based measures did. This discrepancy is dismissed in the discussion but suggests that the 'regularity' readers are sensitive to is based on vocabulary breadth rather than frequency of exposure, which contradicts some models of statistical learning.\",\n      \"quote\": \"The results based on token measures were similar... but adjective-specific suffixes did not show an effect of diagnosticity (p > 0.8).\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"design\",\n      \"subcategory\": \"task_demand_characteristics\",\n      \"description\": \"In Experiment 2, the sentence templates are highly predictable. For example, the adjective template always uses a specific set of linking verbs (e.g., 'prove', 'stay', 'smell'). Participants may have quickly deduced the purpose of the experiment, leading to strategic rather than implicit spelling choices.\",\n      \"quote\": \"Nonwords in adjective contexts appeared after verbs prove, stay, grow, smell, appear, taste, sound, seem, look, turn, become, remain, that maximised the probability that they would be perceived as adjectives.\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"missing_information\",\n      \"description\": \"The authors do not provide the results of a power analysis for any of the three experiments. Given the complexity of the interactions being tested (e.g., Diagnosticity x Congruency), it is unclear if the null effects in early eye-tracking measures are due to a lack of effect or a lack of power.\",\n      \"quote\": \"Three psychological experiments tested skilled readers’ knowledge...\",\n      \"location\": \"methods\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"validity\",\n      \"subcategory\": \"ecological_validity\",\n      \"description\": \"The 'vorpal' example from Lewis Carroll is used to frame the paper, but 'vorpal' is a unique literary invention. Generalizing from a poet's creative use of a suffix to the cognitive architecture of everyday reading is a stretch, especially since Carroll's choice might have been guided by phonoaesthetics rather than statistical diagnosticity.\",\n      \"quote\": \"Might these observations help us to understand why Lewis Carroll (1871/1983) chose the spelling “vorpal” as opposed to “vorple”...\",\n      \"location\": \"introduction\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"exclusion_criteria\",\n      \"description\": \"The authors excluded suffixes occurring in fewer than 3 words. This is an extremely low threshold. A 'regularity' based on only 3 words is unlikely to be statistically robust or learnable by a reader, yet these suffixes contribute to the 'high mean diagnosticity' reported for the system.\",\n      \"quote\": \"we extracted all spellings annotated as derivational suffixes in CELEX that occur in at least three different words.\",\n      \"location\": \"methods\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"interpretation_of_null_results\",\n      \"description\": \"In Experiment 3, the authors find no effect on first fixation duration or first run dwell time. They interpret this as category information only becoming important 'following initial lexical processing.' However, this could also be interpreted as the orthographic cues being too weak to influence the initial stages of word recognition, which challenges the 'skilled reading' facilitation hypothesis.\",\n      \"quote\": \"These results therefore indicate that the category information becomes important following initial lexical processing...\",\n      \"location\": \"results\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"reporting\",\n      \"subcategory\": \"data_handling\",\n      \"description\": \"Appendix A contains several 'NA' values for specificity. The manuscript does not explain how these 'NA' values were handled in the regression models or the entropy analysis. If they were treated as zero or excluded, it could bias the results toward higher mean specificity.\",\n      \"quote\": \"NA – specificity value is not defined because the spelling never occurs as a potential suffix with words of a given category.\",\n      \"location\": \"appendix\",\n      \"severity\": \"minor\"\n    },\n    {\n      \"category\": \"conceptual\",\n      \"subcategory\": \"circular_reasoning\",\n      \"description\": \"The argument that English spelling 'evolved' to maximize meaning transmission is based on the observation that it currently does so. This is potentially circular. The diachronic data cited (Berg & Aronoff) is limited to a few suffixes, and the 'fractionation' could be a byproduct of etymological history (Latinate vs. Germanic roots) rather than a functional evolution for reading efficiency.\",\n      \"quote\": \"English spelling may have evolved in such a way as to maximise the transmission of meaningful information through suffixation.\",\n      \"location\": \"introduction\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"methodological\",\n      \"subcategory\": \"auditory_ambiguity\",\n      \"description\": \"In Experiment 2, nonwords were presented auditorily. The spelling of a nonword is highly dependent on the participant's phonological perception. If a participant misperceived a phoneme in the 'female native speaker's' recording, their spelling choice would be confounded by perceptual error rather than sensitivity to lexical category.\",\n      \"quote\": \"The nonwords were pronounced by an adult female native speaker of British English and recorded in stereo...\",\n      \"location\": \"methods\",\n      \"severity\": \"moderate\"\n    },\n    {\n      \"category\": \"statistical\",\n      \"subcategory\": \"effect_size_reporting\",\n      \"description\": \"The authors report B-estimates and z/t values but do not provide standardized effect sizes (e.g., Cohen's d or R-squared for the models). This makes it difficult to assess the practical significance of the 'sensitivity' readers have to these regularities.\",\n      \"quote\": \"Results showed a main effect of suffix condition such that noun-diagnostic suffixes elicited more “noun” responses (B = -1.57, z = -4.224, p < 0.0001)\",\n      \"location\": \"results\",\n      \"severity\": \"minor\"\n    }\n  ]\n}",
+  "model_id": "gemini-3-flash-preview",
+  "token_usage": {
+    "input_tokens": 36386,
+    "output_tokens": 3082
+  }
+}

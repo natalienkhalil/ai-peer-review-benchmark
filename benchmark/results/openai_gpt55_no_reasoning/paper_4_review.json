@@ -1,0 +1,644 @@
+{
+  "paper_id": 4,
+  "provider_name": "openai_gpt55_no_reasoning",
+  "issues": [
+    {
+      "category": "internal_consistency",
+      "subcategory": "prospective vs retrospective design contradiction",
+      "description": "The manuscript describes the study as using retrospective reconstruction of past episodes, but then calls this a prospective research design. This is conceptually and methodologically incorrect: the outcomes and predictors were both assessed after the fact, and episode labels were assigned retrospectively. Mislabeling the design as prospective overstates inferential strength and the ability to evaluate prediction in real time.",
+      "quote": "By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design to understand which features in text communications predicted suicide attempt",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "predictive/real-time claims from retrospective data",
+      "description": "The study repeatedly frames the findings as identifying real-time markers or predictors of imminent suicide risk, but the design is retrospective and laboratory-based. Participants identified past episodes after the outcome was known, and analyses compared messages from retrospectively labeled periods. This cannot establish prospective predictive validity, real-time detectability, or clinical utility without prospective validation.",
+      "quote": "Results suggest private electronic communication has the potential to provide real-time digital markers of suicide risk.",
+      "location": "abstract",
+      "severity": "major"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "prediction language from association analyses",
+      "description": "The analyses test associations between episode type and text features, not out-of-sample prediction or prospective classification. Referring to identified language differences as predictors of suicidal behaviors may mislead readers into believing predictive validity was demonstrated.",
+      "quote": "This laboratory investigation identified novel predictors of suicidal behaviors",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "incorrect p-value for chi-square test",
+      "description": "The reported p-value for the sadness omnibus test is inconsistent. A chi-square value of 8.74 with 3 df corresponds to p≈.033, as shown in Table 2, not p=.003 as stated in the Results. This error materially exaggerates the strength of evidence.",
+      "quote": "there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "text-table discrepancy",
+      "description": "The Results text reports p=.003 for the sadness omnibus effect, whereas Table 2 reports p=.033 for the same statistic. Such inconsistency undermines confidence in the reported statistical results and suggests reporting or transcription errors.",
+      "quote": "Sadness (sad) | 2=8.74 | 3 | 3 | .033",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "mislabeling likelihood-ratio and Wald tests",
+      "description": "The manuscript conflates likelihood-ratio tests and Wald chi-square tests. Likelihood-ratio tests and Wald tests are different tests with different assumptions and statistics. It is unclear which test was actually used, preventing evaluation of the inferential procedure.",
+      "quote": "Likelihood-ratio (Wald chi-square) tests were performed to compare goodness of fit for models including and excluding the fixed effect of episode type.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "inappropriate random effect for message-level unit",
+      "description": "The models reportedly include random intercepts for message. Because each text message is an observational unit and appears only once, a random intercept for message is not meaningful and may be unidentified or equivalent to observation-level random effects only for specific purposes. The rationale is not explained. If intended to handle overdispersion, this should be explicitly justified and assessed.",
+      "quote": "a maximal random effects model, which included random intercepts of participant, episode, and message, and random by-participant slopes",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "random effects dropped despite confirmatory interaction tests",
+      "description": "For the time-varying models, the planned maximal random effects did not converge and all random slopes were removed. This can inflate Type I error for within-subject predictors and interactions, especially with repeated measurements nested within participants and episodes. The manuscript acknowledges nonconvergence but does not present alternative parsimonious structures, convergence diagnostics, or sensitivity analyses for random-effects choices.",
+      "quote": "Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "overstatement that mixed models handle missing data",
+      "description": "The manuscript states that mixed models handle missing data, but the missingness here includes missing entire episodes and SMS histories depending on phone availability, backups, encryption, and participant recall. Mixed models handle unbalanced observed data under assumptions such as missing at random; they do not automatically correct selection bias from unavailable historical text data. Missingness may be systematically related to time, phone type, socioeconomic factors, or episode recency.",
+      "quote": "A mixed-effects method was selected because of its well-established advantages in terms of producing more accurate effect estimates and its ability to handle missing data",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "large episode-level missing data not adequately modeled",
+      "description": "Only 134 of 293 reported episodes contained SMS data, meaning more than half of identified episodes were excluded from analyses. The manuscript does not compare included versus excluded episodes or participants on recency, severity, episode type, device type, demographics, or clinical characteristics. This threatens internal validity because missing SMS data are unlikely to be random.",
+      "quote": "Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "participant exclusion from analytic sample",
+      "description": "The recruited sample was N=33, but analyses of SMS episodes involved only 27 participants. The manuscript does not adequately characterize the six participants without usable SMS data or assess whether their exclusion biased the analytic sample.",
+      "quote": "Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "retrospective recall of episode dates",
+      "description": "Episode identification and dating relied on participants retrospectively recalling dates of suicide attempts, ideation, depressed mood, and typical mood. Even small date errors are problematic because the hypotheses concern temporal changes across days before an attempt. Misdated episodes could distort slopes and obscure or generate apparent temporal patterns.",
+      "quote": "participants were asked to identify a number of specific events or episodes in the past and the calendar dates during which the episodes took place.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "data-driven choice of temporal window",
+      "description": "Although a two-week episode window is described as theoretically motivated, the manuscript also states that the optimal window was assessed empirically using visual inspection of descriptive figures. This introduces analytic flexibility and possible circularity, especially if the same data were used to decide the window and test effects.",
+      "quote": "The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "undisclosed or insufficient preregistration details",
+      "description": "The manuscript states that some variables were selected a priori and that materials are on OSF, but it does not report whether hypotheses, exclusion rules, episode windows, model specifications, random-effects simplification rules, or multiple-comparison plans were preregistered. Given many outcomes and analytic choices, lack of transparent preregistration increases concern about researcher degrees of freedom.",
+      "quote": "We analyzed and compared text messages during episodes within person based on a number of features selected a priori",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "multiple testing without correction",
+      "description": "The study conducts many omnibus tests and follow-up pairwise comparisons across multiple LIWC variables, constructs, and model types, but does not correct for multiplicity. The justification that this is a pilot study and underpowered does not eliminate inflated familywise false-positive risk. Several key findings have p-values near .05 and may not survive even modest correction.",
+      "quote": "we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction)",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "borderline findings interpreted as unique markers",
+      "description": "Key conclusions rely partly on pairwise comparisons with p-values at or near .05, such as positive emotion versus ideation p=.049 and anger versus ideation p=.046. In the context of many tests and no multiplicity correction, interpreting these as unique markers of attempts is not robust.",
+      "quote": "positive emotion decreased more steeply during attempt episodes compared to all other episode types, including ideation (z=1.96, p=.049)",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unclear binomial denominator and dependence structure",
+      "description": "The authors convert LIWC percentages to counts and model category words versus non-category words using binomial GLMMs. However, it is unclear whether each message’s total word count was used as the binomial denominator, how zero-word or very short messages were handled, and whether overdispersion was assessed. Words within a message are not independent Bernoulli trials, so binomial standard errors may be too small without overdispersion correction.",
+      "quote": "These LIWC percentage scores were converted into counts and then entered as proportions in our models (i.e., number of words in a given text message belonging to versus not belonging to the LIWC category)",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "insufficient model specification details",
+      "description": "The manuscript does not fully specify model formulas, coding of episode type contrasts, centering/scaling of day, whether day was treated as continuous or categorical despite being called a numerical factor, offset terms for word/message counts, estimation method, optimizer, convergence warnings, or handling of singular fits. These details are required for reproducibility.",
+      "quote": "A series of mixed-effects models were performed for each language feature with 3 fixed effects: episode type (4 levels: attempt, ideation, depressed, positive), day of episode (numerical factor ranging from -14 to 0), and the interaction of episode type and day.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "linear slope assumption across acute nonlinear process",
+      "description": "The primary temporal analysis appears to impose a linear day effect over the two-week episode. The authors themselves note temporal patterns were variable and identified with loess visualizations. If risk escalation is nonlinear, linear slopes may misrepresent temporal dynamics and make interpretation of interactions unstable.",
+      "quote": "day of episode (numerical factor ranging from -14 to 0), and the interaction of episode type and day",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "one-week versus two-week attempt episode contradiction",
+      "description": "The episode identification section first states that the one-week period prior to the attempt was used as the suicide attempt episode, then states that each episode was set at two weeks long, and elsewhere the abstract and overview refer to two weeks before an attempt. This inconsistency makes the analytic window unclear.",
+      "quote": "past actual, interrupted, or aborted suicide attempts, using the one-week period prior to the attempt as a “suicide attempt episode”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "contradictory description of control mood episode",
+      "description": "The overview describes comparison periods as including positive mood, but the methods define the fourth episode type as typical mood, neither positive nor negative. This is a construct and reporting inconsistency because typical mood and positive mood are not equivalent controls.",
+      "quote": "two-week episode of typical mood (i.e., neither particularly positive nor negative mood and no ideation or attempt).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "positive mood control not consistently operationalized",
+      "description": "The study treats the lowest-risk comparison condition as positive mood in hypotheses and results, but in the interview it appears to have been defined as typical mood. If the actual comparison is typical mood, conclusions about positive mood episodes and contrasts with positive affect are conceptually unclear.",
+      "quote": "depressed mood, or positive mood",
+      "location": "abstract",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "broad and heterogeneous suicide attempt definition",
+      "description": "The attempt category combines enacted attempts, interrupted attempts, aborted attempts, and subjectively endorsed high-intent planning/actions without physical action. These differ clinically and mechanistically. Combining them may dilute or distort markers of imminent enacted suicidal behavior and limits claims about suicide attempts specifically.",
+      "quote": "reported ‘suicide attempts’ also included incidents in which no physical attempt was enacted but in which participants considered their planning or actions to constitute a higher level of suicidal intent than ‘suicide ideation’",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "attempt count inconsistency",
+      "description": "The power analysis anticipated 60 attempts and 20 with usable SMS data, but the Results state 21 attempts with corresponding SMS data. In addition, 27 participants had data from at least one attempt, which is difficult to reconcile with only 21 attempts with corresponding SMS data. These inconsistent counts obscure the actual analytic sample.",
+      "quote": "representing 60 attempts but only 20 with collected, usable SMS data",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "participants with attempt data versus attempts with SMS data inconsistency",
+      "description": "The manuscript states that all 27 participants with SMS data had data from at least one suicide attempt, which implies at least 27 attempt episodes with SMS data. Later it states that among attempters with SMS data, there were 21 attempts with corresponding SMS data. These numbers cannot both be correct unless the units are being defined differently, which is not explained.",
+      "quote": "Among these 27 participants, all had data from at least one reported suicide attempt.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "iatrogenic change direction error",
+      "description": "The Results state that desire to die significantly decreased from pre to post, but the reported means increase from 0.82 to 1.03, and Table 1 lists a positive change of 0.20. This is a clear directional reporting error. It affects interpretation of possible adverse effects of study participation.",
+      "quote": "desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "discussion reports anxiety mean effect not supported by results",
+      "description": "The Discussion states that high-risk periods were associated with greater anxiety and sadness, but the Results and Table 2 report anxiety as nonsignificant. This overstates the findings and contradicts the statistical results.",
+      "quote": "results indicated that the period of high risk just before a suicide attempt was associated with messages indicating greater anxiety and sadness.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "hypothesis construct mismatch for social engagement",
+      "description": "The hypothesis states that lower ratio of sent versus received texts indicates decreased social engagement. The Discussion later admits this is a crude measure and cannot distinguish engagement, unanswered messages, initiation, or relationship quality. The operationalization may not validly measure thwarted belongingness, burdensomeness, or social disengagement.",
+      "quote": "decreased social engagement (i.e., lower ratio of sent vs. received text messages).",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "self-focus equated with rumination",
+      "description": "The study treats singular first-person pronoun use as an indicator of rumination/self-focus. First-person pronouns may reflect many communication contexts and are not a direct measure of rumination or negative self-focus, especially in dyadic text messages. This weakens construct validity for the theoretical interpretation.",
+      "quote": "use of first-person pronouns (as an indicator of rumination)",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "LIWC word counts as sentiment without context",
+      "description": "The use of LIWC single-word categories to infer emotional state does not account for negation, sarcasm, quoting others, idioms, recipient context, or conversational topic. The authors acknowledge this later, but primary interpretations still treat category word frequencies as emotional markers of suicide risk.",
+      "quote": "LIWC searches a text file and calculates normalized word counts for nearly 6,400 words, word stems, and emoticons that have been previously categorized into a number of linguistic and psychological dimensions.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "lack of independent blinded episode classification",
+      "description": "Episode classification was based on participant self-report during an interview conducted after screening for attempt history. There is no indication that interviewers were blinded to hypotheses or that independent raters validated episode classifications. This increases risk of misclassification and expectancy effects in defining high- versus lower-risk periods.",
+      "quote": "participants were interviewed by the experimenter and asked to identify a number of episodes, including dates of past suicide attempts",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "non-equivalent episode anchoring",
+      "description": "Attempt episodes are anchored to a salient event date, whereas ideation, depressed, and typical/positive episodes may be selected retrospectively and less precisely, with no equivalent endpoint. Slope comparisons may therefore reflect differences in episode anchoring and recall salience rather than risk-specific temporal processes.",
+      "quote": "two-week episodes of suicide ideation (not resulting in a suicide attempt); two-week episodes of depressed mood or high stress... and two-week episode of typical mood",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "episode overlap and independence unclear",
+      "description": "The manuscript does not report whether episodes could overlap, how overlapping periods were handled, or whether text messages could contribute to more than one episode. Given participants could report multiple attempts, ideation, depressed, and mood episodes, overlapping windows would violate independence and contaminate episode-type comparisons.",
+      "quote": "A total of 3 to 12 episodes were collected for each participant depending on the presence and number of reported events.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "insufficient description of sample recruitment source",
+      "description": "The manuscript describes recruiting from the Charlottesville community but screening procedures reference a participant pool pretest administered at the beginning of the semester, implying a university subject pool. The recruitment frame is unclear, limiting evaluation of selection bias and generalizability.",
+      "quote": "A sample of 33 participants with at least one reported past suicide attempt were recruited from the Charlottesville community.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "narrow young college-heavy sample",
+      "description": "The sample is predominantly female, White, and college-aged, with 94% reporting some college. Results may not generalize to older adults, men, non-students, lower socioeconomic groups, clinically acute populations, people without smartphones, or populations at highest risk of death by suicide.",
+      "quote": "Most of the participants were female, White, and college-aged.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "exclusion of currently high-risk individuals",
+      "description": "Participants with high or imminent current suicide risk were excluded. This is ethically understandable, but it limits generalizability to the very population for whom real-time suicide risk detection tools would be intended.",
+      "quote": "Any participants with intense thoughts of suicide who were determined to be at “high risk” or “imminent risk” for suicidal behavior... were excluded from study participation",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "nonlethal attempts only",
+      "description": "Because participants had to be alive and able to provide phone data, the study necessarily excludes suicide decedents and may not generalize to fatal attempts. The manuscript acknowledges this but still often uses broad suicide-risk language.",
+      "quote": "logistics of accessing and downloading communication data necessitated enrolling participants with non-lethal attempts.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "phone/device data availability confounding",
+      "description": "Text availability depended on phone platform, encryption, backups, old devices, cloud access, and participant ability to remember passwords. These factors may correlate with time since episode, socioeconomic status, technology use, and episode type. The study does not control for or analyze these potential confounds.",
+      "quote": "a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "confounding by life events and treatment unaddressed",
+      "description": "Language changes before attempts may be driven by precipitating interpersonal crises, treatment changes, substance use, hospitalization, exams, relationship breakups, or other contextual events rather than suicide risk per se. The manuscript collected contextual descriptions but does not report controlling for these confounders.",
+      "quote": "Participants were then asked to describe specific details of and context surrounding each time period.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "episode recency not reported",
+      "description": "The reliability of retrospective dating and availability/completeness of SMS data depend heavily on how long ago episodes occurred. The manuscript does not report distributions of time since attempts or other episode types, nor whether recency differed by condition.",
+      "quote": "availability of and access to personal messaging data dating back prior to significant life events",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "SMS inclusion/exclusion preprocessing insufficiently detailed",
+      "description": "The manuscript does not specify how group texts, multimedia messages, emojis, autocorrect artifacts, deleted messages, duplicate backups, messages from multiple devices, non-English messages, or messages with no analyzable words were handled. These preprocessing choices can materially affect LIWC counts and message-level analyses.",
+      "quote": "participants’ SMS data files were individually cleaned using Python to standardize the encoding of messages and naming of variables across all participants.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "incoming messages may not reflect participant language",
+      "description": "The analyses include text messages generally, but it is unclear for LIWC language outcomes whether incoming messages, outgoing messages, or both were analyzed. If incoming messages were included, LIWC scores would partly reflect other people’s language rather than the participant’s psychological state. If only outgoing messages were used, this should be explicitly stated.",
+      "quote": "Language analysis software scored 189,478 text messages to capture three psychological constructs",
+      "location": "abstract",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "directionality of language data unclear",
+      "description": "The methods discuss outgoing and incoming messages for social engagement but do not clearly state whether sentiment and self-focus analyses used sent messages only or all messages. This omission is crucial for interpreting language as reflecting the participant.",
+      "quote": "Each individual SMS message was inputted into and scored using the 2015 version of Linguistic Inquiry and Word Count (LIWC)",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "effect size reporting inappropriate or unclear",
+      "description": "The manuscript states that standardized beta values in log-odds units serve as effect sizes. Log-odds coefficients are not standardized effect sizes unless predictors/outcomes were standardized in a specified way, and the reported coefficients for pairwise contrasts are not easily interpretable as effect sizes. No odds ratios, predicted probabilities, confidence intervals, or marginal effects are provided.",
+      "quote": "Here, β (standardized values of the model parameter estimates in log odds units) are reported and serve as effect sizes.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "confidence intervals absent",
+      "description": "Key model estimates and contrasts are reported with p-values but not confidence intervals. This limits assessment of precision, especially in a small pilot sample with many tests and highly unbalanced data.",
+      "quote": "Pairwise comparisons revealed that the change over time approaching a suicide attempt significantly differed from change over time for ideation (z=2.99, p=.003)",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "power analysis insufficiently described and possibly mismatched",
+      "description": "The power analysis refers to Cramer’s V for chi-square tests of mixed-effects models and divides by a design effect, but details of the assumed clustering, number of episodes, intraclass correlations, and outcome distributions are absent. Cramer’s V for simple chi-square tests is not directly applicable to complex multilevel binomial/linear mixed models with message-level data.",
+      "quote": "provide enough power to detect only large effect sizes (Cramer’s V=0.29) for chi-square tests of mixed-effects models",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "underpowered participant-level sample despite large message count",
+      "description": "Although 189,478 messages were analyzed, the effective sample for within-person suicide-risk inference is the number of participants and episodes, not raw messages. With 27 SMS-contributing participants and few attempt episodes, estimates may be unstable and vulnerable to domination by high-volume texters.",
+      "quote": "Across all episodes, 189,478 text messages were collected and analyzed",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "possible weighting by message volume biases estimates",
+      "description": "Analyzing at message level maximizes data but may give disproportionate influence to participants or episodes with many messages, unless random effects or weighting adequately address this. The manuscript does not report whether results are robust to aggregation at day or episode level or to excluding high-volume texters.",
+      "quote": "This approach also allowed us to maximize sources of variance by analyzing on the message level rather than only mean values by episode",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "missing distribution of episodes by type with SMS data",
+      "description": "The study reports average episodes per type but not the exact number of analyzable attempt, ideation, depressed, and positive/typical episodes or participants contributing to each comparison. Without this, readers cannot evaluate balance, degrees of freedom, or whether pairwise contrasts are driven by very small subsets.",
+      "quote": "Participants reported and had SMS data for on average approximately 1.5 episodes for each episode type.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "lack of external validation of attempt lethality/intent",
+      "description": "Attempt characteristics and lethality were based on participant description rather than medical records, collateral reports, or clinician-rated standardized lethality scales. Because 71% of incidents did not result in physical harm, validation is particularly important for distinguishing attempts from ideation or planning.",
+      "quote": "Based on participants’ description of the objective lethality of the attempt, 29% of incidents involved some action being taken in which some physical harm was caused... while 71% of incidents did not result in any physical harm",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "depressed mood combined with high stress",
+      "description": "The depressed comparison episode is defined as depressed mood or high stress. Depression and stress are distinct constructs and may have different language signatures. Combining them reduces construct clarity and may obscure or create differences relative to attempt episodes.",
+      "quote": "two-week episodes of depressed mood or high stress (not resulting in suicide ideation or attempt)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "risk-level ordering oversimplified",
+      "description": "The manuscript assigns attempt, ideation, depressed, and positive/typical episodes to high, moderate, and minimal/no risk categories. However, a depressed or highly stressed period in a person with prior attempts may still entail elevated suicide risk even without reported ideation, and retrospective absence of ideation may be unreliable. This categorical ordering may oversimplify dynamic risk.",
+      "quote": "attempt episodes were considered “high risk,” ideation episodes were considered “moderate risk,” and depressed and positive episodes were considered “minimal/no risk.”",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "selection bias from willingness to share private texts",
+      "description": "Participants willing and able to provide private SMS data about suicidal periods may differ systematically from other attempters in privacy attitudes, severity, interpersonal communication style, and technology use. The manuscript does not assess this selection process beyond screening counts.",
+      "quote": "Participants downloaded their communication data in the lab with the experimenter’s assistance",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "screening exclusions not available in main text",
+      "description": "The manuscript relies on a supplemental CONSORT diagram for the large screening funnel but does not report main reasons for exclusion in the article. Given 2,377 online screens yielded 33 participants, selection criteria and exclusion reasons are central to evaluating external validity.",
+      "quote": "2,377 individuals were screened online and 77 individuals were screened by phone. See Figure S1... for a CONSORT diagram detailing specific numbers and reasons for exclusion.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "incorrect or garbled test statistic notation",
+      "description": "Throughout the Results and tables, chi-square statistics appear as “2(3)” or “2=...” rather than χ², and Table 2 includes duplicated df columns. This may be a formatting issue, but it obscures the statistical tests and degrees of freedom.",
+      "quote": "2(3)=11.57, p=.009",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "LIWC variables and proprietary Tone details not in main text",
+      "description": "The manuscript refers readers to supplemental material for the exact LIWC variables used. Because construct operationalization is central to the study, the main text should clearly list which LIWC categories correspond to each construct and how proprietary Tone was modeled.",
+      "quote": "see Table S3 for the specific LIWC variables calculated for the three psychological constructs",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "death-word interaction interpretation unclear",
+      "description": "The manuscript reports a significant omnibus death-word interaction but no significant attempt-versus-other pairwise differences. It then discusses death words as not differing between episodes, which is generally correct for attempts but does not clearly distinguish omnibus episode-by-time differences from attempt-specific contrasts. This can confuse readers about whether death-related language changed over time.",
+      "quote": "There was also a significant interaction for death words, 2(3)=9.47, p=.024. However, there were no significant differences in change over time for attempt compared to all other episodes",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "clinical application overreach",
+      "description": "The clinical implications describe behind-the-scenes monitoring and notification of clinicians/family, but the study has not established prospective accuracy, false-positive/false-negative rates, acceptability, intervention efficacy, or safety. These claims are speculative and should be more clearly framed as distant possibilities requiring substantial validation.",
+      "quote": "development of an objective monitoring tool capable of tracking individuals’ communication “behind the scenes,” notifying suicidal individuals and/or their clinician or family if their patterns of communication indicate increasing levels of suicide risk.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "SMS platform changes limit applicability",
+      "description": "The study relies on SMS data, but communication among young people increasingly occurs through encrypted, ephemeral, or proprietary platforms. The authors note this, but conclusions about private electronic communication broadly may not generalize to current messaging ecosystems.",
+      "quote": "data collection of SMS and other private digital communication is likely to remain an ongoing challenge for researchers, particularly as younger populations transition to closed ecosystems and proprietary platforms (e.g., Snapchat)",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "no control for weekday/season/time effects",
+      "description": "Texting volume and emotional language vary by weekday, academic calendar, holidays, exams, and time of year. Because episodes are historical and not randomly distributed across calendar time, unmodeled temporal context could confound episode-type differences and slopes.",
+      "quote": "participants were asked to identify... the calendar dates during which the episodes took place",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "variable completeness of historical SMS records",
+      "description": "Messages may have been deleted, lost during phone changes, absent from backups, or unavailable for older episodes. The manuscript does not assess completeness of SMS histories for each episode or whether missing messages differed by episode type or time before attempt.",
+      "quote": "efforts to collection additional messages outside of their current mobile device were minimally successful. Only a small number of participants brought in or had access to old phones.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "no adjustment for zero inflation/rare word categories",
+      "description": "Several LIWC categories such as death, anger, anxiety, and sadness are likely rare in individual text messages, producing many zeros. The manuscript does not report whether zero inflation, sparse counts, separation, or model instability were assessed.",
+      "quote": "For this set of analyses, a significant result says that the odds of a category-specific word appearing in text messages differed as a function of episode type.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "messages may include quoted, copied, or non-self-authored content",
+      "description": "SMS content can include forwarded messages, copied lyrics, automated messages, or quoted text. The manuscript does not indicate whether such messages were identified or removed. These could distort LIWC-based inferences about participant emotion and self-focus.",
+      "quote": "all available SMS data from each device were downloaded (i.e., not from only certain dates or recipients).",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "language and locale handling not reported",
+      "description": "The sample includes non-U.S. citizenship and Hispanic participants, but the manuscript does not state whether all SMS were in English or how non-English texts were processed. LIWC2015 English categories may not validly score non-English or code-switched messages.",
+      "quote": "LIWC searches a text file and calculates normalized word counts",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "interpersonal theory operationalization incomplete",
+      "description": "The interpersonal theory concerns perceived burdensomeness, thwarted belongingness, and acquired capability. The study operationalizes only a crude proxy of social engagement using sent/received ratios, which does not measure perceived burdensomeness or belongingness and omits acquired capability. The theoretical test is therefore weak.",
+      "quote": "we tested whether suicide attempters demonstrated greater signs of disengagement from and burdensomeness on their social support networks prior to suicide attempts compared to other episodes by examining patterns in outgoing vs. incoming messages.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "pairwise comparison method unspecified",
+      "description": "The manuscript reports multiple pairwise z and t tests but does not specify the package or method used, whether contrasts were adjusted, how degrees of freedom were calculated for LMM t tests, or whether pairwise tests were planned only versus attempt or all episode pairs.",
+      "quote": "Any significant tests were followed up with pairwise comparisons between each of the episode types (using z and t statistics for binary/proportion and continuous outcome variables, respectively).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "t-tests for iatrogenic effects with ordinal bounded scales",
+      "description": "Pre-post changes in mood and desire to die were analyzed with paired t-tests despite 0–10 bounded Likert-type scales with floor effects, especially for desire to die. The analysis may be acceptable as approximate but should be supplemented or justified, particularly because baseline desire to die is near the floor.",
+      "quote": "reported mood from pre... to post... did not significantly change, t(32)=1.05, p=.304, and desire to die... t(32)=2.23, p=.033.",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "risk assessment item wording inconsistency",
+      "description": "Inclusion criteria refer to current desire to die, while risk assessment escalation refers to desire to hurt self. These are not equivalent constructs. The manuscript does not clarify which item was used for risk thresholds.",
+      "quote": "score greater than 3 on desire to hurt self question",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no availability of analysis code stated",
+      "description": "The manuscript notes screening surveys and materials are on OSF, but does not state that preprocessing scripts, analysis code, model outputs, or deidentified derived data are available. Given complex data cleaning and modeling, code availability is important for reproducibility.",
+      "quote": "full screening surveys and other study materials are available on OSF at https://osf.io/9f3v2/",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "possible interviewer expectancy and participant demand in episode selection",
+      "description": "Because participants knew the study concerned suicide and text messages, and the experimenter assisted with data downloading and then conducted interviews, participants may have selected episodes or dates influenced by perceived study aims. Although message content itself predates the study, episode selection is vulnerable to demand and recall biases.",
+      "quote": "Participants downloaded their communication data in the lab with the experimenter’s assistance... participants were interviewed by the experimenter and asked to identify a number of episodes",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "abstract says two weeks before attempts but methods mention one-week period",
+      "description": "The abstract states that analyses examined two weeks before a suicide attempt, whereas the methods specify a one-week period prior to the attempt as the suicide attempt episode before later discussing two weeks. This inconsistency affects interpretation of temporal sensitivity.",
+      "quote": "Mixed-effects models tested whether these constructs differed in general (means) and over time (slopes) two weeks before a suicide attempt",
+      "location": "abstract",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no information on clinical diagnoses verification",
+      "description": "Psychiatric diagnoses and treatment history are self-reported and used to characterize the sample, but the manuscript does not clarify whether diagnoses were clinically verified. This limits interpretation of the clinical profile and potential confounding by diagnosis.",
+      "quote": "Participants also reported on current and past treatment experience... and psychiatric diagnoses.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unclear handling of daily count outcomes",
+      "description": "Social engagement outcomes include daily counts and ratios, but the manuscript states non-proportion outcomes were analyzed as raw continuous variables in LMMs. Count outcomes are typically nonnormal, skewed, and heteroscedastic; ratios can be unstable with small denominators. No justification, transformation, or count-model alternative is reported.",
+      "quote": "For outcome variables that were not proportion scores (e.g., number of messages sent per day), the raw continuous variable was used in a linear mixed-effects model (LMM)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "ratio of sent to received messages ambiguous",
+      "description": "A lower sent/received ratio could reflect social withdrawal, but it could also reflect receiving support, crisis outreach by others, group chats, or practical coordination. A higher ratio could reflect distress-seeking or conflict. The direction and meaning of this metric as social engagement are ambiguous.",
+      "quote": "lower ratio of sent vs. received text messages",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "attempt episode severity conflicts with high-risk label",
+      "description": "Attempt episodes are labeled high risk, but most corresponding incidents reportedly did not result in physical harm and included aborted/interrupted events. While intent was reported as high, the heterogeneity complicates claims that the episodes represent imminent risk of enacted attempts.",
+      "quote": "71% of incidents did not result in any physical harm",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "additional subset analyses relegated to supplement",
+      "description": "The manuscript mentions additional robustness/subset analyses but does not summarize their implications in the main text. If these analyses bear on the stability of primary findings, omitting their results limits evaluation of robustness and selective emphasis.",
+      "quote": "Additional analyses were performed to examine the same set of outcome variables but in different ways to examine the robustness of the primary results and to see if the pattern of results changed. Those analyses are available in Supplement 3 online.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "linear risk mapping hypothesis not well justified",
+      "description": "The manuscript assumes self-focus and other constructs should map linearly across no, low, moderate, and high risk states, but the selected episode types differ qualitatively, not just quantitatively. This weakens the theoretical basis for some predictions and post hoc interpretations.",
+      "quote": "degree of self-focus would be expected to map onto risk levels (i.e., no, low, moderate, high) in a linear manner.",
+      "location": "discussion",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no descriptive plots or raw means in main tables",
+      "description": "The tables provide test statistics and selected coefficients but not condition means, slopes, predicted probabilities, or raw descriptive values by episode type. Without these, the magnitude and practical relevance of statistically significant findings are difficult to evaluate.",
+      "quote": "See Table 3 for full results.",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "possible pseudo-replication by treating messages as independent evidence",
+      "description": "The analysis uses message-level data with many messages nested within a small number of people and episodes. If the random-effects structure is insufficient, especially after dropping random slopes, standard errors may reflect the number of messages more than the number of independent clinical episodes, inflating significance.",
+      "quote": "analyzing on the message level rather than only mean values by episode",
+      "location": "methods",
+      "severity": "major"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"internal_consistency\",\"subcategory\":\"prospective vs retrospective design contradiction\",\"description\":\"The manuscript describes the study as using retrospective reconstruction of past episodes, but then calls this a prospective research design. This is conceptually and methodologically incorrect: the outcomes and predictors were both assessed after the fact, and episode labels were assigned retrospectively. Mislabeling the design as prospective overstates inferential strength and the ability to evaluate prediction in real time.\",\"quote\":\"By reconstructing the timeline of recent suicidal behaviors through a retrospective clinical interview, we utilized a prospective research design to understand which features in text communications predicted suicide attempt\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"causal_inference\",\"subcategory\":\"predictive/real-time claims from retrospective data\",\"description\":\"The study repeatedly frames the findings as identifying real-time markers or predictors of imminent suicide risk, but the design is retrospective and laboratory-based. Participants identified past episodes after the outcome was known, and analyses compared messages from retrospectively labeled periods. This cannot establish prospective predictive validity, real-time detectability, or clinical utility without prospective validation.\",\"quote\":\"Results suggest private electronic communication has the potential to provide real-time digital markers of suicide risk.\",\"location\":\"abstract\",\"severity\":\"major\"},{\"category\":\"causal_inference\",\"subcategory\":\"prediction language from association analyses\",\"description\":\"The analyses test associations between episode type and text features, not out-of-sample prediction or prospective classification. Referring to identified language differences as predictors of suicidal behaviors may mislead readers into believing predictive validity was demonstrated.\",\"quote\":\"This laboratory investigation identified novel predictors of suicidal behaviors\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"incorrect p-value for chi-square test\",\"description\":\"The reported p-value for the sadness omnibus test is inconsistent. A chi-square value of 8.74 with 3 df corresponds to p≈.033, as shown in Table 2, not p=.003 as stated in the Results. This error materially exaggerates the strength of evidence.\",\"quote\":\"there was a significant effect of episode type on use of sad words, 2(3)=8.74, p=.003.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"text-table discrepancy\",\"description\":\"The Results text reports p=.003 for the sadness omnibus effect, whereas Table 2 reports p=.033 for the same statistic. Such inconsistency undermines confidence in the reported statistical results and suggests reporting or transcription errors.\",\"quote\":\"Sadness (sad) | 2=8.74 | 3 | 3 | .033\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"mislabeling likelihood-ratio and Wald tests\",\"description\":\"The manuscript conflates likelihood-ratio tests and Wald chi-square tests. Likelihood-ratio tests and Wald tests are different tests with different assumptions and statistics. It is unclear which test was actually used, preventing evaluation of the inferential procedure.\",\"quote\":\"Likelihood-ratio (Wald chi-square) tests were performed to compare goodness of fit for models including and excluding the fixed effect of episode type.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"inappropriate random effect for message-level unit\",\"description\":\"The models reportedly include random intercepts for message. Because each text message is an observational unit and appears only once, a random intercept for message is not meaningful and may be unidentified or equivalent to observation-level random effects only for specific purposes. The rationale is not explained. If intended to handle overdispersion, this should be explicitly justified and assessed.\",\"quote\":\"a maximal random effects model, which included random intercepts of participant, episode, and message, and random by-participant slopes\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"random effects dropped despite confirmatory interaction tests\",\"description\":\"For the time-varying models, the planned maximal random effects did not converge and all random slopes were removed. This can inflate Type I error for within-subject predictors and interactions, especially with repeated measurements nested within participants and episodes. The manuscript acknowledges nonconvergence but does not present alternative parsimonious structures, convergence diagnostics, or sensitivity analyses for random-effects choices.\",\"quote\":\"Models with the full set of random slopes did not converge; therefore, no random slopes were included in the final model.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"overstatement that mixed models handle missing data\",\"description\":\"The manuscript states that mixed models handle missing data, but the missingness here includes missing entire episodes and SMS histories depending on phone availability, backups, encryption, and participant recall. Mixed models handle unbalanced observed data under assumptions such as missing at random; they do not automatically correct selection bias from unavailable historical text data. Missingness may be systematically related to time, phone type, socioeconomic factors, or episode recency.\",\"quote\":\"A mixed-effects method was selected because of its well-established advantages in terms of producing more accurate effect estimates and its ability to handle missing data\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"large episode-level missing data not adequately modeled\",\"description\":\"Only 134 of 293 reported episodes contained SMS data, meaning more than half of identified episodes were excluded from analyses. The manuscript does not compare included versus excluded episodes or participants on recency, severity, episode type, device type, demographics, or clinical characteristics. This threatens internal validity because missing SMS data are unlikely to be random.\",\"quote\":\"Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"participant exclusion from analytic sample\",\"description\":\"The recruited sample was N=33, but analyses of SMS episodes involved only 27 participants. The manuscript does not adequately characterize the six participants without usable SMS data or assess whether their exclusion biased the analytic sample.\",\"quote\":\"Among the episodes queried during the lab interview, 134 (46%) episodes contained SMS data, collected from 27 different participants.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"retrospective recall of episode dates\",\"description\":\"Episode identification and dating relied on participants retrospectively recalling dates of suicide attempts, ideation, depressed mood, and typical mood. Even small date errors are problematic because the hypotheses concern temporal changes across days before an attempt. Misdated episodes could distort slopes and obscure or generate apparent temporal patterns.\",\"quote\":\"participants were asked to identify a number of specific events or episodes in the past and the calendar dates during which the episodes took place.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"data-driven choice of temporal window\",\"description\":\"Although a two-week episode window is described as theoretically motivated, the manuscript also states that the optimal window was assessed empirically using visual inspection of descriptive figures. This introduces analytic flexibility and possible circularity, especially if the same data were used to decide the window and test effects.\",\"quote\":\"The question of the optimal time window was also assessed empirically, using visual inspection of descriptive figures to identify when the rate of change appeared to be most pronounced.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"undisclosed or insufficient preregistration details\",\"description\":\"The manuscript states that some variables were selected a priori and that materials are on OSF, but it does not report whether hypotheses, exclusion rules, episode windows, model specifications, random-effects simplification rules, or multiple-comparison plans were preregistered. Given many outcomes and analytic choices, lack of transparent preregistration increases concern about researcher degrees of freedom.\",\"quote\":\"We analyzed and compared text messages during episodes within person based on a number of features selected a priori\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"multiple testing without correction\",\"description\":\"The study conducts many omnibus tests and follow-up pairwise comparisons across multiple LIWC variables, constructs, and model types, but does not correct for multiplicity. The justification that this is a pilot study and underpowered does not eliminate inflated familywise false-positive risk. Several key findings have p-values near .05 and may not survive even modest correction.\",\"quote\":\"we decided not to artificially suppress Type I error (i.e., using a multiple comparisons correction)\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"borderline findings interpreted as unique markers\",\"description\":\"Key conclusions rely partly on pairwise comparisons with p-values at or near .05, such as positive emotion versus ideation p=.049 and anger versus ideation p=.046. In the context of many tests and no multiplicity correction, interpreting these as unique markers of attempts is not robust.\",\"quote\":\"positive emotion decreased more steeply during attempt episodes compared to all other episode types, including ideation (z=1.96, p=.049)\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unclear binomial denominator and dependence structure\",\"description\":\"The authors convert LIWC percentages to counts and model category words versus non-category words using binomial GLMMs. However, it is unclear whether each message’s total word count was used as the binomial denominator, how zero-word or very short messages were handled, and whether overdispersion was assessed. Words within a message are not independent Bernoulli trials, so binomial standard errors may be too small without overdispersion correction.\",\"quote\":\"These LIWC percentage scores were converted into counts and then entered as proportions in our models (i.e., number of words in a given text message belonging to versus not belonging to the LIWC category)\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"insufficient model specification details\",\"description\":\"The manuscript does not fully specify model formulas, coding of episode type contrasts, centering/scaling of day, whether day was treated as continuous or categorical despite being called a numerical factor, offset terms for word/message counts, estimation method, optimizer, convergence warnings, or handling of singular fits. These details are required for reproducibility.\",\"quote\":\"A series of mixed-effects models were performed for each language feature with 3 fixed effects: episode type (4 levels: attempt, ideation, depressed, positive), day of episode (numerical factor ranging from -14 to 0), and the interaction of episode type and day.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"linear slope assumption across acute nonlinear process\",\"description\":\"The primary temporal analysis appears to impose a linear day effect over the two-week episode. The authors themselves note temporal patterns were variable and identified with loess visualizations. If risk escalation is nonlinear, linear slopes may misrepresent temporal dynamics and make interpretation of interactions unstable.\",\"quote\":\"day of episode (numerical factor ranging from -14 to 0), and the interaction of episode type and day\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"one-week versus two-week attempt episode contradiction\",\"description\":\"The episode identification section first states that the one-week period prior to the attempt was used as the suicide attempt episode, then states that each episode was set at two weeks long, and elsewhere the abstract and overview refer to two weeks before an attempt. This inconsistency makes the analytic window unclear.\",\"quote\":\"past actual, interrupted, or aborted suicide attempts, using the one-week period prior to the attempt as a “suicide attempt episode”\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"contradictory description of control mood episode\",\"description\":\"The overview describes comparison periods as including positive mood, but the methods define the fourth episode type as typical mood, neither positive nor negative. This is a construct and reporting inconsistency because typical mood and positive mood are not equivalent controls.\",\"quote\":\"two-week episode of typical mood (i.e., neither particularly positive nor negative mood and no ideation or attempt).\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"positive mood control not consistently operationalized\",\"description\":\"The study treats the lowest-risk comparison condition as positive mood in hypotheses and results, but in the interview it appears to have been defined as typical mood. If the actual comparison is typical mood, conclusions about positive mood episodes and contrasts with positive affect are conceptually unclear.\",\"quote\":\"depressed mood, or positive mood\",\"location\":\"abstract\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"broad and heterogeneous suicide attempt definition\",\"description\":\"The attempt category combines enacted attempts, interrupted attempts, aborted attempts, and subjectively endorsed high-intent planning/actions without physical action. These differ clinically and mechanistically. Combining them may dilute or distort markers of imminent enacted suicidal behavior and limits claims about suicide attempts specifically.\",\"quote\":\"reported ‘suicide attempts’ also included incidents in which no physical attempt was enacted but in which participants considered their planning or actions to constitute a higher level of suicidal intent than ‘suicide ideation’\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"attempt count inconsistency\",\"description\":\"The power analysis anticipated 60 attempts and 20 with usable SMS data, but the Results state 21 attempts with corresponding SMS data. In addition, 27 participants had data from at least one attempt, which is difficult to reconcile with only 21 attempts with corresponding SMS data. These inconsistent counts obscure the actual analytic sample.\",\"quote\":\"representing 60 attempts but only 20 with collected, usable SMS data\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"participants with attempt data versus attempts with SMS data inconsistency\",\"description\":\"The manuscript states that all 27 participants with SMS data had data from at least one suicide attempt, which implies at least 27 attempt episodes with SMS data. Later it states that among attempters with SMS data, there were 21 attempts with corresponding SMS data. These numbers cannot both be correct unless the units are being defined differently, which is not explained.\",\"quote\":\"Among these 27 participants, all had data from at least one reported suicide attempt.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"iatrogenic change direction error\",\"description\":\"The Results state that desire to die significantly decreased from pre to post, but the reported means increase from 0.82 to 1.03, and Table 1 lists a positive change of 0.20. This is a clear directional reporting error. It affects interpretation of possible adverse effects of study participation.\",\"quote\":\"desire to die from pre (M=0.82, SD=1.10) to post (M=1.03, SD=0.90) significantly decreased slightly, t(32)=2.23, p=.033.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"discussion reports anxiety mean effect not supported by results\",\"description\":\"The Discussion states that high-risk periods were associated with greater anxiety and sadness, but the Results and Table 2 report anxiety as nonsignificant. This overstates the findings and contradicts the statistical results.\",\"quote\":\"results indicated that the period of high risk just before a suicide attempt was associated with messages indicating greater anxiety and sadness.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"hypothesis construct mismatch for social engagement\",\"description\":\"The hypothesis states that lower ratio of sent versus received texts indicates decreased social engagement. The Discussion later admits this is a crude measure and cannot distinguish engagement, unanswered messages, initiation, or relationship quality. The operationalization may not validly measure thwarted belongingness, burdensomeness, or social disengagement.\",\"quote\":\"decreased social engagement (i.e., lower ratio of sent vs. received text messages).\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"self-focus equated with rumination\",\"description\":\"The study treats singular first-person pronoun use as an indicator of rumination/self-focus. First-person pronouns may reflect many communication contexts and are not a direct measure of rumination or negative self-focus, especially in dyadic text messages. This weakens construct validity for the theoretical interpretation.\",\"quote\":\"use of first-person pronouns (as an indicator of rumination)\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"LIWC word counts as sentiment without context\",\"description\":\"The use of LIWC single-word categories to infer emotional state does not account for negation, sarcasm, quoting others, idioms, recipient context, or conversational topic. The authors acknowledge this later, but primary interpretations still treat category word frequencies as emotional markers of suicide risk.\",\"quote\":\"LIWC searches a text file and calculates normalized word counts for nearly 6,400 words, word stems, and emoticons that have been previously categorized into a number of linguistic and psychological dimensions.\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"lack of independent blinded episode classification\",\"description\":\"Episode classification was based on participant self-report during an interview conducted after screening for attempt history. There is no indication that interviewers were blinded to hypotheses or that independent raters validated episode classifications. This increases risk of misclassification and expectancy effects in defining high- versus lower-risk periods.\",\"quote\":\"participants were interviewed by the experimenter and asked to identify a number of episodes, including dates of past suicide attempts\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"non-equivalent episode anchoring\",\"description\":\"Attempt episodes are anchored to a salient event date, whereas ideation, depressed, and typical/positive episodes may be selected retrospectively and less precisely, with no equivalent endpoint. Slope comparisons may therefore reflect differences in episode anchoring and recall salience rather than risk-specific temporal processes.\",\"quote\":\"two-week episodes of suicide ideation (not resulting in a suicide attempt); two-week episodes of depressed mood or high stress... and two-week episode of typical mood\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"episode overlap and independence unclear\",\"description\":\"The manuscript does not report whether episodes could overlap, how overlapping periods were handled, or whether text messages could contribute to more than one episode. Given participants could report multiple attempts, ideation, depressed, and mood episodes, overlapping windows would violate independence and contaminate episode-type comparisons.\",\"quote\":\"A total of 3 to 12 episodes were collected for each participant depending on the presence and number of reported events.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"insufficient description of sample recruitment source\",\"description\":\"The manuscript describes recruiting from the Charlottesville community but screening procedures reference a participant pool pretest administered at the beginning of the semester, implying a university subject pool. The recruitment frame is unclear, limiting evaluation of selection bias and generalizability.\",\"quote\":\"A sample of 33 participants with at least one reported past suicide attempt were recruited from the Charlottesville community.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"generalizability\",\"subcategory\":\"narrow young college-heavy sample\",\"description\":\"The sample is predominantly female, White, and college-aged, with 94% reporting some college. Results may not generalize to older adults, men, non-students, lower socioeconomic groups, clinically acute populations, people without smartphones, or populations at highest risk of death by suicide.\",\"quote\":\"Most of the participants were female, White, and college-aged.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"generalizability\",\"subcategory\":\"exclusion of currently high-risk individuals\",\"description\":\"Participants with high or imminent current suicide risk were excluded. This is ethically understandable, but it limits generalizability to the very population for whom real-time suicide risk detection tools would be intended.\",\"quote\":\"Any participants with intense thoughts of suicide who were determined to be at “high risk” or “imminent risk” for suicidal behavior... were excluded from study participation\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"generalizability\",\"subcategory\":\"nonlethal attempts only\",\"description\":\"Because participants had to be alive and able to provide phone data, the study necessarily excludes suicide decedents and may not generalize to fatal attempts. The manuscript acknowledges this but still often uses broad suicide-risk language.\",\"quote\":\"logistics of accessing and downloading communication data necessitated enrolling participants with non-lethal attempts.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"phone/device data availability confounding\",\"description\":\"Text availability depended on phone platform, encryption, backups, old devices, cloud access, and participant ability to remember passwords. These factors may correlate with time since episode, socioeconomic status, technology use, and episode type. The study does not control for or analyze these potential confounds.\",\"quote\":\"a number of iPhone users had encryption settings on their phones that prevented third-party iPhone software from accessing text data.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"causal_inference\",\"subcategory\":\"confounding by life events and treatment unaddressed\",\"description\":\"Language changes before attempts may be driven by precipitating interpersonal crises, treatment changes, substance use, hospitalization, exams, relationship breakups, or other contextual events rather than suicide risk per se. The manuscript collected contextual descriptions but does not report controlling for these confounders.\",\"quote\":\"Participants were then asked to describe specific details of and context surrounding each time period.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"episode recency not reported\",\"description\":\"The reliability of retrospective dating and availability/completeness of SMS data depend heavily on how long ago episodes occurred. The manuscript does not report distributions of time since attempts or other episode types, nor whether recency differed by condition.\",\"quote\":\"availability of and access to personal messaging data dating back prior to significant life events\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"SMS inclusion/exclusion preprocessing insufficiently detailed\",\"description\":\"The manuscript does not specify how group texts, multimedia messages, emojis, autocorrect artifacts, deleted messages, duplicate backups, messages from multiple devices, non-English messages, or messages with no analyzable words were handled. These preprocessing choices can materially affect LIWC counts and message-level analyses.\",\"quote\":\"participants’ SMS data files were individually cleaned using Python to standardize the encoding of messages and naming of variables across all participants.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"incoming messages may not reflect participant language\",\"description\":\"The analyses include text messages generally, but it is unclear for LIWC language outcomes whether incoming messages, outgoing messages, or both were analyzed. If incoming messages were included, LIWC scores would partly reflect other people’s language rather than the participant’s psychological state. If only outgoing messages were used, this should be explicitly stated.\",\"quote\":\"Language analysis software scored 189,478 text messages to capture three psychological constructs\",\"location\":\"abstract\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"directionality of language data unclear\",\"description\":\"The methods discuss outgoing and incoming messages for social engagement but do not clearly state whether sentiment and self-focus analyses used sent messages only or all messages. This omission is crucial for interpreting language as reflecting the participant.\",\"quote\":\"Each individual SMS message was inputted into and scored using the 2015 version of Linguistic Inquiry and Word Count (LIWC)\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"effect size reporting inappropriate or unclear\",\"description\":\"The manuscript states that standardized beta values in log-odds units serve as effect sizes. Log-odds coefficients are not standardized effect sizes unless predictors/outcomes were standardized in a specified way, and the reported coefficients for pairwise contrasts are not easily interpretable as effect sizes. No odds ratios, predicted probabilities, confidence intervals, or marginal effects are provided.\",\"quote\":\"Here, β (standardized values of the model parameter estimates in log odds units) are reported and serve as effect sizes.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"confidence intervals absent\",\"description\":\"Key model estimates and contrasts are reported with p-values but not confidence intervals. This limits assessment of precision, especially in a small pilot sample with many tests and highly unbalanced data.\",\"quote\":\"Pairwise comparisons revealed that the change over time approaching a suicide attempt significantly differed from change over time for ideation (z=2.99, p=.003)\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"power analysis insufficiently described and possibly mismatched\",\"description\":\"The power analysis refers to Cramer’s V for chi-square tests of mixed-effects models and divides by a design effect, but details of the assumed clustering, number of episodes, intraclass correlations, and outcome distributions are absent. Cramer’s V for simple chi-square tests is not directly applicable to complex multilevel binomial/linear mixed models with message-level data.\",\"quote\":\"provide enough power to detect only large effect sizes (Cramer’s V=0.29) for chi-square tests of mixed-effects models\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"underpowered participant-level sample despite large message count\",\"description\":\"Although 189,478 messages were analyzed, the effective sample for within-person suicide-risk inference is the number of participants and episodes, not raw messages. With 27 SMS-contributing participants and few attempt episodes, estimates may be unstable and vulnerable to domination by high-volume texters.\",\"quote\":\"Across all episodes, 189,478 text messages were collected and analyzed\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"possible weighting by message volume biases estimates\",\"description\":\"Analyzing at message level maximizes data but may give disproportionate influence to participants or episodes with many messages, unless random effects or weighting adequately address this. The manuscript does not report whether results are robust to aggregation at day or episode level or to excluding high-volume texters.\",\"quote\":\"This approach also allowed us to maximize sources of variance by analyzing on the message level rather than only mean values by episode\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"missing distribution of episodes by type with SMS data\",\"description\":\"The study reports average episodes per type but not the exact number of analyzable attempt, ideation, depressed, and positive/typical episodes or participants contributing to each comparison. Without this, readers cannot evaluate balance, degrees of freedom, or whether pairwise contrasts are driven by very small subsets.\",\"quote\":\"Participants reported and had SMS data for on average approximately 1.5 episodes for each episode type.\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"lack of external validation of attempt lethality/intent\",\"description\":\"Attempt characteristics and lethality were based on participant description rather than medical records, collateral reports, or clinician-rated standardized lethality scales. Because 71% of incidents did not result in physical harm, validation is particularly important for distinguishing attempts from ideation or planning.\",\"quote\":\"Based on participants’ description of the objective lethality of the attempt, 29% of incidents involved some action being taken in which some physical harm was caused... while 71% of incidents did not result in any physical harm\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"depressed mood combined with high stress\",\"description\":\"The depressed comparison episode is defined as depressed mood or high stress. Depression and stress are distinct constructs and may have different language signatures. Combining them reduces construct clarity and may obscure or create differences relative to attempt episodes.\",\"quote\":\"two-week episodes of depressed mood or high stress (not resulting in suicide ideation or attempt)\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"risk-level ordering oversimplified\",\"description\":\"The manuscript assigns attempt, ideation, depressed, and positive/typical episodes to high, moderate, and minimal/no risk categories. However, a depressed or highly stressed period in a person with prior attempts may still entail elevated suicide risk even without reported ideation, and retrospective absence of ideation may be unreliable. This categorical ordering may oversimplify dynamic risk.\",\"quote\":\"attempt episodes were considered “high risk,” ideation episodes were considered “moderate risk,” and depressed and positive episodes were considered “minimal/no risk.”\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"selection bias from willingness to share private texts\",\"description\":\"Participants willing and able to provide private SMS data about suicidal periods may differ systematically from other attempters in privacy attitudes, severity, interpersonal communication style, and technology use. The manuscript does not assess this selection process beyond screening counts.\",\"quote\":\"Participants downloaded their communication data in the lab with the experimenter’s assistance\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"screening exclusions not available in main text\",\"description\":\"The manuscript relies on a supplemental CONSORT diagram for the large screening funnel but does not report main reasons for exclusion in the article. Given 2,377 online screens yielded 33 participants, selection criteria and exclusion reasons are central to evaluating external validity.\",\"quote\":\"2,377 individuals were screened online and 77 individuals were screened by phone. See Figure S1... for a CONSORT diagram detailing specific numbers and reasons for exclusion.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"incorrect or garbled test statistic notation\",\"description\":\"Throughout the Results and tables, chi-square statistics appear as “2(3)” or “2=...” rather than χ², and Table 2 includes duplicated df columns. This may be a formatting issue, but it obscures the statistical tests and degrees of freedom.\",\"quote\":\"2(3)=11.57, p=.009\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"LIWC variables and proprietary Tone details not in main text\",\"description\":\"The manuscript refers readers to supplemental material for the exact LIWC variables used. Because construct operationalization is central to the study, the main text should clearly list which LIWC categories correspond to each construct and how proprietary Tone was modeled.\",\"quote\":\"see Table S3 for the specific LIWC variables calculated for the three psychological constructs\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"internal_consistency\",\"subcategory\":\"death-word interaction interpretation unclear\",\"description\":\"The manuscript reports a significant omnibus death-word interaction but no significant attempt-versus-other pairwise differences. It then discusses death words as not differing between episodes, which is generally correct for attempts but does not clearly distinguish omnibus episode-by-time differences from attempt-specific contrasts. This can confuse readers about whether death-related language changed over time.\",\"quote\":\"There was also a significant interaction for death words, 2(3)=9.47, p=.024. However, there were no significant differences in change over time for attempt compared to all other episodes\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"causal_inference\",\"subcategory\":\"clinical application overreach\",\"description\":\"The clinical implications describe behind-the-scenes monitoring and notification of clinicians/family, but the study has not established prospective accuracy, false-positive/false-negative rates, acceptability, intervention efficacy, or safety. These claims are speculative and should be more clearly framed as distant possibilities requiring substantial validation.\",\"quote\":\"development of an objective monitoring tool capable of tracking individuals’ communication “behind the scenes,” notifying suicidal individuals and/or their clinician or family if their patterns of communication indicate increasing levels of suicide risk.\",\"location\":\"discussion\",\"severity\":\"moderate\"},{\"category\":\"generalizability\",\"subcategory\":\"SMS platform changes limit applicability\",\"description\":\"The study relies on SMS data, but communication among young people increasingly occurs through encrypted, ephemeral, or proprietary platforms. The authors note this, but conclusions about private electronic communication broadly may not generalize to current messaging ecosystems.\",\"quote\":\"data collection of SMS and other private digital communication is likely to remain an ongoing challenge for researchers, particularly as younger populations transition to closed ecosystems and proprietary platforms (e.g., Snapchat)\",\"location\":\"discussion\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"no control for weekday/season/time effects\",\"description\":\"Texting volume and emotional language vary by weekday, academic calendar, holidays, exams, and time of year. Because episodes are historical and not randomly distributed across calendar time, unmodeled temporal context could confound episode-type differences and slopes.\",\"quote\":\"participants were asked to identify... the calendar dates during which the episodes took place\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"variable completeness of historical SMS records\",\"description\":\"Messages may have been deleted, lost during phone changes, absent from backups, or unavailable for older episodes. The manuscript does not assess completeness of SMS histories for each episode or whether missing messages differed by episode type or time before attempt.\",\"quote\":\"efforts to collection additional messages outside of their current mobile device were minimally successful. Only a small number of participants brought in or had access to old phones.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"no adjustment for zero inflation/rare word categories\",\"description\":\"Several LIWC categories such as death, anger, anxiety, and sadness are likely rare in individual text messages, producing many zeros. The manuscript does not report whether zero inflation, sparse counts, separation, or model instability were assessed.\",\"quote\":\"For this set of analyses, a significant result says that the odds of a category-specific word appearing in text messages differed as a function of episode type.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"messages may include quoted, copied, or non-self-authored content\",\"description\":\"SMS content can include forwarded messages, copied lyrics, automated messages, or quoted text. The manuscript does not indicate whether such messages were identified or removed. These could distort LIWC-based inferences about participant emotion and self-focus.\",\"quote\":\"all available SMS data from each device were downloaded (i.e., not from only certain dates or recipients).\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"language and locale handling not reported\",\"description\":\"The sample includes non-U.S. citizenship and Hispanic participants, but the manuscript does not state whether all SMS were in English or how non-English texts were processed. LIWC2015 English categories may not validly score non-English or code-switched messages.\",\"quote\":\"LIWC searches a text file and calculates normalized word counts\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"interpersonal theory operationalization incomplete\",\"description\":\"The interpersonal theory concerns perceived burdensomeness, thwarted belongingness, and acquired capability. The study operationalizes only a crude proxy of social engagement using sent/received ratios, which does not measure perceived burdensomeness or belongingness and omits acquired capability. The theoretical test is therefore weak.\",\"quote\":\"we tested whether suicide attempters demonstrated greater signs of disengagement from and burdensomeness on their social support networks prior to suicide attempts compared to other episodes by examining patterns in outgoing vs. incoming messages.\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"pairwise comparison method unspecified\",\"description\":\"The manuscript reports multiple pairwise z and t tests but does not specify the package or method used, whether contrasts were adjusted, how degrees of freedom were calculated for LMM t tests, or whether pairwise tests were planned only versus attempt or all episode pairs.\",\"quote\":\"Any significant tests were followed up with pairwise comparisons between each of the episode types (using z and t statistics for binary/proportion and continuous outcome variables, respectively).\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"t-tests for iatrogenic effects with ordinal bounded scales\",\"description\":\"Pre-post changes in mood and desire to die were analyzed with paired t-tests despite 0–10 bounded Likert-type scales with floor effects, especially for desire to die. The analysis may be acceptable as approximate but should be supplemented or justified, particularly because baseline desire to die is near the floor.\",\"quote\":\"reported mood from pre... to post... did not significantly change, t(32)=1.05, p=.304, and desire to die... t(32)=2.23, p=.033.\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"internal_consistency\",\"subcategory\":\"risk assessment item wording inconsistency\",\"description\":\"Inclusion criteria refer to current desire to die, while risk assessment escalation refers to desire to hurt self. These are not equivalent constructs. The manuscript does not clarify which item was used for risk thresholds.\",\"quote\":\"score greater than 3 on desire to hurt self question\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no availability of analysis code stated\",\"description\":\"The manuscript notes screening surveys and materials are on OSF, but does not state that preprocessing scripts, analysis code, model outputs, or deidentified derived data are available. Given complex data cleaning and modeling, code availability is important for reproducibility.\",\"quote\":\"full screening surveys and other study materials are available on OSF at https://osf.io/9f3v2/\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"possible interviewer expectancy and participant demand in episode selection\",\"description\":\"Because participants knew the study concerned suicide and text messages, and the experimenter assisted with data downloading and then conducted interviews, participants may have selected episodes or dates influenced by perceived study aims. Although message content itself predates the study, episode selection is vulnerable to demand and recall biases.\",\"quote\":\"Participants downloaded their communication data in the lab with the experimenter’s assistance... participants were interviewed by the experimenter and asked to identify a number of episodes\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"abstract says two weeks before attempts but methods mention one-week period\",\"description\":\"The abstract states that analyses examined two weeks before a suicide attempt, whereas the methods specify a one-week period prior to the attempt as the suicide attempt episode before later discussing two weeks. This inconsistency affects interpretation of temporal sensitivity.\",\"quote\":\"Mixed-effects models tested whether these constructs differed in general (means) and over time (slopes) two weeks before a suicide attempt\",\"location\":\"abstract\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no information on clinical diagnoses verification\",\"description\":\"Psychiatric diagnoses and treatment history are self-reported and used to characterize the sample, but the manuscript does not clarify whether diagnoses were clinically verified. This limits interpretation of the clinical profile and potential confounding by diagnosis.\",\"quote\":\"Participants also reported on current and past treatment experience... and psychiatric diagnoses.\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unclear handling of daily count outcomes\",\"description\":\"Social engagement outcomes include daily counts and ratios, but the manuscript states non-proportion outcomes were analyzed as raw continuous variables in LMMs. Count outcomes are typically nonnormal, skewed, and heteroscedastic; ratios can be unstable with small denominators. No justification, transformation, or count-model alternative is reported.\",\"quote\":\"For outcome variables that were not proportion scores (e.g., number of messages sent per day), the raw continuous variable was used in a linear mixed-effects model (LMM)\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"ratio of sent to received messages ambiguous\",\"description\":\"A lower sent/received ratio could reflect social withdrawal, but it could also reflect receiving support, crisis outreach by others, group chats, or practical coordination. A higher ratio could reflect distress-seeking or conflict. The direction and meaning of this metric as social engagement are ambiguous.\",\"quote\":\"lower ratio of sent vs. received text messages\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"attempt episode severity conflicts with high-risk label\",\"description\":\"Attempt episodes are labeled high risk, but most corresponding incidents reportedly did not result in physical harm and included aborted/interrupted events. While intent was reported as high, the heterogeneity complicates claims that the episodes represent imminent risk of enacted attempts.\",\"quote\":\"71% of incidents did not result in any physical harm\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"additional subset analyses relegated to supplement\",\"description\":\"The manuscript mentions additional robustness/subset analyses but does not summarize their implications in the main text. If these analyses bear on the stability of primary findings, omitting their results limits evaluation of robustness and selective emphasis.\",\"quote\":\"Additional analyses were performed to examine the same set of outcome variables but in different ways to examine the robustness of the primary results and to see if the pattern of results changed. Those analyses are available in Supplement 3 online.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"linear risk mapping hypothesis not well justified\",\"description\":\"The manuscript assumes self-focus and other constructs should map linearly across no, low, moderate, and high risk states, but the selected episode types differ qualitatively, not just quantitatively. This weakens the theoretical basis for some predictions and post hoc interpretations.\",\"quote\":\"degree of self-focus would be expected to map onto risk levels (i.e., no, low, moderate, high) in a linear manner.\",\"location\":\"discussion\",\"severity\":\"minor\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no descriptive plots or raw means in main tables\",\"description\":\"The tables provide test statistics and selected coefficients but not condition means, slopes, predicted probabilities, or raw descriptive values by episode type. Without these, the magnitude and practical relevance of statistically significant findings are difficult to evaluate.\",\"quote\":\"See Table 3 for full results.\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"possible pseudo-replication by treating messages as independent evidence\",\"description\":\"The analysis uses message-level data with many messages nested within a small number of people and episodes. If the random-effects structure is insufficient, especially after dropping random slopes, standard errors may reflect the number of messages more than the number of independent clinical episodes, inflating significance.\",\"quote\":\"analyzing on the message level rather than only mean values by episode\",\"location\":\"methods\",\"severity\":\"major\"}]}",
+  "model_id": "gpt-5.5",
+  "token_usage": {
+    "input_tokens": 19345,
+    "output_tokens": 8712
+  }
+}

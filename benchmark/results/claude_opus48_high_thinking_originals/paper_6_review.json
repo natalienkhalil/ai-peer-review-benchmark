@@ -1,0 +1,220 @@
+{
+  "paper_id": 6,
+  "provider_name": "claude_opus48_high_thinking_originals",
+  "issues": [
+    {
+      "category": "internal_consistency",
+      "subcategory": "Sample size discrepancy across text and tables",
+      "description": "The Methods report a final sample of N = 372, but every results table reports a different N. Tables 1 and 2 state N = 321 and Table 3 states N = 244. The drop from 372 to 321 (51 cases) is never explained anywhere in the text, and the loss to 244 is only vaguely attributed to acuity missingness. This makes it impossible to know which N underlies the reported coefficients and undermines the credibility of all inferential statistics.",
+      "quote": "This resulted in a final sample size of N = 372.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Concurrent measurement of mediator and outcome",
+      "description": "The central serial-mediation chain is experienced incivility (T2) → negative emotions (T3) → compassion fatigue (T4) → enacted incivility (T4). The final mediator (compassion fatigue) and the outcome (enacted incivility) are both measured at T4, i.e., concurrently. This contradicts the authors' repeated claim of temporal separation and means the compassion-fatigue → enacted-incivility link is cross-sectional, undermining the temporal/causal interpretation of the key final step of the model.",
+      "quote": "we examine both emotional response and exhaustion mechanisms and examine the sequential mediation pathway from stressor to emotion to compassion fatigue to CWB over time",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Implausible/garbled CFA fit statistics undermining discriminant validity",
+      "description": "The CFA reporting is internally impossible. The four-factor model has χ²=862.05 (df 269), yet the more constrained three-, two-, and one-factor models are reported with values of 82.52, 82.65, and 8.02 — far lower than the less-constrained model, which is mathematically impossible for nested chi-squares. Moreover, all alternative models (including the one-factor model) show nearly identical excellent fit (CFI .98–.99), which argues against rather than for discriminant validity. The RMSEA (.08–.10) combined with CFI/TLI of .98–.99 is also an inconsistent pattern.",
+      "quote": "The fit of the four-factor model was acceptable (269) = 862.05, RMSEA = .08, CFI = .99, TLI = .99) and fit the data better than a three-factor model wherein both incivility measures were set to load onto the same factor (3) = 82.52, RMSEA = .09, CFI = .98, TLI = .98)",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Extremely high inter-construct correlations / discriminant validity threat",
+      "description": "Correlations among supposedly distinct constructs are near the reliability ceiling (e.g., T4 compassion fatigue and T4 enacted incivility r = .94; T1 incivility and compassion fatigue r = .80; experienced and enacted incivility r = .78). Such correlations suggest the measures may not be empirically distinguishable, threatening discriminant validity and inflating mediation estimates. The combination of these correlations with alphas as high as .96 raises concerns about item redundancy.",
+      "quote": "T4 Compassion Fatigue | 2.73 | 1.22 | .71 | .70 | .85 | .72 | .36 | -.39 | .85 | .86 | .96",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Inconsistent standard error / significance for H4 indirect effect",
+      "description": "In the text the H4 indirect effect is reported as B = .06, SE = .04, p < .01. With B = .06 and SE = .04 the implied t ≈ 1.5, which would not be significant at p < .01. Table 2 reports the same effect as B = .06, SE = .02, t = 2.58. The text SE (.04) is internally inconsistent with the stated p-value and contradicts the table.",
+      "quote": "Time 2 experienced patient incivility was indirectly related to Time 4 enacted incivility toward patients (B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10]).",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "'Nearly six times' claim contradicts reported coefficients",
+      "description": "The supplemental analysis claims the compassion-fatigue coefficient is 'nearly six times' that of negative emotions, motivating the relative importance analysis. However, Table 2 reports compassion fatigue B = .57 and negative emotions B = .28 (a ratio of ~2), and Table 3 reports .40 vs .35. No table supports a 6:1 ratio.",
+      "quote": "the last step of the simple mediation reflects a parameter estimate for compassion fatigue that is nearly six times that of negative emotions",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Relative importance regression contradicts main models",
+      "description": "The relative importance regression reports negative emotions B = .23 and compassion fatigue B = .23 (equal), which directly contradicts both the 'six times' claim and the main mediation coefficients (.28 vs .57 in Table 2). Equal coefficients are then partitioned into 30.8% vs 45.1% of variance. The model also uses different coefficients for experienced incivility (B = -.03) than Table 2 (B = -.07), and is fit with ordinary lm() ignoring the autoregressive/longitudinal structure used elsewhere.",
+      "quote": "we regressed enacted incivility on predictors from this stage--experienced incivility (B = -.03, SE = .04, p = .40), negative emotions (B = .23, SE = .04, p < .001), and compassion fatigue (B = .23, SE = .04, p < .001).",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Practice claim contradicts non-significant moderated mediation",
+      "description": "The supplemental analysis explicitly found that the conditional indirect effect of incivility on enacted incivility through acuity was non-significant at all levels and the Index of Moderated Mediation was non-significant. Yet the Practice section asserts that high-acuity employees are at the 'highest risk' of engaging in incivility — a claim the authors' own data do not support.",
+      "quote": "employees experiencing incivility from patients and who have a high perceived patient acuity load are at the highest risk of experiencing increased negative affect and fatigue and, ultimately, engaging in incivility",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "Overclaiming causality from observational longitudinal data",
+      "description": "The authors claim their autoregressive design 'allows for stronger causal inferences' and reduces 'third variable effects.' Autoregressive panel models on self-report observational data do not establish causation; unmeasured confounds and reverse/reciprocal causation remain plausible. The title ('Incivility begets incivility') and framing of Torres et al. as showing 'causal effects' compound the overstatement.",
+      "quote": "allows for stronger causal inferences by modeling the longitudinal effects of predictors across multiple points in time",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Single-item, perception-based moderator measure",
+      "description": "Patient acuity, a central moderator, is measured with a single self-report item asking respondents to estimate the percentage of 'severe' patients, with no anchoring to an actual instrument, number of patients, or objective classification. Reliability cannot be assessed, and the authors concede it may not reflect actual acuity. Operationalizing a workload/severity construct via one perceptual percentage is a substantial construct-validity weakness for a variable carrying a core hypothesis.",
+      "quote": "we measure the respondents’ perceptions of patient acuity across all patients they attended to within the last work week by asking them to estimate a percentage of their patients that were “severe.”",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "Substantial missingness on moderator with reduced-power subgroup",
+      "description": "The moderator analysis is run on N = 244 (vs. 321/372 elsewhere) due to extensive missingness on patient acuity (a mix of non-response and out-of-range values). This is a large, non-random reduction; the claim that missing and non-missing cases did not differ is asserted without statistics, and the loss substantially reduces power for the interaction and conditional indirect tests (which were non-significant).",
+      "quote": "Note. N = 244. The sample size was reduced due to missingness on the moderator variable.",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Missing-by-design data handling and conditional retention",
+      "description": "Non-responders at any wave were not invited to subsequent waves due to 'budgetary constraints,' so reported 98% retention rates reflect only continuing participants and conflate design-induced missingness with genuine retention. This precludes proper handling (e.g., FIML across all enrolled participants) and may bias estimates if dropout is related to the constructs.",
+      "quote": "Due to budgetary constraints, participants who did not respond to a measurement period were not invited for subsequent surveys",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Wrong incivility source named in hypothesis development",
+      "description": "In developing the compassion fatigue hypothesis, the text states the focus is on 'experiencing coworker incivility,' but the entire study concerns patient/customer incivility. This is a conceptual/internal error in the construct being theorized.",
+      "quote": "Within the current study, we look specifically at the relationship between experiencing coworker incivility and experiencing a caregiving specific form of job burnout, compassion fatigue.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "Undisclosed researcher degrees of freedom; no preregistration",
+      "description": "There is no mention of preregistration, and substantial analytic choices are unjustified: assigning each construct to a specific single wave (incivility at T2 only, emotions at T3, etc.), choosing which items to retain for shortened scales, and conducting multiple post hoc 'supplemental' analyses. These choices create flexibility that could affect results without disclosure of alternatives considered.",
+      "quote": "the first wave was reserved for controlling for autoregressive effects, and the subsequent waves were included for hypothesis testing",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "General workplace incivility scale repurposed as customer/patient incivility",
+      "description": "Both experienced and enacted incivility are measured with items from Cortina et al.'s Workplace Incivility Scale, originally developed for coworker/supervisor incivility, simply by swapping 'patient' for 'customer.' The content (e.g., 'doubted your judgment on a matter over which you had responsibility') may not map well onto patient-nurse dynamics, and using the same four items for experienced and enacted incivility may inflate their correlation through shared method/content.",
+      "quote": "The item content for these four items was similar to the four items used in the customer incivility scale, with changes to the instructions",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "MTurk sample used to validate a critical-care nurse instrument",
+      "description": "The quantitative pilot used to validate the shortened scales and the novel acuity item relied on 50 'nurses' recruited from MTurk. The validity of self-identified critical-care nurses on MTurk is questionable, which weakens the validity evidence for the adapted measures used in the main study.",
+      "quote": "The quantitative pilot consisted of n = 50 nurses who worked in high-stakes settings and were recruited from MTurk.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "Online/anonymous recruitment vulnerable to fraudulent or careless responses",
+      "description": "Recruitment via flyers, snowball networks, and social media with monetary incentives, combined with exclusions for inconsistent demographics across waves (n=56) and duplicate open-ended responses suggesting collusion/repeat participation (n=21), signals meaningful data-integrity threats. With no way to verify respondents are actual critical-care nurses (verification rested on self-report plus O*Net review of only 20 participants), sample authenticity is uncertain.",
+      "quote": "duplicate responses (identical content, syntax, and formatting) to open ended attention check questions as other participants (suggesting repeat survey participation and/or collusion) (n = 21)",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Inconsistent classification of patient acuity as stressor type",
+      "description": "Patient acuity is alternately framed as an 'additional interpersonal job demand' and as a 'task-related' stressor distinct from interpersonal stressors. This inconsistent conceptualization matters because the theoretical rationale for its moderating role depends on what kind of stressor it is.",
+      "quote": "we examine the ways in which additional interpersonal job demands (i.e., patient acuity) may be interacting with incivility experiences",
+      "location": "introduction",
+      "severity": "minor"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Misapplied 'diary study' inflation explanation",
+      "description": "The authors explain higher-than-conventional bivariate correlations by invoking inflation typical of within-person diary/ESM designs and propose latent multilevel within-person centering remedies. However, this is a four-wave weekly panel, not an intensive within-person diary study, so the cited mechanism and remedy do not properly account for the inflated correlations, which more likely reflect discriminant-validity/common-method problems.",
+      "quote": "diary studies of this nature may produce inflated correlations between variables within and across points in time due to the within-focused nature of the design (Beal, 2015). We acknowledge this particular issue in this study as some of the bivariate relationships are higher than convention.",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Overextension to customer outcomes not measured",
+      "description": "The study measured only nurse self-reports; no patient/customer outcomes were assessed. Yet the discussion claims findings show incivility is associated with 'detrimental employee and customer outcomes over time,' extrapolating to outcomes never measured.",
+      "quote": "experiencing incivility from customers – even when the customers are patients, a population of people you have dedicated your career to care for – is associated with detrimental employee and customer outcomes over time",
+      "location": "discussion",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "Sample limits and unknown response rate",
+      "description": "The sample is 96.6% female, predominantly White, US critical-care nurses recruited non-probabilistically, with an unknown sampling frame and no computable response rate. While some limits are acknowledged, the self-selected convenience nature limits generalizability even within nursing, and base rates of self-reported enacted incivility may be distorted by self-selection.",
+      "quote": "Although the full population size that was sampled from is unknown, nursing represents a significant employment category",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "Excluded-case counts do not match retention figures",
+      "description": "The text states n = 16 were excluded for missing time points, but the reported wave counts (468 → 458 → 454 → 450) imply 18 participants failed to complete all four waves. This small discrepancy reflects imprecise accounting of the analytic sample.",
+      "quote": "Only participants who completed all four surveys (n = 16 people excluded due to missing time points)",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "Misuse of 'trickle-down' terminology",
+      "description": "The conclusion describes the phenomenon as 'trickle-down effects,' a term that in the organizational literature denotes top-down transmission (e.g., leader-to-subordinate). The studied process is target-to-others displacement/spread of incivility, not a hierarchical trickle-down, so the term is misapplied.",
+      "quote": "The purpose of this four-wave study was to examine the trickle-down effects of experiencing customer incivility",
+      "location": "discussion",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "Missing-data treatment and estimation details underspecified",
+      "description": "The handling of missing data between the stated final sample (372) and the analytic samples (321/244) is not described (listwise vs. FIML), and how the autoregressive controls are specified in the path models is not fully reported. Without these details, the analyses cannot be reproduced or properly evaluated.",
+      "quote": "For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range (45% of missing values were due to an incorrect response).",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "Negative-emotions item set narrow and includes 'fear'",
+      "description": "Negative emotions toward patients are operationalized with only four items (aversion, disgust, anger, fear). 'Fear' toward patients is conceptually distinct from anger/aversion as a reaction to a perpetrator-stressor, and the narrow four-emotion set may not capture the affective construct invoked by the stressor-emotion model (which emphasizes anger/anxiety). This affects whether the measure matches the theorized mediator.",
+      "quote": "The scale items consisted of four negative emotions: (a) aversion, (b) disgust, (c) anger, (d) fear.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "Discrepant focal coefficients across tables",
+      "description": "The experienced-incivility → negative-emotions coefficient and the negative-emotions/compassion-fatigue → enacted-incivility coefficients differ across the simultaneous-mediation (Table 2) and moderated (Table 3) models (e.g., negative emotions → enacted incivility B = .28 in Table 2 vs .35 in Table 3; compassion fatigue B = .57 vs .40). While model specification differs, the manuscript does not reconcile which estimates support the stated indirect effects, creating ambiguity about the actual mediation pathway magnitudes.",
+      "quote": "T4 Compassion Fatigue |  |  |  |  |  |  |  |  |  | .57*** | .17 | 3.35",
+      "location": "results",
+      "severity": "moderate"
+    }
+  ],
+  "raw_response": "{\"issues\": [\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"Sample size discrepancy across text and tables\",\n\"description\": \"The Methods report a final sample of N = 372, but every results table reports a different N. Tables 1 and 2 state N = 321 and Table 3 states N = 244. The drop from 372 to 321 (51 cases) is never explained anywhere in the text, and the loss to 244 is only vaguely attributed to acuity missingness. This makes it impossible to know which N underlies the reported coefficients and undermines the credibility of all inferential statistics.\",\n\"quote\": \"This resulted in a final sample size of N = 372.\",\n\"location\": \"methods\",\n\"severity\": \"critical\"\n},\n{\n\"category\": \"causal_inference\",\n\"subcategory\": \"Concurrent measurement of mediator and outcome\",\n\"description\": \"The central serial-mediation chain is experienced incivility (T2) → negative emotions (T3) → compassion fatigue (T4) → enacted incivility (T4). The final mediator (compassion fatigue) and the outcome (enacted incivility) are both measured at T4, i.e., concurrently. This contradicts the authors' repeated claim of temporal separation and means the compassion-fatigue → enacted-incivility link is cross-sectional, undermining the temporal/causal interpretation of the key final step of the model.\",\n\"quote\": \"we examine both emotional response and exhaustion mechanisms and examine the sequential mediation pathway from stressor to emotion to compassion fatigue to CWB over time\",\n\"location\": \"methods\",\n\"severity\": \"critical\"\n},\n{\n\"category\": \"statistical_errors\",\n\"subcategory\": \"Implausible/garbled CFA fit statistics undermining discriminant validity\",\n\"description\": \"The CFA reporting is internally impossible. The four-factor model has χ²=862.05 (df 269), yet the more constrained three-, two-, and one-factor models are reported with values of 82.52, 82.65, and 8.02 — far lower than the less-constrained model, which is mathematically impossible for nested chi-squares. Moreover, all alternative models (including the one-factor model) show nearly identical excellent fit (CFI .98–.99), which argues against rather than for discriminant validity. The RMSEA (.08–.10) combined with CFI/TLI of .98–.99 is also an inconsistent pattern.\",\n\"quote\": \"The fit of the four-factor model was acceptable (269) = 862.05, RMSEA = .08, CFI = .99, TLI = .99) and fit the data better than a three-factor model wherein both incivility measures were set to load onto the same factor (3) = 82.52, RMSEA = .09, CFI = .98, TLI = .98)\",\n\"location\": \"results\",\n\"severity\": \"critical\"\n},\n{\n\"category\": \"construct_validity\",\n\"subcategory\": \"Extremely high inter-construct correlations / discriminant validity threat\",\n\"description\": \"Correlations among supposedly distinct constructs are near the reliability ceiling (e.g., T4 compassion fatigue and T4 enacted incivility r = .94; T1 incivility and compassion fatigue r = .80; experienced and enacted incivility r = .78). Such correlations suggest the measures may not be empirically distinguishable, threatening discriminant validity and inflating mediation estimates. The combination of these correlations with alphas as high as .96 raises concerns about item redundancy.\",\n\"quote\": \"T4 Compassion Fatigue | 2.73 | 1.22 | .71 | .70 | .85 | .72 | .36 | -.39 | .85 | .86 | .96\",\n\"location\": \"results\",\n\"severity\": \"critical\"\n},\n{\n\"category\": \"statistical_errors\",\n\"subcategory\": \"Inconsistent standard error / significance for H4 indirect effect\",\n\"description\": \"In the text the H4 indirect effect is reported as B = .06, SE = .04, p < .01. With B = .06 and SE = .04 the implied t ≈ 1.5, which would not be significant at p < .01. Table 2 reports the same effect as B = .06, SE = .02, t = 2.58. The text SE (.04) is internally inconsistent with the stated p-value and contradicts the table.\",\n\"quote\": \"Time 2 experienced patient incivility was indirectly related to Time 4 enacted incivility toward patients (B = .06, SE = .04, p < .01, 95% CI [0.02, 0.10]).\",\n\"location\": \"results\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"'Nearly six times' claim contradicts reported coefficients\",\n\"description\": \"The supplemental analysis claims the compassion-fatigue coefficient is 'nearly six times' that of negative emotions, motivating the relative importance analysis. However, Table 2 reports compassion fatigue B = .57 and negative emotions B = .28 (a ratio of ~2), and Table 3 reports .40 vs .35. No table supports a 6:1 ratio.\",\n\"quote\": \"the last step of the simple mediation reflects a parameter estimate for compassion fatigue that is nearly six times that of negative emotions\",\n\"location\": \"results\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"Relative importance regression contradicts main models\",\n\"description\": \"The relative importance regression reports negative emotions B = .23 and compassion fatigue B = .23 (equal), which directly contradicts both the 'six times' claim and the main mediation coefficients (.28 vs .57 in Table 2). Equal coefficients are then partitioned into 30.8% vs 45.1% of variance. The model also uses different coefficients for experienced incivility (B = -.03) than Table 2 (B = -.07), and is fit with ordinary lm() ignoring the autoregressive/longitudinal structure used elsewhere.\",\n\"quote\": \"we regressed enacted incivility on predictors from this stage--experienced incivility (B = -.03, SE = .04, p = .40), negative emotions (B = .23, SE = .04, p < .001), and compassion fatigue (B = .23, SE = .04, p < .001).\",\n\"location\": \"results\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"Practice claim contradicts non-significant moderated mediation\",\n\"description\": \"The supplemental analysis explicitly found that the conditional indirect effect of incivility on enacted incivility through acuity was non-significant at all levels and the Index of Moderated Mediation was non-significant. Yet the Practice section asserts that high-acuity employees are at the 'highest risk' of engaging in incivility — a claim the authors' own data do not support.\",\n\"quote\": \"employees experiencing incivility from patients and who have a high perceived patient acuity load are at the highest risk of experiencing increased negative affect and fatigue and, ultimately, engaging in incivility\",\n\"location\": \"discussion\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"causal_inference\",\n\"subcategory\": \"Overclaiming causality from observational longitudinal data\",\n\"description\": \"The authors claim their autoregressive design 'allows for stronger causal inferences' and reduces 'third variable effects.' Autoregressive panel models on self-report observational data do not establish causation; unmeasured confounds and reverse/reciprocal causation remain plausible. The title ('Incivility begets incivility') and framing of Torres et al. as showing 'causal effects' compound the overstatement.\",\n\"quote\": \"allows for stronger causal inferences by modeling the longitudinal effects of predictors across multiple points in time\",\n\"location\": \"methods\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"construct_validity\",\n\"subcategory\": \"Single-item, perception-based moderator measure\",\n\"description\": \"Patient acuity, a central moderator, is measured with a single self-report item asking respondents to estimate the percentage of 'severe' patients, with no anchoring to an actual instrument, number of patients, or objective classification. Reliability cannot be assessed, and the authors concede it may not reflect actual acuity. Operationalizing a workload/severity construct via one perceptual percentage is a substantial construct-validity weakness for a variable carrying a core hypothesis.\",\n\"quote\": \"we measure the respondents’ perceptions of patient acuity across all patients they attended to within the last work week by asking them to estimate a percentage of their patients that were “severe.”\",\n\"location\": \"methods\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"attrition_missing_data\",\n\"subcategory\": \"Substantial missingness on moderator with reduced-power subgroup\",\n\"description\": \"The moderator analysis is run on N = 244 (vs. 321/372 elsewhere) due to extensive missingness on patient acuity (a mix of non-response and out-of-range values). This is a large, non-random reduction; the claim that missing and non-missing cases did not differ is asserted without statistics, and the loss substantially reduces power for the interaction and conditional indirect tests (which were non-significant).\",\n\"quote\": \"Note. N = 244. The sample size was reduced due to missingness on the moderator variable.\",\n\"location\": \"results\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"methodological_design\",\n\"subcategory\": \"Missing-by-design data handling and conditional retention\",\n\"description\": \"Non-responders at any wave were not invited to subsequent waves due to 'budgetary constraints,' so reported 98% retention rates reflect only continuing participants and conflate design-induced missingness with genuine retention. This precludes proper handling (e.g., FIML across all enrolled participants) and may bias estimates if dropout is related to the constructs.\",\n\"quote\": \"Due to budgetary constraints, participants who did not respond to a measurement period were not invited for subsequent surveys\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"Wrong incivility source named in hypothesis development\",\n\"description\": \"In developing the compassion fatigue hypothesis, the text states the focus is on 'experiencing coworker incivility,' but the entire study concerns patient/customer incivility. This is a conceptual/internal error in the construct being theorized.\",\n\"quote\": \"Within the current study, we look specifically at the relationship between experiencing coworker incivility and experiencing a caregiving specific form of job burnout, compassion fatigue.\",\n\"location\": \"introduction\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"analytic_flexibility\",\n\"subcategory\": \"Undisclosed researcher degrees of freedom; no preregistration\",\n\"description\": \"There is no mention of preregistration, and substantial analytic choices are unjustified: assigning each construct to a specific single wave (incivility at T2 only, emotions at T3, etc.), choosing which items to retain for shortened scales, and conducting multiple post hoc 'supplemental' analyses. These choices create flexibility that could affect results without disclosure of alternatives considered.\",\n\"quote\": \"the first wave was reserved for controlling for autoregressive effects, and the subsequent waves were included for hypothesis testing\",\n\"location\": \"methods\",\n\"severity\": \"major\"\n},\n{\n\"category\": \"construct_validity\",\n\"subcategory\": \"General workplace incivility scale repurposed as customer/patient incivility\",\n\"description\": \"Both experienced and enacted incivility are measured with items from Cortina et al.'s Workplace Incivility Scale, originally developed for coworker/supervisor incivility, simply by swapping 'patient' for 'customer.' The content (e.g., 'doubted your judgment on a matter over which you had responsibility') may not map well onto patient-nurse dynamics, and using the same four items for experienced and enacted incivility may inflate their correlation through shared method/content.\",\n\"quote\": \"The item content for these four items was similar to the four items used in the customer incivility scale, with changes to the instructions\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"methodological_design\",\n\"subcategory\": \"MTurk sample used to validate a critical-care nurse instrument\",\n\"description\": \"The quantitative pilot used to validate the shortened scales and the novel acuity item relied on 50 'nurses' recruited from MTurk. The validity of self-identified critical-care nurses on MTurk is questionable, which weakens the validity evidence for the adapted measures used in the main study.\",\n\"quote\": \"The quantitative pilot consisted of n = 50 nurses who worked in high-stakes settings and were recruited from MTurk.\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"methodological_design\",\n\"subcategory\": \"Online/anonymous recruitment vulnerable to fraudulent or careless responses\",\n\"description\": \"Recruitment via flyers, snowball networks, and social media with monetary incentives, combined with exclusions for inconsistent demographics across waves (n=56) and duplicate open-ended responses suggesting collusion/repeat participation (n=21), signals meaningful data-integrity threats. With no way to verify respondents are actual critical-care nurses (verification rested on self-report plus O*Net review of only 20 participants), sample authenticity is uncertain.\",\n\"quote\": \"duplicate responses (identical content, syntax, and formatting) to open ended attention check questions as other participants (suggesting repeat survey participation and/or collusion) (n = 21)\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"theoretical_conceptual\",\n\"subcategory\": \"Inconsistent classification of patient acuity as stressor type\",\n\"description\": \"Patient acuity is alternately framed as an 'additional interpersonal job demand' and as a 'task-related' stressor distinct from interpersonal stressors. This inconsistent conceptualization matters because the theoretical rationale for its moderating role depends on what kind of stressor it is.\",\n\"quote\": \"we examine the ways in which additional interpersonal job demands (i.e., patient acuity) may be interacting with incivility experiences\",\n\"location\": \"introduction\",\n\"severity\": \"minor\"\n},\n{\n\"category\": \"construct_validity\",\n\"subcategory\": \"Misapplied 'diary study' inflation explanation\",\n\"description\": \"The authors explain higher-than-conventional bivariate correlations by invoking inflation typical of within-person diary/ESM designs and propose latent multilevel within-person centering remedies. However, this is a four-wave weekly panel, not an intensive within-person diary study, so the cited mechanism and remedy do not properly account for the inflated correlations, which more likely reflect discriminant-validity/common-method problems.\",\n\"quote\": \"diary studies of this nature may produce inflated correlations between variables within and across points in time due to the within-focused nature of the design (Beal, 2015). We acknowledge this particular issue in this study as some of the bivariate relationships are higher than convention.\",\n\"location\": \"discussion\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"generalizability\",\n\"subcategory\": \"Overextension to customer outcomes not measured\",\n\"description\": \"The study measured only nurse self-reports; no patient/customer outcomes were assessed. Yet the discussion claims findings show incivility is associated with 'detrimental employee and customer outcomes over time,' extrapolating to outcomes never measured.\",\n\"quote\": \"experiencing incivility from customers – even when the customers are patients, a population of people you have dedicated your career to care for – is associated with detrimental employee and customer outcomes over time\",\n\"location\": \"discussion\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"generalizability\",\n\"subcategory\": \"Sample limits and unknown response rate\",\n\"description\": \"The sample is 96.6% female, predominantly White, US critical-care nurses recruited non-probabilistically, with an unknown sampling frame and no computable response rate. While some limits are acknowledged, the self-selected convenience nature limits generalizability even within nursing, and base rates of self-reported enacted incivility may be distorted by self-selection.\",\n\"quote\": \"Although the full population size that was sampled from is unknown, nursing represents a significant employment category\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"internal_consistency\",\n\"subcategory\": \"Excluded-case counts do not match retention figures\",\n\"description\": \"The text states n = 16 were excluded for missing time points, but the reported wave counts (468 → 458 → 454 → 450) imply 18 participants failed to complete all four waves. This small discrepancy reflects imprecise accounting of the analytic sample.\",\n\"quote\": \"Only participants who completed all four surveys (n = 16 people excluded due to missing time points)\",\n\"location\": \"methods\",\n\"severity\": \"minor\"\n},\n{\n\"category\": \"theoretical_conceptual\",\n\"subcategory\": \"Misuse of 'trickle-down' terminology\",\n\"description\": \"The conclusion describes the phenomenon as 'trickle-down effects,' a term that in the organizational literature denotes top-down transmission (e.g., leader-to-subordinate). The studied process is target-to-others displacement/spread of incivility, not a hierarchical trickle-down, so the term is misapplied.\",\n\"quote\": \"The purpose of this four-wave study was to examine the trickle-down effects of experiencing customer incivility\",\n\"location\": \"discussion\",\n\"severity\": \"minor\"\n},\n{\n\"category\": \"reporting_completeness\",\n\"subcategory\": \"Missing-data treatment and estimation details underspecified\",\n\"description\": \"The handling of missing data between the stated final sample (372) and the analytic samples (321/244) is not described (listwise vs. FIML), and how the autoregressive controls are specified in the path models is not fully reported. Without these details, the analyses cannot be reproduced or properly evaluated.\",\n\"quote\": \"For missing cases, responses were either left blank (55% of missing values were due to no-response) or the value provided was outside of the expected numerical range (45% of missing values were due to an incorrect response).\",\n\"location\": \"methods\",\n\"severity\": \"moderate\"\n},\n{\n\"category\": \"construct_validity\",\n\"subcategory\": \"Negative-emotions item set narrow and includes 'fear'\",\n\"description\": \"Negative emotions toward patients are operationalized with only four items (aversion, disgust, anger, fear). 'Fear' toward patients is conceptually distinct from anger/aversion as a reaction to a perpetrator-stressor, and the narrow four-emotion set may not capture the affective construct invoked by the stressor-emotion model (which emphasizes anger/anxiety). This affects whether the measure matches the theorized mediator.\",\n\"quote\": \"The scale items consisted of four negative emotions: (a) aversion, (b) disgust, (c) anger, (d) fear.\",\n\"location\": \"methods\",\n\"severity\": \"minor\"\n},\n{\n\"category\": \"statistical_errors\",\n\"subcategory\": \"Discrepant focal coefficients across tables\",\n\"description\": \"The experienced-incivility → negative-emotions coefficient and the negative-emotions/compassion-fatigue → enacted-incivility coefficients differ across the simultaneous-mediation (Table 2) and moderated (Table 3) models (e.g., negative emotions → enacted incivility B = .28 in Table 2 vs .35 in Table 3; compassion fatigue B = .57 vs .40). While model specification differs, the manuscript does not reconcile which estimates support the stated indirect effects, creating ambiguity about the actual mediation pathway magnitudes.\",\n\"quote\": \"T4 Compassion Fatigue |  |  |  |  |  |  |  |  |  | .57*** | .17 | 3.35\",\n\"location\": \"results\",\n\"severity\": \"moderate\"\n}\n]}",
+  "model_id": "claude-opus-4-8",
+  "token_usage": {
+    "input_tokens": 38723,
+    "output_tokens": 13640
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "paper_id": 7,
+  "provider_name": "openai_gpt54_no_reasoning_open",
+  "issues": [
+    {
+      "category": "design",
+      "subcategory": "post hoc participant exclusion",
+      "description": "A very large proportion of participants were excluded after data collection based on having too few high-confidence trials in one or more cells. Because the primary conclusions are based only on high-confidence trials, this exclusion preferentially retains participants who used the high-confidence option often and may systematically bias error rates, confidence distributions, and the estimated prevalence of the purported illusion. The exclusion threshold is also not justified by power, measurement reliability, or preregistration. In Experiment 2 especially, excluding 92/290 participants (~32%) is substantial and raises concerns about selection bias and generalizability.",
+      "quote": "Exclusion of participants with too few high confidence trials in one or more cells of the design (10 trials or less) resulted in an inclusion of 198 participants (92 participants were excluded) when the results were averaged across the two color conditions.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "analysis of selected subset only",
+      "description": "The analyses condition on high-confidence trials only, rather than modeling confidence jointly with accuracy/errors. This creates conditioning-on-a-post-treatment/selection problem: confidence is itself affected by target type, delay, and response tendencies. Restricting to high-confidence trials can distort error proportions and can make increases in illusion rates over time reflect changes in confidence criteria rather than changes in memory representations. A proper analysis would model all trials, possibly with confidence as an outcome or predictor in a hierarchical model / signal-detection framework.",
+      "quote": "Figure 2 shows the illusory and other error rates in high confidence trials.",
+      "location": "results",
+      "severity": "critical"
+    },
+    {
+      "category": "validity",
+      "subcategory": "inference from time-delay confounded with confidence threshold",
+      "description": "The central claim that increasing illusion rates over time demonstrate a memory-based, rather than perceptual, origin is not warranted from the presented analyses. Because only high-confidence trials are analyzed, a longer delay may alter which trials qualify as high confidence, response criteria, or the composition of retained trials. Moreover, delay manipulations also change memory strength and decision strategy, not just post-perceptual storage. Thus an increase in high-confidence illusion rate does not logically exclude initial perceptual or encoding error, nor does it isolate a transformation of an initially correct representation.",
+      "quote": "If the frequency of reported illusions increases over time, then at least part of the illusions can be attributed to memory processing rather than perceptual encoding.",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "design",
+      "subcategory": "response-display induced bias",
+      "description": "The task measures 6-alternative forced-choice recognition with the target's mirrored counterpart explicitly present on critical trials. This response format strongly channels errors toward the mirrored counterpart and conflates memory with probe-based discrimination/decision processes. The mirrored alternative is not just another error; it is the most similar foil and may attract choices because of probe similarity, familiarity, or response competition. Experiment 2 equates presence of mirrored alternatives, but the core confound remains because the response display itself can induce or amplify pseudo-to-real choices.",
+      "quote": "The response display consisted of 6 letters: the target letter (with the same orientation as in the memory display, or mirror reversed), two other randomly selected letters from the memory display, and 3 letters that did not appear in the memory display.",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "false dichotomy perception vs memory",
+      "description": "The manuscript repeatedly treats perceptual errors and memory errors as separable alternatives and argues that increases over delay imply a memory-stage origin. In reality, errors can arise from interactions among perception, encoding, maintenance, retrieval, and decision. A representation initially biased at encoding can later be differentially retained or selected, and delay effects do not distinguish these possibilities. The conceptual framing overstates what the paradigm can resolve.",
+      "quote": "if the illusions arose completely during perception, they ought not to increase over time.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "inappropriate ANOVA for bounded compositional data",
+      "description": "The dependent variable is the relative occurrence/percentage of different error types, computed within subsets of trials and then analyzed with repeated-measures ANOVA. These proportions are bounded, likely non-normal, based on differing denominators across cells, and in some cases compositional. ANOVA on aggregated percentages ignores binomial sampling variability and unequal trial counts, especially after high-confidence filtering. Trial-level generalized mixed-effects models would be more appropriate.",
+      "quote": "error rates on high confidence trials were analyzed in an ANOVA with target type (real or pseudo letter), memory delay (long or short) and error type (illusions -from pseudo-to-real or the other way around- vs other errors) as independent variables and relative occurrence of high confidence selection as the dependent variable.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "insufficient trial count transparency after exclusions",
+      "description": "The manuscript does not report per-cell trial counts after restricting to critical high-confidence trials, nor distributions of denominators by condition. Since the key percentages are based on a selected subset and some cells are sparse enough to trigger exclusions, readers cannot assess precision, stability, or whether effects are driven by very small numbers of trials in some conditions.",
+      "quote": "Included participants had on average 49.2% high confidence trial over all conditions (range: 24.6 – 95.8, sd: 13.3).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "unequal base rates of target types in Experiments 1-2",
+      "description": "In Experiments 1 and 2, real letters are more frequent than pseudo-letters as targets and in the memory/probe environment. This creates learned experimental contingencies favoring real-letter responses and undermines the claim that asymmetry reflects lifelong world knowledge rather than task-specific frequency effects. Experiment 3 attempts to address this later, but the conclusions drawn from Experiments 1-2 remain confounded.",
+      "quote": "The target letter was a real letter in 75% of the trials and a pseudo-letter in the remaining 25%.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "cue-color manipulation confounded by physical stimulus differences",
+      "description": "The transient expectation manipulation uses red and blue fixation/cue colors with markedly different luminance values. Any null or non-null effects of cue color are therefore confounded by sensory salience/visibility differences, making the manipulation difficult to interpret. Additionally, the probability manipulation (25% vs 60% pseudo-letter target) may have been too subtle or inadequately learned, and no manipulation check during the task was provided.",
+      "quote": "both the central fixation cross and the cue were either blue (CIE: 0.148, 0.078, luminance: 6.47 cd/m2) or red (CIE: 0.641, 0.341; luminance: 11.9 cd/m2).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "feedback may induce learning/criterion shifts",
+      "description": "Participants received trial-by-trial or blockwise feedback about correctness. This can alter decision criteria, encourage strategy changes, and produce learning about the prevalence of real versus pseudo-letter targets over the course of the experiment. Such feedback is particularly problematic when the study aims to measure expectation-driven memory distortions and when target proportions are manipulated or unbalanced.",
+      "quote": "They were explicitly instructed not to confuse real and pseudo-letters and received feedback on their performance after each trial.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "confidence-scale inconsistency",
+      "description": "The confidence scale is described inconsistently across sections and figures. In Figure 1 the text says confidence ranged 1-4, but in Experiment 1 procedure it says participants indicated confidence by clicking on one of two boxes from 1-2. This ambiguity affects the operational definition of 'high confidence' and replicability.",
+      "quote": "Subsequently she indicated confidence in her judgment (1 = guess, 4 = certainty).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "confidence-scale inconsistency second quote",
+      "description": "This directly contradicts the earlier description of a 1-4 confidence scale in the same experiment. Without knowing the actual scale and cutoff used for 'high confidence', the analysis cannot be replicated or properly interpreted.",
+      "quote": "After selecting the target letter, participants indicated their confidence by clicking on one of two boxes (from 1-2, 1 = guess, 2 = certain).",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "Bayes factor model selection misuse",
+      "description": "The manuscript uses Bayesian repeated-measures ANOVA model comparison and then interprets the 'best-fitting model' and inclusion Bayes factors as hypothesis tests, but provides no rationale for priors, no sensitivity analyses, and no estimation of effect sizes or uncertainty intervals. Model-selection Bayes factors are sensitive to prior choices and can be unstable, especially with many candidate models and selected subsets of data. The interpretation thresholds are asserted without justification.",
+      "quote": "Based on this analysis, we selected the model with the best fit, reporting the BFm. Individual model components (main effects and interactions) were additionally evaluated based on their BFincl across all models.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "sequential Bayes stopping without safeguards",
+      "description": "Experiments 3 and 4 used ongoing sequential analysis of Bayes factors to stop data collection, but there is no preregistration, no specification of prior distributions, no description of the full stopping plan, minimum/maximum sample size, or assurance that analyses and stopping target matched the reported main analyses. The stopping criterion referred to a 'critical t-test', whereas the reported analyses are ANOVAs on high-confidence subsets, suggesting possible mismatch between stopping rule and final inferential target.",
+      "quote": "Sample size was determined based on a stopping rule implemented in an ongoing sequential analysis of the Bayes Factor for the critical t-test, namely the comparison between the effect of Error-Type for Real and Pseudo-letter targets.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "online data quality concerns unaddressed",
+      "description": "Experiment 4 was conducted online on participants' own laptops via Zoom/Neurotask, yet there is no reporting of screen size, resolution, viewing distance, browser/hardware timing validation, latency variability, environmental distractions, or exclusion criteria for technical issues. Given the brief 250 ms displays and subtle left-right mirror discriminations, uncontrolled presentation conditions could materially affect performance.",
+      "quote": "the data was collected in an online experiment, using Neurotask scripting . Participants that signed up to take part in the experiment were invited to join a Zoom meeting at a preset time. Here, each participant was placed in a Zoom break-out room, and given the link to the Neurotask experiment, which they then started on their own laptop.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "delay manipulation confounded with interference timing",
+      "description": "In Experiment 1, the short, long, and short-with-interference conditions differ on multiple dimensions: retention interval, timing of the irrelevant display, and temporal distance between cue and interfering display. These are not clean manipulations of a single construct. Therefore, attributing differences to 'memory deterioration through time or interference' is ambiguous.",
+      "quote": "If the probe appeared 0.75 seconds after memory display offset, it either appeared together with the irrelevant second display (the Short-with-interference condition), or it appeared in isolation (the Short condition). If the probe was presented 3 seconds after offset of the memory display (the Long condition), it appeared in isolation. If the memory probe appeared in isolation (the Short and Long conditions), the irrelevant second display appeared 5 seconds after memory display offset",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "alternative explanation not ruled out: familiarity/fluency bias",
+      "description": "The asymmetry favoring pseudo-to-real errors may reflect differential familiarity or perceptual fluency of real letters at retrieval/decision rather than world knowledge reshaping memory traces. The manuscript interprets asymmetry as evidence for top-down memory content change, but the design does not separate familiarity-based choice bias, fluency, or probe matching from mnemonic distortion.",
+      "quote": "This suggests that world knowledge is a more important driver of illusory memories than visual similarity",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "insufficient control of verbal rehearsal",
+      "description": "Because the stimuli are highly nameable letters, participants could verbally recode and rehearse them. This is especially relevant because the real vs pseudo distinction may be represented verbally as a letter identity plus a mirrored feature. The study does not prevent or measure verbal rehearsal (e.g., articulatory suppression), yet theoretical conclusions are drawn about visual STM mechanisms.",
+      "quote": "All experiments rely on the extensive experience participants have with the alphabet.",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "no effect-size uncertainty intervals",
+      "description": "The manuscript reports percentages and Bayes factors but does not provide credible intervals, confidence intervals, or participant-level variability for key effects. Without uncertainty intervals, the precision and practical magnitude of the reported differences are difficult to assess.",
+      "quote": "The interaction between Error Type and Memory Delay, (BFincl = 4.21) shows support for hypothesis 2: as memory deteriorates with a larger memory delay or more visual interference, the increase in illusory errors (7% increase from 19% in the short delay to 26% averaged over the short with interference and long delay) is larger than other errors (4% increase, from 8 to 12%).",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "missing preregistration and analysis plan transparency",
+      "description": "There is no mention of preregistration for hypotheses, exclusions, confidence thresholds, sequential stopping, or analytic choices. Given multiple experiments, model comparisons, follow-up ANOVAs, exclusions, and post hoc interpretations, lack of preregistration weakens confirmatory claims.",
+      "quote": "Here we report 4 experiments that test whether STM is susceptible to illusory memories.",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "follow-up analyses inconsistent with reported table",
+      "description": "There appears to be inconsistency between the textual interpretation and Table 4 for non-illusory errors in Experiment 2. The text says only Memory Delay was relevant and non-illusory errors increased from short to long delay, but Table 4 shows BFincl = 0.064 for Memory Delay and very strong evidence for Target Type instead. This discrepancy suggests either table or narrative errors and undermines confidence in the analysis/reporting.",
+      "quote": "For other, non-illusory errors only Memory Delay was a relevant factor (BFm = 42... Non-illusory error rates increased from the short to the long delay (BFincl = 190 for Memory Delay)",
+      "location": "results",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "table/reporting integrity problems",
+      "description": "Several tables are malformed or duplicated, with repeated headers and possible transcription problems. Such presentation issues make it difficult to verify the analyses and suggest problems in manuscript preparation. In one case the label 'Target Type * Memory * Error Type' appears malformed. This undermines reproducibility and confidence in the statistical reporting.",
+      "quote": "Table 1: error rates ANOVA | Table 1: error rates ANOVA | Table 1: error rates ANOVA",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "overclaiming about predictive processing",
+      "description": "The data are used to support broad claims about predictive processing and the formation/maintenance of memory traces, but the experiments do not directly test computational predictive-processing models, precision weighting, or compare them against formal alternatives. The evidence is compatible with several simpler accounts, including response bias, familiarity bias, asymmetric encoding, or retrieval competition.",
+      "quote": "Our findings support a predictive processing view of the formation and maintenance of memory in which all memory stages, including STM, involve integration of bottom-up memory input with top-down predictions",
+      "location": "abstract",
+      "severity": "major"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "unsupported rejection of fuzzy trace theory",
+      "description": "The discussion dismisses FTT on the grounds that high similarity should facilitate false memories and then states this is inconsistent because target and mirrored counterpart are extremely similar 'yet false memories are abundant'. But abundant false memories with high similarity are not obviously inconsistent with FTT; if anything, high similarity could be expected to increase confusion. The critique is not logically developed and mischaracterizes the theory.",
+      "quote": "FTT predicts that high similarity between a target and its mirrored counterpart should facilitate false memories . This is not consistent with the current data: The mirrored counterpart (the real letter) and the target (the pseudo-letter) are extremely similar, yet false memories are abundant.",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "design",
+      "subcategory": "training task may select for atypical WM abilities",
+      "description": "Before Experiment 1, participants had to pass a cued change-detection training task unrelated to the letter task, with exclusions based on performance. This may create a non-representative sample with above-average visual memory ability and motivation. Yet the rationale is only to ensure motivation/proficiency, and no evidence is provided that this training does not alter strategies or expectations in the subsequent task.",
+      "quote": "Participants could only participate in the actual experiment, if they scored higher than 75% correct (averaged across all trials) on the final 10 blocks of training.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "unclear randomization/counterbalancing details",
+      "description": "The manuscript does not fully specify how letter identities, target locations, mirrored pairings, and trial types were balanced across conditions and participants. Because some letters may be more visually discriminable or familiar than others, inadequate counterbalancing could contribute to asymmetries.",
+      "quote": "The orientations were pseudo-randomly selected, such that each orientation was equally likely, and that each orientation appeared at least 1, and at most 3 times.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "practice differs substantially from test",
+      "description": "Practice trials use much longer display durations (e.g., 2.5 s) than the actual task (250 ms), and in Experiment 3 they are gradually reduced. Such practice may teach strategies under easier encoding conditions that do not transfer cleanly to the experimental task, and may not adequately prepare participants for the brief discriminations required during testing.",
+      "quote": "The practice trials were identical to the experimental trials, except that the memory display was shown for 2.5 seconds instead of 250 ms.",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "validity",
+      "subcategory": "no direct awareness/manipulation check for cue learning",
+      "description": "For Experiment 2, the only manipulation check is an open-ended post-experiment questionnaire in which participants did not mention the cue-target contingency. This does not establish whether participants implicitly learned the contingency; absence of explicit report is not evidence of successful or unsuccessful implicit expectation formation. The null result on cue color is therefore hard to interpret.",
+      "quote": "Participants filled out a brief questionnaire in which they were invited to indicate what the experiment was about after the experiment. The relationship between the colour of the cue and the nature of the target was not mentioned in any of the responses.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "missing definition of high-confidence cutoff",
+      "description": "The analysis repeatedly refers to 'high confidence trials' but never clearly specifies the cutoff on the confidence scale(s), which is especially problematic given the inconsistent scale descriptions. Replication and interpretation require knowing which ratings were included.",
+      "quote": "For each memory delay (short, short with interference and long) and each target type (pseudo- and real letter targets) the occurrence of illusory errors... was calculated.",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "denominator ambiguity in reported percentages",
+      "description": "Reported percentages of illusions and other errors are difficult to interpret because it is not always clear whether they are percentages of all high-confidence critical trials, all high-confidence trials, all trials, or all errors. Different denominators could substantially change interpretation, especially when accuracy differs by condition.",
+      "quote": "high confidence pseudo-to-real illusions (43%) were almost as prevalent as high confidence selections of the actual pseudo-target (50%).",
+      "location": "discussion",
+      "severity": "major"
+    },
+    {
+      "category": "validity",
+      "subcategory": "stimulus discriminability not equated across letters",
+      "description": "Different letters and their mirrored counterparts vary in visual distinctiveness and ease of discrimination. The manuscript excludes symmetric letters but does not report whether remaining letters were equated or counterbalanced for discriminability. As a result, observed asymmetries may partly reflect stimulus-specific confusion patterns rather than generalized world-knowledge effects.",
+      "quote": "Therefore only letters that changed when mirrored were included in the experiment",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "claims about 'all stages of STM' not supported",
+      "description": "The manuscript generalizes from the tested delays and paradigms to 'all memory stages, including STM' and later to WM/FM broadly. However, iconic memory was not tested, and even within STM only particular recognition tasks with letters were used. Broad claims about all stages are overgeneralized from a narrow paradigm.",
+      "quote": "Our findings support a predictive processing view of the formation and maintenance of memory in which all memory stages, including STM, involve integration of bottom-up memory input with top-down predictions",
+      "location": "abstract",
+      "severity": "major"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "incomplete methodological details for apparatus",
+      "description": "Critical apparatus details such as monitor refresh rate, screen dimensions, viewing distance, and laboratory setup are omitted for the lab experiments. For 250 ms presentations and small stimuli, these details are important for replicability and for evaluating perceptual encoding demands.",
+      "quote": "The experiment was programmed in Matlab version 2012b using the Psychophysics Toolbox routines .",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "design",
+      "subcategory": "interference display may not be truly irrelevant",
+      "description": "The second display uses the same stimulus class (real and pseudo letters) and could cause feature overwriting, source confusion, or retroactive interference specifically related to the mirrored-letter manipulation. Calling it 'irrelevant' does not establish that it affects memory uniformly or only through generic decay; it may induce specific confusion with target identity or orientation.",
+      "quote": "To increase memory decay through task-irrelevant interference, a second display was included in each trial. This display consisted of randomly selected letters, unrelated to the memory display. Participants were instructed to ignore this second display.",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical",
+      "subcategory": "multiple experiments and multiple follow-ups without correction/justification",
+      "description": "The manuscript conducts multiple experiments, model comparisons, follow-up ANOVAs, and follow-up t-tests, but provides no discussion of multiplicity or the exploratory/confirmatory status of these analyses. While Bayesian methods handle some issues differently than frequentist corrections, the accumulation of tests still requires transparent justification and prior specification.",
+      "quote": "Follow-up ANOVAs conducted separately for each error type showed that for illusory errors, the optimal model consisted of the factors Memory delay, Target type and the interaction between the two",
+      "location": "results",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "figure numbering inconsistency",
+      "description": "Experiment 4 results refer to 'Figure 5' but the displayed figure is labeled Figure 6. Such inconsistencies make the manuscript harder to follow and suggest insufficient editorial care.",
+      "quote": "Figure 5 shows the error rates for high confidence trials.",
+      "location": "results",
+      "severity": "minor"
+    },
+    {
+      "category": "conceptual",
+      "subcategory": "equating confidence with genuine memory trace",
+      "description": "The manuscript assumes that high confidence errors imply access to an actual false memory trace and that low-confidence errors are guesses. Confidence is not a direct indicator of mnemonic authenticity; high confidence can accompany biased decisions or familiar foils, and low confidence can occur with weak but genuine memories. This assumption underpins the entire definition of 'memory illusion' but is not validated.",
+      "quote": "Illusory memories should result in high confidence erroneous responses, where the participants has access to a memory trace (albeit an incorrect memory trace). In the absence of confidence ratings, the erroneous responses could actually consist of low confidence responses or even outright guesses.",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "validity",
+      "subcategory": "no signal-detection analysis of bias vs sensitivity",
+      "description": "Because the core theoretical distinction involves whether participants genuinely misremembered versus simply showed a criterion/familiarity bias toward real letters, the absence of a signal-detection or multinomial-process analysis is a major limitation. The current percent-error analyses cannot decompose sensitivity, bias, lure attractiveness, and confidence criteria.",
+      "quote": "Yet another reason why illusory reports arise could be a response bias: Participant might just be more inclined to select real letters instead of pseudo-letters, since real letters are a well-known category. However, this is unlikely because the pattern of responses across conditions is consistent with memory-driven processes rather than response bias.",
+      "location": "discussion",
+      "severity": "critical"
+    },
+    {
+      "category": "reporting",
+      "subcategory": "grammar/wording affecting clarity",
+      "description": "There are multiple wording and typographical issues that, while individually minor, sometimes affect clarity of methodological interpretation (e.g., 'were' instead of 'where', 'particpants', inconsistent capitalization and terminology).",
+      "quote": "cases were people report with high confidence to have seen something that was not presented to them",
+      "location": "introduction",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"design\",\"subcategory\":\"post hoc participant exclusion\",\"description\":\"A very large proportion of participants were excluded after data collection based on having too few high-confidence trials in one or more cells. Because the primary conclusions are based only on high-confidence trials, this exclusion preferentially retains participants who used the high-confidence option often and may systematically bias error rates, confidence distributions, and the estimated prevalence of the purported illusion. The exclusion threshold is also not justified by power, measurement reliability, or preregistration. In Experiment 2 especially, excluding 92/290 participants (~32%) is substantial and raises concerns about selection bias and generalizability.\",\"quote\":\"Exclusion of participants with too few high confidence trials in one or more cells of the design (10 trials or less) resulted in an inclusion of 198 participants (92 participants were excluded) when the results were averaged across the two color conditions.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"statistical\",\"subcategory\":\"analysis of selected subset only\",\"description\":\"The analyses condition on high-confidence trials only, rather than modeling confidence jointly with accuracy/errors. This creates conditioning-on-a-post-treatment/selection problem: confidence is itself affected by target type, delay, and response tendencies. Restricting to high-confidence trials can distort error proportions and can make increases in illusion rates over time reflect changes in confidence criteria rather than changes in memory representations. A proper analysis would model all trials, possibly with confidence as an outcome or predictor in a hierarchical model / signal-detection framework.\",\"quote\":\"Figure 2 shows the illusory and other error rates in high confidence trials.\",\"location\":\"results\",\"severity\":\"critical\"},{\"category\":\"validity\",\"subcategory\":\"inference from time-delay confounded with confidence threshold\",\"description\":\"The central claim that increasing illusion rates over time demonstrate a memory-based, rather than perceptual, origin is not warranted from the presented analyses. Because only high-confidence trials are analyzed, a longer delay may alter which trials qualify as high confidence, response criteria, or the composition of retained trials. Moreover, delay manipulations also change memory strength and decision strategy, not just post-perceptual storage. Thus an increase in high-confidence illusion rate does not logically exclude initial perceptual or encoding error, nor does it isolate a transformation of an initially correct representation.\",\"quote\":\"If the frequency of reported illusions increases over time, then at least part of the illusions can be attributed to memory processing rather than perceptual encoding.\",\"location\":\"introduction\",\"severity\":\"critical\"},{\"category\":\"design\",\"subcategory\":\"response-display induced bias\",\"description\":\"The task measures 6-alternative forced-choice recognition with the target's mirrored counterpart explicitly present on critical trials. This response format strongly channels errors toward the mirrored counterpart and conflates memory with probe-based discrimination/decision processes. The mirrored alternative is not just another error; it is the most similar foil and may attract choices because of probe similarity, familiarity, or response competition. Experiment 2 equates presence of mirrored alternatives, but the core confound remains because the response display itself can induce or amplify pseudo-to-real choices.\",\"quote\":\"The response display consisted of 6 letters: the target letter (with the same orientation as in the memory display, or mirror reversed), two other randomly selected letters from the memory display, and 3 letters that did not appear in the memory display.\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"conceptual\",\"subcategory\":\"false dichotomy perception vs memory\",\"description\":\"The manuscript repeatedly treats perceptual errors and memory errors as separable alternatives and argues that increases over delay imply a memory-stage origin. In reality, errors can arise from interactions among perception, encoding, maintenance, retrieval, and decision. A representation initially biased at encoding can later be differentially retained or selected, and delay effects do not distinguish these possibilities. The conceptual framing overstates what the paradigm can resolve.\",\"quote\":\"if the illusions arose completely during perception, they ought not to increase over time.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"inappropriate ANOVA for bounded compositional data\",\"description\":\"The dependent variable is the relative occurrence/percentage of different error types, computed within subsets of trials and then analyzed with repeated-measures ANOVA. These proportions are bounded, likely non-normal, based on differing denominators across cells, and in some cases compositional. ANOVA on aggregated percentages ignores binomial sampling variability and unequal trial counts, especially after high-confidence filtering. Trial-level generalized mixed-effects models would be more appropriate.\",\"quote\":\"error rates on high confidence trials were analyzed in an ANOVA with target type (real or pseudo letter), memory delay (long or short) and error type (illusions -from pseudo-to-real or the other way around- vs other errors) as independent variables and relative occurrence of high confidence selection as the dependent variable.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"insufficient trial count transparency after exclusions\",\"description\":\"The manuscript does not report per-cell trial counts after restricting to critical high-confidence trials, nor distributions of denominators by condition. Since the key percentages are based on a selected subset and some cells are sparse enough to trigger exclusions, readers cannot assess precision, stability, or whether effects are driven by very small numbers of trials in some conditions.\",\"quote\":\"Included participants had on average 49.2% high confidence trial over all conditions (range: 24.6 – 95.8, sd: 13.3).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"unequal base rates of target types in Experiments 1-2\",\"description\":\"In Experiments 1 and 2, real letters are more frequent than pseudo-letters as targets and in the memory/probe environment. This creates learned experimental contingencies favoring real-letter responses and undermines the claim that asymmetry reflects lifelong world knowledge rather than task-specific frequency effects. Experiment 3 attempts to address this later, but the conclusions drawn from Experiments 1-2 remain confounded.\",\"quote\":\"The target letter was a real letter in 75% of the trials and a pseudo-letter in the remaining 25%.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"validity\",\"subcategory\":\"cue-color manipulation confounded by physical stimulus differences\",\"description\":\"The transient expectation manipulation uses red and blue fixation/cue colors with markedly different luminance values. Any null or non-null effects of cue color are therefore confounded by sensory salience/visibility differences, making the manipulation difficult to interpret. Additionally, the probability manipulation (25% vs 60% pseudo-letter target) may have been too subtle or inadequately learned, and no manipulation check during the task was provided.\",\"quote\":\"both the central fixation cross and the cue were either blue (CIE: 0.148, 0.078, luminance: 6.47 cd/m2) or red (CIE: 0.641, 0.341; luminance: 11.9 cd/m2).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"feedback may induce learning/criterion shifts\",\"description\":\"Participants received trial-by-trial or blockwise feedback about correctness. This can alter decision criteria, encourage strategy changes, and produce learning about the prevalence of real versus pseudo-letter targets over the course of the experiment. Such feedback is particularly problematic when the study aims to measure expectation-driven memory distortions and when target proportions are manipulated or unbalanced.\",\"quote\":\"They were explicitly instructed not to confuse real and pseudo-letters and received feedback on their performance after each trial.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"confidence-scale inconsistency\",\"description\":\"The confidence scale is described inconsistently across sections and figures. In Figure 1 the text says confidence ranged 1-4, but in Experiment 1 procedure it says participants indicated confidence by clicking on one of two boxes from 1-2. This ambiguity affects the operational definition of 'high confidence' and replicability.\",\"quote\":\"Subsequently she indicated confidence in her judgment (1 = guess, 4 = certainty).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"confidence-scale inconsistency second quote\",\"description\":\"This directly contradicts the earlier description of a 1-4 confidence scale in the same experiment. Without knowing the actual scale and cutoff used for 'high confidence', the analysis cannot be replicated or properly interpreted.\",\"quote\":\"After selecting the target letter, participants indicated their confidence by clicking on one of two boxes (from 1-2, 1 = guess, 2 = certain).\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"Bayes factor model selection misuse\",\"description\":\"The manuscript uses Bayesian repeated-measures ANOVA model comparison and then interprets the 'best-fitting model' and inclusion Bayes factors as hypothesis tests, but provides no rationale for priors, no sensitivity analyses, and no estimation of effect sizes or uncertainty intervals. Model-selection Bayes factors are sensitive to prior choices and can be unstable, especially with many candidate models and selected subsets of data. The interpretation thresholds are asserted without justification.\",\"quote\":\"Based on this analysis, we selected the model with the best fit, reporting the BFm. Individual model components (main effects and interactions) were additionally evaluated based on their BFincl across all models.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"sequential Bayes stopping without safeguards\",\"description\":\"Experiments 3 and 4 used ongoing sequential analysis of Bayes factors to stop data collection, but there is no preregistration, no specification of prior distributions, no description of the full stopping plan, minimum/maximum sample size, or assurance that analyses and stopping target matched the reported main analyses. The stopping criterion referred to a 'critical t-test', whereas the reported analyses are ANOVAs on high-confidence subsets, suggesting possible mismatch between stopping rule and final inferential target.\",\"quote\":\"Sample size was determined based on a stopping rule implemented in an ongoing sequential analysis of the Bayes Factor for the critical t-test, namely the comparison between the effect of Error-Type for Real and Pseudo-letter targets.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"validity\",\"subcategory\":\"online data quality concerns unaddressed\",\"description\":\"Experiment 4 was conducted online on participants' own laptops via Zoom/Neurotask, yet there is no reporting of screen size, resolution, viewing distance, browser/hardware timing validation, latency variability, environmental distractions, or exclusion criteria for technical issues. Given the brief 250 ms displays and subtle left-right mirror discriminations, uncontrolled presentation conditions could materially affect performance.\",\"quote\":\"the data was collected in an online experiment, using Neurotask scripting . Participants that signed up to take part in the experiment were invited to join a Zoom meeting at a preset time. Here, each participant was placed in a Zoom break-out room, and given the link to the Neurotask experiment, which they then started on their own laptop.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"delay manipulation confounded with interference timing\",\"description\":\"In Experiment 1, the short, long, and short-with-interference conditions differ on multiple dimensions: retention interval, timing of the irrelevant display, and temporal distance between cue and interfering display. These are not clean manipulations of a single construct. Therefore, attributing differences to 'memory deterioration through time or interference' is ambiguous.\",\"quote\":\"If the probe appeared 0.75 seconds after memory display offset, it either appeared together with the irrelevant second display (the Short-with-interference condition), or it appeared in isolation (the Short condition). If the probe was presented 3 seconds after offset of the memory display (the Long condition), it appeared in isolation. If the memory probe appeared in isolation (the Short and Long conditions), the irrelevant second display appeared 5 seconds after memory display offset\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"validity\",\"subcategory\":\"alternative explanation not ruled out: familiarity/fluency bias\",\"description\":\"The asymmetry favoring pseudo-to-real errors may reflect differential familiarity or perceptual fluency of real letters at retrieval/decision rather than world knowledge reshaping memory traces. The manuscript interprets asymmetry as evidence for top-down memory content change, but the design does not separate familiarity-based choice bias, fluency, or probe matching from mnemonic distortion.\",\"quote\":\"This suggests that world knowledge is a more important driver of illusory memories than visual similarity\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"insufficient control of verbal rehearsal\",\"description\":\"Because the stimuli are highly nameable letters, participants could verbally recode and rehearse them. This is especially relevant because the real vs pseudo distinction may be represented verbally as a letter identity plus a mirrored feature. The study does not prevent or measure verbal rehearsal (e.g., articulatory suppression), yet theoretical conclusions are drawn about visual STM mechanisms.\",\"quote\":\"All experiments rely on the extensive experience participants have with the alphabet.\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"no effect-size uncertainty intervals\",\"description\":\"The manuscript reports percentages and Bayes factors but does not provide credible intervals, confidence intervals, or participant-level variability for key effects. Without uncertainty intervals, the precision and practical magnitude of the reported differences are difficult to assess.\",\"quote\":\"The interaction between Error Type and Memory Delay, (BFincl = 4.21) shows support for hypothesis 2: as memory deteriorates with a larger memory delay or more visual interference, the increase in illusory errors (7% increase from 19% in the short delay to 26% averaged over the short with interference and long delay) is larger than other errors (4% increase, from 8 to 12%).\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"missing preregistration and analysis plan transparency\",\"description\":\"There is no mention of preregistration for hypotheses, exclusions, confidence thresholds, sequential stopping, or analytic choices. Given multiple experiments, model comparisons, follow-up ANOVAs, exclusions, and post hoc interpretations, lack of preregistration weakens confirmatory claims.\",\"quote\":\"Here we report 4 experiments that test whether STM is susceptible to illusory memories.\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"statistical\",\"subcategory\":\"follow-up analyses inconsistent with reported table\",\"description\":\"There appears to be inconsistency between the textual interpretation and Table 4 for non-illusory errors in Experiment 2. The text says only Memory Delay was relevant and non-illusory errors increased from short to long delay, but Table 4 shows BFincl = 0.064 for Memory Delay and very strong evidence for Target Type instead. This discrepancy suggests either table or narrative errors and undermines confidence in the analysis/reporting.\",\"quote\":\"For other, non-illusory errors only Memory Delay was a relevant factor (BFm = 42... Non-illusory error rates increased from the short to the long delay (BFincl = 190 for Memory Delay)\",\"location\":\"results\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"table/reporting integrity problems\",\"description\":\"Several tables are malformed or duplicated, with repeated headers and possible transcription problems. Such presentation issues make it difficult to verify the analyses and suggest problems in manuscript preparation. In one case the label 'Target Type * Memory * Error Type' appears malformed. This undermines reproducibility and confidence in the statistical reporting.\",\"quote\":\"Table 1: error rates ANOVA | Table 1: error rates ANOVA | Table 1: error rates ANOVA\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"overclaiming about predictive processing\",\"description\":\"The data are used to support broad claims about predictive processing and the formation/maintenance of memory traces, but the experiments do not directly test computational predictive-processing models, precision weighting, or compare them against formal alternatives. The evidence is compatible with several simpler accounts, including response bias, familiarity bias, asymmetric encoding, or retrieval competition.\",\"quote\":\"Our findings support a predictive processing view of the formation and maintenance of memory in which all memory stages, including STM, involve integration of bottom-up memory input with top-down predictions\",\"location\":\"abstract\",\"severity\":\"major\"},{\"category\":\"conceptual\",\"subcategory\":\"unsupported rejection of fuzzy trace theory\",\"description\":\"The discussion dismisses FTT on the grounds that high similarity should facilitate false memories and then states this is inconsistent because target and mirrored counterpart are extremely similar 'yet false memories are abundant'. But abundant false memories with high similarity are not obviously inconsistent with FTT; if anything, high similarity could be expected to increase confusion. The critique is not logically developed and mischaracterizes the theory.\",\"quote\":\"FTT predicts that high similarity between a target and its mirrored counterpart should facilitate false memories . This is not consistent with the current data: The mirrored counterpart (the real letter) and the target (the pseudo-letter) are extremely similar, yet false memories are abundant.\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"design\",\"subcategory\":\"training task may select for atypical WM abilities\",\"description\":\"Before Experiment 1, participants had to pass a cued change-detection training task unrelated to the letter task, with exclusions based on performance. This may create a non-representative sample with above-average visual memory ability and motivation. Yet the rationale is only to ensure motivation/proficiency, and no evidence is provided that this training does not alter strategies or expectations in the subsequent task.\",\"quote\":\"Participants could only participate in the actual experiment, if they scored higher than 75% correct (averaged across all trials) on the final 10 blocks of training.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"unclear randomization/counterbalancing details\",\"description\":\"The manuscript does not fully specify how letter identities, target locations, mirrored pairings, and trial types were balanced across conditions and participants. Because some letters may be more visually discriminable or familiar than others, inadequate counterbalancing could contribute to asymmetries.\",\"quote\":\"The orientations were pseudo-randomly selected, such that each orientation was equally likely, and that each orientation appeared at least 1, and at most 3 times.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"practice differs substantially from test\",\"description\":\"Practice trials use much longer display durations (e.g., 2.5 s) than the actual task (250 ms), and in Experiment 3 they are gradually reduced. Such practice may teach strategies under easier encoding conditions that do not transfer cleanly to the experimental task, and may not adequately prepare participants for the brief discriminations required during testing.\",\"quote\":\"The practice trials were identical to the experimental trials, except that the memory display was shown for 2.5 seconds instead of 250 ms.\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"validity\",\"subcategory\":\"no direct awareness/manipulation check for cue learning\",\"description\":\"For Experiment 2, the only manipulation check is an open-ended post-experiment questionnaire in which participants did not mention the cue-target contingency. This does not establish whether participants implicitly learned the contingency; absence of explicit report is not evidence of successful or unsuccessful implicit expectation formation. The null result on cue color is therefore hard to interpret.\",\"quote\":\"Participants filled out a brief questionnaire in which they were invited to indicate what the experiment was about after the experiment. The relationship between the colour of the cue and the nature of the target was not mentioned in any of the responses.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"missing definition of high-confidence cutoff\",\"description\":\"The analysis repeatedly refers to 'high confidence trials' but never clearly specifies the cutoff on the confidence scale(s), which is especially problematic given the inconsistent scale descriptions. Replication and interpretation require knowing which ratings were included.\",\"quote\":\"For each memory delay (short, short with interference and long) and each target type (pseudo- and real letter targets) the occurrence of illusory errors... was calculated.\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical\",\"subcategory\":\"denominator ambiguity in reported percentages\",\"description\":\"Reported percentages of illusions and other errors are difficult to interpret because it is not always clear whether they are percentages of all high-confidence critical trials, all high-confidence trials, all trials, or all errors. Different denominators could substantially change interpretation, especially when accuracy differs by condition.\",\"quote\":\"high confidence pseudo-to-real illusions (43%) were almost as prevalent as high confidence selections of the actual pseudo-target (50%).\",\"location\":\"discussion\",\"severity\":\"major\"},{\"category\":\"validity\",\"subcategory\":\"stimulus discriminability not equated across letters\",\"description\":\"Different letters and their mirrored counterparts vary in visual distinctiveness and ease of discrimination. The manuscript excludes symmetric letters but does not report whether remaining letters were equated or counterbalanced for discriminability. As a result, observed asymmetries may partly reflect stimulus-specific confusion patterns rather than generalized world-knowledge effects.\",\"quote\":\"Therefore only letters that changed when mirrored were included in the experiment\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"conceptual\",\"subcategory\":\"claims about 'all stages of STM' not supported\",\"description\":\"The manuscript generalizes from the tested delays and paradigms to 'all memory stages, including STM' and later to WM/FM broadly. However, iconic memory was not tested, and even within STM only particular recognition tasks with letters were used. Broad claims about all stages are overgeneralized from a narrow paradigm.\",\"quote\":\"Our findings support a predictive processing view of the formation and maintenance of memory in which all memory stages, including STM, involve integration of bottom-up memory input with top-down predictions\",\"location\":\"abstract\",\"severity\":\"major\"},{\"category\":\"reporting\",\"subcategory\":\"incomplete methodological details for apparatus\",\"description\":\"Critical apparatus details such as monitor refresh rate, screen dimensions, viewing distance, and laboratory setup are omitted for the lab experiments. For 250 ms presentations and small stimuli, these details are important for replicability and for evaluating perceptual encoding demands.\",\"quote\":\"The experiment was programmed in Matlab version 2012b using the Psychophysics Toolbox routines .\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"design\",\"subcategory\":\"interference display may not be truly irrelevant\",\"description\":\"The second display uses the same stimulus class (real and pseudo letters) and could cause feature overwriting, source confusion, or retroactive interference specifically related to the mirrored-letter manipulation. Calling it 'irrelevant' does not establish that it affects memory uniformly or only through generic decay; it may induce specific confusion with target identity or orientation.\",\"quote\":\"To increase memory decay through task-irrelevant interference, a second display was included in each trial. This display consisted of randomly selected letters, unrelated to the memory display. Participants were instructed to ignore this second display.\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistical\",\"subcategory\":\"multiple experiments and multiple follow-ups without correction/justification\",\"description\":\"The manuscript conducts multiple experiments, model comparisons, follow-up ANOVAs, and follow-up t-tests, but provides no discussion of multiplicity or the exploratory/confirmatory status of these analyses. While Bayesian methods handle some issues differently than frequentist corrections, the accumulation of tests still requires transparent justification and prior specification.\",\"quote\":\"Follow-up ANOVAs conducted separately for each error type showed that for illusory errors, the optimal model consisted of the factors Memory delay, Target type and the interaction between the two\",\"location\":\"results\",\"severity\":\"moderate\"},{\"category\":\"reporting\",\"subcategory\":\"figure numbering inconsistency\",\"description\":\"Experiment 4 results refer to 'Figure 5' but the displayed figure is labeled Figure 6. Such inconsistencies make the manuscript harder to follow and suggest insufficient editorial care.\",\"quote\":\"Figure 5 shows the error rates for high confidence trials.\",\"location\":\"results\",\"severity\":\"minor\"},{\"category\":\"conceptual\",\"subcategory\":\"equating confidence with genuine memory trace\",\"description\":\"The manuscript assumes that high confidence errors imply access to an actual false memory trace and that low-confidence errors are guesses. Confidence is not a direct indicator of mnemonic authenticity; high confidence can accompany biased decisions or familiar foils, and low confidence can occur with weak but genuine memories. This assumption underpins the entire definition of 'memory illusion' but is not validated.\",\"quote\":\"Illusory memories should result in high confidence erroneous responses, where the participants has access to a memory trace (albeit an incorrect memory trace). In the absence of confidence ratings, the erroneous responses could actually consist of low confidence responses or even outright guesses.\",\"location\":\"introduction\",\"severity\":\"critical\"},{\"category\":\"validity\",\"subcategory\":\"no signal-detection analysis of bias vs sensitivity\",\"description\":\"Because the core theoretical distinction involves whether participants genuinely misremembered versus simply showed a criterion/familiarity bias toward real letters, the absence of a signal-detection or multinomial-process analysis is a major limitation. The current percent-error analyses cannot decompose sensitivity, bias, lure attractiveness, and confidence criteria.\",\"quote\":\"Yet another reason why illusory reports arise could be a response bias: Participant might just be more inclined to select real letters instead of pseudo-letters, since real letters are a well-known category. However, this is unlikely because the pattern of responses across conditions is consistent with memory-driven processes rather than response bias.\",\"location\":\"discussion\",\"severity\":\"critical\"},{\"category\":\"reporting\",\"subcategory\":\"grammar/wording affecting clarity\",\"description\":\"There are multiple wording and typographical issues that, while individually minor, sometimes affect clarity of methodological interpretation (e.g., 'were' instead of 'where', 'particpants', inconsistent capitalization and terminology).\",\"quote\":\"cases were people report with high confidence to have seen something that was not presented to them\",\"location\":\"introduction\",\"severity\":\"minor\"}]}",
+  "model_id": "gpt-5.4",
+  "token_usage": {
+    "input_tokens": 17084,
+    "output_tokens": 5285
+  }
+}
