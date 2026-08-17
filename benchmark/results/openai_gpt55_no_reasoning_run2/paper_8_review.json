@@ -1,0 +1,596 @@
+{
+  "paper_id": 8,
+  "provider_name": "openai_gpt55_no_reasoning_run2",
+  "issues": [
+    {
+      "category": "internal_consistency",
+      "subcategory": "intervention timing contradiction",
+      "description": "The manuscript gives contradictory descriptions of when the three reduction procedures occur. The introduction states that the methods will be placed before collaborative recall, but the methods section’s four-phase procedure places collaborative recall before the procedures. The detailed procedure also administers the interventions after the discussion and filler task. This is a critical design inconsistency because intervention timing is central to the theoretical rationale, causal mechanism, and comparability with prior warning studies.",
+      "quote": "\"What is important, we decided to place the methods inducing resistance to misinformation before the collaborative recall phase (that is, before exposing participants to misinformation).\" ... \"The procedure will consist of four main phases: (1) presenting the original material, (2) collaborative recall (including misinformation), (3) three procedures to reduce vulnerability to misinformation (and a control condition), and (4) an individual memory test of the original material.\"",
+      "location": "introduction/methods",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "extended warning content incompatible with timing",
+      "description": "The extended warning is described as explaining that the partner saw a different movie version and why deception was applied. If delivered before collaborative recall, this would reveal the MORI deception and likely alter or invalidate the discussion phase. If delivered after collaborative recall, it is a post-warning, contradicting the claimed inoculation-before-misinformation rationale. This makes the manipulation conceptually unclear and threatens internal validity.",
+      "quote": "\"Extended warning, informing that the partner actually saw a different version of the movie and informing why the deception was applied\"; \"we decided to place the methods inducing resistance to misinformation before the collaborative recall phase\"",
+      "location": "introduction",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "test format contradiction",
+      "description": "The individual memory test is described in the procedure as open-ended, but the analysis plan later states that it will use a two-alternative forced-choice format. These formats measure different constructs, have different chance levels, require different scoring, and differ in susceptibility to response bias. The contradiction prevents evaluation or replication of the primary outcome.",
+      "quote": "\"The test will contain 20 open-ended questions\" ... \"In the present research, the individual memory test will also use the two-alternative forced-choice format.\"",
+      "location": "methods/analysis plan",
+      "severity": "critical"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "inappropriate ANOVA for bounded count data",
+      "description": "The primary outcomes are counts of correct, misinformation-consistent, other, and total answers across only eight critical items, with four discussed and four non-discussed. These are bounded binomial/multinomial repeated observations, not continuous normally distributed outcomes. A repeated-measures ANOVA on such sparse counts can produce invalid standard errors, inappropriate distributional assumptions, and loss of item-level information. Generalized mixed-effects models or appropriate binomial/multinomial models would be more defensible.",
+      "quote": "\"We will explore the individual memory test’s scores for the critical details using analysis of variance (ANOVA), using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "non-independence of dyadic data ignored",
+      "description": "Participants are tested in pairs, discuss with each other, mutually influence each other, and are assigned to condition as pairs. Treating individual participants as independent observations in a standard ANOVA ignores dyadic dependence and can underestimate standard errors. Analyses should model pair/dyad as a clustering factor or use dyad-level analyses.",
+      "quote": "\"The sample size will be set at 240 people (120 pairs).\"; \"Pairs of participants will be randomly assigned to one of four groups\"; \"The results will be analyzed by means of a two-factor ANOVA\"",
+      "location": "methods/analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "item-level dependency and item effects ignored",
+      "description": "Each participant responds to the same small set of critical items, and the same four critical details are always discussed. Accuracy will likely differ by item salience/difficulty. A simple ANOVA on aggregated counts ignores crossed participant and item effects, which can inflate or obscure effects and limits generalization beyond these specific items. Mixed-effects models with random effects for participants, dyads, and items would better reflect the design.",
+      "quote": "\"Both versions are identical except for eight critical details\"; \"each pair will discuss the same set of four critical details during the collaborative recall phase\"; \"The results will be analyzed by means of a two-factor ANOVA\"",
+      "location": "methods/analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "discussed items not counterbalanced despite claim",
+      "description": "The design section claims discussed and non-discussed items will be fully counterbalanced, but the procedure states that every pair will discuss the same four critical details. This confounds discussion status with item identity: any differences between discussed and non-discussed items may reflect inherent item difficulty, memorability, or salience rather than memory conformity.",
+      "quote": "\"discussed and non-discussed items will be fully counterbalanced\" ... \"In order to ensure sufficient discussion, each pair will discuss the same set of four critical details during the collaborative recall phase.\"",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "counterbalancing contradiction",
+      "description": "The manuscript makes mutually incompatible statements about counterbalancing of discussed/non-discussed critical details. This is not a minor procedural ambiguity: counterbalancing is essential for interpreting the within-subject memory conformity effect because item identity otherwise becomes a systematic confound.",
+      "quote": "\"discussed and non-discussed items will be fully counterbalanced\"; \"each pair will discuss the same set of four critical details during the collaborative recall phase\"",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "misinformation exposure not guaranteed",
+      "description": "The collaborative discussion may not actually expose a participant to the partner’s discrepant version. Partners may guess, say they do not know, provide the participant’s version, or fail to disclose the discrepant detail. Yet the analysis plan proposes categorizing all discussed items as containing misinformation. This creates misclassification of exposure and biases estimates of memory conformity and intervention effects.",
+      "quote": "\"If the participants are unable to reach an agreement, both responses will be documented.\"; \"we will categorize all discussed items as having contained misinformation, as the collaborative recall procedure is designed to expose participants to their partner’s differing version of events.\"",
+      "location": "methods/analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "misinformation classification contradiction",
+      "description": "The analysis plan first states that misleading exposure will be determined from what the partner actually said and that 'don’t know' or participant-consistent answers will not be classified as misleading. Immediately afterward it says all discussed items will be categorized as containing misinformation. These rules conflict and could materially change the primary analysis.",
+      "quote": "\"However, if the partner provided an answer consistent with what the participant had seen ... the situation will not be classified as misleading. Of course, the answer ‘don’t know’ will also not be classified as misleading. In addition, ... we will categorize all discussed items as having contained misinformation\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "interventions not matched for duration or modality",
+      "description": "The extended warning, education, and control conditions use approximately 7-minute podcasts, while the demonstration/motivation condition includes an experimenter-administered DRM task, written recall, personalized feedback, and a motivational podcast. This condition differs in duration, interactivity, social engagement, feedback, task demands, and arousal, not just theoretical content. Any superiority of this intervention could be due to nonspecific procedural differences.",
+      "quote": "\"The extended warning will take the form of an approximately 7-minute podcast\"; \"The training will take the form of an approximately 7-minute podcast\"; \"First ... a substantially shortened and simplified procedure based on the DRM paradigm will be used... The results will be fed back to participants\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "intervention confounding",
+      "description": "The three intervention labels do not isolate distinct constructs. The authors acknowledge overlap, but the manipulations combine warning, education, source-monitoring instruction, deception enlightenment, motivation, and personal memory-fallibility demonstration in different mixtures. This makes it difficult to attribute any effect to the intended construct or compare mechanisms across interventions.",
+      "quote": "\"we are aware of some overlap between the three interventions, for instance, teaching about memory is included is present in a way in both Education about memory and Demonstration and motivation.\"",
+      "location": "introduction",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "control condition poorly specified and potentially active",
+      "description": "The control podcast about soft skills related to social attitudes is underspecified and may affect social conformity, confidence, motivation, or interpersonal responding—constructs directly relevant to memory conformity. Without matching for content neutrality and emotional/cognitive demand, it is not an adequate inert control.",
+      "quote": "\"In the control group, participants will listen to a podcast concerning soft skills related to social attitudes.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "insufficient intervention materials",
+      "description": "The intervention podcasts and DRM materials are not provided verbatim, and only broad descriptions are given. Exact wording, examples, tone, length, and delivery can strongly influence warning and suggestibility effects. Without full materials or appendices, replication and evaluation of construct validity are not possible.",
+      "quote": "\"The extended warning will take the form of an approximately 7-minute podcast about the fallibility of human memory.\"; \"The training will take the form of an approximately 7-minute podcast discussing the mechanisms of memory\"; \"a podcast with information that inaccurate testimony are the main causes of erroneous court judgments\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "no manipulation checks",
+      "description": "The study lacks planned manipulation checks to verify that participants understood the warning, learned memory concepts, experienced the DRM false-memory demonstration, felt motivated, or became aware of source discrepancies. Without such checks, null or positive results cannot be interpreted mechanistically.",
+      "quote": "\"The main hypotheses relate to replicating the memory conformity effect and verifying the efficacy of the three methods of reducing it.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "awareness hypothesis not operationalized",
+      "description": "A central theoretical prediction is that interventions should be more effective among participants aware of discrepancies between original and co-witness information. However, the design does not include a direct measure of discrepancy awareness or source monitoring before the final test. The planned post-test question about study purpose does not measure item-specific awareness. Thus a core theoretical moderator is not testable.",
+      "quote": "\"we expect that effectiveness of our methods will be higher among people aware of discrepancies between the original information and misinformation than among those unaware of such discrepancies.\"; \"the subjects will be requested to say what they think the real purpose of the study was\"",
+      "location": "introduction/methods",
+      "severity": "major"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "normative influence prematurely ruled out",
+      "description": "The authors claim normative impact is completely ruled out because the final test is individual. However, normative effects may operate during collaborative recall, through commitment to jointly agreed answers, perceived expectations, concern about consistency with the partner, or internalized social pressure. Dismissing this mechanism is unjustified and narrows interpretation improperly.",
+      "quote": "\"we assumed that the normative impact explanation of the memory conformity effect is completely ruled out in this study: participants work on their own and do not compare their answers with anybody, therefore there is no cost of disagreeing.\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "mechanistic causal claims unsupported",
+      "description": "The manuscript attributes expected intervention effects to abandonment of the consistency assumption, increased source monitoring, alertness, mindfulness, or motivation, but does not measure these mediators. Without mediator measures or manipulation checks, causal claims about mechanisms would be speculative.",
+      "quote": "\"we assumed that the extended warning would cause participants to abandon the consistency assumption, make them more alert to discrepancies between their memories and information provided by the partner\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "power analysis based on unstable meta-analysis of two heterogeneous studies",
+      "description": "The power analysis for the memory conformity replication combines only two effect sizes that are extremely discrepant (g = 1.92 and g = 0.38) and derives a very large joint effect. With only two studies, a random-effects estimate and heterogeneity are highly unstable. The resulting conclusion that N = 18 is sufficient is not reliable, though the planned sample is larger.",
+      "quote": "\"The existing results as regards effect sizes are Hedges’ g = 1.92, N = 55 ... and Hedges’ g = 0.38, N = 74 ... Given the rather large difference in effect sizes between both studies, random effects were assumed while calculating the joint effect size, which was 1.13.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unclear conversion from Hedges g to Cohen f for repeated measures",
+      "description": "The manuscript converts a within-subject Hedges’ g from prior studies to Cohen’s f for repeated-measures ANOVA without specifying the formula, whether the standardized mean difference is paired or independent, or how the repeated-measures correlation was incorporated. Misconversion can substantially distort power estimates.",
+      "quote": "\"This amounts to a Cohen f of about 0.57. The joint correlation of results in the discussed and non-discussed items in both studies available was 0.07.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "power analysis ignores dyad clustering",
+      "description": "Power calculations are based on individual participant counts and repeated-measures ANOVA, but randomization and discussion occur at the pair level. Intradyad correlation reduces effective sample size, so power may be overestimated, especially for between-condition intervention effects.",
+      "quote": "\"The sample size will be set at 240 people (120 pairs).\"; \"The option used in G*Power was ‘ANOVA: Repeated measures, within-between’.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "power analysis ignores item clustering and only eight critical items",
+      "description": "The planned power analysis treats the outcome as if each participant provides stable repeated-measures scores, but each condition comparison is based on very few critical items per person. It ignores item variance and the fact that only four discussed and four non-discussed critical items contribute to the conformity score. This may overstate precision and generalizability.",
+      "quote": "\"Both versions are identical except for eight critical details\"; \"four of which refer to critical details\"; \"The option used in G*Power was ‘ANOVA: Repeated measures, within-between’.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "multiple primary outcomes without correction or hierarchy",
+      "description": "The analysis plan proposes ANOVAs for four indices plus average accuracy on filler, non-discussed, and discussed questions, but does not specify a primary outcome, familywise error control, or decision rules. This creates substantial analytic flexibility and inflated Type I error.",
+      "quote": "\"using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers. Moreover, we will observe the individual memory test’s average accuracy on the filler, non-discussed, and discussed questions.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "unclear planned contrasts and directional tests",
+      "description": "The manuscript states that comparisons among all groups and directional significance tests are assumed, but does not specify the exact contrasts, alpha levels, multiplicity correction, one-tailed hypotheses, or what happens if the omnibus interaction is nonsignificant. This permits flexible post hoc interpretation.",
+      "quote": "\"Comparisons among all groups and directional significance tests are assumed.\"; \"In the case of a significant main interaction, follow-up comparisons between pairs of groups will be performed.\"",
+      "location": "methods/analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "no preregistration details despite registered-report style",
+      "description": "The manuscript appears to be a Stage 1 registered-report proposal but does not specify a registry, timestamp, analysis code, exact exclusion rules, primary confirmatory tests, or data-sharing plan. This limits the protection against undisclosed researcher degrees of freedom.",
+      "quote": "\"If the Stage 1 review is accepted, the resubmission should be completed no later than in 2023.\"",
+      "location": "analysis plan",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "randomization procedure unspecified",
+      "description": "Pairs are said to be randomly assigned to groups, but the method of randomization, allocation concealment, block sizes, balancing by movie version/glasses position/gender/familiarity, and who generates the allocation are not described. These omissions hinder evaluation of selection bias and baseline balance.",
+      "quote": "\"Pairs of participants will be randomly assigned to one of four groups\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "lack of blinding",
+      "description": "No blinding is described for experimenters administering interventions, conducting collaborative recall, or scoring open-ended responses. Because condition-specific scripts and feedback are delivered by the experimenter and open-ended responses require coding, expectancy effects and scorer bias are plausible.",
+      "quote": "\"At this moment in this group, the experimenter will give the following information to the participants\"; \"The test will contain 20 open-ended questions\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "open-ended scoring reliability omitted",
+      "description": "If the final memory test is open-ended, the manuscript does not describe coding rules, number of coders, coder blinding, treatment of spelling/synonyms/ambiguous responses, interrater reliability, or disagreement resolution. This is essential for replicability and validity of the outcome.",
+      "quote": "\"Four indices will be derived from the open-ended test: the number of: (1) correct answers ... (2) answers consistent with the misinformation, (3) other answers ...\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "collaborative discussion coding omitted",
+      "description": "The study records discussions and uses partner responses to classify misinformation exposure, but does not specify transcription, coding procedures, coder blinding, reliability, handling of disagreements, or rules for multi-answer discussions. This is especially important because exposure to misinformation is not guaranteed.",
+      "quote": "\"The discussion will be audio recorded.\"; \"If the participants are unable to reach an agreement, both responses will be documented.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "same discussed items for all participants confounds item salience",
+      "description": "Beyond contradicting counterbalancing, the decision to have all pairs discuss the same four details may create systematic salience differences: discussed items may be easier or harder than non-discussed items independent of misinformation. This undermines the primary within-subject comparison.",
+      "quote": "\"each pair will discuss the same set of four critical details during the collaborative recall phase. For example, all pairs will talk about Eric’s cap color and his company logo.\"",
+      "location": "methods",
+      "severity": "critical"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "DRM demonstration may not measure social influence or memory conformity",
+      "description": "The demonstration/motivation condition uses the DRM false-memory paradigm to demonstrate associative memory errors, not social misinformation or co-witness influence. DRM susceptibility may not operationalize vulnerability to memory conformity, so the intervention may not validly target the intended mechanism.",
+      "quote": "\"The demonstration of the fallibility of memory will be done by means of the DRM technique\"",
+      "location": "introduction/methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "DRM false recall not guaranteed",
+      "description": "The intervention relies on participants falsely recalling critical lures, but not all participants will do so. For participants who do not produce false lures, the feedback may fail or have different effects. The plan does not specify how to handle participants for whom the demonstration does not work or how this will be measured.",
+      "quote": "\"The DRM procedure usually results in most of the participants falsely recalling at least a few of the critical lures.\"; \"If so, you were fooled.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "intervention may reduce confidence rather than conformity",
+      "description": "Both education and demonstration emphasize memory fallibility, which may lower confidence in one’s own memory and increase reliance on the partner. The manuscript acknowledges this possibility but does not measure confidence change before/after intervention or include analyses to distinguish reduced conformity from generalized reduced responding, guessing, or confidence shifts.",
+      "quote": "\"presenting participants with research confirming the fallibility of memory may result in decreased confidence in their own memory, which, in turn, might result in increased suggestibility.\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "participant relationship not controlled",
+      "description": "Memory conformity can vary by familiarity, trust, and relationship between dyad members, but the manuscript does not specify whether pairs are strangers, acquaintances, friends, or recruited together. This can introduce uncontrolled heterogeneity or confounding if relationship status differs by condition.",
+      "quote": "\"The participants enrolled in the study will be 16–35 years old; they will be invited to participate via advertisements in the media and on the internet.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "age range rationale insufficient and residual age confounding",
+      "description": "Restricting age to 16–35 is justified by avoiding young–elderly dyads, but dyads within this range can still differ substantially in age and status, and age may influence conformity. The design does not specify age matching, recording dyad age differences, or controlling for them.",
+      "quote": "\"The age of the participants will be restricted in order to avoid a situation in which a very young participant would discuss the original material with an elderly one\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "eligibility criteria incomplete",
+      "description": "The MORI procedure depends on visual acuity, color perception, and ability to perceive polarized images. The manuscript does not specify screening for visual impairments, color blindness, hearing ability for podcasts/word lists, Polish fluency, neurological/psychiatric exclusions, or prior knowledge of DRM/misinformation paradigms.",
+      "quote": "\"The participants enrolled in the study will be 16–35 years old\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "MORI manipulation awareness not assessed before debriefing",
+      "description": "The success of the MORI deception is essential, but the plan only asks participants what they think the purpose was after the final memory test. It does not specifically assess whether they noticed dual movie versions, glasses manipulation, or discrepancies during discussion, nor does it define exclusion or sensitivity analysis rules for awareness.",
+      "quote": "\"Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis of any relationship between hypothesis awareness and performance.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "exclusion rules too vague",
+      "description": "The only exclusion criterion is 'technical problems', which is vague and leaves discretionary decisions after data collection. It also omits likely necessary exclusions such as failure to follow instructions, noticing the MORI manipulation, audio recording failure, incomplete tests, or failure to participate in discussion.",
+      "quote": "\"We will exclude participants in the case of any technical problems during the experimental session.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "attrition_missing_data",
+      "subcategory": "missing data handling absent",
+      "description": "No plan is provided for missing item responses, incomplete questionnaires, participants withdrawing, unusable audio recordings, skipped confidence ratings, or dyads with one excluded participant. Missingness could be condition-related and affect both within- and between-subject analyses.",
+      "quote": "\"We will exclude participants in the case of any technical problems during the experimental session.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "planned follow-ups conditional on omnibus interaction may miss specified hypotheses",
+      "description": "The authors have specific a priori comparisons of each intervention versus control, but plan to conduct pairwise comparisons only if the omnibus interaction is significant. This gatekeeping can be overly conservative and inconsistent with confirmatory planned contrasts. Conversely, if many pairwise tests are performed without correction, Type I error rises. The decision rule is underspecified.",
+      "quote": "\"The efficacy of a given method will be confirmed if the magnitude of memory conformity ... is smaller in the group in which this method was applied than in the control group. In the case of a significant main interaction, follow-up comparisons between pairs of groups will be performed.\"",
+      "location": "analysis plan",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "directional tests despite possible bidirectional effects",
+      "description": "The manuscript acknowledges that education or demonstration of memory fallibility may increase suggestibility, yet assumes directional significance tests for intervention effects. A one-tailed test is not justified when plausible and theoretically discussed effects exist in the opposite direction.",
+      "quote": "\"increased memory conformity is possible.\"; \"Comparisons among all groups and directional significance tests are assumed.\"",
+      "location": "introduction/methods",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "confidence ratings not analyzed",
+      "description": "The methods collect confidence ratings for every answer, and theoretical arguments depend heavily on memory confidence, but the analysis plan does not specify confirmatory or exploratory analyses of confidence, calibration, or confidence-mediated effects. This is a missed opportunity and creates potential selective reporting.",
+      "quote": "\"for each question, the participants will be asked to rate the subjective certainty of each answer on a scale from 0% ... to 100%\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "primary outcome conflates memory accuracy and response strategy",
+      "description": "Interventions may change willingness to report, guessing, 'don’t know' use, or source-attribution strategy rather than memory conformity per se. The planned indices include overall number of answers but no explicit model separating memory, response criterion, and source-monitoring decisions. This threatens construct validity of claims about reducing memory conformity.",
+      "quote": "\"Four indices will be derived ... correct answers ... answers consistent with the misinformation ... other answers ... and the overall number of answers.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "collaborative recognition test materials underspecified",
+      "description": "The collaborative test is central to misinformation exposure but its exact 12 questions, response alternatives, order, counterbalancing, whether alternatives include both versions, and language are not provided. These details affect exposure strength and are necessary for replication.",
+      "quote": "\"The test will comprise 12 questions, four of which refer to critical details ... with the other eight being control questions. Each question and its five possible responses will be displayed\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "fixed order and fixed critical discussion set may introduce order effects",
+      "description": "The manuscript does not describe randomizing or counterbalancing question order in collaborative recall or final test. With only eight critical details, order, fatigue, and recency may influence recall and interact with discussed status if the same items are always discussed.",
+      "quote": "\"Each question and its five possible responses will be displayed in a PowerPoint presentation for 60 seconds\"; \"The test will contain 20 open-ended questions\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "intervention delivered after collaborative recall may affect memory test demand characteristics",
+      "description": "If interventions are delivered immediately before the final memory test, particularly extended warning and motivation explicitly instructing participants not to rely on the partner, they may induce demand characteristics rather than genuine resistance to memory conformity. Participants may infer expected responses and discount anything mentioned by the partner.",
+      "quote": "\"Immediately after the participants are done with the methods of reducing memory conformity ... they will complete the individual memory test\"; \"The participants will be strongly encouraged to rely only on their own memory, not on any information stemming from the partner.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "possible contamination within dyads during interventions",
+      "description": "Both members of a dyad receive the same condition and remain in an experimental session together. The manuscript does not specify whether interventions and final tests are completed separately or whether participants can communicate or observe each other. Continued co-presence may influence responses and violate assumptions of individual testing.",
+      "quote": "\"The participants (always a pair of them)\"; \"Immediately after ... they will complete the individual memory test\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "setting and administration details omitted",
+      "description": "Important details are missing regarding whether sessions are individual dyads only, room layout during recall and testing, separation during the individual memory test, headphone use for podcasts, volume, experimenter presence, and standardization across sessions. These factors can affect social influence and recall.",
+      "quote": "\"One experimental session will last about 60 minutes.\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "restricted age and recruitment sample",
+      "description": "The sample is restricted to 16–35-year-old volunteers recruited through media/internet, likely not representative of actual eyewitnesses or broader adult populations. The manuscript motivates the restriction but should limit extrapolation to justice-system witnesses generally, especially children, older adults, and diverse educational backgrounds.",
+      "quote": "\"The participants enrolled in the study will be 16–35 years old; they will be invited to participate via advertisements in the media and on the internet.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "artificial laboratory event and pair discussion",
+      "description": "A silent movie, artificial dyadic discussion, and immediate testing within one hour differ from real forensic witnessing, where events are emotional, longer delays occur, witnesses vary in relationships, and interviews are formal. Claims about justice-system practice should be qualified.",
+      "quote": "\"the participants will watch a silent movie that lasts 6 minutes and 34 seconds\"; \"One experimental session will last about 60 minutes.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "misapplied inoculation framework",
+      "description": "The demonstration/motivation intervention is justified by persuasion inoculation theory, but memory conformity is not equivalent to persuasion by illegitimate authority. The DRM task demonstrates associative false recall rather than a weakened form of co-witness misinformation. The conceptual mapping from inoculation theory to memory conformity is underdeveloped.",
+      "quote": "\"This was inspired by existing research on resisting social influence presented by Sagarin, Cialdini, Rice, & Serna (2002). Their technique was based on the inoculation theory\"; \"The demonstration of the fallibility of memory will be done by means of the DRM technique\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "education condition may not increase claimed metamemory dimensions",
+      "description": "The authors assume a lecture about memory processes will enhance memory monitoring, sense of memory efficacy, and memory-related affect, but these constructs are not directly trained or measured. The manipulation may increase knowledge while decreasing efficacy or increasing anxiety. This weakens construct interpretation.",
+      "quote": "\"The planned lecture on memory functioning refers to the first of these aspects... We assume that the lecture will also enhance memory monitoring, sense of memory efficacy or even memory-related affect.\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "overall number of answers inappropriate if forced-choice test used",
+      "description": "The planned index 'overall number of answers' makes sense for open-ended responses with omissions, but not for a two-alternative forced-choice test where an answer is generally required for each item. This further demonstrates that the outcome model is incoherent and may lead to inappropriate analyses.",
+      "quote": "\"the individual memory test will also use the two-alternative forced-choice format\"; \"Four indices will be derived ... (4) the overall number of answers.\"",
+      "location": "methods/analysis plan",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "ethical/deception safeguards incomplete",
+      "description": "The study uses deception about visual acuity, different movie versions, and memory vulnerability feedback. The manuscript mentions debriefing but provides no details on consent for deception, handling participant distress from being told they were 'fooled,' special safeguards for 16–17-year-olds, or ethics approval.",
+      "quote": "\"If so, you were fooled.\"; \"Finally, the participants will be debriefed.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "minors included without consent procedures",
+      "description": "Participants as young as 16 will be enrolled, but the manuscript does not describe parental/guardian consent, assent, or jurisdiction-specific procedures for minors. This is a reporting and ethical design gap that may affect feasibility and sample composition.",
+      "quote": "\"The participants enrolled in the study will be 16–35 years old\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no demographic or baseline covariate plan",
+      "description": "The manuscript does not specify collecting or reporting gender, education, vision correction, prior psychology knowledge, familiarity between partners, or baseline memory/confidence variables. These may affect memory conformity and intervention response, and are needed to characterize the sample.",
+      "quote": "\"The participants enrolled in the study will be 16–35 years old\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "possible unequal exposure to misinformation during collaborative recall",
+      "description": "The collaborative recall allows participants to discuss freely for 60 seconds, but not all dyads will discuss the critical discrepancy equally. Some participants may speak first, dominate, or avoid disagreement. Without standardizing or measuring exposure intensity and speaker order, intervention effects may be confounded with discussion dynamics.",
+      "quote": "\"Each question and its five possible responses will be displayed in a PowerPoint presentation for 60 seconds while participants discuss the answer.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no plan for language translation validation",
+      "description": "Several materials are translated into Polish, but except for the MORI materials, the manuscript does not describe translation/back-translation or validation of instructions, podcasts, DRM lists, and tests. Subtle wording matters in memory and warning studies.",
+      "quote": "\"the instruction was translated into Polish by a native speaker\"; \"The set of materials used in the MORI technique has been successfully translated into Polish\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "unmodeled version/glasses assignment effects",
+      "description": "Participants see one of two movie versions depending on glasses/projector configuration. The analysis plan does not include movie version, seating position, projector, or glasses orientation as factors or counterbalancing variables. If one version or viewing position is clearer or more memorable, results may be biased.",
+      "quote": "\"each participant will receive polarizing glasses that will block one of the two possible versions of the movie\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "technical fidelity checks missing",
+      "description": "MORI requires precise overlapping projection and polarization. The methods describe equipment but not procedures to verify that each participant only sees the assigned version, that image brightness/clarity is equivalent, or that cross-talk between images is absent. Technical failures could directly contaminate the manipulation.",
+      "quote": "\"The movie will be projected with two LED projectors placed such that the two images overlap on the screen.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "analytic_flexibility",
+      "subcategory": "exploratory DRM predictor ambiguous",
+      "description": "The plan says DRM results will be used as a possible predictor of MORI results, but DRM is administered only in the demonstration/motivation condition. This makes it confounded with condition and not available for the other groups unless an additional DRM measure is administered, which is not planned. The proposed exploratory analysis is therefore unclear and potentially invalid.",
+      "quote": "\"As an additional exploratory analysis, the results on the DRM procedure will be used as a possible predictor of the results on the MORI technique.\"",
+      "location": "analysis plan",
+      "severity": "moderate"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "DRM condition label inconsistency",
+      "description": "The third condition is called Demonstration and motivation throughout the manuscript, but in the procedure it is referred to as the 'DRM group.' This is minor but reflects ambiguity about whether the condition is the DRM demonstration alone or the combined demonstration-plus-motivation intervention.",
+      "quote": "\"Participants in the DRM group will be given the DRM procedure with feedback\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "causal_inference",
+      "subcategory": "overclaiming intervention efficacy from condition differences",
+      "description": "Because interventions differ on many nonspecific dimensions and the study lacks mediator measures, any observed group difference cannot support claims that the named mechanism—warning, education, or motivation—caused reduced conformity. It can only support that the package of procedures changed responses under these laboratory conditions.",
+      "quote": "\"The efficacy of a given method will be confirmed if the magnitude of memory conformity ... is smaller in the group in which this method was applied than in the control group.\"",
+      "location": "analysis plan",
+      "severity": "major"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no data availability or reproducibility plan",
+      "description": "The manuscript does not state whether raw data, analysis scripts, materials, coding manuals, and audio coding data will be shared. Given complex coding and multiple analytic choices, reproducibility requires a clear sharing plan.",
+      "quote": "\"The study will be conducted in 2023.\"",
+      "location": "analysis plan",
+      "severity": "minor"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "use of correlation r = 0.07 may be inappropriate for all outcomes",
+      "description": "The power analysis assumes a repeated-measures correlation of .07 from prior studies for all planned outcomes and intervention effects. Correlations may differ for open-ended counts, misinformation-consistent responses, confidence, and forced-choice accuracy. Using a single low correlation without sensitivity analysis can misestimate power.",
+      "quote": "\"A correlation r = 0.07 between repeated measures was assumed based on the research described above\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "construct_validity",
+      "subcategory": "memory conformity defined as accuracy difference only",
+      "description": "The primary operationalization compares accuracy on discussed versus non-discussed items. Lower accuracy on discussed items may reflect interference, retrieval disruption, increased uncertainty, or item differences, not necessarily conformity to the partner. A stronger conformity measure would specifically assess adoption of the partner’s misinformation.",
+      "quote": "\"The correctness of answers to questions concerning discussed and non-discussed details will be compared.\"",
+      "location": "methods",
+      "severity": "major"
+    },
+    {
+      "category": "statistical_errors",
+      "subcategory": "separate ANOVAs on mutually dependent categories",
+      "description": "Correct, misinformation-consistent, other, and omitted/overall answers are mutually dependent categories from the same trials. Running separate ANOVAs on each category ignores the multinomial dependency and inflates Type I error. A multinomial or binomial mixed model would better represent the data-generating process.",
+      "quote": "\"using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers\"",
+      "location": "analysis plan",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "unclear handling of 'both responses' in collaborative recall",
+      "description": "When dyads fail to agree, both responses are documented, but the analysis does not specify how this affects misinformation exposure, whether agreement is required for an item to count as discussed, or how partner influence is coded if both correct and incorrect versions were mentioned.",
+      "quote": "\"If the participants are unable to reach an agreement, both responses will be documented.\"",
+      "location": "methods",
+      "severity": "moderate"
+    },
+    {
+      "category": "methodological_design",
+      "subcategory": "possible contamination from hypothesis awareness question placement",
+      "description": "The hypothesis-awareness question is administered only after the final memory test, so it cannot identify participants who became aware before or during interventions versus during the final test. It also cannot prevent awareness-induced changes in primary outcomes. Using it only exploratorily limits interpretability of deception failures.",
+      "quote": "\"Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "theoretical_conceptual",
+      "subcategory": "assumption that partner information is always wrong for participant oversimplified",
+      "description": "The MORI paradigm creates discrepant details, but a partner’s statement can be inaccurate relative to both versions, guessed, or aligned with the participant’s version. Treating the partner as a misinformation source without careful item-level coding oversimplifies the social memory process and may misclassify influence.",
+      "quote": "\"Such a discussion results in the co-witnesses providing misinformation to each other.\"",
+      "location": "introduction",
+      "severity": "moderate"
+    },
+    {
+      "category": "reporting_completeness",
+      "subcategory": "no adverse-event or participant distress monitoring",
+      "description": "The interventions discuss wrongful convictions, tell participants they were fooled, and emphasize memory fallibility. The manuscript does not mention monitoring or mitigating distress, especially for younger participants. While likely low risk, this is relevant for ethical completeness.",
+      "quote": "\"The devastating consequences of errors caused by the fallibility of memory will be demonstrated.\"; \"If so, you were fooled.\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "generalizability",
+      "subcategory": "single cultural/language context",
+      "description": "The study uses a Polish sample and Polish translations, but broader claims about justice systems and eyewitnesses generally should be constrained because warning effects and social conformity may vary across cultures and legal contexts.",
+      "quote": "\"The set of materials used in the MORI technique has been successfully translated into Polish\"",
+      "location": "methods",
+      "severity": "minor"
+    },
+    {
+      "category": "internal_consistency",
+      "subcategory": "stage/proposal language mixed with completed-study framing",
+      "description": "The manuscript alternates between proposal/future tense and analysis/reporting language. This is not itself fatal, but it contributes to ambiguity about whether procedures are finalized, preregistered, or already conducted, especially given references to Stage 1 review and a 2023 timeline.",
+      "quote": "\"The main goal of this proposal\"; \"The study will be conducted in 2023.\"",
+      "location": "introduction/analysis plan",
+      "severity": "minor"
+    }
+  ],
+  "raw_response": "{\"issues\":[{\"category\":\"internal_consistency\",\"subcategory\":\"intervention timing contradiction\",\"description\":\"The manuscript gives contradictory descriptions of when the three reduction procedures occur. The introduction states that the methods will be placed before collaborative recall, but the methods section’s four-phase procedure places collaborative recall before the procedures. The detailed procedure also administers the interventions after the discussion and filler task. This is a critical design inconsistency because intervention timing is central to the theoretical rationale, causal mechanism, and comparability with prior warning studies.\",\"quote\":\"\\\"What is important, we decided to place the methods inducing resistance to misinformation before the collaborative recall phase (that is, before exposing participants to misinformation).\\\" ... \\\"The procedure will consist of four main phases: (1) presenting the original material, (2) collaborative recall (including misinformation), (3) three procedures to reduce vulnerability to misinformation (and a control condition), and (4) an individual memory test of the original material.\\\"\",\"location\":\"introduction/methods\",\"severity\":\"critical\"},{\"category\":\"internal_consistency\",\"subcategory\":\"extended warning content incompatible with timing\",\"description\":\"The extended warning is described as explaining that the partner saw a different movie version and why deception was applied. If delivered before collaborative recall, this would reveal the MORI deception and likely alter or invalidate the discussion phase. If delivered after collaborative recall, it is a post-warning, contradicting the claimed inoculation-before-misinformation rationale. This makes the manipulation conceptually unclear and threatens internal validity.\",\"quote\":\"\\\"Extended warning, informing that the partner actually saw a different version of the movie and informing why the deception was applied\\\"; \\\"we decided to place the methods inducing resistance to misinformation before the collaborative recall phase\\\"\",\"location\":\"introduction\",\"severity\":\"critical\"},{\"category\":\"internal_consistency\",\"subcategory\":\"test format contradiction\",\"description\":\"The individual memory test is described in the procedure as open-ended, but the analysis plan later states that it will use a two-alternative forced-choice format. These formats measure different constructs, have different chance levels, require different scoring, and differ in susceptibility to response bias. The contradiction prevents evaluation or replication of the primary outcome.\",\"quote\":\"\\\"The test will contain 20 open-ended questions\\\" ... \\\"In the present research, the individual memory test will also use the two-alternative forced-choice format.\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"critical\"},{\"category\":\"statistical_errors\",\"subcategory\":\"inappropriate ANOVA for bounded count data\",\"description\":\"The primary outcomes are counts of correct, misinformation-consistent, other, and total answers across only eight critical items, with four discussed and four non-discussed. These are bounded binomial/multinomial repeated observations, not continuous normally distributed outcomes. A repeated-measures ANOVA on such sparse counts can produce invalid standard errors, inappropriate distributional assumptions, and loss of item-level information. Generalized mixed-effects models or appropriate binomial/multinomial models would be more defensible.\",\"quote\":\"\\\"We will explore the individual memory test’s scores for the critical details using analysis of variance (ANOVA), using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"non-independence of dyadic data ignored\",\"description\":\"Participants are tested in pairs, discuss with each other, mutually influence each other, and are assigned to condition as pairs. Treating individual participants as independent observations in a standard ANOVA ignores dyadic dependence and can underestimate standard errors. Analyses should model pair/dyad as a clustering factor or use dyad-level analyses.\",\"quote\":\"\\\"The sample size will be set at 240 people (120 pairs).\\\"; \\\"Pairs of participants will be randomly assigned to one of four groups\\\"; \\\"The results will be analyzed by means of a two-factor ANOVA\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"item-level dependency and item effects ignored\",\"description\":\"Each participant responds to the same small set of critical items, and the same four critical details are always discussed. Accuracy will likely differ by item salience/difficulty. A simple ANOVA on aggregated counts ignores crossed participant and item effects, which can inflate or obscure effects and limits generalization beyond these specific items. Mixed-effects models with random effects for participants, dyads, and items would better reflect the design.\",\"quote\":\"\\\"Both versions are identical except for eight critical details\\\"; \\\"each pair will discuss the same set of four critical details during the collaborative recall phase\\\"; \\\"The results will be analyzed by means of a two-factor ANOVA\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"discussed items not counterbalanced despite claim\",\"description\":\"The design section claims discussed and non-discussed items will be fully counterbalanced, but the procedure states that every pair will discuss the same four critical details. This confounds discussion status with item identity: any differences between discussed and non-discussed items may reflect inherent item difficulty, memorability, or salience rather than memory conformity.\",\"quote\":\"\\\"discussed and non-discussed items will be fully counterbalanced\\\" ... \\\"In order to ensure sufficient discussion, each pair will discuss the same set of four critical details during the collaborative recall phase.\\\"\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"internal_consistency\",\"subcategory\":\"counterbalancing contradiction\",\"description\":\"The manuscript makes mutually incompatible statements about counterbalancing of discussed/non-discussed critical details. This is not a minor procedural ambiguity: counterbalancing is essential for interpreting the within-subject memory conformity effect because item identity otherwise becomes a systematic confound.\",\"quote\":\"\\\"discussed and non-discussed items will be fully counterbalanced\\\"; \\\"each pair will discuss the same set of four critical details during the collaborative recall phase\\\"\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"methodological_design\",\"subcategory\":\"misinformation exposure not guaranteed\",\"description\":\"The collaborative discussion may not actually expose a participant to the partner’s discrepant version. Partners may guess, say they do not know, provide the participant’s version, or fail to disclose the discrepant detail. Yet the analysis plan proposes categorizing all discussed items as containing misinformation. This creates misclassification of exposure and biases estimates of memory conformity and intervention effects.\",\"quote\":\"\\\"If the participants are unable to reach an agreement, both responses will be documented.\\\"; \\\"we will categorize all discussed items as having contained misinformation, as the collaborative recall procedure is designed to expose participants to their partner’s differing version of events.\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"major\"},{\"category\":\"internal_consistency\",\"subcategory\":\"misinformation classification contradiction\",\"description\":\"The analysis plan first states that misleading exposure will be determined from what the partner actually said and that 'don’t know' or participant-consistent answers will not be classified as misleading. Immediately afterward it says all discussed items will be categorized as containing misinformation. These rules conflict and could materially change the primary analysis.\",\"quote\":\"\\\"However, if the partner provided an answer consistent with what the participant had seen ... the situation will not be classified as misleading. Of course, the answer ‘don’t know’ will also not be classified as misleading. In addition, ... we will categorize all discussed items as having contained misinformation\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"interventions not matched for duration or modality\",\"description\":\"The extended warning, education, and control conditions use approximately 7-minute podcasts, while the demonstration/motivation condition includes an experimenter-administered DRM task, written recall, personalized feedback, and a motivational podcast. This condition differs in duration, interactivity, social engagement, feedback, task demands, and arousal, not just theoretical content. Any superiority of this intervention could be due to nonspecific procedural differences.\",\"quote\":\"\\\"The extended warning will take the form of an approximately 7-minute podcast\\\"; \\\"The training will take the form of an approximately 7-minute podcast\\\"; \\\"First ... a substantially shortened and simplified procedure based on the DRM paradigm will be used... The results will be fed back to participants\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"intervention confounding\",\"description\":\"The three intervention labels do not isolate distinct constructs. The authors acknowledge overlap, but the manipulations combine warning, education, source-monitoring instruction, deception enlightenment, motivation, and personal memory-fallibility demonstration in different mixtures. This makes it difficult to attribute any effect to the intended construct or compare mechanisms across interventions.\",\"quote\":\"\\\"we are aware of some overlap between the three interventions, for instance, teaching about memory is included is present in a way in both Education about memory and Demonstration and motivation.\\\"\",\"location\":\"introduction\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"control condition poorly specified and potentially active\",\"description\":\"The control podcast about soft skills related to social attitudes is underspecified and may affect social conformity, confidence, motivation, or interpersonal responding—constructs directly relevant to memory conformity. Without matching for content neutrality and emotional/cognitive demand, it is not an adequate inert control.\",\"quote\":\"\\\"In the control group, participants will listen to a podcast concerning soft skills related to social attitudes.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"insufficient intervention materials\",\"description\":\"The intervention podcasts and DRM materials are not provided verbatim, and only broad descriptions are given. Exact wording, examples, tone, length, and delivery can strongly influence warning and suggestibility effects. Without full materials or appendices, replication and evaluation of construct validity are not possible.\",\"quote\":\"\\\"The extended warning will take the form of an approximately 7-minute podcast about the fallibility of human memory.\\\"; \\\"The training will take the form of an approximately 7-minute podcast discussing the mechanisms of memory\\\"; \\\"a podcast with information that inaccurate testimony are the main causes of erroneous court judgments\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"no manipulation checks\",\"description\":\"The study lacks planned manipulation checks to verify that participants understood the warning, learned memory concepts, experienced the DRM false-memory demonstration, felt motivated, or became aware of source discrepancies. Without such checks, null or positive results cannot be interpreted mechanistically.\",\"quote\":\"\\\"The main hypotheses relate to replicating the memory conformity effect and verifying the efficacy of the three methods of reducing it.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"construct_validity\",\"subcategory\":\"awareness hypothesis not operationalized\",\"description\":\"A central theoretical prediction is that interventions should be more effective among participants aware of discrepancies between original and co-witness information. However, the design does not include a direct measure of discrepancy awareness or source monitoring before the final test. The planned post-test question about study purpose does not measure item-specific awareness. Thus a core theoretical moderator is not testable.\",\"quote\":\"\\\"we expect that effectiveness of our methods will be higher among people aware of discrepancies between the original information and misinformation than among those unaware of such discrepancies.\\\"; \\\"the subjects will be requested to say what they think the real purpose of the study was\\\"\",\"location\":\"introduction/methods\",\"severity\":\"major\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"normative influence prematurely ruled out\",\"description\":\"The authors claim normative impact is completely ruled out because the final test is individual. However, normative effects may operate during collaborative recall, through commitment to jointly agreed answers, perceived expectations, concern about consistency with the partner, or internalized social pressure. Dismissing this mechanism is unjustified and narrows interpretation improperly.\",\"quote\":\"\\\"we assumed that the normative impact explanation of the memory conformity effect is completely ruled out in this study: participants work on their own and do not compare their answers with anybody, therefore there is no cost of disagreeing.\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"causal_inference\",\"subcategory\":\"mechanistic causal claims unsupported\",\"description\":\"The manuscript attributes expected intervention effects to abandonment of the consistency assumption, increased source monitoring, alertness, mindfulness, or motivation, but does not measure these mediators. Without mediator measures or manipulation checks, causal claims about mechanisms would be speculative.\",\"quote\":\"\\\"we assumed that the extended warning would cause participants to abandon the consistency assumption, make them more alert to discrepancies between their memories and information provided by the partner\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"power analysis based on unstable meta-analysis of two heterogeneous studies\",\"description\":\"The power analysis for the memory conformity replication combines only two effect sizes that are extremely discrepant (g = 1.92 and g = 0.38) and derives a very large joint effect. With only two studies, a random-effects estimate and heterogeneity are highly unstable. The resulting conclusion that N = 18 is sufficient is not reliable, though the planned sample is larger.\",\"quote\":\"\\\"The existing results as regards effect sizes are Hedges’ g = 1.92, N = 55 ... and Hedges’ g = 0.38, N = 74 ... Given the rather large difference in effect sizes between both studies, random effects were assumed while calculating the joint effect size, which was 1.13.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unclear conversion from Hedges g to Cohen f for repeated measures\",\"description\":\"The manuscript converts a within-subject Hedges’ g from prior studies to Cohen’s f for repeated-measures ANOVA without specifying the formula, whether the standardized mean difference is paired or independent, or how the repeated-measures correlation was incorporated. Misconversion can substantially distort power estimates.\",\"quote\":\"\\\"This amounts to a Cohen f of about 0.57. The joint correlation of results in the discussed and non-discussed items in both studies available was 0.07.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"power analysis ignores dyad clustering\",\"description\":\"Power calculations are based on individual participant counts and repeated-measures ANOVA, but randomization and discussion occur at the pair level. Intradyad correlation reduces effective sample size, so power may be overestimated, especially for between-condition intervention effects.\",\"quote\":\"\\\"The sample size will be set at 240 people (120 pairs).\\\"; \\\"The option used in G*Power was ‘ANOVA: Repeated measures, within-between’.\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"power analysis ignores item clustering and only eight critical items\",\"description\":\"The planned power analysis treats the outcome as if each participant provides stable repeated-measures scores, but each condition comparison is based on very few critical items per person. It ignores item variance and the fact that only four discussed and four non-discussed critical items contribute to the conformity score. This may overstate precision and generalizability.\",\"quote\":\"\\\"Both versions are identical except for eight critical details\\\"; \\\"four of which refer to critical details\\\"; \\\"The option used in G*Power was ‘ANOVA: Repeated measures, within-between’.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"multiple primary outcomes without correction or hierarchy\",\"description\":\"The analysis plan proposes ANOVAs for four indices plus average accuracy on filler, non-discussed, and discussed questions, but does not specify a primary outcome, familywise error control, or decision rules. This creates substantial analytic flexibility and inflated Type I error.\",\"quote\":\"\\\"using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers. Moreover, we will observe the individual memory test’s average accuracy on the filler, non-discussed, and discussed questions.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"unclear planned contrasts and directional tests\",\"description\":\"The manuscript states that comparisons among all groups and directional significance tests are assumed, but does not specify the exact contrasts, alpha levels, multiplicity correction, one-tailed hypotheses, or what happens if the omnibus interaction is nonsignificant. This permits flexible post hoc interpretation.\",\"quote\":\"\\\"Comparisons among all groups and directional significance tests are assumed.\\\"; \\\"In the case of a significant main interaction, follow-up comparisons between pairs of groups will be performed.\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"no preregistration details despite registered-report style\",\"description\":\"The manuscript appears to be a Stage 1 registered-report proposal but does not specify a registry, timestamp, analysis code, exact exclusion rules, primary confirmatory tests, or data-sharing plan. This limits the protection against undisclosed researcher degrees of freedom.\",\"quote\":\"\\\"If the Stage 1 review is accepted, the resubmission should be completed no later than in 2023.\\\"\",\"location\":\"analysis plan\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"randomization procedure unspecified\",\"description\":\"Pairs are said to be randomly assigned to groups, but the method of randomization, allocation concealment, block sizes, balancing by movie version/glasses position/gender/familiarity, and who generates the allocation are not described. These omissions hinder evaluation of selection bias and baseline balance.\",\"quote\":\"\\\"Pairs of participants will be randomly assigned to one of four groups\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"lack of blinding\",\"description\":\"No blinding is described for experimenters administering interventions, conducting collaborative recall, or scoring open-ended responses. Because condition-specific scripts and feedback are delivered by the experimenter and open-ended responses require coding, expectancy effects and scorer bias are plausible.\",\"quote\":\"\\\"At this moment in this group, the experimenter will give the following information to the participants\\\"; \\\"The test will contain 20 open-ended questions\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"open-ended scoring reliability omitted\",\"description\":\"If the final memory test is open-ended, the manuscript does not describe coding rules, number of coders, coder blinding, treatment of spelling/synonyms/ambiguous responses, interrater reliability, or disagreement resolution. This is essential for replicability and validity of the outcome.\",\"quote\":\"\\\"Four indices will be derived from the open-ended test: the number of: (1) correct answers ... (2) answers consistent with the misinformation, (3) other answers ...\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"collaborative discussion coding omitted\",\"description\":\"The study records discussions and uses partner responses to classify misinformation exposure, but does not specify transcription, coding procedures, coder blinding, reliability, handling of disagreements, or rules for multi-answer discussions. This is especially important because exposure to misinformation is not guaranteed.\",\"quote\":\"\\\"The discussion will be audio recorded.\\\"; \\\"If the participants are unable to reach an agreement, both responses will be documented.\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"same discussed items for all participants confounds item salience\",\"description\":\"Beyond contradicting counterbalancing, the decision to have all pairs discuss the same four details may create systematic salience differences: discussed items may be easier or harder than non-discussed items independent of misinformation. This undermines the primary within-subject comparison.\",\"quote\":\"\\\"each pair will discuss the same set of four critical details during the collaborative recall phase. For example, all pairs will talk about Eric’s cap color and his company logo.\\\"\",\"location\":\"methods\",\"severity\":\"critical\"},{\"category\":\"construct_validity\",\"subcategory\":\"DRM demonstration may not measure social influence or memory conformity\",\"description\":\"The demonstration/motivation condition uses the DRM false-memory paradigm to demonstrate associative memory errors, not social misinformation or co-witness influence. DRM susceptibility may not operationalize vulnerability to memory conformity, so the intervention may not validly target the intended mechanism.\",\"quote\":\"\\\"The demonstration of the fallibility of memory will be done by means of the DRM technique\\\"\",\"location\":\"introduction/methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"DRM false recall not guaranteed\",\"description\":\"The intervention relies on participants falsely recalling critical lures, but not all participants will do so. For participants who do not produce false lures, the feedback may fail or have different effects. The plan does not specify how to handle participants for whom the demonstration does not work or how this will be measured.\",\"quote\":\"\\\"The DRM procedure usually results in most of the participants falsely recalling at least a few of the critical lures.\\\"; \\\"If so, you were fooled.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"intervention may reduce confidence rather than conformity\",\"description\":\"Both education and demonstration emphasize memory fallibility, which may lower confidence in one’s own memory and increase reliance on the partner. The manuscript acknowledges this possibility but does not measure confidence change before/after intervention or include analyses to distinguish reduced conformity from generalized reduced responding, guessing, or confidence shifts.\",\"quote\":\"\\\"presenting participants with research confirming the fallibility of memory may result in decreased confidence in their own memory, which, in turn, might result in increased suggestibility.\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"participant relationship not controlled\",\"description\":\"Memory conformity can vary by familiarity, trust, and relationship between dyad members, but the manuscript does not specify whether pairs are strangers, acquaintances, friends, or recruited together. This can introduce uncontrolled heterogeneity or confounding if relationship status differs by condition.\",\"quote\":\"\\\"The participants enrolled in the study will be 16–35 years old; they will be invited to participate via advertisements in the media and on the internet.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"age range rationale insufficient and residual age confounding\",\"description\":\"Restricting age to 16–35 is justified by avoiding young–elderly dyads, but dyads within this range can still differ substantially in age and status, and age may influence conformity. The design does not specify age matching, recording dyad age differences, or controlling for them.\",\"quote\":\"\\\"The age of the participants will be restricted in order to avoid a situation in which a very young participant would discuss the original material with an elderly one\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"eligibility criteria incomplete\",\"description\":\"The MORI procedure depends on visual acuity, color perception, and ability to perceive polarized images. The manuscript does not specify screening for visual impairments, color blindness, hearing ability for podcasts/word lists, Polish fluency, neurological/psychiatric exclusions, or prior knowledge of DRM/misinformation paradigms.\",\"quote\":\"\\\"The participants enrolled in the study will be 16–35 years old\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"MORI manipulation awareness not assessed before debriefing\",\"description\":\"The success of the MORI deception is essential, but the plan only asks participants what they think the purpose was after the final memory test. It does not specifically assess whether they noticed dual movie versions, glasses manipulation, or discrepancies during discussion, nor does it define exclusion or sensitivity analysis rules for awareness.\",\"quote\":\"\\\"Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis of any relationship between hypothesis awareness and performance.\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"exclusion rules too vague\",\"description\":\"The only exclusion criterion is 'technical problems', which is vague and leaves discretionary decisions after data collection. It also omits likely necessary exclusions such as failure to follow instructions, noticing the MORI manipulation, audio recording failure, incomplete tests, or failure to participate in discussion.\",\"quote\":\"\\\"We will exclude participants in the case of any technical problems during the experimental session.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"attrition_missing_data\",\"subcategory\":\"missing data handling absent\",\"description\":\"No plan is provided for missing item responses, incomplete questionnaires, participants withdrawing, unusable audio recordings, skipped confidence ratings, or dyads with one excluded participant. Missingness could be condition-related and affect both within- and between-subject analyses.\",\"quote\":\"\\\"We will exclude participants in the case of any technical problems during the experimental session.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"planned follow-ups conditional on omnibus interaction may miss specified hypotheses\",\"description\":\"The authors have specific a priori comparisons of each intervention versus control, but plan to conduct pairwise comparisons only if the omnibus interaction is significant. This gatekeeping can be overly conservative and inconsistent with confirmatory planned contrasts. Conversely, if many pairwise tests are performed without correction, Type I error rises. The decision rule is underspecified.\",\"quote\":\"\\\"The efficacy of a given method will be confirmed if the magnitude of memory conformity ... is smaller in the group in which this method was applied than in the control group. In the case of a significant main interaction, follow-up comparisons between pairs of groups will be performed.\\\"\",\"location\":\"analysis plan\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"directional tests despite possible bidirectional effects\",\"description\":\"The manuscript acknowledges that education or demonstration of memory fallibility may increase suggestibility, yet assumes directional significance tests for intervention effects. A one-tailed test is not justified when plausible and theoretically discussed effects exist in the opposite direction.\",\"quote\":\"\\\"increased memory conformity is possible.\\\"; \\\"Comparisons among all groups and directional significance tests are assumed.\\\"\",\"location\":\"introduction/methods\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"confidence ratings not analyzed\",\"description\":\"The methods collect confidence ratings for every answer, and theoretical arguments depend heavily on memory confidence, but the analysis plan does not specify confirmatory or exploratory analyses of confidence, calibration, or confidence-mediated effects. This is a missed opportunity and creates potential selective reporting.\",\"quote\":\"\\\"for each question, the participants will be asked to rate the subjective certainty of each answer on a scale from 0% ... to 100%\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"primary outcome conflates memory accuracy and response strategy\",\"description\":\"Interventions may change willingness to report, guessing, 'don’t know' use, or source-attribution strategy rather than memory conformity per se. The planned indices include overall number of answers but no explicit model separating memory, response criterion, and source-monitoring decisions. This threatens construct validity of claims about reducing memory conformity.\",\"quote\":\"\\\"Four indices will be derived ... correct answers ... answers consistent with the misinformation ... other answers ... and the overall number of answers.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"collaborative recognition test materials underspecified\",\"description\":\"The collaborative test is central to misinformation exposure but its exact 12 questions, response alternatives, order, counterbalancing, whether alternatives include both versions, and language are not provided. These details affect exposure strength and are necessary for replication.\",\"quote\":\"\\\"The test will comprise 12 questions, four of which refer to critical details ... with the other eight being control questions. Each question and its five possible responses will be displayed\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"fixed order and fixed critical discussion set may introduce order effects\",\"description\":\"The manuscript does not describe randomizing or counterbalancing question order in collaborative recall or final test. With only eight critical details, order, fatigue, and recency may influence recall and interact with discussed status if the same items are always discussed.\",\"quote\":\"\\\"Each question and its five possible responses will be displayed in a PowerPoint presentation for 60 seconds\\\"; \\\"The test will contain 20 open-ended questions\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"intervention delivered after collaborative recall may affect memory test demand characteristics\",\"description\":\"If interventions are delivered immediately before the final memory test, particularly extended warning and motivation explicitly instructing participants not to rely on the partner, they may induce demand characteristics rather than genuine resistance to memory conformity. Participants may infer expected responses and discount anything mentioned by the partner.\",\"quote\":\"\\\"Immediately after the participants are done with the methods of reducing memory conformity ... they will complete the individual memory test\\\"; \\\"The participants will be strongly encouraged to rely only on their own memory, not on any information stemming from the partner.\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"methodological_design\",\"subcategory\":\"possible contamination within dyads during interventions\",\"description\":\"Both members of a dyad receive the same condition and remain in an experimental session together. The manuscript does not specify whether interventions and final tests are completed separately or whether participants can communicate or observe each other. Continued co-presence may influence responses and violate assumptions of individual testing.\",\"quote\":\"\\\"The participants (always a pair of them)\\\"; \\\"Immediately after ... they will complete the individual memory test\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"setting and administration details omitted\",\"description\":\"Important details are missing regarding whether sessions are individual dyads only, room layout during recall and testing, separation during the individual memory test, headphone use for podcasts, volume, experimenter presence, and standardization across sessions. These factors can affect social influence and recall.\",\"quote\":\"\\\"One experimental session will last about 60 minutes.\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"generalizability\",\"subcategory\":\"restricted age and recruitment sample\",\"description\":\"The sample is restricted to 16–35-year-old volunteers recruited through media/internet, likely not representative of actual eyewitnesses or broader adult populations. The manuscript motivates the restriction but should limit extrapolation to justice-system witnesses generally, especially children, older adults, and diverse educational backgrounds.\",\"quote\":\"\\\"The participants enrolled in the study will be 16–35 years old; they will be invited to participate via advertisements in the media and on the internet.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"generalizability\",\"subcategory\":\"artificial laboratory event and pair discussion\",\"description\":\"A silent movie, artificial dyadic discussion, and immediate testing within one hour differ from real forensic witnessing, where events are emotional, longer delays occur, witnesses vary in relationships, and interviews are formal. Claims about justice-system practice should be qualified.\",\"quote\":\"\\\"the participants will watch a silent movie that lasts 6 minutes and 34 seconds\\\"; \\\"One experimental session will last about 60 minutes.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"misapplied inoculation framework\",\"description\":\"The demonstration/motivation intervention is justified by persuasion inoculation theory, but memory conformity is not equivalent to persuasion by illegitimate authority. The DRM task demonstrates associative false recall rather than a weakened form of co-witness misinformation. The conceptual mapping from inoculation theory to memory conformity is underdeveloped.\",\"quote\":\"\\\"This was inspired by existing research on resisting social influence presented by Sagarin, Cialdini, Rice, & Serna (2002). Their technique was based on the inoculation theory\\\"; \\\"The demonstration of the fallibility of memory will be done by means of the DRM technique\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"construct_validity\",\"subcategory\":\"education condition may not increase claimed metamemory dimensions\",\"description\":\"The authors assume a lecture about memory processes will enhance memory monitoring, sense of memory efficacy, and memory-related affect, but these constructs are not directly trained or measured. The manipulation may increase knowledge while decreasing efficacy or increasing anxiety. This weakens construct interpretation.\",\"quote\":\"\\\"The planned lecture on memory functioning refers to the first of these aspects... We assume that the lecture will also enhance memory monitoring, sense of memory efficacy or even memory-related affect.\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"statistical_errors\",\"subcategory\":\"overall number of answers inappropriate if forced-choice test used\",\"description\":\"The planned index 'overall number of answers' makes sense for open-ended responses with omissions, but not for a two-alternative forced-choice test where an answer is generally required for each item. This further demonstrates that the outcome model is incoherent and may lead to inappropriate analyses.\",\"quote\":\"\\\"the individual memory test will also use the two-alternative forced-choice format\\\"; \\\"Four indices will be derived ... (4) the overall number of answers.\\\"\",\"location\":\"methods/analysis plan\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"ethical/deception safeguards incomplete\",\"description\":\"The study uses deception about visual acuity, different movie versions, and memory vulnerability feedback. The manuscript mentions debriefing but provides no details on consent for deception, handling participant distress from being told they were 'fooled,' special safeguards for 16–17-year-olds, or ethics approval.\",\"quote\":\"\\\"If so, you were fooled.\\\"; \\\"Finally, the participants will be debriefed.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"minors included without consent procedures\",\"description\":\"Participants as young as 16 will be enrolled, but the manuscript does not describe parental/guardian consent, assent, or jurisdiction-specific procedures for minors. This is a reporting and ethical design gap that may affect feasibility and sample composition.\",\"quote\":\"\\\"The participants enrolled in the study will be 16–35 years old\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no demographic or baseline covariate plan\",\"description\":\"The manuscript does not specify collecting or reporting gender, education, vision correction, prior psychology knowledge, familiarity between partners, or baseline memory/confidence variables. These may affect memory conformity and intervention response, and are needed to characterize the sample.\",\"quote\":\"\\\"The participants enrolled in the study will be 16–35 years old\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"methodological_design\",\"subcategory\":\"possible unequal exposure to misinformation during collaborative recall\",\"description\":\"The collaborative recall allows participants to discuss freely for 60 seconds, but not all dyads will discuss the critical discrepancy equally. Some participants may speak first, dominate, or avoid disagreement. Without standardizing or measuring exposure intensity and speaker order, intervention effects may be confounded with discussion dynamics.\",\"quote\":\"\\\"Each question and its five possible responses will be displayed in a PowerPoint presentation for 60 seconds while participants discuss the answer.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no plan for language translation validation\",\"description\":\"Several materials are translated into Polish, but except for the MORI materials, the manuscript does not describe translation/back-translation or validation of instructions, podcasts, DRM lists, and tests. Subtle wording matters in memory and warning studies.\",\"quote\":\"\\\"the instruction was translated into Polish by a native speaker\\\"; \\\"The set of materials used in the MORI technique has been successfully translated into Polish\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"statistical_errors\",\"subcategory\":\"unmodeled version/glasses assignment effects\",\"description\":\"Participants see one of two movie versions depending on glasses/projector configuration. The analysis plan does not include movie version, seating position, projector, or glasses orientation as factors or counterbalancing variables. If one version or viewing position is clearer or more memorable, results may be biased.\",\"quote\":\"\\\"each participant will receive polarizing glasses that will block one of the two possible versions of the movie\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"technical fidelity checks missing\",\"description\":\"MORI requires precise overlapping projection and polarization. The methods describe equipment but not procedures to verify that each participant only sees the assigned version, that image brightness/clarity is equivalent, or that cross-talk between images is absent. Technical failures could directly contaminate the manipulation.\",\"quote\":\"\\\"The movie will be projected with two LED projectors placed such that the two images overlap on the screen.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"analytic_flexibility\",\"subcategory\":\"exploratory DRM predictor ambiguous\",\"description\":\"The plan says DRM results will be used as a possible predictor of MORI results, but DRM is administered only in the demonstration/motivation condition. This makes it confounded with condition and not available for the other groups unless an additional DRM measure is administered, which is not planned. The proposed exploratory analysis is therefore unclear and potentially invalid.\",\"quote\":\"\\\"As an additional exploratory analysis, the results on the DRM procedure will be used as a possible predictor of the results on the MORI technique.\\\"\",\"location\":\"analysis plan\",\"severity\":\"moderate\"},{\"category\":\"internal_consistency\",\"subcategory\":\"DRM condition label inconsistency\",\"description\":\"The third condition is called Demonstration and motivation throughout the manuscript, but in the procedure it is referred to as the 'DRM group.' This is minor but reflects ambiguity about whether the condition is the DRM demonstration alone or the combined demonstration-plus-motivation intervention.\",\"quote\":\"\\\"Participants in the DRM group will be given the DRM procedure with feedback\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"causal_inference\",\"subcategory\":\"overclaiming intervention efficacy from condition differences\",\"description\":\"Because interventions differ on many nonspecific dimensions and the study lacks mediator measures, any observed group difference cannot support claims that the named mechanism—warning, education, or motivation—caused reduced conformity. It can only support that the package of procedures changed responses under these laboratory conditions.\",\"quote\":\"\\\"The efficacy of a given method will be confirmed if the magnitude of memory conformity ... is smaller in the group in which this method was applied than in the control group.\\\"\",\"location\":\"analysis plan\",\"severity\":\"major\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no data availability or reproducibility plan\",\"description\":\"The manuscript does not state whether raw data, analysis scripts, materials, coding manuals, and audio coding data will be shared. Given complex coding and multiple analytic choices, reproducibility requires a clear sharing plan.\",\"quote\":\"\\\"The study will be conducted in 2023.\\\"\",\"location\":\"analysis plan\",\"severity\":\"minor\"},{\"category\":\"statistical_errors\",\"subcategory\":\"use of correlation r = 0.07 may be inappropriate for all outcomes\",\"description\":\"The power analysis assumes a repeated-measures correlation of .07 from prior studies for all planned outcomes and intervention effects. Correlations may differ for open-ended counts, misinformation-consistent responses, confidence, and forced-choice accuracy. Using a single low correlation without sensitivity analysis can misestimate power.\",\"quote\":\"\\\"A correlation r = 0.07 between repeated measures was assumed based on the research described above\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"construct_validity\",\"subcategory\":\"memory conformity defined as accuracy difference only\",\"description\":\"The primary operationalization compares accuracy on discussed versus non-discussed items. Lower accuracy on discussed items may reflect interference, retrieval disruption, increased uncertainty, or item differences, not necessarily conformity to the partner. A stronger conformity measure would specifically assess adoption of the partner’s misinformation.\",\"quote\":\"\\\"The correctness of answers to questions concerning discussed and non-discussed details will be compared.\\\"\",\"location\":\"methods\",\"severity\":\"major\"},{\"category\":\"statistical_errors\",\"subcategory\":\"separate ANOVAs on mutually dependent categories\",\"description\":\"Correct, misinformation-consistent, other, and omitted/overall answers are mutually dependent categories from the same trials. Running separate ANOVAs on each category ignores the multinomial dependency and inflates Type I error. A multinomial or binomial mixed model would better represent the data-generating process.\",\"quote\":\"\\\"using all four indices: the number of correct answers, number of answers consistent with misinformation, other answers, and the overall number of answers\\\"\",\"location\":\"analysis plan\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"unclear handling of 'both responses' in collaborative recall\",\"description\":\"When dyads fail to agree, both responses are documented, but the analysis does not specify how this affects misinformation exposure, whether agreement is required for an item to count as discussed, or how partner influence is coded if both correct and incorrect versions were mentioned.\",\"quote\":\"\\\"If the participants are unable to reach an agreement, both responses will be documented.\\\"\",\"location\":\"methods\",\"severity\":\"moderate\"},{\"category\":\"methodological_design\",\"subcategory\":\"possible contamination from hypothesis awareness question placement\",\"description\":\"The hypothesis-awareness question is administered only after the final memory test, so it cannot identify participants who became aware before or during interventions versus during the final test. It also cannot prevent awareness-induced changes in primary outcomes. Using it only exploratorily limits interpretability of deception failures.\",\"quote\":\"\\\"Next, the subjects will be requested to say what they think the real purpose of the study was. Their responses will be recorded for exploratory analysis\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"theoretical_conceptual\",\"subcategory\":\"assumption that partner information is always wrong for participant oversimplified\",\"description\":\"The MORI paradigm creates discrepant details, but a partner’s statement can be inaccurate relative to both versions, guessed, or aligned with the participant’s version. Treating the partner as a misinformation source without careful item-level coding oversimplifies the social memory process and may misclassify influence.\",\"quote\":\"\\\"Such a discussion results in the co-witnesses providing misinformation to each other.\\\"\",\"location\":\"introduction\",\"severity\":\"moderate\"},{\"category\":\"reporting_completeness\",\"subcategory\":\"no adverse-event or participant distress monitoring\",\"description\":\"The interventions discuss wrongful convictions, tell participants they were fooled, and emphasize memory fallibility. The manuscript does not mention monitoring or mitigating distress, especially for younger participants. While likely low risk, this is relevant for ethical completeness.\",\"quote\":\"\\\"The devastating consequences of errors caused by the fallibility of memory will be demonstrated.\\\"; \\\"If so, you were fooled.\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"generalizability\",\"subcategory\":\"single cultural/language context\",\"description\":\"The study uses a Polish sample and Polish translations, but broader claims about justice systems and eyewitnesses generally should be constrained because warning effects and social conformity may vary across cultures and legal contexts.\",\"quote\":\"\\\"The set of materials used in the MORI technique has been successfully translated into Polish\\\"\",\"location\":\"methods\",\"severity\":\"minor\"},{\"category\":\"internal_consistency\",\"subcategory\":\"stage/proposal language mixed with completed-study framing\",\"description\":\"The manuscript alternates between proposal/future tense and analysis/reporting language. This is not itself fatal, but it contributes to ambiguity about whether procedures are finalized, preregistered, or already conducted, especially given references to Stage 1 review and a 2023 timeline.\",\"quote\":\"\\\"The main goal of this proposal\\\"; \\\"The study will be conducted in 2023.\\\"\",\"location\":\"introduction/analysis plan\",\"severity\":\"minor\"}]}",
+  "model_id": "gpt-5.5",
+  "token_usage": {
+    "input_tokens": 14533,
+    "output_tokens": 8887
+  }
+}
